@@ -116,13 +116,57 @@ echo "<td>$answers</td>";
 echo "<td>$date</td>"; 
 echo "<td>$diff</td>"; 
 echo "<td>$book</td>"; 
+}
+?>
+                <td>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Edit
+</button>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">Delete</button>
 
-                  echo "<td>";
-                  echo "<button class="; echo"btn btn-primary"; echo "type="; echo"button"; echo">Edit</button>";
-                echo"<button class="; echo "btn btn-danger"; echo"type="; echo"button"; echo">Delete</button>";
-                echo"</td>";
-                }
-                ?>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete Question</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
+      </div>
+      <div class="modal-body">
+        Question
+        Answer
+        Difficulty
+        textbook
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+                </td>
+                
+            
             </tr>
         
         
@@ -135,7 +179,13 @@ echo "<td>$book</td>";
       </div>
 
     </div> <!-- /container -->
+<script>
 
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+
+</script>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
