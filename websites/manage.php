@@ -116,14 +116,14 @@ echo "<td>$answers</td>";
 echo "<td>$date</td>"; 
 echo "<td>$diff</td>"; 
 echo "<td>$book</td>"; 
-}
-?>
-                <td>
-                <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+echo ' <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Edit
 </button>
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">Delete</button>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">Delete</button></td>';
+}
+?>
+                </tr>
+
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog" role="document">
@@ -164,10 +164,6 @@ echo "<td>$book</td>";
     </div>
   </div>
 </div>
-                </td>
-                
-            
-            </tr>
         
         
                 
