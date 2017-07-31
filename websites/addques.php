@@ -81,12 +81,15 @@
       <hr>
       <div>
       <form method="post">
-      <input id="id" name="id" type="text" placeholder="number" >
       <input id="questions" name="questions" type="text" placeholder="Question">
       <input id="answers" name="answers" type="text" placeholder="Answer">
-      <input id="date" name="date" type="text" placeholder="Date">
       <input id="book" name="book" type="text" placeholder="book">
-      <input id="diff" name="diff" type="text" placeholder="difficulty">
+     
+        <select id="diff" name="diff" type="text" placeholder="difficulty">
+      <option>Hard</option>
+      <option>Medium</option>
+      <option>Easy</option>
+      </select>
     
       <input name="add" type="submit" id="add" value="Add question">
         </form>
