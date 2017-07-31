@@ -65,9 +65,6 @@
   <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
-          @mysql_select_db("test", $con); 
-          $sql = "SELECT * FROM test.fill_blank"; 
-          $result = mysql_query($sql);
           
          ?>
     <div class="container-narrow">
@@ -83,26 +80,31 @@
 
       <hr>
       <div>
-      <input id="id" type="text" placeholder="number">
-      <input id="questions" type="text" placeholder="Question">
-      <input id="answers" type="text" placeholder="Answer">
-      <input id="date" type="text" placeholder="Date">
-      <input id="book" type="text" placeholder="book">
-      <input id="diff" type="text" placeholder="difficulty">
-      <form>
-      <fieldset>
-      <?
+      <form method="post">
+      <input id="id" name="id" type="text" placeholder="number" >
+      <input id="questions" name="questions" type="text" placeholder="Question">
+      <input id="answers" name="answers" type="text" placeholder="Answer">
+      <input id="date" name="date" type="text" placeholder="Date">
+      <input id="book" name="book" type="text" placeholder="book">
+      <input id="diff" name="diff" type="text" placeholder="difficulty">
+    
+      <input name="add" type="submit" id="add" value="Add question">
+        </form>
+      
+<?
+      mysql_select_db("test", $db);
        $id = intval($_POST['id']);
        $questions = $_POST['questions'];
        $answers = $_POST['answers'];
        $date = $_POST['date'];
        $book = $_POST['book'];
        $diff = $_POST['diff'];
-
-    $sql = "INSERT INTO test.fill_blank " .
-           "(idnew_table,Questions, Answers,Date,Difficulty, Textbook) " .
-           "VALUES('$id','$questions','$answers', '$date','$diff','$book')";
-    mysql_select_db('test');
+mysql_query("INSERT INTO test.fill_blank (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
+           VALUES('1','a','a', NOW(),'a','a')");
+    $retval = mysql_query( $sql, $db);
+    $sql = "INSERT INTO test.fill_blank
+           (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
+           VALUES('$id','$questions','$answers', NOW(),'$diff','$book')";
     $retval = mysql_query( $sql, $db);
     if(! $retval)
     {
@@ -111,13 +113,6 @@
     echo "Updated data successfully\n";
     mysql_close($db);
     ?>
-
-      <input name="add" type="submit" id="add" value="Add question">
-      
-      
-      </fieldset>
-      </form>
-
       </div>
       <hr>
 
