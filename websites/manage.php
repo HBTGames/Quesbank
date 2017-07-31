@@ -74,16 +74,17 @@
          </div>
          <hr>
          <input class="form-control" type="text" placeholder="Search by Questions" id="myInput" onkeyup="searchfilter()">
+          <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()">
          <hr>
          <table class="table table-hover" id="myTable">
             <thead>
                <tr>
-                  <th>#</th>
-                  <th>Question</th>
-                  <th>Answer</th>
-                  <th>Date</th>
-                  <th>Difficulty</th>
-                  <th>Textbook</th>
+                  <th style="cursor:pointer;" onclick="sortTable(0)">#</th>
+                  <th style="cursor:pointer;" onclick="sortTable(1)">Question</th>
+                  <th style="cursor:pointer;" onclick="sortTable(2)">Answer</th>
+                  <th style="cursor:pointer;" onclick="sortTable(3)">Date</th>
+                  <th style="cursor:pointer;" onclick="sortTable(4)">Difficulty</th>
+                  <th style="cursor:pointer;" onclick="sortTable(5)">Textbook</th>
                   <th>Manipulation</th>
                </tr>
             </thead>
@@ -181,6 +182,49 @@ function searchfilter() {
         tr[i].style.display = "none";
       }
     } 
+  }
+}
+function searchfiltertwo() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInputtwo");
+  filter = input.value;
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[5];
+    if (td) {
+      if (td.innerHTML.indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+
+function sortTable(k) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.getElementsByTagName("tr");
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("td")[k];
+      y = rows[i + 1].getElementsByTagName("td")[k];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch= true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
   }
 }
       </script>
