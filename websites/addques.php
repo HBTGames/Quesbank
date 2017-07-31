@@ -83,26 +83,38 @@
 
       <hr>
       <div>
-      <select multiple class="form-control">
-        <option>New Concept English 1</option>
-        <option>New Concept English 2</option>
-        <option>New Concept English 3</option>
-      </select>
-      <select multiple class="form-control">
-      <option>Fill in blanks</option>
-      <option>Multiple choice</option>
-      </select>
-      <select multiple class="form-control">
-      <option>Hard</option>
-      <option>Medium</option>
-      <option>Easy</option>
-      </select>
+      <input id="id" type="text" placeholder="number">
+      <input id="questions" type="text" placeholder="Question">
+      <input id="answers" type="text" placeholder="Answer">
+      <input id="date" type="text" placeholder="Date">
+      <input id="book" type="text" placeholder="book">
+      <input id="diff" type="text" placeholder="difficulty">
       <form>
       <fieldset>
-      <input type="text" placeholder="Question">
-      <input type="text" placeholder="Answer">
+      <?
+       $id = intval($_POST['id']);
+       $questions = $_POST['questions'];
+       $answers = $_POST['answers'];
+       $date = $_POST['date'];
+       $book = $_POST['book'];
+       $diff = $_POST['diff'];
 
-      <button type="submit" class="btn">add</button>
+    $sql = "INSERT INTO test.fill_blank " .
+           "(idnew_table,Questions, Answers,Date,Difficulty, Textbook) " .
+           "VALUES('$id','$questions','$answers', '$date','$diff','$book')";
+    mysql_select_db('test');
+    $retval = mysql_query( $sql, $db);
+    if(! $retval)
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo "Updated data successfully\n";
+    mysql_close($db);
+    ?>
+
+      <input name="add" type="submit" id="add" value="Add question">
+      
+      
       </fieldset>
       </form>
 
