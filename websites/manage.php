@@ -67,7 +67,7 @@
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
                <li><a href="index.html">Home</a></li>
-               <li class="active"><a href="manage.html">Manage</a></li>
+               <li class="active"><a href="manage.php">Manage</a></li>
                <li><a href="contact.html">Contact</a></li>
             </ul>
             <h3 class="muted">QuesBank</h3>
@@ -120,7 +120,7 @@
                            <h4 class="modal-title" id="myModalLabel">Delete Question</h4>
                         </div>
                         <div class="modal-body">
-                           Are you sure to delete
+                           Are you sure to delete?
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -139,9 +139,20 @@
                         </div>
                         <div class="modal-body">
                            Question
+                           <input type="text" placeholder="Questions" value="4">
+                           <br>
                            Answer
+                           <input type="text" placeholder="Answers">
+                           <br>
                            Difficulty
+                           <select>
+      <option>Hard</option>
+      <option>Medium</option>
+      <option>Easy</option>
+      </select>
+      <br>
                            textbook
+                           <input type="text" placeholder="Textbook">
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

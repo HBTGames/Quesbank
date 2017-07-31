@@ -62,43 +62,53 @@
   </head>
 
   <body>
-
+  <?php
+         $db = mysql_connect('localhost','root','password')
+          or die('Error connecting to MySQL server.');
+          @mysql_select_db("test", $con); 
+          $sql = "SELECT * FROM test.fill_blank"; 
+          $result = mysql_query($sql);
+          
+         ?>
     <div class="container-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="manage.php">Manage</a></li>
+          <li><a href="manage.html">Manage</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <h3 class="muted">QuesBank</h3>
       </div>
 
       <hr>
+      <div>
+      <select multiple class="form-control">
+        <option>New Concept English 1</option>
+        <option>New Concept English 2</option>
+        <option>New Concept English 3</option>
+      </select>
+      <select multiple class="form-control">
+      <option>Fill in blanks</option>
+      <option>Multiple choice</option>
+      </select>
+      <select multiple class="form-control">
+      <option>Hard</option>
+      <option>Medium</option>
+      <option>Easy</option>
+      </select>
+      <form>
+      <fieldset>
+      <input type="text" placeholder="Question">
+      <input type="text" placeholder="Answer">
 
-      <div class="jumbotron">
-        <h1>Question Bank</h1>
-        <p class="lead">You can put new questions to the bank, or generate test paper through the website.</p>
-        <a class="btn btn-large btn-success" href="addques.php">Add New Questions</a>
-        <a class="btn btn-large btn-success" href="#">Generate Test Paper</a>
+      <button type="submit" class="btn">add</button>
+      </fieldset>
+      </form>
+
       </div>
-
       <hr>
 
-      <div class="row-fluid marketing">
-        <div class="span6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-        </div>
-
-        <div class="span6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-
-        </div>
-      </div>
 
       <hr>
 
@@ -106,7 +116,8 @@
         <p>&copy; Air English 2015</p>
       </div>
 
-    </div> <!-- /container -->
+    </div>
+
 
     <!-- Le javascript
     ================================================== -->
