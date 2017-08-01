@@ -123,6 +123,22 @@
                </tr>
             </tbody>
          </table>
+         <?
+      mysql_select_db("test", $db);
+mysql_query("DELETE FROM test.fill_blank (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
+           VALUES('1','a','a', NOW(),'a','a')");
+    $retval = mysql_query( $sql, $db);
+    $sql = "INSERT INTO test.fill_blank
+           (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
+           VALUES('$id','$questions','$answers', NOW(),'$diff','$book')";
+    $retval = mysql_query( $sql, $db);
+    if(! $retval)
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo "<script>alert('Updated data successfully!');</script>";
+    mysql_close($db);
+    ?>
          <hr>
          <div class="footer">
             <p>&copy; Air English 2015</p>
@@ -141,7 +157,7 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" onclick="deleterow()" class="btn btn-danger" id="finaldel">Delete</button>
+                  <button type="button" class="btn btn-danger delete-btn" id="finaldel">Delete</button>
                </div>
             </div>
          </div>
@@ -162,7 +178,13 @@
                   <input type="text" placeholder="Answers" id="answers">
                   <br>
                   Difficulty
-                  <input type="text" placeholder="Difficulty" id="diff">
+                 <!-- <input type="text" placeholder="Difficulty" id="diff">-->
+                 <select id="diff" name="diff" type="text" placeholder="difficulty">
+      <option>Hard</option>
+      <option>Medium</option>
+      <option>Easy</option>
+      </select>
+    
                   <br>
                   textbook
                   <input type="text" placeholder="Textbook" id="book">
@@ -253,6 +275,10 @@ $('.edit-btn').on('click', function(){
     $('#diff').val($(td[4]).text());
     $('#book').val($(td[5]).text());
 });
+
+$('.btn-danger').on('click', function(){
+  $(this).parents('tr').remove();
+})
       </script>
       <!-- Le javascript
          ================================================== -->
