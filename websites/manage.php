@@ -59,10 +59,10 @@
       <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
-          @mysql_select_db("test", $con); 
-          $sql = "SELECT * FROM test.fill_blank"; 
+          @mysql_select_db("test", $con);
+          $sql = "SELECT * FROM test.fill_blank";
           $result = mysql_query($sql);
-          
+
          ?>
       <div class="container-narrow">
          <div class="masthead">
@@ -90,22 +90,22 @@
                </tr>
             </thead>
             <tbody>
-               <? 
+               <?
                   while( $row = mysql_fetch_array($result))
-                  {  
-                  $id = $row['idnew_table']; 
-                  $question = $row['Questions']; 
-                  $answers = $row['Answers']; 
-                  $date= $row['Date']; 
-                  $diff = $row['Difficulty']; 
-                  $book = $row['Textbook']; 
-                                  echo "<tr>"; 
-                  echo "<td>$id</td>"; 
-                  echo "<td>$question</td>"; 
+                  {
+                  $id = $row['idnew_table'];
+                  $question = $row['Questions'];
+                  $answers = $row['Answers'];
+                  $date= $row['Date'];
+                  $diff = $row['Difficulty'];
+                  $book = $row['Textbook'];
+                                  echo "<tr>";
+                  echo "<td>$id</td>";
+                  echo "<td>$question</td>";
                   echo "<td>$answers</td>";
-                  echo "<td>$date</td>"; 
-                  echo "<td>$diff</td>"; 
-                  echo "<td>$book</td>"; 
+                  echo "<td>$date</td>";
+                  echo "<td>$diff</td>";
+                  echo "<td>$book</td>";
                   echo ' <td><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
                   echo 'href="#edit=';
                   echo '$id';
@@ -114,7 +114,7 @@
                   </button>';
                   echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm" id="';
                   echo '$id';
-                  
+
                   echo '" href="#delete=';
                   echo '$id';
                   echo '">Delete</button></td>';
@@ -123,7 +123,7 @@
                </tr>
             </tbody>
          </table>
-         
+
          <hr>
          <div class="footer">
             <p>&copy; Air English 2015</p>
@@ -169,7 +169,7 @@
       <option>Medium</option>
       <option>Easy</option>
       </select>
-    
+
                   <br>
                   textbook
                   <input type="text" placeholder="Textbook" id="book">
@@ -182,19 +182,19 @@
          </div>
       </div>
       <script>
-         
-         
-        
-         
-         
+
+
+
+
+
          function searchfilter() {
-         // Declare variables 
+         // Declare variables
          var input, filter, table, tr, td, i;
          input = document.getElementById("myInput");
          filter = input.value;
          table = document.getElementById("myTable");
          tr = table.getElementsByTagName("tr");
-         
+
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
          td = tr[i].getElementsByTagName("td")[1];
@@ -204,11 +204,11 @@
          } else {
          tr[i].style.display = "none";
          }
-         } 
+         }
          }
          }
          function searchfiltertwo() {
-         // Declare variables 
+         // Declare variables
          var input, filter, table, tr, td, i;
          input = document.getElementById("myInputtwo");
          filter = input.value;
@@ -223,33 +223,57 @@
          } else {
          tr[i].style.display = "none";
          }
-         } 
          }
          }
-         
+         }
+
          function sortTable(k) {
-         var table, rows, switching, i, x, y, shouldSwitch;
-         table = document.getElementById("myTable");
-         switching = true;
-         while (switching) {
-         switching = false;
-         rows = table.getElementsByTagName("tr");
-         for (i = 1; i < (rows.length - 1); i++) {
-         shouldSwitch = false;
-         x = rows[i].getElementsByTagName("td")[k];
-         y = rows[i + 1].getElementsByTagName("td")[k];
-         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-         shouldSwitch= true;
-         break;
+           if (k == 0){
+             var table, rows, switching, i, x, y, shouldSwitch;
+             table = document.getElementById("myTable");
+             switching = true;
+             while (switching) {
+             switching = false;
+             rows = table.getElementsByTagName("tr");
+             for (i = 1; i < (rows.length - 1); i++) {
+             shouldSwitch = false;
+             x = rows[i].getElementsByTagName("td")[k];
+             y = rows[i + 1].getElementsByTagName("td")[k];
+             if (parseInt(x.innerHTML, 10) > parseInt(y.innerHTML, 10)) {
+             shouldSwitch= true;
+             break;
+             }
+             }
+             if (shouldSwitch) {
+             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+             switching = true;
+             }
+             }
+           }
+         else {
+           var table, rows, switching, i, x, y, shouldSwitch;
+           table = document.getElementById("myTable");
+           switching = true;
+           while (switching) {
+           switching = false;
+           rows = table.getElementsByTagName("tr");
+           for (i = 1; i < (rows.length - 1); i++) {
+           shouldSwitch = false;
+           x = rows[i].getElementsByTagName("td")[k];
+           y = rows[i + 1].getElementsByTagName("td")[k];
+           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+           shouldSwitch= true;
+           break;
+           }
+           }
+           if (shouldSwitch) {
+           rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+           switching = true;
+           }
+           }
          }
          }
-         if (shouldSwitch) {
-         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-         switching = true;
-         }
-         }
-         }
-         
+
 
 
 $('.edit-btn').on('click', function(){
@@ -281,6 +305,6 @@ $('.btn-danger').on('click', function(){
       <script src="../assets/js/bootstrap-collapse.js"></script>
       <script src="../assets/js/bootstrap-carousel.js"></script>
       <script src="../assets/js/bootstrap-typeahead.js"></script>
-      
+
    </body>
 </html>
