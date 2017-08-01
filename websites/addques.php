@@ -94,7 +94,7 @@
       <input name="add" type="submit" id="add" value="Add question">
         </form>
       
-<?
+<? if ( $_REQUEST['add'] ){
       mysql_select_db("test", $db);
        $id = intval($_POST['id']);
        $questions = $_POST['questions'];
@@ -114,6 +114,7 @@
     }
     echo "<script>alert('Updated data successfully!');</script>";
     mysql_close($db);
+    }
     ?>
       </div>
       <hr>
