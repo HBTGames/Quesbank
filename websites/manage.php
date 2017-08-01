@@ -123,22 +123,7 @@
                </tr>
             </tbody>
          </table>
-         <?
-      mysql_select_db("test", $db);
-mysql_query("DELETE FROM test.fill_blank (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
-           VALUES('1','a','a', NOW(),'a','a')");
-    $retval = mysql_query( $sql, $db);
-    $sql = "INSERT INTO test.fill_blank
-           (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
-           VALUES('$id','$questions','$answers', NOW(),'$diff','$book')";
-    $retval = mysql_query( $sql, $db);
-    if(! $retval)
-    {
-      die('Could not update data: ' . mysql_error());
-    }
-    echo "<script>alert('Updated data successfully!');</script>";
-    mysql_close($db);
-    ?>
+         
          <hr>
          <div class="footer">
             <p>&copy; Air English 2015</p>
