@@ -74,7 +74,7 @@
          </div>
          <hr>
          <input class="form-control" type="text" placeholder="Search by Questions" id="myInput" onkeyup="searchfilter()">
-          <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()">
+         <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()">
          <hr>
          <table class="table table-hover" id="myTable">
             <thead>
@@ -114,21 +114,7 @@
                   echo '>Delete</button></td>';
                   }
                   ?>
-                  
-                  <?php 
- if(isset($_GET['id'])&&!empty($_GET['id'])){
-   $id=intval($_GET['id']);
-   $sql="delete from test.fill_blank where idnew_table = $id";
-   if(mysql_query($sql)){
-     echo "<script type='text/javascript'>alert('操作成功')</script>";
-   }else{
-     echo "<script type='text/javascript'>alert('操作失败')</script>";
-   }
- }
-?>
-
                </tr>
-               
             </tbody>
          </table>
          <hr>
@@ -137,132 +123,125 @@
          </div>
       </div>
       <!-- /container -->
-      
-      
       <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                  <div class="modal-dialog" role="document">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           <h4 class="modal-title" id="myModalLabel">Delete Question</h4>
-                        </div>
-                        <div class="modal-body">
-                           Are you sure to delete?
-                        </div>
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                           <button type="button" onclick="deleterow()" class="btn btn-danger">Delete</button>
-                        </div>
-                     </div>
-                  </div>
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Delete Question</h4>
                </div>
-               <!-- Modal -->
-               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
-                        </div>
-                        <div class="modal-body">
-                           Question
-                           <input type="text" placeholder="Questions" value="4">
-                           <br>
-                           Answer
-                           <input type="text" placeholder="Answers">
-                           <br>
-                           Difficulty
-                           <select>
-      <option>Hard</option>
-      <option>Medium</option>
-      <option>Easy</option>
-      </select>
-      <br>
-                           textbook
-                           <input type="text" placeholder="Textbook">
-                           
-                        </div>
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                           <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                     </div>
-                  </div>
+               <div class="modal-body">
+                  Are you sure to delete?
                </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" onclick="deleterow()" class="btn btn-danger">Delete</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
+               </div>
+               <div class="modal-body">
+                  Question
+                  <input type="text" placeholder="Questions" value="4">
+                  <br>
+                  Answer
+                  <input type="text" placeholder="Answers">
+                  <br>
+                  Difficulty
+                  <select>
+                     <option>Hard</option>
+                     <option>Medium</option>
+                     <option>Easy</option>
+                  </select>
+                  <br>
+                  textbook
+                  <input type="text" placeholder="Textbook">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+               </div>
+            </div>
+         </div>
+      </div>
       <script>
          $('#myModal').on('shown.bs.modal', function () {
            $('#myInput').focus()
          })
          
-        deleterow(){
-        return submit();
-        }
         
-        
-        
-function searchfilter() {
-  // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value;
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      if (td.innerHTML.indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    } 
-  }
-}
-function searchfiltertwo() {
-  // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInputtwo");
-  filter = input.value;
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[5];
-    if (td) {
-      if (td.innerHTML.indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    } 
-  }
-}
-
-function sortTable(k) {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("myTable");
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = table.getElementsByTagName("tr");
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("td")[k];
-      y = rows[i + 1].getElementsByTagName("td")[k];
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        shouldSwitch= true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
-}
+         
+         
+         function searchfilter() {
+         // Declare variables 
+         var input, filter, table, tr, td, i;
+         input = document.getElementById("myInput");
+         filter = input.value;
+         table = document.getElementById("myTable");
+         tr = table.getElementsByTagName("tr");
+         
+         // Loop through all table rows, and hide those who don't match the search query
+         for (i = 0; i < tr.length; i++) {
+         td = tr[i].getElementsByTagName("td")[1];
+         if (td) {
+         if (td.innerHTML.indexOf(filter) > -1) {
+         tr[i].style.display = "";
+         } else {
+         tr[i].style.display = "none";
+         }
+         } 
+         }
+         }
+         function searchfiltertwo() {
+         // Declare variables 
+         var input, filter, table, tr, td, i;
+         input = document.getElementById("myInputtwo");
+         filter = input.value;
+         table = document.getElementById("myTable");
+         tr = table.getElementsByTagName("tr");
+         // Loop through all table rows, and hide those who don't match the search query
+         for (i = 0; i < tr.length; i++) {
+         td = tr[i].getElementsByTagName("td")[5];
+         if (td) {
+         if (td.innerHTML.indexOf(filter) > -1) {
+         tr[i].style.display = "";
+         } else {
+         tr[i].style.display = "none";
+         }
+         } 
+         }
+         }
+         
+         function sortTable(k) {
+         var table, rows, switching, i, x, y, shouldSwitch;
+         table = document.getElementById("myTable");
+         switching = true;
+         while (switching) {
+         switching = false;
+         rows = table.getElementsByTagName("tr");
+         for (i = 1; i < (rows.length - 1); i++) {
+         shouldSwitch = false;
+         x = rows[i].getElementsByTagName("td")[k];
+         y = rows[i + 1].getElementsByTagName("td")[k];
+         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+         shouldSwitch= true;
+         break;
+         }
+         }
+         if (shouldSwitch) {
+         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+         switching = true;
+         }
+         }
+         }
       </script>
       <!-- Le javascript
          ================================================== -->
