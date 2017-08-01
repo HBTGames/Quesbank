@@ -113,7 +113,7 @@ mysql_query("INSERT INTO test.fill_blank (idnew_table,Questions, Answers,Date,Di
     {
       die('Could not update data: ' . mysql_error());
     }
-    echo "Updated data successfully\n";
+    echo "<script>alert('Updated data successfully!');</script>";
     mysql_close($db);
     ?>
       </div>

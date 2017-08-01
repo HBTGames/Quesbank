@@ -107,12 +107,39 @@
                   echo "<td>$book</td>"; 
                   echo ' <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                     Edit
-                  </button>
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">Delete</button></td>';
+                  </button>';
+                  echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm" id="';
+                  echo '$id"';
+                  
+                  echo '>Delete</button></td>';
                   }
                   ?>
+                  
+                  <?php 
+ if(isset($_GET['id'])&&!empty($_GET['id'])){
+   $id=intval($_GET['id']);
+   $sql="delete from test.fill_blank where idnew_table = $id";
+   if(mysql_query($sql)){
+     echo "<script type='text/javascript'>alert('操作成功')</script>";
+   }else{
+     echo "<script type='text/javascript'>alert('操作失败')</script>";
+   }
+ }
+?>
+
                </tr>
-               <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+               
+            </tbody>
+         </table>
+         <hr>
+         <div class="footer">
+            <p>&copy; Air English 2015</p>
+         </div>
+      </div>
+      <!-- /container -->
+      
+      
+      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                   <div class="modal-dialog" role="document">
                      <div class="modal-content">
                         <div class="modal-header">
@@ -124,7 +151,7 @@
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                           <button type="button" class="btn btn-danger">Delete</button>
+                           <button type="button" onclick="deleterow()" class="btn btn-danger">Delete</button>
                         </div>
                      </div>
                   </div>
@@ -153,6 +180,7 @@
       <br>
                            textbook
                            <input type="text" placeholder="Textbook">
+                           
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -161,19 +189,16 @@
                      </div>
                   </div>
                </div>
-            </tbody>
-         </table>
-         <hr>
-         <div class="footer">
-            <p>&copy; Air English 2015</p>
-         </div>
-      </div>
-      <!-- /container -->
       <script>
          $('#myModal').on('shown.bs.modal', function () {
            $('#myInput').focus()
          })
          
+        deleterow(){
+        return submit();
+        }
+        
+        
         
 function searchfilter() {
   // Declare variables 
