@@ -8,6 +8,7 @@
       <meta name="author" content="">
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
+      <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
       <style type="text/css">
          body {
          padding-top: 20px;
@@ -105,13 +106,18 @@
                   echo "<td>$date</td>"; 
                   echo "<td>$diff</td>"; 
                   echo "<td>$book</td>"; 
-                  echo ' <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                  echo ' <td><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
+                  echo 'href="#edit=';
+                  echo '$id';
+                  echo '">
                     Edit
                   </button>';
                   echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm" id="';
-                  echo '$id"';
+                  echo '$id';
                   
-                  echo '>Delete</button></td>';
+                  echo '" href="#delete=';
+                  echo '$id';
+                  echo '">Delete</button></td>';
                   }
                   ?>
                </tr>
@@ -135,7 +141,7 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" onclick="deleterow()" class="btn btn-danger">Delete</button>
+                  <button type="button" onclick="deleterow()" class="btn btn-danger" id="finaldel">Delete</button>
                </div>
             </div>
          </div>
@@ -150,32 +156,26 @@
                </div>
                <div class="modal-body">
                   Question
-                  <input type="text" placeholder="Questions" value="4">
+                  <input type="text" placeholder="Questions" id="questions">
                   <br>
                   Answer
-                  <input type="text" placeholder="Answers">
+                  <input type="text" placeholder="Answers" id="answers">
                   <br>
                   Difficulty
-                  <select>
-                     <option>Hard</option>
-                     <option>Medium</option>
-                     <option>Easy</option>
-                  </select>
+                  <input type="text" placeholder="Difficulty" id="diff">
                   <br>
                   textbook
-                  <input type="text" placeholder="Textbook">
+                  <input type="text" placeholder="Textbook" id="book">
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
                </div>
             </div>
          </div>
       </div>
       <script>
-         $('#myModal').on('shown.bs.modal', function () {
-           $('#myInput').focus()
-         })
+         
          
         
          
@@ -242,6 +242,17 @@
          }
          }
          }
+         
+
+
+$('.edit-btn').on('click', function(){
+  // Get all TD from the cliked Button
+  var td = $(this).parents('tr').find('td:lt(7)');
+    $('#questions').val($(td[1]).text());
+    $('#answers').val($(td[2]).text());
+    $('#diff').val($(td[4]).text());
+    $('#book').val($(td[5]).text());
+});
       </script>
       <!-- Le javascript
          ================================================== -->
@@ -259,5 +270,6 @@
       <script src="../assets/js/bootstrap-collapse.js"></script>
       <script src="../assets/js/bootstrap-carousel.js"></script>
       <script src="../assets/js/bootstrap-typeahead.js"></script>
+      
    </body>
 </html>
