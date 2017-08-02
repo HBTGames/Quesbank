@@ -103,11 +103,11 @@
        $book = $_POST['book'];
        $diff = $_POST['diff'];
 
-  
+ 
     $sql = "INSERT INTO test.fill_blank
            (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
            VALUES('$id','$questions','$answers', NOW(),'$diff','$book')";
-    $retval = mysql_query( $sql, $db);
+     $retval = mysql_query( $sql, $db);
     if(! $retval)
     {
       die('Could not update data: ' . mysql_error());

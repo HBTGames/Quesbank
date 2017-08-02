@@ -59,7 +59,7 @@
       <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
-          @mysql_select_db("test", $con);
+          @mysql_select_db("test", $db);
           $sql = "SELECT * FROM test.fill_blank";
           $result = mysql_query($sql);
 
@@ -108,20 +108,32 @@
                   echo "<td>$book</td>";
                   echo ' <td><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
                   echo 'href="#edit=';
-                  echo '$id';
+                  echo "$id";
                   echo '">
                     Edit
                   </button>';
-                  echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm" id="';
-                  echo '$id';
+                  echo '<button type="submit" class="btn btn-danger" name="delete"  id="';
+                  echo "$id";
 
                   echo '" href="#delete=';
-                  echo '$id';
-                  echo '">Delete</button></td>';
+                  echo "$id";
+                  echo '">Delete</button></td></tr>';
                   }
+                  if ( $_REQUEST['delete'] ){
+                  mysql_select_db("test", $db);
+                 // $id = $_GET['idnew_table'];
+                 $sqll = "DELETE FROM test.fill_blank WHERE idnew_table=40";
+					$retval = mysql_query($sqll, $db);
+                   
+                  if(! $retval)
+    				{
+    			  die('Could not update data: ' . mysql_error());
+    				}
+   				 echo "Delete data successfully!";
+   				 mysql_close($db);
+    				}
                   ?>
-               </tr>
-            </tbody>
+               </tbody>
          </table>
 
          <hr>
@@ -142,7 +154,24 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-danger delete-btn" id="finaldel">Delete</button>
+                  <button type="submit" name="delete2" class="btn btn-danger delete-btn" id="finaldel">Delete</button>
+              <!--    <? if ( $_REQUEST['delete'] ){
+                  mysql_select_db("test", $db);
+                 // $id = $_GET['idnew_table'];
+					$retval = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='40'");
+                   
+                  if(! $retval)
+    				{
+    			  die('Could not update data: ' . mysql_error());
+    				}
+   				 echo "Delete data successfully!";
+   				 mysql_close($db);
+    				}
+                  
+                  
+                  ?> -->
+                  
+                  
                </div>
             </div>
          </div>
@@ -284,10 +313,9 @@ $('.edit-btn').on('click', function(){
     $('#diff').val($(td[4]).text());
     $('#book').val($(td[5]).text());
 });
-
-$('.btn-danger').on('click', function(){
+/*$('.btn-danger').on('click', function(){
   $(this).parents('tr').remove();
-})
+})*/
       </script>
       <!-- Le javascript
          ================================================== -->
