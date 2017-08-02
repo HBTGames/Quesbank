@@ -56,6 +56,7 @@
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
    <body>
+   
       <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
@@ -106,18 +107,18 @@
                   echo "<td>$date</td>";
                   echo "<td>$diff</td>";
                   echo "<td>$book</td>";
-                  echo ' <td><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
+                  echo ' <td><form><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
                   echo 'href="#edit=';
                   echo "$id";
                   echo '">
                     Edit
                   </button>';
-                  echo '<button type="button" class="btn btn-danger"  id="';
+                  echo '<a onclick="return confirm("are you sure?")" type="submit" class="btn btn-danger"  id="';
                   echo "$id";
 
                   echo '" href="manage.php?idd=';
                   echo "$id";
-                  echo '">Delete</button> </td></tr>';
+                  echo '">Delete</a></form> </td></tr>';
                   
                   }
                   ?>
@@ -125,14 +126,7 @@
                   if (isset($_GET['idd'])){
                   $idd = $_GET['idd'];
                   $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
-                  
-                  if($res){
-                  echo "yes";
-                  
-                  }else{
-                  echo "no";
-                  }
-                  
+                  echo '<script> window.location.href="manage.php"; </script>';
                   
                   
                   }
