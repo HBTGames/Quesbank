@@ -90,7 +90,7 @@
                </tr>
             </thead>
             <tbody>
-               <?
+               <?php
                   while( $row = mysql_fetch_array($result))
                   {
                   $id = $row['idnew_table'];
@@ -143,15 +143,15 @@
                <div class="modal-footer">
                <form>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" name="delete" class="btn btn-danger delete-btn" id="finaldel">Delete</button></form>
-             <?
-				if ( $_REQUEST['delete'] ){
+                  <button type="submit" name="delete" class="btn btn-danger delete-btn" href="delete.php" id=".$row['id']">Delete</button></form>
+             <?php
+			//	if ( $_REQUEST['delete'] ){
                   mysql_select_db("test", $db);
-                  //$id = intval($_GET['id']);
-                 $sqll = "DELETE FROM test.fill_blank WHERE idnew_table='66'";
+                  @$id = intval($_GET['id']);
+                 $sqll = "DELETE FROM test.fill_blank WHERE idnew_table='$id'";
                  $data = mysql_query($sqll,$db);
 					mysql_close($db);
-					}
+		//			}
 					?>
                   
                   
