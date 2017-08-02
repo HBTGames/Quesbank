@@ -112,26 +112,14 @@
                   echo '">
                     Edit
                   </button>';
-                  echo '<button type="submit" class="btn btn-danger" name="delete"  id="';
+                  echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm"   id="';
                   echo "$id";
 
-                  echo '" href="#delete=';
+                  echo '" href="#id=';
                   echo "$id";
-                  echo '">Delete</button></td></tr>';
+                  echo '">Delete</button> </td></tr>';
+                  
                   }
-                  if ( $_REQUEST['delete'] ){
-                  mysql_select_db("test", $db);
-                 // $id = $_GET['idnew_table'];
-                 $sqll = "DELETE FROM test.fill_blank WHERE idnew_table=40";
-					$retval = mysql_query($sqll, $db);
-                   
-                  if(! $retval)
-    				{
-    			  die('Could not update data: ' . mysql_error());
-    				}
-   				 echo "Delete data successfully!";
-   				 mysql_close($db);
-    				}
                   ?>
                </tbody>
          </table>
@@ -153,23 +141,18 @@
                   Are you sure to delete?
                </div>
                <div class="modal-footer">
+               <form>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" name="delete2" class="btn btn-danger delete-btn" id="finaldel">Delete</button>
-              <!--    <? if ( $_REQUEST['delete'] ){
+                  <button type="submit" name="delete" class="btn btn-danger delete-btn" id="finaldel">Delete</button></form>
+             <?
+				if ( $_REQUEST['delete'] ){
                   mysql_select_db("test", $db);
-                 // $id = $_GET['idnew_table'];
-					$retval = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='40'");
-                   
-                  if(! $retval)
-    				{
-    			  die('Could not update data: ' . mysql_error());
-    				}
-   				 echo "Delete data successfully!";
-   				 mysql_close($db);
-    				}
-                  
-                  
-                  ?> -->
+                  //$id = intval($_GET['id']);
+                 $sqll = "DELETE FROM test.fill_blank WHERE idnew_table='66'";
+                 $data = mysql_query($sqll,$db);
+					mysql_close($db);
+					}
+					?>
                   
                   
                </div>
@@ -335,4 +318,4 @@ $('.edit-btn').on('click', function(){
       <script src="../assets/js/bootstrap-typeahead.js"></script>
 
    </body>
-</html>
+   </html>
