@@ -112,14 +112,34 @@
                   echo '">
                     Edit
                   </button>';
-                  echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm"   id="';
+                  echo '<button type="button" class="btn btn-danger"  id="';
                   echo "$id";
 
-                  echo '" href="#id=';
+                  echo '" href="manage.php?idd=';
                   echo "$id";
                   echo '">Delete</button> </td></tr>';
                   
                   }
+                  ?>
+                  <?php 
+                  if (isset($_GET['idd'])){
+                  $idd = $_GET['idd'];
+                  $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
+                  
+                  if($res){
+                  echo "yes";
+                  
+                  }else{
+                  echo "no";
+                  }
+                  
+                  
+                  
+                  }
+                  
+                  
+                  
+                  
                   ?>
                </tbody>
          </table>
@@ -144,7 +164,7 @@
                <form>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   <button type="submit" name="delete" class="btn btn-danger delete-btn" href="delete.php" id=".$row['id']">Delete</button></form>
-             <?php
+          <!--   <?php
 			//	if ( $_REQUEST['delete'] ){
                   mysql_select_db("test", $db);
                   @$id = intval($_GET['id']);
@@ -152,7 +172,7 @@
                  $data = mysql_query($sqll,$db);
 					mysql_close($db);
 		//			}
-					?>
+					?> -->
                   
                   
                </div>
