@@ -194,7 +194,7 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
                </div>
-               <form>
+               <form method="post">
                <div class="modal-body">
                   Question
                   <input type="text" name="questions" placeholder="Questions" id="questions">
@@ -220,6 +220,34 @@
                   <a type="submit" id="update" name="update" value="update" class="btn btn-primary">Save changes</a>
                </div>
                </form>
+                 <?php
+      
+     if (isset($_GET['key'])){
+      $db = mysql_connect('localhost','root','password');
+       $key = $_GET['key'];
+      mysql_select_db('test');
+    	  $questions = $_GET['questions'];
+   		 $answers = $_POST['answers'];
+   	  $diff = $_POST['diff'];
+ 		$book = $_POST['book'];
+  
+    	$sqll = "UPDATE test.fill_blank ".
+           "SET Questions = '$questions', 
+           Answers = '$answers', 
+           Date = NOW(),
+           Difficulty = '$diff',
+           Textbook = '$book' ".
+           "WHERE idnew_table='$key'";
+          
+           $retval = mysql_query( $sqll, $db);
+            if(! $retval )
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo "Updated data successfully\n";
+    echo '<script> window.location.href="manage.php"; </script>';
+          }
+      ?>
             </div>
          </div>
         
@@ -237,33 +265,7 @@
 
 
 				</script>
-      <?php
-      
-     //if (isset($_POST['update'])){
-      $db = mysql_connect('localhost','root','password');
-     //  $key = $_GET['key'];
-    	  $questions = $_POST['questions'];
-   		 $answers = $_POST['answers'];
-   	  $diff = $_POST['diff'];
- 		$book = $_POST['book'];
-  
-    	$sqll = "UPDATE test.fill_blank ".
-           "SET Questions = '$questions', 
-           Answers = '$answers', 
-           Date = NOW(),
-           Difficulty = '$diff',
-           Textbook = '$book' ".
-           "WHERE idnew_table='108'";
-           mysql_select_db('test');
-           $retval = mysql_query( $sqll, $db);
-            if(! $retval )
-    {
-      die('Could not update data: ' . mysql_error());
-    }
-    echo "Updated data successfully\n";
-       //     echo '<script> window.location.href="manage.php"; </script>';
-        //   }
-      ?>
+    
       
       
       
