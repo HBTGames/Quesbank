@@ -42,6 +42,9 @@
          .marketing p + h4 {
          margin-top: 28px;
          }
+         .modal.fade {
+    top: -100%;
+    }
       </style>
       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -107,34 +110,24 @@
                   echo "<td>$date</td>";
                   echo "<td>$diff</td>";
                   echo "<td>$book</td>";
-                  echo ' <td><form><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
+                  echo ' <td><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
                   echo 'href="#edit=';
                   echo "$id";
                   echo '">
                     Edit
                   </button>';
-                  echo '<a onclick="return confirm("are you sure?")" type="submit" class="btn btn-danger"  id="';
+                  echo '<button type="button" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-danger delete-b"  id="';
                   echo "$id";
-
-                  echo '" href="manage.php?idd=';
-                  echo "$id";
-                  echo '">Delete</a></form> </td></tr>';
-                  
+                  echo '">Delete</button></td></tr>';
                   }
                   ?>
-                  <?php 
+                <!--  <?php 
                   if (isset($_GET['idd'])){
                   $idd = $_GET['idd'];
                   $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
                   echo '<script> window.location.href="manage.php"; </script>';
-                  
-                  
                   }
-                  
-                  
-                  
-                  
-                  ?>
+                  ?> -->
                </tbody>
          </table>
 
@@ -144,6 +137,7 @@
          </div>
       </div>
       <!-- /container -->
+       
       <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
          <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -157,7 +151,22 @@
                <div class="modal-footer">
                <form>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" name="delete" class="btn btn-danger delete-btn" href="delete.php" id=".$row['id']">Delete</button></form>
+                  
+                  <a type="submit"  id="delete-btn" name="delete" class="btn btn-danger delete-btn" >Delete</a>
+                  </form>
+                 <script language="javascript" type="text/javascript">
+//$(document).ready(function(){
+  $('.delete-b').click(function(){
+    var var_id =$(this).attr('id');
+   // alert(a);
+var strLink = "manage.php?idd=" + var_id;
+document.getElementById("delete-btn").setAttribute("href",strLink);
+  });
+//});
+//var var_id = 101;
+
+
+</script>
           <!--   <?php
 			//	if ( $_REQUEST['delete'] ){
                   mysql_select_db("test", $db);
@@ -167,6 +176,13 @@
 					mysql_close($db);
 		//			}
 					?> -->
+				<?php 
+                  if (isset($_GET['idd'])){
+                  $idd = $_GET['idd'];
+                  $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
+                  echo '<script> window.location.href="manage.php"; </script>';
+                  }
+                  ?>
                   
                   
                </div>
@@ -310,6 +326,8 @@ $('.edit-btn').on('click', function(){
     $('#diff').val($(td[4]).text());
     $('#book').val($(td[5]).text());
 });
+
+
 /*$('.btn-danger').on('click', function(){
   $(this).parents('tr').remove();
 })*/
