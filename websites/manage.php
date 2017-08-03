@@ -110,12 +110,10 @@
                   echo "<td>$date</td>";
                   echo "<td>$diff</td>";
                   echo "<td>$book</td>";
-                  echo ' <td><button type="button" class="btn btn-primary btn-lg edit-btn" data-toggle="modal" data-target="#myModal"';
-                  echo 'href="#edit=';
+                  echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b" data-toggle="modal" data-target="#myModal"';
+                  echo 'id="';
                   echo "$id";
-                  echo '">
-                    Edit
-                  </button>';
+                  echo '">Edit</button>';
                   echo '<button type="button" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-danger delete-b"  id="';
                   echo "$id";
                   echo '">Delete</button></td></tr>';
@@ -155,18 +153,18 @@
                   <a type="submit"  id="delete-btn" name="delete" class="btn btn-danger delete-btn" >Delete</a>
                   </form>
                  <script language="javascript" type="text/javascript">
-//$(document).ready(function(){
-  $('.delete-b').click(function(){
-    var var_id =$(this).attr('id');
-   // alert(a);
-var strLink = "manage.php?idd=" + var_id;
-document.getElementById("delete-btn").setAttribute("href",strLink);
-  });
-//});
-//var var_id = 101;
+				//$(document).ready(function(){
+  				$('.delete-b').click(function(){
+  				var var_id =$(this).attr('id');
+  				// alert(a);
+				var strLink = "manage.php?idd=" + var_id;
+				document.getElementById("delete-btn").setAttribute("href",strLink);
+  				});
+				//});
+				//var var_id = 101;
 
 
-</script>
+				</script>
           <!--   <?php
 			//	if ( $_REQUEST['delete'] ){
                   mysql_select_db("test", $db);
@@ -174,7 +172,7 @@ document.getElementById("delete-btn").setAttribute("href",strLink);
                  $sqll = "DELETE FROM test.fill_blank WHERE idnew_table='$id'";
                  $data = mysql_query($sqll,$db);
 					mysql_close($db);
-		//			}
+					//}
 					?> -->
 				<?php 
                   if (isset($_GET['idd'])){
@@ -183,52 +181,95 @@ document.getElementById("delete-btn").setAttribute("href",strLink);
                   echo '<script> window.location.href="manage.php"; </script>';
                   }
                   ?>
-                  
-                  
                </div>
             </div>
          </div>
       </div>
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
                </div>
+               <form>
                <div class="modal-body">
                   Question
-                  <input type="text" placeholder="Questions" id="questions">
+                  <input type="text" name="questions" placeholder="Questions" id="questions">
                   <br>
                   Answer
-                  <input type="text" placeholder="Answers" id="answers">
+                  <input type="text" name="answers" placeholder="Answers" id="answers">
                   <br>
                   Difficulty
                  <!-- <input type="text" placeholder="Difficulty" id="diff">-->
                  <select id="diff" name="diff" type="text" placeholder="difficulty">
-      <option>Hard</option>
-      <option>Medium</option>
-      <option>Easy</option>
-      </select>
+      				<option>Hard</option>
+      				<option>Medium</option>
+      				<option>Easy</option>
+      			 </select>
 
                   <br>
                   textbook
-                  <input type="text" placeholder="Textbook" id="book">
+                  <input type="text" name="book" placeholder="Textbook" id="book">
                </div>
+               
                <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <a type="submit" id="update" name="update" value="update" class="btn btn-primary">Save changes</a>
                </div>
+               </form>
             </div>
          </div>
+        
       </div>
+      <script language="javascript" type="text/javascript">
+				//$(document).ready(function(){
+  				$('.edit-b').click(function(){
+  				var edit_id =$(this).attr('id');
+  				// alert(a);
+				var strLink = "manage.php?key=" + edit_id;
+				document.getElementById("update").setAttribute("href",strLink);
+  				});
+				//});
+				//var var_id = 101;
+
+
+				</script>
+      <?php
+      
+     //if (isset($_POST['update'])){
+      $db = mysql_connect('localhost','root','password');
+     //  $key = $_GET['key'];
+    	  $questions = $_POST['questions'];
+   		 $answers = $_POST['answers'];
+   	  $diff = $_POST['diff'];
+ 		$book = $_POST['book'];
+  
+    	$sqll = "UPDATE test.fill_blank ".
+           "SET Questions = '$questions', 
+           Answers = '$answers', 
+           Date = NOW(),
+           Difficulty = '$diff',
+           Textbook = '$book' ".
+           "WHERE idnew_table='108'";
+           mysql_select_db('test');
+           $retval = mysql_query( $sqll, $db);
+            if(! $retval )
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo "Updated data successfully\n";
+       //     echo '<script> window.location.href="manage.php"; </script>';
+        //   }
+      ?>
+      
+      
+      
+      
+      
       <script>
-
-
-
-
-
          function searchfilter() {
          // Declare variables
          var input, filter, table, tr, td, i;
@@ -318,7 +359,7 @@ document.getElementById("delete-btn").setAttribute("href",strLink);
 
 
 
-$('.edit-btn').on('click', function(){
+$('.edit-b').on('click', function(){
   // Get all TD from the cliked Button
   var td = $(this).parents('tr').find('td:lt(7)');
     $('#questions').val($(td[1]).text());
