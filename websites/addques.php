@@ -61,19 +61,19 @@
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
-  <body>
+  <body onload="loadLanguage()">
   <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
-          
+
          ?>
     <div class="container-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="manage.html">Manage</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li class="active"><a href="index.html" class="lang" key="home">Home</a></li>
+          <li><a href="manage.php" class="lang" key="manage">Manage</a></li>
+          <li><a href="contact.html" class="lang" key="contact">Contact</a></li>
         </ul>
         <h3 class="muted">QuesBank</h3>
       </div>
@@ -81,19 +81,19 @@
       <hr>
       <div>
       <form method="post">
-      <input id="questions" name="questions" type="text" placeholder="Question">
-      <input id="answers" name="answers" type="text" placeholder="Answer">
-      <input id="book" name="book" type="text" placeholder="book">
-     
+      <input id="questions" name="questions" type="text" placeholder="Question" >
+      <input id="answers" name="answers" type="text" placeholder="Answer" >
+      <input id="book" name="book" type="text" placeholder="book" >
+
         <select id="diff" name="diff" type="text" placeholder="difficulty">
-      <option>Hard</option>
-      <option>Medium</option>
-      <option>Easy</option>
+      <option class="lang" key="hard">Hard</option>
+      <option class="lang" key="medium">Medium</option>
+      <option class="lang" key="easy">Easy</option>
       </select>
-    
-      <input name="add" type="submit" id="add" value="Add question">
+
+      <input name="add" type="submit" id="add" value="Add Question" >
         </form>
-      
+
 <?php if ( $_REQUEST['add'] ){
       mysql_select_db("test", $db);
        $id = intval($_POST['id']);
@@ -102,17 +102,20 @@
        $date = $_POST['date'];
        $book = $_POST['book'];
        $diff = $_POST['diff'];
-
- 
+       $dom = new DOMDocument();
     $sql = "INSERT INTO test.fill_blank
-           (idnew_table,Questions, Answers,Date,Difficulty, Textbook) 
+           (idnew_table,Questions, Answers,Date,Difficulty, Textbook)
            VALUES('$id','$questions','$answers', NOW(),'$diff','$book')";
      $retval = mysql_query( $sql, $db);
     if(! $retval)
     {
       die('Could not update data: ' . mysql_error());
     }
-    echo "<script>alert('Updated data successfully!')</script>";
+    echo '<script type="text/javascript">';
+    echo  'var update_text= "Data updated successfully!" ;   ';
+    echo 'alert(update_text)  ;' ;
+    echo ' </script> ';
+
     mysql_close($db);
     }
     ?>
@@ -123,7 +126,21 @@
       <hr>
 
       <div class="footer">
-        <p>&copy; Air English 2015</p>
+        <p>&copy;
+          <span class="lang" key="airEnglish">Air English 2015</span>
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+
+          <span class="lang" key="languageText"> Language:</span>
+         <select id="changeLang" name="changeLang" onchange="languageChange();">
+          <option  class="lang" value="en" key="langEnglish" >English</option>
+          <option class="lang" value="zh" key="langChinese">中文</option>
+          </select>
+        </p>
       </div>
 
     </div>
@@ -132,6 +149,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../assets/js/languageHandler.js">  </script>
+    <script type="text/javascript" src="../assets/js/cookieHandler.js"></script>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap-transition.js"></script>
     <script src="../assets/js/bootstrap-alert.js"></script>

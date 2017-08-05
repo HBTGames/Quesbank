@@ -58,8 +58,7 @@
       <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
-   <body>
-   
+   <body onload="loadLanguage()">
       <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
@@ -71,26 +70,26 @@
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
-               <li><a href="index.html">Home</a></li>
-               <li class="active"><a href="manage.php">Manage</a></li>
-               <li><a href="contact.html">Contact</a></li>
+               <li ><a href="index.html" class="lang" key="home">Home</a></li>
+               <li class="active" ><a href="manage.php" class="lang" key="manage" >Manage</a></li>
+               <li ><a href="contact.html?language=42"  class="lang" key="contact">Contact</a></li>
             </ul>
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
-         <input class="form-control" type="text" placeholder="Search by Questions" id="myInput" onkeyup="searchfilter()">
-         <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()">
+         <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
+         <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
          <hr>
          <table class="table table-hover" id="myTable">
             <thead>
                <tr>
                   <th style="cursor:pointer;" onclick="sortTable(0)">#</th>
-                  <th style="cursor:pointer;" onclick="sortTable(1)">Question</th>
-                  <th style="cursor:pointer;" onclick="sortTable(2)">Answer</th>
-                  <th style="cursor:pointer;" onclick="sortTable(3)">Date</th>
-                  <th style="cursor:pointer;" onclick="sortTable(4)">Difficulty</th>
-                  <th style="cursor:pointer;" onclick="sortTable(5)">Textbook</th>
-                  <th>Manipulation</th>
+                  <th style="cursor:pointer;" onclick="sortTable(1)" class="lang" key="questionHeader">Question</th>
+                  <th style="cursor:pointer;" onclick="sortTable(2)" class="lang" key="answerHeader">Answer</th>
+                  <th style="cursor:pointer;" onclick="sortTable(3)" class="lang" key="dateHeader">Date</th>
+                  <th style="cursor:pointer;" onclick="sortTable(4)" class="lang" key="difficultyHeader">Difficulty</th>
+                  <th style="cursor:pointer;" onclick="sortTable(5)" class="lang" key="textbookHeader">Textbook</th>
+                  <th class="lang" key="manipulationHeader">Manipulation</th>
                </tr>
             </thead>
             <tbody>
@@ -110,16 +109,16 @@
                   echo "<td>$date</td>";
                   echo "<td>$diff</td>";
                   echo "<td>$book</td>";
-                  echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b" data-toggle="modal" data-target="#myModal"';
+                  echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal" key="editButton" ';
                   echo 'id="';
                   echo "$id";
                   echo '">Edit</button>';
-                  echo '<button type="button" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-danger delete-b"  id="';
+                  echo '<button type="button" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-danger delete-b lang" key="deleteButton"  id="';
                   echo "$id";
                   echo '">Delete</button></td></tr>';
                   }
                   ?>
-                <!--  <?php 
+                <!--  <?php
                   if (isset($_GET['idd'])){
                   $idd = $_GET['idd'];
                   $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
@@ -131,26 +130,42 @@
 
          <hr>
          <div class="footer">
-            <p>&copy; Air English 2015</p>
+            <p>
+              &copy;
+              <span class="lang" key="airEnglish">Air English 2015</span>
+
+            &ensp;
+            &ensp;
+            &ensp;
+            &ensp;
+            &ensp;
+            &ensp;
+
+            <span class="lang" key="languageText"> Language:</span>
+           <select id="changeLang" onchange="languageChange();">
+            <option  class="lang" value="en" key="langEnglish" >English</option>
+            <option class="lang" value="zh" key="langChinese">中文</option>
+            </select>
+  </p>
          </div>
       </div>
       <!-- /container -->
-       
+
       <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Delete Question</h4>
+                  <h4 class="modal-title lang" id="myModalLabel" key="deleteQuestion">Delete Question</h4>
                </div>
-               <div class="modal-body">
+               <div class="modal-body lang" key="deleteRemindMessage">
                   Are you sure to delete?
                </div>
                <div class="modal-footer">
                <form>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  
-                  <a type="submit"  id="delete-btn" name="delete" class="btn btn-danger delete-btn" >Delete</a>
+                  <button type="button" class="btn btn-default lang" data-dismiss="modal" key="closeButton">Close</button>
+
+                  <a type="submit"  id="delete-btn" name="delete" class="btn btn-danger delete-btn lang" key="deleteButton" >Delete</a>
                   </form>
                  <script language="javascript" type="text/javascript">
 				//$(document).ready(function(){
@@ -174,7 +189,7 @@
 					mysql_close($db);
 					//}
 					?> -->
-				<?php 
+				<?php
                   if (isset($_GET['idd'])){
                   $idd = $_GET['idd'];
                   $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
@@ -187,41 +202,42 @@
       </div>
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        
+
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Edit Question</h4>
+                  <h4 class="modal-title lang" id="myModalLabel" key="editQuestionLabel">Edit Question</h4>
                </div>
                <form method="post">
                <div class="modal-body">
-                  Question
+                <span class="lang" key = "questionHeader">Question</span>
                   <input type="text" name="questions" placeholder="Questions" id="questions">
                   <br>
-                  Answer
+                    <span class="lang" key = "answerHeader">Answer</span>
                   <input type="text" name="answers" placeholder="Answers" id="answers">
                   <br>
-                  Difficulty
+                  <span class="lang" key="difficultyHeader">Difficulty</span>
                  <!-- <input type="text" placeholder="Difficulty" id="diff">-->
                  <select id="diff" name="diff" type="text" placeholder="difficulty">
-      				<option>Hard</option>
-      				<option>Medium</option>
-      				<option>Easy</option>
-      			 </select>
+      <option class="lang" key="hard">Hard</option>
+      <option class="lang" key="medium">Medium</option>
+      <option class="lang" key="easy">Easy</option>
+      </select>
 
                   <br>
-                  textbook
-                  <input type="text" name="book" placeholder="Textbook" id="book">
+                  <span class="lang" key="textbookHeader">textbook</span>
+
+                  <input type="text" placeholder="Textbook" id="book" name="book">
                </div>
-               
+
                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <a type="submit" id="update" name="update" value="update" class="btn btn-primary">Save changes</a>
+                  <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
+                  <a type="submit" id="update" name="update" value="update" class="btn btn-primary lang"  key="saveButton">Save changes</a>
                </div>
                </form>
                  <?php
-      
+
      if (isset($_GET['key'])){
       $db = mysql_connect('localhost','root','password');
        $key = $_GET['key'];
@@ -230,15 +246,15 @@
    		 $answers = $_POST['answers'];
    	  $diff = $_POST['diff'];
  		$book = $_POST['book'];
-  
+
     	$sqll = "UPDATE test.fill_blank ".
-           "SET Questions = '$questions', 
-           Answers = '$answers', 
+           "SET Questions = '$questions',
+           Answers = '$answers',
            Date = NOW(),
            Difficulty = '$diff',
            Textbook = '$book' ".
            "WHERE idnew_table='$key'";
-          
+
            $retval = mysql_query( $sqll, $db);
             if(! $retval )
     {
@@ -250,7 +266,7 @@
       ?>
             </div>
          </div>
-        
+
       </div>
       <script language="javascript" type="text/javascript">
 				//$(document).ready(function(){
@@ -265,12 +281,12 @@
 
 
 				</script>
-    
-      
-      
-      
-      
-      
+
+
+
+
+
+
       <script>
          function searchfilter() {
          // Declare variables
@@ -358,8 +374,15 @@
            }
          }
          }
-
-
+/**
+$('#changeLang').change(function( ) {
+var $this = $(this);
+var lang = $this.val( );
+$('.i18n').each(function( ){
+$(this).text($(this).data(lang));
+});
+});
+**/
 
 $('.edit-b').on('click', function(){
   // Get all TD from the cliked Button
@@ -378,6 +401,8 @@ $('.edit-b').on('click', function(){
       <!-- Le javascript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
+      <script type="text/javascript" src="../assets/js/languageHandler.js"></script>
+      <script type="text/javascript" src="../assets/js/cookieHandler.js"></script>
       <script src="../assets/js/jquery.js"></script>
       <script src="../assets/js/bootstrap-transition.js"></script>
       <script src="../assets/js/bootstrap-alert.js"></script>

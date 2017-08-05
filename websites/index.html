@@ -61,15 +61,15 @@
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
-  <body>
+  <body onload="loadLanguage()">
 
     <div class="container-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="manage.php">Manage</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li class="active"><a href="index.html" class="lang" key="home">Home</a></li>
+          <li><a href="manage.php" class="lang" key="manage">Manage</a></li>
+          <li><a href="contact.html" class="lang" key="contact">Contact</a></li>
         </ul>
         <h3 class="muted">QuesBank</h3>
       </div>
@@ -78,9 +78,9 @@
 
       <div class="jumbotron">
         <h1>Question Bank</h1>
-        <p class="lead">You can put new questions to the bank, or generate test paper through the website.</p>
-        <a class="btn btn-large btn-success" href="addques.php">Add New Questions</a>
-        <a class="btn btn-large btn-success" href="#">Generate Test Paper</a>
+        <p class="lead lang"key="productDescription">You can put new questions to the bank, or generate test paper through the website.</p>
+        <a class="btn btn-large btn-success lang" href="addques.php" key="addNewQuestion">Add New Questions</a>
+        <a class="btn btn-large btn-success lang" href="#" key="generateTestPaper">Generate Test Paper</a>
       </div>
 
       <hr>
@@ -103,7 +103,22 @@
       <hr>
 
       <div class="footer">
-        <p>&copy; Air English 2015</p>
+        <p>&copy;
+          <span class="lang" key="airEnglish"> Air English 2015</span>
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+
+          <span class="lang" key="languageText"> Language:</span>
+          <select id="changeLang" onchange="languageChange();">
+          <option  class="lang" value="en" key="langEnglish" >English</option>
+          <option class="lang" value="zh" key="langChinese">中文</option>
+          </select>
+
+        </p>
       </div>
 
     </div> <!-- /container -->
@@ -111,6 +126,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../assets/js/languageHandler.js">  </script>
+    <script type="text/javascript" src="../assets/js/cookieHandler.js"></script>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap-transition.js"></script>
     <script src="../assets/js/bootstrap-alert.js"></script>
