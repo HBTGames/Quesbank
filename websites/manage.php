@@ -107,7 +107,7 @@
                   echo "<td>$question</td>";
                   echo "<td>$answers</td>";
                   echo "<td>$date</td>";
-                  echo "<td>$diff</td>";
+                  echo " <td class = 'difficultyTd'>$diff</td> ";
                   echo "<td>$book</td>";
                   echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal" key="editButton" ';
                   echo 'id="';
@@ -401,7 +401,7 @@ $('.edit-b').on('click', function(){
       <!-- Le javascript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
-      <script type="text/javascript" src="../assets/js/languageHandler.js"></script>
+      <script type="text/javascript" src="../assets/js/languageHandler.js"?v=1></script>
       <script type="text/javascript" src="../assets/js/cookieHandler.js"></script>
       <script src="../assets/js/jquery.js"></script>
       <script src="../assets/js/bootstrap-transition.js"></script>

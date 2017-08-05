@@ -129,9 +129,30 @@ if(document.getElementsByName("demonstration")[0]!=undefined){
       document.getElementsByName("demonstration")[0].innerHTML = "不断追求完美。 <br>  --制作团队: HBT TEAM";
   }
 }
-
+//difficulty td
+//var difficulty_array = document.getElementsByName('difficultyTd');
+$('.difficultyTd').each(function ( ) {
+  var current_text = $(this).text();
+  if(language == 'zh'){
+    if(current_text == "Easy"){
+     $(this).text("简单");
+  }else if(current_text == "Medium"){
+     $(this).text("适中");
+  }else if(current_text == "Hard"){
+    $(this).text("困难");
+  }
+}else if(language == 'en'){
+  if(current_text == "简单"){
+        $(this).text("Easy");
+}else if(current_text == "适中"){
+    $(this).text("Medium");
+}else if(current_text == "困难"){
+  $(this).text("Hard");
 }
-
+}
+  console.log($(this).text());
+});
+}
 
 function languageChange(){
   var selected_value = document.getElementById('changeLang').value;
