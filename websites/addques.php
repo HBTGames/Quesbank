@@ -61,7 +61,7 @@
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
-  <body onload="loadLanguage()">
+  <body onload="loadLanguage() , setDefaultInputHtml()">
   <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
@@ -124,7 +124,6 @@ if ($diff == '困难') {
 }else if($diff == '适中'){
   $diff = 'Medium';
 }
-printf($diff);
       $questionString = mysql_real_escape_string($question);
       $answerString = mysql_real_escape_string($answer);
       $diffString = mysql_real_escape_string($diff);
@@ -199,15 +198,38 @@ printf($diff);
 var defaultInputNumber = 1;
 var defaultInputHtml;
 
-function addInputs(){
-  //first have to memorize
-  if(defaultInputNumber == 1){
-  defaultInputHtml   =  document.getElementsByName("inputs")[0].innerHTML;
+function setDefaultInputHtml(){
+    defaultInputHtml   =  document.getElementsByName("inputs")[0].innerHTML;
 }
+
+function addInputs(){
+  var currentQuestionInputs = [];
+  var currentAnswerInputs = [];
+  var currentBookInputs = [];
+  var currentDiffInputs = [];
     var currentFormContent =  document.getElementsByName("inputs")[0].innerHTML;
-  //currentFormContent  = currentFormContent -  document.getElementsByName("add").innerHTML;
-console.log(currentFormContent);
+    $('.questionInput').each(function ( ) {
+currentQuestionInputs.push($(this).val());
+    });
+    $('.answerInput').each(function ( ) {
+currentAnswerInputs.push($(this).val());
+    });
+    $('.bookInput').each(function ( ) {
+currentBookInputs.push($(this).val());
+    });
+    $('.diffInput').each(function ( ) {
+currentDiffInputs.push($(this).val());
+    });
 document.getElementsByName("inputs")[0].innerHTML = currentFormContent + defaultInputHtml;
+for (var i = 0; i < currentQuestionInputs.length; i++) {
+  document.getElementsByClassName("questionInput")[i].value = currentQuestionInputs[i];
+  document.getElementsByClassName("answerInput")[i].value = currentAnswerInputs[i];
+  document.getElementsByClassName("bookInput")[i].value = currentBookInputs[i];
+  document.getElementsByClassName("diffInput")[i].value = currentDiffInputs[i];
+}
+
+  //currentFormContent  = currentFormContent -  document.getElementsByName("add").innerHTML;
+
 defaultInputNumber += 1;
 }
 
