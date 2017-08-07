@@ -222,11 +222,26 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
                </div>
                <form method="post">
                <div class="modal-body">
-                <span class="lang" key = "questionHeader">Question</span>
-                  <input type="text" name="questions" placeholder="Questions" id="questions">
+               <span class="lang">Year</span>
+                <input type="text" name="year" placeholder="Year" id="year">
                   <br>
-                    <span class="lang" key = "answerHeader">Answer</span>
-                  <input type="text" name="answers" placeholder="Answers" id="answers">
+               <span class="lang">Grade</span>
+                <input type="text" name="grade" placeholder="Grade" id="grade">
+                  <br>
+               <span class="lang">Testtype</span>
+                <input type="text" name="testtype" placeholder="Testtype" id="testtype">
+                  <br>
+               <span class="lang">Reference</span>
+                <input type="text" name="reference" placeholder="Reference" id="reference">
+                  <br>
+                <span class="lang">Textbook</span>
+                 <input type="text" name="textbook" placeholder="Textbook" id="textbook">
+                  <br>
+                 <span class="lang" >Lesson</span>
+                  <input type="text" name="lesson" placeholder="Lesson" id="lesson">
+                  <br>
+                  <span class="lang">Knowledge</span>
+                   <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge">
                   <br>
                   <span class="lang" key="difficultyHeader">Difficulty</span>
                  <!-- <input type="text" placeholder="Difficulty" id="diff">-->
@@ -234,10 +249,17 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
       <option class="lang" key="hard">Hard</option>
       <option class="lang" key="medium">Medium</option>
       <option class="lang" key="easy">Easy</option>
-      </select>
+      </select><br>
 
+                <span class="lang" key = "questionHeader">Question</span>
+                  <input type="text" name="question" placeholder="Question" id="question">
                   <br>
-                  <span class="lang" key="textbookHeader">textbook</span>
+                    <span class="lang" key = "answerHeader">Answer</span>
+                  <input type="text" name="answer" placeholder="Answer" id="answer">
+                  <br>
+                  
+                  <br>
+                 
 
                   <input type="text" placeholder="Textbook" id="book" name="book">
                </div>
@@ -394,11 +416,17 @@ $(this).text($(this).data(lang));
 
 $('.edit-b').on('click', function(){
   // Get all TD from the cliked Button
-  var td = $(this).parents('tr').find('td:lt(7)');
-    $('#questions').val($(td[1]).text());
-    $('#answers').val($(td[2]).text());
-    $('#diff').val($(td[4]).text());
-    $('#book').val($(td[5]).text());
+  var td = $(this).parents('tr').find('td:lt(12)');
+  $('#year').val($(td[1]).text());
+    $('#grade').val($(td[2]).text());
+    $('#testtype').val($(td[3]).text());
+    $('#reference').val($(td[4]).text());
+    $('#textbook').val($(td[5]).text());
+    $('#lesson').val($(td[6]).text());
+    $('#knowledge').val($(td[7]).text());
+    $('#difficulty').val($(td[8]).text());
+    $('#question').val($(td[9]).text());
+    $('#answer').val($(td[10]).text());
 });
 
 
