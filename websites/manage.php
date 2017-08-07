@@ -114,6 +114,87 @@
                   $question = $row['question'];
                   $answer = $row['answer'];
                   $date = $row['date'];
+                  ?>
+                  <tr>
+                  <td><?php echo "$id" ?></td>
+                  <td><?php echo "$year" ?></td>
+                  <td><?php echo "$grade" ?></td>
+                  <td><?php echo "$testtype" ?></td>
+<td><?php echo "$reference" ?></td>
+<td><?php echo "$textbook" ?></td>
+<td><?php echo "$lesson" ?></td>
+<td><?php echo "$knowledge" ?></td>
+<td><?php echo "$difficulty" ?></td>
+<td><?php echo "$question" ?></td>
+<td><?php echo "$answer" ?></td>
+<td><?php echo "$date" ?></td>
+                  <td>
+                  <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" >Edit </button>
+                  <button type="button"  data-toggle="modal" data-target=".bs-example-modal-sm"
+class="btn btn-danger delete-b lang" key="deleteButton"  id="<?php echo "$id" ?>">Delete</button>
+                  <!-- Modal -->
+      <div class="modal fade" id="myModal-<?php echo "$id"?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo "$id"?>">
+
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title lang" id="myModalLabel-<?php echo "$id"?>" key="editQuestionLabel">Edit Question</h4>
+               </div>
+               <form method="post">
+               <div class="modal-body">
+               <input type="hidden" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
+               <span class="lang">Year</span>
+                <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>">
+                  <br>
+               <span class="lang">Grade</span>
+                <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
+                  <br>
+               <span class="lang">Testtype</span>
+                <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
+                  <br>
+               <span class="lang">Reference</span>
+                <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
+                  <br>
+                <span class="lang">Textbook</span>
+                 <input type="text" name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"?>" value="<?php echo "$textbook"?>">
+                  <br>
+                 <span class="lang" >Lesson</span>
+                  <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
+                  <br>
+                  <span class="lang">Knowledge</span>
+                   <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>">
+                  <br>
+                  <span class="lang" key="difficultyHeader">Difficulty</span>
+                 <select id="difficulty-<?php echo "$difficulty"?>" name="diff" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
+      <option class="lang" key="hard">Hard</option>
+      <option class="lang" key="medium">Medium</option>
+      <option class="lang" key="easy">Easy</option>
+      </select><br>
+
+                <span class="lang" key = "questionHeader">Question</span>
+                  <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>">
+                  <br>
+                    <span class="lang" key = "answerHeader">Answer</span>
+                  <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>">
+                  <br>
+                  
+                   
+               </div>
+
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
+                  <input type="submit" onclick="updatedata(<?php echo "$id"?>)"id="update" name="update" value="update" class="btn btn-primary lang"  key="saveButton">
+               </div>
+               </form>
+               
+            </div>
+         </div>
+
+      </div>
+                  
+                  
+                  <!--
                   echo "<tr>";
                   echo "<td>$id</td>";
                   echo "<td>$year</td>";
@@ -126,7 +207,7 @@
                   echo "<td>$difficulty</td>";
                   echo "<td>$question</td>";
                   echo "<td>$answer</td>";
-                  echo "<td>$date</td>";
+                  echo "<td>$date</td>";  
                   echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal" key="editButton" ';
                   echo 'id="';
                   echo "$id";
@@ -134,7 +215,8 @@
                   echo '<button type="button"  data-toggle="modal" data-target=".bs-example-modal-sm"
 class="btn btn-danger delete-b lang" key="deleteButton"  id="';
                   echo "$id";
-                  echo '">Delete</button></td></tr>';
+                  echo '">Delete</button></td></tr>';-->
+                  <?php
                   }
                   ?>
                  <!-- <?php
@@ -211,80 +293,23 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
             </div>
          </div>
       </div>
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      
+                <?php
 
-         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title lang" id="myModalLabel" key="editQuestionLabel">Edit Question</h4>
-               </div>
-               <form method="post">
-               <div class="modal-body">
-               <span class="lang">Year</span>
-                <input type="text" name="year" placeholder="Year" id="year">
-                  <br>
-               <span class="lang">Grade</span>
-                <input type="text" name="grade" placeholder="Grade" id="grade">
-                  <br>
-               <span class="lang">Testtype</span>
-                <input type="text" name="testtype" placeholder="Testtype" id="testtype">
-                  <br>
-               <span class="lang">Reference</span>
-                <input type="text" name="reference" placeholder="Reference" id="reference">
-                  <br>
-                <span class="lang">Textbook</span>
-                 <input type="text" name="textbook" placeholder="Textbook" id="textbook">
-                  <br>
-                 <span class="lang" >Lesson</span>
-                  <input type="text" name="lesson" placeholder="Lesson" id="lesson">
-                  <br>
-                  <span class="lang">Knowledge</span>
-                   <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge">
-                  <br>
-                  <span class="lang" key="difficultyHeader">Difficulty</span>
-                 <!-- <input type="text" placeholder="Difficulty" id="diff">-->
-                 <select id="diff" name="diff" type="text" placeholder="difficulty">
-      <option class="lang" key="hard">Hard</option>
-      <option class="lang" key="medium">Medium</option>
-      <option class="lang" key="easy">Easy</option>
-      </select><br>
-
-                <span class="lang" key = "questionHeader">Question</span>
-                  <input type="text" name="question" placeholder="Question" id="question">
-                  <br>
-                    <span class="lang" key = "answerHeader">Answer</span>
-                  <input type="text" name="answer" placeholder="Answer" id="answer">
-                  <br>
-                  
-                  <br>
-                 
-
-                  <input type="text" placeholder="Textbook" id="textbook" name="textbook">
-               </div>
-
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
-                  <a type="submit" id="update" name="update" value="update" class="btn btn-primary lang"  key="saveButton">Save changes</a>
-               </div>
-               </form>
-                 <?php
-
-     if (isset($_GET['key'])){
+     if (isset($_POST['update'])){
       $db = mysql_connect('localhost','root','password');
-       $key = $_GET['key'];
+   //    $key = $_GET['key'];
       mysql_select_db('test');
       $year = $_POST['year'];
    		 $grade = $_POST['grade'];
    	  $testtype = $_POST['testtype'];
  		$reference = $_POST['reference'];
- 		$textbook = $_GET['textbook'];
+ 		$textbook = $_POST['textbook'];
    		 $lesson = $_POST['lesson'];
    	  $knowledge = $_POST['knowledge'];
  		$difficulty = $_POST['difficulty'];
-    	  $question = $_GET['question'];
-   		 $answers = $_POST['answer'];
+    	  $question = $_POST['question'];
+   		 $answer = $_POST['answer'];
 
     	$sqll = "UPDATE test.fill_blank ".
            "SET 
@@ -297,9 +322,9 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
            knowledge = '$knowledge',
            difficulty = '$difficulty',
            question = '$question',
-           answers = '$answers'
+           answer = '$answer',
            date = NOW()".
-           "WHERE idfill_blank='4'";
+           "WHERE idfill_blank='$id'";
 
            $retval = mysql_query( $sqll, $db);
             if(! $retval )
@@ -308,13 +333,9 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
     }
     echo "Updated data successfully\n";
     echo '<script> window.location.href="manage.php"; </script>';
-          }
+         }
       ?>
-            </div>
-         </div>
-
-      </div>
-      <script language="javascript" type="text/javascript">
+     <!-- <script language="javascript" type="text/javascript">
   				$('.edit-b').click(function(){
   				var edit_id =$(this).attr('id');
   				// alert(a);
@@ -323,7 +344,39 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
   				});
 
 
-				</script>
+				</script> -->
+			<!--	
+				<script>
+				$(document).on('click', '.edit-b',function(){
+				var idfill_blank = $(this).attr("id");
+				$.ajax({
+				url:"fetch.php",
+				method: "POST",
+				data:{idfill_blank:idfill_blank},
+				dataType:"json",
+				success:function(data){
+				$('#year').val(data.year);
+				$('#grade').val(data.grade);
+				$('#testtype').val(data.testtype);
+				$('#reference').val(data.reference);
+				$('#textbook').val(data.textbook);
+				$('#lesson').val(data.lesson);
+				$('#knowledge').val(data.knowledge);
+				$('#difficulty').val(data.difficulty);
+				$('#question').val(data.question);
+				$('#answer').val(data.answer);
+				$('#date').val(data.date);
+				$('#idfill_blank').val(data.idfill_blank);
+				$('#insert').val("Update");
+				$('#myModal').modal('show');
+				}
+				
+				});
+				
+				});
+				
+				
+				</script> -->
 
 
 
@@ -427,7 +480,7 @@ $(this).text($(this).data(lang));
 });
 **/
 
-$('.edit-b').on('click', function(){
+/*$('.edit-b').on('click', function(){
   // Get all TD from the cliked Button
   var td = $(this).parents('tr').find('td:lt(12)');
   $('#year').val($(td[1]).text());
@@ -440,8 +493,31 @@ $('.edit-b').on('click', function(){
     $('#difficulty').val($(td[8]).text());
     $('#question').val($(td[9]).text());
     $('#answer').val($(td[10]).text());
-});
+});*/
 
+function updatedata(str){
+var id = str;
+var year = $('#year-'+str).val();
+var grade = $('#grade-'+str).val();
+var testtype = $('#testtype-'+str).val();
+var reference = $('#reference-'+str).val();
+var textbook = $('#textbook-'+str).val();
+var lesson = $('#lesson-'+str).val();
+var knowledge = $('#knoledge-'+str).val();
+var difficulty = $('#difficulty-'+str).val();
+var question = $('#question-'+str).val();
+var answer = $('#answer-'+str).val();
+
+$.ajax({
+type:"POST",
+url:"manage.php?p=edit",
+data:"year=" + year+ "&grade=" + grade + "&testtype=" + testtype+"&reference="+reference+"&textbook="+textbook+"&lesson" + lesson + "&knowledge=" +knowledge+"&difficulty="+difficulty+"&question="+question+"&answer="+answer+"$id" +id,
+success:function(data){
+viewData();
+}
+
+});
+}
 
 /*$('.btn-danger').on('click', function(){
   $(this).parents('tr').remove();
