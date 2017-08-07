@@ -105,52 +105,59 @@
        <button type="button" name="addInput" onclick="addInputs()">Add Input</button>
 <?php if ( $_REQUEST['add'] ){
     mysql_select_db("test", $db);
-    $year = $_POST['year'];
-    $grade = $_POST['grade'];
-    $testtype = $_POST['testtype'];
-    $reference = $_POST['reference'];
-    $textbook = $_POST['textbook'];
-    $lesson = $_POST['lesson'];
-    $knowledge = $_POST['knowledge'];
-    $difficulty = $_POST['difficulty'];
-    $question = $_POST['question'];
-    $answer = $_POST['answer'];
-    $date = $_POST['date'];
+    $years = $_POST['year'];
+    $grades = $_POST['grade'];
+    $testtypes = $_POST['testtype'];
+    $references = $_POST['reference'];
+    $textbooks = $_POST['textbook'];
+    $lessons = $_POST['lesson'];
+    $knowledges = $_POST['knowledge'];
+    $difficulties = $_POST['difficulty'];
+    $questions = $_POST['question'];
+    $answers = $_POST['answer'];
+    $dates = $_POST['date'];
        $dom = new DOMDocument();
 
        for ($i=0, $count = count($questions); $i <$count ; $i++) {
          # code...
-         $year = $year[$i];
-         $grade = $grade[$i];
-         $testtype = $testtype[$i];
-         $reference = $reference[$i];
-         $textbook = $textbook[$i];
-         $lesson = $lesson[$i];
-         $knowledge = $knowledge[$i];
-         $difficulty = $difficulty[$i];
-         $question = $answer[$i];
-         $question =  $answer[$i];
+         $year = $years[$i];
+         $grade = $grades[$i];
+         $testtype = $testtypes[$i];
+         $reference = $references[$i];
+         $textbook = $textbooks[$i];
+         $lesson = $lessons[$i];
+         $knowledge = $knowledges[$i];
+         $difficulty = $difficulties[$i];
+         $question = $questions[$i];
+         $answer =  $answers[$i];
           //echo $question;
         //     echo $answer;
         //     echo  $book;
         //     echo $diff;
-if ($diff == '困难') {
-  $diff = 'Hard';
-}else if($diff == '简单'){
-  $diff = 'Easy';
-}else if($diff == '适中'){
-  $diff = 'Medium';
+if ($difficulty == '困难') {
+  $difficulty = 'Hard';
+}else if($difficulty == '简单'){
+  $difficulty = 'Easy';
+}else if($difficulty == '适中'){
+  $difficulty = 'Medium';
 }
 
-      $questionString = mysql_real_escape_string($question);
-      $answerString = mysql_real_escape_string($answer);
-      $diffString = mysql_real_escape_string($diff);
-      $bookString =  mysql_real_escape_string($book);
+    $yearString =  mysql_real_escape_string($year);
+    $gradeString = mysql_real_escape_string($grade);
+    $testtypeString = mysql_real_escape_string($testtype);
+    $referenceString = mysql_real_escape_string($reference);
+  $textbookString =  mysql_real_escape_string($textbook);
+  $lessonString =  mysql_real_escape_string($lesson);
+  $knowledgeString = mysql_real_escape_string($knowledge);
+    $diffcultyString = mysql_real_escape_string($difficulty);
+    $questionString = mysql_real_escape_string($question);
+    $answerString = mysql_real_escape_string($answer);
+
 
 
          $sql = "INSERT INTO test.fill_blank
                 (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
-                VALUES('$year','$grade','$testtype','$reference','$bookString','$lesson','$knowledge','$diffString','$questionString','$answerString', NOW())";
+                VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', NOW())";
                    $retval = mysql_query( $sql, $db);
        }
 
@@ -221,29 +228,66 @@ function setDefaultInputHtml(){
 }
 
 function addInputs(){
+  var currentYearInputs = [];
+  var currentGradeInputs  = [];
+  var currentTestTypeInputs = [];
+  var currentReferenceInputs = [];
+  var currentTextBookInputs = [];
+  var currentLessonInputs =[];
+  var currentKnowledgeInputs = [];
+  var currentDiffInputs = [];
   var currentQuestionInputs = [];
   var currentAnswerInputs = [];
-  var currentBookInputs = [];
-  var currentDiffInputs = [];
+
     var currentFormContent =  document.getElementsByName("inputs")[0].innerHTML;
+
+    $('.yearInput').each(function ( ) {
+  currentYearInputs.push($(this).val());
+    });
+
+    $('.gradeInput').each(function ( ) {
+currentGradeInputs.push($(this).val());
+    });
+
+    $('.testtypeInput').each(function ( ) {
+currentTestTypeInputs.push($(this).val());
+    });
+    $('.referenceInput').each(function ( ) {
+currentReferenceInputs.push($(this).val());
+    });
+    $('.textbookInput').each(function ( ) {
+currentTextBookInputs.push($(this).val());
+    });
+    $('.lessonInput').each(function ( ) {
+currentLessonInputs.push($(this).val());
+    });
+    $('.knowledgeInput').each(function ( ) {
+currentKnowledgeInputs.push($(this).val());
+    });
+    $('.difficultyInput').each(function ( ) {
+currentDiffInputs.push($(this).val());
+    });
+
     $('.questionInput').each(function ( ) {
 currentQuestionInputs.push($(this).val());
     });
     $('.answerInput').each(function ( ) {
 currentAnswerInputs.push($(this).val());
     });
-    $('.bookInput').each(function ( ) {
-currentBookInputs.push($(this).val());
-    });
-    $('.diffInput').each(function ( ) {
-currentDiffInputs.push($(this).val());
-    });
+
 document.getElementsByName("inputs")[0].innerHTML = currentFormContent + defaultInputHtml;
 for (var i = 0; i < currentQuestionInputs.length; i++) {
+  document.getElementsByClassName("yearInput")[i].value = currentYearInputs[i];
+  document.getElementsByClassName("gradeInput")[i].value = currentGradeInputs[i];
+  document.getElementsByClassName("testtypeInput")[i].value = currentTestTypeInputs[i];
+  document.getElementsByClassName("referenceInput")[i].value = currentReferenceInputs[i];
+  document.getElementsByClassName("textbookInput")[i].value = currentTextBookInputs[i];
+  document.getElementsByClassName("lessonInput")[i].value = currentLessonInputs[i];
+    document.getElementsByClassName("knowledgeInput")[i].value = currentKnowledgeInputs[i];
+    document.getElementsByClassName("difficultyInput")[i].value = currentDiffInputs[i];
   document.getElementsByClassName("questionInput")[i].value = currentQuestionInputs[i];
   document.getElementsByClassName("answerInput")[i].value = currentAnswerInputs[i];
-  document.getElementsByClassName("bookInput")[i].value = currentBookInputs[i];
-  document.getElementsByClassName("diffInput")[i].value = currentDiffInputs[i];
+
 }
 
   //currentFormContent  = currentFormContent -  document.getElementsByName("add").innerHTML;

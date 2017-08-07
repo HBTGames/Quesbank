@@ -65,7 +65,7 @@
           @mysql_select_db("test", $db);
           $sql = "SELECT * FROM test.fill_blank";
           $result = mysql_query($sql);
-         
+
          ?>
       <div class="container-narrow">
          <div class="masthead">
@@ -105,17 +105,17 @@
             <thead>
                <tr>
                   <th style="cursor:pointer;" onclick="sortTable(0)">#</th>
-                  <th style="cursor:pointer;" onclick="sortTable(1)">Year</th>
-                  <th style="cursor:pointer;" onclick="sortTable(2)">Grade</th>
-                  <th style="cursor:pointer;" onclick="sortTable(3)">Testtype</th>
-                  <th style="cursor:pointer;" onclick="sortTable(4)">Reference</th>
-                  <th style="cursor:pointer;" onclick="sortTable(5)">Textbook</th>
-                  <th style="cursor:pointer;" onclick="sortTable(6)">Lesson</th>
-                  <th style="cursor:pointer;" onclick="sortTable(7)">Knowledge</th>
-                  <th style="cursor:pointer;" onclick="sortTable(8)">Difficulty</th>
-                  <th style="cursor:pointer;" onclick="sortTable(9)">Question</th>
-                  <th style="cursor:pointer;" onclick="sortTable(10)">Answer</th>
-                  <th style="cursor:pointer;" onclick="sortTable(11)">Date</th>
+                  <th style="cursor:pointer;" onclick="sortTable(1)" class="lang" key="yearHeader">Year</th>
+                  <th style="cursor:pointer;" onclick="sortTable(2)" class="lang" key="gradeHeader">Grade</th>
+                  <th style="cursor:pointer;" onclick="sortTable(3)" class="lang" key="testtypeHeader">Testtype</th>
+                  <th style="cursor:pointer;" onclick="sortTable(4)" class="lang" key="referenceHeader">Reference</th>
+                  <th style="cursor:pointer;" onclick="sortTable(5)" class="lang" key="textbookHeader">Textbook</th>
+                  <th style="cursor:pointer;" onclick="sortTable(6)" class="lang" key="lessonHeader">Lesson</th>
+                  <th style="cursor:pointer;" onclick="sortTable(7)" class="lang" key="knowledgeHeader">Knowledge</th>
+                  <th style="cursor:pointer;" onclick="sortTable(8)" class="lang" key="difficultyHeader">Difficulty</th>
+                  <th style="cursor:pointer;" onclick="sortTable(9)" class="lang" key="questionHeader">Question</th>
+                  <th style="cursor:pointer;" onclick="sortTable(10)" class="lang" key="answerHeader">Answer</th>
+                  <th style="cursor:pointer;" onclick="sortTable(11)" class="lang" key="dateHeader">Date</th>
                   <th class="lang" key="manipulationHeader">Manipulation</th>
                </tr>
             </thead>
@@ -220,7 +220,7 @@
                         echo "<td>$difficulty</td>";
                         echo "<td>$question</td>";
                         echo "<td>$answer</td>";
-                        echo "<td>$date</td>";  
+                        echo "<td>$date</td>";
                         echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal" key="editButton" ';
                         echo 'id="';
                         echo "$id";
@@ -286,9 +286,9 @@
                      		});
                      //});
                      //var var_id = 101;
-                     
-                     
-                  </script> 
+
+
+                  </script>
                   <?php
                      if (isset($_GET['idd'])){
                      $idd = $_GET['idd'];
@@ -315,9 +315,9 @@
          $difficulty = $_POST['difficulty'];
            $question = $_POST['question'];
           $answer = $_POST['answer'];
-         
+
          $sqll = "UPDATE test.fill_blank ".
-               "SET 
+               "SET
                year = '$year',
                grade = '$grade',
                testtype = '$testtype',
@@ -330,7 +330,7 @@
                answer = '$answer',
                date = NOW()".
                "WHERE idfill_blank='$id'";
-         
+
                $retval = mysql_query( $sqll, $db);
                 if(! $retval )
          {
@@ -358,10 +358,10 @@
          var strLink = "manage.php?key=" + edit_id;
          document.getElementById("update").setAttribute("href",strLink);
          });
-         
-         
+
+
          </script> -->
-      <!--	
+      <!--
          <script>
          $(document).on('click', '.edit-b',function(){
          var idfill_blank = $(this).attr("id");
@@ -386,12 +386,12 @@
          $('#insert').val("Update");
          $('#myModal').modal('show');
          }
-         
+
          });
-         
+
          });
-         
-         
+
+
          </script> -->
       <script>
          function searchfilter() {
@@ -401,7 +401,7 @@
          filter = input.value;
          table = document.getElementById("myTable");
          tr = table.getElementsByTagName("tr");
-         
+
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
          td = tr[i].getElementsByTagName("td")[1];
@@ -433,7 +433,7 @@
          }
          }
          }
-         
+
          function sortTable(k) {
            if (k == 0){
              var table, rows, switching, i, x, y, shouldSwitch;
@@ -489,7 +489,7 @@
          });
          });
          **/
-         
+
          /*$('.edit-b').on('click', function(){
          // Get all TD from the cliked Button
          var td = $(this).parents('tr').find('td:lt(12)');
@@ -504,7 +504,7 @@
          $('#question').val($(td[9]).text());
          $('#answer').val($(td[10]).text());
          });*/
-         
+
          function updatedata(str){
          var id = str;
          var year = $('#year-'+str).val();
@@ -517,7 +517,7 @@
          var difficulty = $('#difficulty-'+str).val();
          var question = $('#question-'+str).val();
          var answer = $('#answer-'+str).val();
-         
+
          $.ajax({
          type:"POST",
          url:"manage.php?p=edit",
@@ -525,10 +525,10 @@
          success:function(data){
          viewData();
          }
-         
+
          });
          }
-         
+
          /*$('.btn-danger').on('click', function(){
          $(this).parents('tr').remove();
          })*/
