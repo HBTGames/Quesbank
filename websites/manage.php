@@ -17,7 +17,7 @@
          /* Custom container */
          .container-narrow {
          margin: 0 auto;
-         max-width: 80%;
+         max-width: 90%;
          }
          .container-narrow > hr {
          margin: 30px 0;
@@ -77,6 +77,27 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
+         <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#fill_blank" aria-controls="home" role="tab" data-toggle="tab">Fillblank</a></li>
+    <li role="presentation"><a href="#multi_choice" aria-controls="profile" role="tab" data-toggle="tab">MultipleChoice</a></li>
+    <li role="presentation"><a href="#reading" aria-controls="messages" role="tab" data-toggle="tab">Reading</a></li>
+    <li role="presentation"><a href="#reading_mission" aria-controls="settings" role="tab" data-toggle="tab">Readingmission</a></li>
+    <li role="presentation"><a href="#wanxing" aria-controls="settings" role="tab" data-toggle="tab">Wanxing</a></li>
+    <li role="presentation"><a href="#interaction" aria-controls="settings" role="tab" data-toggle="tab">Interaction</a></li>
+    <li role="presentation"><a href="#sentences" aria-controls="settings" role="tab" data-toggle="tab">sentences</a></li>
+    <li role="presentation"><a href="#sentencestrans" aria-controls="settings" role="tab" data-toggle="tab">sentencesTrans</a></li>
+    <li role="presentation"><a href="#translation" aria-controls="settings" role="tab" data-toggle="tab">Translation</a></li>
+    <li role="presentation"><a href="#writing" aria-controls="settings" role="tab" data-toggle="tab">Writing</a></li>
+    <li role="presentation"><a href="#listening" aria-controls="settings" role="tab" data-toggle="tab">Listening</a></li>
+    <li role="presentation"><a href="#others" aria-controls="settings" role="tab" data-toggle="tab">Others</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="fill_blank">
          <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
          <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
          <hr>
@@ -319,6 +340,17 @@
          echo '<script> window.location.href="manage.php"; </script>';
              }
           ?>
+          
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">a</div>
+    <div role="tabpanel" class="tab-pane" id="messages">b</div>
+    <div role="tabpanel" class="tab-pane" id="settings">c</div>
+  </div>
+
+</div>
+         <hr>
+         
+         
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
          var edit_id =$(this).attr('id');
@@ -500,6 +532,11 @@
          /*$('.btn-danger').on('click', function(){
          $(this).parents('tr').remove();
          })*/
+         
+         $('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
       </script>
       <!-- Le javascript
          ================================================== -->
