@@ -114,7 +114,7 @@
                   $question = $row['question'];
                   $answer = $row['answer'];
                   $date = $row['date'];
-                                  echo "<tr>";
+                  echo "<tr>";
                   echo "<td>$id</td>";
                   echo "<td>$year</td>";
                   echo "<td>$grade</td>";
@@ -131,12 +131,13 @@
                   echo 'id="';
                   echo "$id";
                   echo '">Edit</button>';
-                  echo '<button type="button" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-danger delete-b lang" key="deleteButton"  id="';
+                  echo '<button type="button"  data-toggle="modal" data-target=".bs-example-modal-sm"
+class="btn btn-danger delete-b lang" key="deleteButton"  id="';
                   echo "$id";
                   echo '">Delete</button></td></tr>';
                   }
                   ?>
-                <!--  <?php
+                 <!-- <?php
                   if (isset($_GET['idd'])){
                   $idd = $_GET['idd'];
                   $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
@@ -185,7 +186,7 @@
 
                   <a type="submit"  id="delete-btn" name="delete" class="btn btn-danger delete-btn lang" key="deleteButton" >Delete</a>
                   </form>
-                 <script language="javascript" type="text/javascript">
+             <script language="javascript" type="text/javascript">
 				//$(document).ready(function(){
   				$('.delete-b').click(function(){
   				var var_id =$(this).attr('id');
@@ -197,16 +198,8 @@
 				//var var_id = 101;
 
 
-				</script>
-          <!--   <?php
-			//	if ( $_REQUEST['delete'] ){
-                  mysql_select_db("test", $db);
-                  @$id = intval($_GET['id']);
-                 $sqll = "DELETE FROM test.fill_blank WHERE idnew_table='$id'";
-                 $data = mysql_query($sqll,$db);
-					mysql_close($db);
-					//}
-					?> -->
+				</script> 
+         
 				<?php
                   if (isset($_GET['idd'])){
                   $idd = $_GET['idd'];
@@ -287,15 +280,12 @@
 
       </div>
       <script language="javascript" type="text/javascript">
-				//$(document).ready(function(){
   				$('.edit-b').click(function(){
   				var edit_id =$(this).attr('id');
   				// alert(a);
 				var strLink = "manage.php?key=" + edit_id;
 				document.getElementById("update").setAttribute("href",strLink);
   				});
-				//});
-				//var var_id = 101;
 
 
 				</script>
