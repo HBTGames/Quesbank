@@ -81,32 +81,47 @@
       <hr>
       <div>
       <form method="post">
-      <input id="questions" name="questions" type="text" placeholder="Question" >
-      <input id="answers" name="answers" type="text" placeholder="Answer" >
-      <input id="book" name="book" type="text" placeholder="book" >
+        <span name="inputs">
+      <input id="questions" class="questionInput" name="questions[]" type="text" placeholder="Question" >
+      <input id="answers" class="answerInput" name="answers[]" type="text" placeholder="Answer" >
+      <input id="book" class="bookInput" name="book[]" type="text" placeholder="book" >
 
-        <select id="diff" name="diff" type="text" placeholder="difficulty">
+        <select id="diff" class="diffInput" name="diff[]" type="text" placeholder="difficulty">
       <option class="lang" key="hard">Hard</option>
       <option class="lang" key="medium">Medium</option>
       <option class="lang" key="easy">Easy</option>
       </select>
-
-      <input name="add" type="submit" id="add" value="Add Question" >
+      <br>
+      </span>
+<input name="add" type="submit" id="add" value="Submit Question" >
+        <br>
         </form>
-
+       <button type="button" name="addInput" onclick="addInputs()">Add Input</button>
 <?php if ( $_REQUEST['add'] ){
-      mysql_select_db("test", $db);
-       $id = intval($_POST['id']);
+    mysql_select_db("test", $db);
        $questions = $_POST['questions'];
        $answers = $_POST['answers'];
        $date = $_POST['date'];
-       $book = $_POST['book'];
-       $diff = $_POST['diff'];
+       $books = $_POST['book'];
+       $diffs= $_POST['diff'];
        $dom = new DOMDocument();
-    $sql = "INSERT INTO test.fill_blank
-           (idnew_table,Questions, Answers,Date,Difficulty, Textbook)
-           VALUES('$id','$questions','$answers', NOW(),'$diff','$book')";
-     $retval = mysql_query( $sql, $db);
+
+       for ($i=0, $count = count($questions); $i <$count ; $i++) {
+         # code...
+         $question = $questions[$i];
+         $answer = $answers[$i];
+         $book = $books[$i];
+         $diff =  $diffs[$i];
+          //echo $question;
+        //     echo $answer;
+        //     echo  $book;
+        //     echo $diff;
+         $sql = "INSERT INTO test.fill_blank
+                (Questions, Answers,Date,Difficulty, Textbook)
+                VALUES('$question','$answer', NOW(),'$diff','$book')";
+                   $retval = mysql_query( $sql, $db);
+       }
+
     if(! $retval)
     {
       die('Could not update data: ' . mysql_error());
@@ -164,6 +179,24 @@
     <script src="../assets/js/bootstrap-collapse.js"></script>
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>
+<script type="text/javascript">
+//script for adding inputs
+var defaultInputNumber = 1;
+var defaultInputHtml;
+
+function addInputs(){
+  //first have to memorize
+  if(defaultInputNumber == 1){
+  defaultInputHtml   =  document.getElementsByName("inputs")[0].innerHTML;
+}
+    var currentFormContent =  document.getElementsByName("inputs")[0].innerHTML;
+  //currentFormContent  = currentFormContent -  document.getElementsByName("add").innerHTML;
+console.log(currentFormContent);
+document.getElementsByName("inputs")[0].innerHTML = currentFormContent + defaultInputHtml;
+defaultInputNumber += 1;
+}
+
+</script>
 
   </body>
 </html>

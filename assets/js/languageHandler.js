@@ -112,12 +112,41 @@ if( document.getElementsByName('questions')[0]!=undefined && document.getElement
       document.getElementsByName('book')[0].placeholder = '教材';
   }
 }
+//change placeholders in addques.php
+
+
+if( document.getElementsByName('questions[]')[0]!=undefined && document.getElementsByName('answers[]')[0]!=undefined &&   document.getElementsByName('book[]')[0]!=undefined ){
+  $('.questionInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Question');
+    }else{
+        $(this).attr('placeholder', '问题');
+    }
+  });
+
+  $('.answerInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Answer');
+    }else{
+        $(this).attr('placeholder', '答案');
+    }
+  });
+
+  $('.bookInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Textbook');
+    }else{
+        $(this).attr('placeholder', '教材');
+    }
+  });
+
+}
 //add question button in addques.php
 if(document.getElementsByName('add')[0]!=undefined){
   if(language == 'en'){
-    document.getElementsByName('add')[0].value = "Add Question"
+    document.getElementsByName('add')[0].value = "Submit Question"
   }else{
-  document.getElementsByName('add')[0].value = "添加问题"
+  document.getElementsByName('add')[0].value = "提交问题"
   }
 
 }
