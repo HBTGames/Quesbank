@@ -9,6 +9,10 @@
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+      <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+      <script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
+      <script type="text/javascript" src="jspdf.debug.js"></script>
+      <script type="text/javascript" src="basic.js"></script>
       <style type="text/css">
          body {
          padding-top: 20px;
@@ -261,8 +265,10 @@ echo "There are ",$all[0]," questions"; ?>
                   <option  class="lang" value="en" key="langEnglish" >English</option>
                   <option class="lang" value="zh" key="langChinese">中文</option>
                </select>
+
             </p>
          </div>
+         
       </div>
       <!-- /container -->
       <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -345,7 +351,7 @@ echo "There are ",$all[0]," questions"; ?>
          echo '<script> window.location.href="manage.php"; </script>';
              }
           ?>
-          
+
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">a</div>
     <div role="tabpanel" class="tab-pane" id="messages">b</div>
@@ -354,8 +360,8 @@ echo "There are ",$all[0]," questions"; ?>
 
 </div>
          <hr>
-         
-         
+
+
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
          var edit_id =$(this).attr('id');
@@ -537,7 +543,7 @@ echo "There are ",$all[0]," questions"; ?>
          /*$('.btn-danger').on('click', function(){
          $(this).parents('tr').remove();
          })*/
-         
+
          $('#myTabs a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
