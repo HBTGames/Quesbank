@@ -100,6 +100,10 @@
     <div role="tabpanel" class="tab-pane active" id="fill_blank">
          <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
          <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
+        <?php mysql_select_db("test", $conn);
+$count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
+$all = mysql_fetch_array( mysql_query($count) );
+echo "There are ",$all[0]," questions"; ?>
          <hr>
          <table class="table table-hover" id="myTable">
             <thead>
