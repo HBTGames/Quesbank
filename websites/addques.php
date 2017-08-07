@@ -83,15 +83,20 @@
       <div>
       <form method="post">
         <span name="inputs">
-      <input id="questions" class="questionInput" name="questions[]" type="text" placeholder="Question" >
-      <input id="answers" class="answerInput" name="answers[]" type="text" placeholder="Answer" >
-      <input id="book" class="bookInput" name="book[]" type="text" placeholder="book" >
-
-        <select id="diff" class="diffInput" name="diff[]" type="text" placeholder="difficulty">
+        <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" >
+        <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" >
+      <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" >
+      <input id="reference" class="referenceInput" name="reference[]" type="text" placeholder="Reference" >
+      <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" >
+<input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" >
+<input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" >
+        <select id="difficulty" class="difficultyInput" name="difficulty[]" type="text" placeholder="difficulty">
       <option class="lang" key="hard">Hard</option>
       <option class="lang" key="medium">Medium</option>
       <option class="lang" key="easy">Easy</option>
       </select>
+      <input id="question" class="questionInput" name="question[]" type="text" placeholder="Question" >
+      <input id="answer" class="answerInput" name="answer[]" type="text" placeholder="Answer" >
       <br>
       </span>
 <input name="add" type="submit" id="add" value="Submit Question" >
@@ -100,19 +105,31 @@
        <button type="button" name="addInput" onclick="addInputs()">Add Input</button>
 <?php if ( $_REQUEST['add'] ){
     mysql_select_db("test", $db);
-       $questions = $_POST['questions'];
-       $answers = $_POST['answers'];
-       $date = $_POST['date'];
-       $books = $_POST['book'];
-       $diffs= $_POST['diff'];
+    $year = $_POST['year'];
+    $grade = $_POST['grade'];
+    $testtype = $_POST['testtype'];
+    $reference = $_POST['reference'];
+    $textbook = $_POST['textbook'];
+    $lesson = $_POST['lesson'];
+    $knowledge = $_POST['knowledge'];
+    $difficulty = $_POST['difficulty'];
+    $question = $_POST['question'];
+    $answer = $_POST['answer'];
+    $date = $_POST['date'];
        $dom = new DOMDocument();
 
        for ($i=0, $count = count($questions); $i <$count ; $i++) {
          # code...
-         $question = $questions[$i];
-         $answer = $answers[$i];
-         $book = $books[$i];
-         $diff =  $diffs[$i];
+         $year = $year[$i];
+         $grade = $grade[$i];
+         $testtype = $testtype[$i];
+         $reference = $reference[$i];
+         $textbook = $textbook[$i];
+         $lesson = $lesson[$i];
+         $knowledge = $knowledge[$i];
+         $difficulty = $difficulty[$i];
+         $question = $answer[$i];
+         $question =  $answer[$i];
           //echo $question;
         //     echo $answer;
         //     echo  $book;
@@ -124,6 +141,7 @@ if ($diff == '困难') {
 }else if($diff == '适中'){
   $diff = 'Medium';
 }
+
       $questionString = mysql_real_escape_string($question);
       $answerString = mysql_real_escape_string($answer);
       $diffString = mysql_real_escape_string($diff);
@@ -131,8 +149,8 @@ if ($diff == '困难') {
 
 
          $sql = "INSERT INTO test.fill_blank
-                (Questions, Answers,Date,Difficulty, Textbook)
-                VALUES('$questionString','$answerString', NOW(),'$diffString','$bookString')";
+                (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
+                VALUES('$year','$grade','$testtype','$reference','$bookString','$lesson','$knowledge','$diffString','$questionString','$answerString', NOW())";
                    $retval = mysql_query( $sql, $db);
        }
 

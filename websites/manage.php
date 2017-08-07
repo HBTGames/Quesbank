@@ -17,7 +17,7 @@
          /* Custom container */
          .container-narrow {
          margin: 0 auto;
-         max-width: 700px;
+         max-width: 80%;
          }
          .container-narrow > hr {
          margin: 30px 0;
@@ -84,11 +84,17 @@
             <thead>
                <tr>
                   <th style="cursor:pointer;" onclick="sortTable(0)">#</th>
-                  <th style="cursor:pointer;" onclick="sortTable(1)" class="lang" key="questionHeader">Question</th>
-                  <th style="cursor:pointer;" onclick="sortTable(2)" class="lang" key="answerHeader">Answer</th>
-                  <th style="cursor:pointer;" onclick="sortTable(3)" class="lang" key="dateHeader">Date</th>
-                  <th style="cursor:pointer;" onclick="sortTable(4)" class="lang" key="difficultyHeader">Difficulty</th>
-                  <th style="cursor:pointer;" onclick="sortTable(5)" class="lang" key="textbookHeader">Textbook</th>
+                  <th style="cursor:pointer;" onclick="sortTable(1)">Year</th>
+                  <th style="cursor:pointer;" onclick="sortTable(2)">Grade</th>
+                  <th style="cursor:pointer;" onclick="sortTable(3)">Testtype</th>
+                  <th style="cursor:pointer;" onclick="sortTable(4)">Reference</th>
+                  <th style="cursor:pointer;" onclick="sortTable(5)">Textbook</th>
+                  <th style="cursor:pointer;" onclick="sortTable(6)">Lesson</th>
+                  <th style="cursor:pointer;" onclick="sortTable(7)">Knowledge</th>
+                  <th style="cursor:pointer;" onclick="sortTable(8)">Difficulty</th>
+                  <th style="cursor:pointer;" onclick="sortTable(9)">Question</th>
+                  <th style="cursor:pointer;" onclick="sortTable(10)">Answer</th>
+                  <th style="cursor:pointer;" onclick="sortTable(11)">Date</th>
                   <th class="lang" key="manipulationHeader">Manipulation</th>
                </tr>
             </thead>
@@ -96,19 +102,31 @@
                <?php
                   while( $row = mysql_fetch_array($result))
                   {
-                  $id = $row['idnew_table'];
-                  $question = $row['Questions'];
-                  $answers = $row['Answers'];
-                  $date= $row['Date'];
-                  $diff = $row['Difficulty'];
-                  $book = $row['Textbook'];
+                  $id = $row['idfill_blank'];
+                  $year = $row['year'];
+                  $grade = $row['grade'];
+                  $testtype = $row['testtype'];
+                  $reference = $row['reference'];
+                  $textbook = $row['textbook'];
+                  $lesson = $row['lesson'];
+                  $knowledge = $row['knowledge'];
+                  $difficulty = $row['difficulty'];
+                  $question = $row['question'];
+                  $answer = $row['answer'];
+                  $date = $row['date'];
                                   echo "<tr>";
                   echo "<td>$id</td>";
+                  echo "<td>$year</td>";
+                  echo "<td>$grade</td>";
+                  echo "<td>$testtype</td>";
+                  echo "<td>$reference</td>";
+                  echo "<td>$textbook</td>";
+                  echo "<td>$lesson</td>";
+                  echo "<td>$knowledge</td>";
+                  echo "<td>$difficulty</td>";
                   echo "<td>$question</td>";
-                  echo "<td>$answers</td>";
+                  echo "<td>$answer</td>";
                   echo "<td>$date</td>";
-                  echo " <td class = 'difficultyTd'>$diff</td> ";
-                  echo "<td>$book</td>";
                   echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal" key="editButton" ';
                   echo 'id="';
                   echo "$id";
@@ -192,7 +210,7 @@
 				<?php
                   if (isset($_GET['idd'])){
                   $idd = $_GET['idd'];
-                  $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
+                  $res = mysql_query("DELETE FROM test.fill_blank WHERE idfill_blank='$idd'");
                   echo '<script> window.location.href="manage.php"; </script>';
                   }
                   ?>
