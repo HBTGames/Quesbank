@@ -261,7 +261,7 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
                   <br>
                  
 
-                  <input type="text" placeholder="Textbook" id="book" name="book">
+                  <input type="text" placeholder="Textbook" id="textbook" name="textbook">
                </div>
 
                <div class="modal-footer">
@@ -275,18 +275,31 @@ class="btn btn-danger delete-b lang" key="deleteButton"  id="';
       $db = mysql_connect('localhost','root','password');
        $key = $_GET['key'];
       mysql_select_db('test');
-    	  $questions = $_GET['questions'];
-   		 $answers = $_POST['answers'];
-   	  $diff = $_POST['diff'];
- 		$book = $_POST['book'];
+      $year = $_POST['year'];
+   		 $grade = $_POST['grade'];
+   	  $testtype = $_POST['testtype'];
+ 		$reference = $_POST['reference'];
+ 		$textbook = $_GET['textbook'];
+   		 $lesson = $_POST['lesson'];
+   	  $knowledge = $_POST['knowledge'];
+ 		$difficulty = $_POST['difficulty'];
+    	  $question = $_GET['question'];
+   		 $answers = $_POST['answer'];
 
     	$sqll = "UPDATE test.fill_blank ".
-           "SET Questions = '$questions',
-           Answers = '$answers',
-           Date = NOW(),
-           Difficulty = '$diff',
-           Textbook = '$book' ".
-           "WHERE idnew_table='$key'";
+           "SET 
+           year = '$year',
+           grade = '$grade',
+           testtype = '$testtype',
+           reference = '$reference',
+           textbook = '$textbook',
+           lesson = '$lesson',
+           knowledge = '$knowledge',
+           difficulty = '$difficulty',
+           question = '$question',
+           answers = '$answers'
+           date = NOW()".
+           "WHERE idfill_blank='4'";
 
            $retval = mysql_query( $sqll, $db);
             if(! $retval )
