@@ -167,7 +167,7 @@ echo "There are ",$all[0]," questions"; ?>
                               </div>
                               <form method="post">
                                  <div class="modal-body">
-                                    <input type="hidden" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
+                                    <input type="hidden" name="idx" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
                                     <span class="lang">Year</span>
                                     <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>">
                                     <br>
@@ -309,6 +309,7 @@ echo "There are ",$all[0]," questions"; ?>
           $db = mysql_connect('localhost','root','password');
          //    $key = $_GET['key'];
           mysql_select_db('test');
+          $id = $_POST['idx'];
           $year = $_POST['year'];
           $grade = $_POST['grade'];
           $testtype = $_POST['testtype'];
@@ -525,7 +526,7 @@ echo "There are ",$all[0]," questions"; ?>
          $.ajax({
          type:"POST",
          url:"manage.php?p=edit",
-         data:"year=" + year+ "&grade=" + grade + "&testtype=" + testtype+"&reference="+reference+"&textbook="+textbook+"&lesson" + lesson + "&knowledge=" +knowledge+"&difficulty="+difficulty+"&question="+question+"&answer="+answer+"$id" +id,
+         data:"year=" + year+ "&grade=" + grade + "&testtype=" + testtype+"&reference="+reference+"&textbook="+textbook+"&lesson" + lesson + "&knowledge=" +knowledge+"&difficulty="+difficulty+"&question="+question+"&answer="+answer+"&id" +id,
          success:function(data){
          viewData();
          }
