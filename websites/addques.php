@@ -65,6 +65,7 @@
   <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
+          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
 
          ?>
     <div class="container-narrow">
@@ -116,9 +117,23 @@
         //     echo $answer;
         //     echo  $book;
         //     echo $diff;
+if ($diff == '困难') {
+  $diff = 'Hard';
+}else if($diff == '简单'){
+  $diff = 'Easy';
+}else if($diff == '适中'){
+  $diff = 'Medium';
+}
+printf($diff);
+      $questionString = mysql_real_escape_string($question);
+      $answerString = mysql_real_escape_string($answer);
+      $diffString = mysql_real_escape_string($diff);
+      $bookString =  mysql_real_escape_string($book);
+
+
          $sql = "INSERT INTO test.fill_blank
                 (Questions, Answers,Date,Difficulty, Textbook)
-                VALUES('$question','$answer', NOW(),'$diff','$book')";
+                VALUES('$questionString','$answerString', NOW(),'$diffString','$bookString')";
                    $retval = mysql_query( $sql, $db);
        }
 
