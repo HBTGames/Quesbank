@@ -148,7 +148,7 @@
          $textbook = $textbooks[$i];
          $lesson = $lessons[$i];
          $knowledge = $knowledges[$i];
-          'M' $difficulties[$i];
+         $difficulty = $difficulties[$i];
          $question = $questions[$i];
          $answer =  $answers[$i];
           //echo $question;
