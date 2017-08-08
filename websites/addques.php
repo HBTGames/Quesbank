@@ -18,7 +18,7 @@
       /* Custom container */
       .container-narrow {
         margin: 0 auto;
-        max-width: 700px;
+        max-width: 90%;
       }
       .container-narrow > hr {
         margin: 30px 0;
@@ -62,12 +62,7 @@
   </head>
 
   <body onload="loadLanguage() , setDefaultInputHtml()">
-  <?php
-         $db = mysql_connect('localhost','root','password')
-          or die('Error connecting to MySQL server.');
-          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-
-         ?>
+  
     <div class="container-narrow">
 
       <div class="masthead">
@@ -81,6 +76,31 @@
 
       <hr>
       <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#fill_blank" aria-controls="fillblank" role="tab" data-toggle="tab">Fillblank</a></li>
+    <li role="presentation"><a href="#multichoice" aria-controls="multichoice" role="tab" data-toggle="tab">Multichoice</a></li>
+    <li role="presentation"><a href="#sentence" aria-controls="sentence" role="tab" data-toggle="tab">Sentencetrans</a></li>
+     <li role="presentation"><a href="#interaction" aria-controls="interaction" role="tab" data-toggle="tab">Interaction</a></li>
+    <li role="presentation"><a href="#readingmu" aria-controls="readingmu" role="tab" data-toggle="tab">Readingmulti</a></li>
+    <li role="presentation"><a href="#reading" aria-controls="reading" role="tab" data-toggle="tab">Reading</a></li>
+    <li role="presentation"><a href="#readingmi" aria-controls="readingmi" role="tab" data-toggle="tab">Readingmission</a></li>
+    <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab">Translation</a></li>
+     <li role="presentation"><a href="#listening" aria-controls="listening" role="tab" data-toggle="tab">Listening</a></li>
+      <li role="presentation"><a href="#writing" aria-controls="writing" role="tab" data-toggle="tab">Writing</a></li>
+      <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab">Others</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="fill_blank"><div id="addfillblank">
+      <?php
+         $db = mysql_connect('localhost','root','password')
+          or die('Error connecting to MySQL server.');
+          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
+
+         ?>
       <form method="post">
         <span name="inputs">
         <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" >
@@ -173,7 +193,23 @@ if ($difficulty == '困难') {
     mysql_close($db);
     }
     ?>
-      </div>
+      </div></div>
+    <div role="tabpanel" class="tab-pane fade in" id="multichoice">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="sentence">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="interaction">...</div>
+     <div role="tabpanel" class="tab-pane fade in active" id="readingmu">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="reading">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="readingmi">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="translation">...</div>
+     <div role="tabpanel" class="tab-pane fade in active" id="listening">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="writing">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="others">...</div>
+  </div>
+
+</div>
+
+
+      
       <hr>
 
 
