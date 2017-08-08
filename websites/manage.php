@@ -9,10 +9,7 @@
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-      <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-      <script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
-      <script type="text/javascript" src="jspdf.debug.js"></script>
-      <script type="text/javascript" src="basic.js"></script>
+      
       <style type="text/css">
          body {
          padding-top: 20px;
@@ -581,5 +578,9 @@
       <script src="../assets/js/bootstrap-collapse.js"></script>
       <script src="../assets/js/bootstrap-carousel.js"></script>
       <script src="../assets/js/bootstrap-typeahead.js"></script>
+      <script type="text/javascript" src="../assets/js/jquery-1.7.1.min.js"></script>
+      <script type="text/javascript" src="../assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+      <script type="text/javascript" src="../assets/js/jspdf.debug.js"></script>
+      <script type="text/javascript" src="../assets/js/basic.js"></script>
    </body>
 </html>
