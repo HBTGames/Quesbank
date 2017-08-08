@@ -123,7 +123,7 @@
 <input name="add" type="submit" id="add" value="Submit Question" >
         <br>
         </form>
-       <button type="button" name="addInput" onclick="addInputs()">Add Input</button>
+       <button type="button" name="addInput" onclick="addInputs(0)">Add Input</button>
 <?php if ( $_REQUEST['add'] ){
     mysql_select_db("test", $db);
     $years = $_POST['year'];
@@ -221,11 +221,11 @@ if ($difficulty == '困难') {
       <input id="answer" class="answerInput" name="answer[]" type="text" placeholder="Answer" >
       <br>
       </span>
-<input name="add" type="submit" id="add" value="Submit Question" >
+<input name="submitMultiChoice" type="submit" id="submitMultiChoice" value="Submit Question" >
         <br>
         </form>
-       <button type="button" name="addInput" onclick="addInputs()">Add Input</button>
-<?php if ( $_REQUEST['add'] ){
+       <button type="button" name="addInput" onclick="addInputs(1)">Add Input</button>
+<?php if ( $_REQUEST['submitMultiChoice'] ){
     mysql_select_db("test", $db);
     $years = $_POST['year'];
     $grades = $_POST['grade'];
@@ -359,12 +359,13 @@ if ($difficulty == '困难') {
 //script for adding inputs
 var defaultInputNumber = 1;
 var defaultInputHtml;
+var tagSelect;
 
 function setDefaultInputHtml(){
     defaultInputHtml   =  document.getElementsByName("inputs")[0].innerHTML;
 }
 
-function addInputs(){
+function addInputs(tagSelect){
   var currentYearInputs = [];
   var currentGradeInputs  = [];
   var currentTestTypeInputs = [];
@@ -376,7 +377,7 @@ function addInputs(){
   var currentQuestionInputs = [];
   var currentAnswerInputs = [];
 
-    var currentFormContent =  document.getElementsByName("inputs")[0].innerHTML;
+    var currentFormContent =  document.getElementsByName("inputs")[tagSelect].innerHTML;
 
     $('.yearInput').each(function ( ) {
   currentYearInputs.push($(this).val());
@@ -412,7 +413,7 @@ currentQuestionInputs.push($(this).val());
 currentAnswerInputs.push($(this).val());
     });
 
-document.getElementsByName("inputs")[0].innerHTML = currentFormContent + defaultInputHtml;
+document.getElementsByName("inputs")[tagSelect].innerHTML = currentFormContent + defaultInputHtml;
 for (var i = 0; i < currentQuestionInputs.length; i++) {
   document.getElementsByClassName("yearInput")[i].value = currentYearInputs[i];
   document.getElementsByClassName("gradeInput")[i].value = currentGradeInputs[i];
