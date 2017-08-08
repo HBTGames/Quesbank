@@ -67,7 +67,7 @@
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
-               <li ><a href="index.html" class="lang" key="home">Home</a></li>
+               <li ><a href="index.php" class="lang" key="home">Home</a></li>
                <li class="active" ><a href="manage.php" class="lang" key="manage" >Manage</a></li>
                <li ><a href="contact.html?language=42"  class="lang" key="contact">Contact</a></li>
             </ul>
@@ -106,7 +106,7 @@
          ?>
             <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
             <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
-            <?php mysql_select_db("test", $conn);
+            <?php 
                $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
                $all = mysql_fetch_array( mysql_query($count) );
                echo "There are ",$all[0]," questions"; ?>

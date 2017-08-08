@@ -67,7 +67,7 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="index.html" class="lang" key="home">Home</a></li>
+          <li class="active"><a href="index.php" class="lang" key="home">Home</a></li>
           <li><a href="manage.php" class="lang" key="manage">Manage</a></li>
           <li><a href="contact.html" class="lang" key="contact">Contact</a></li>
         </ul>
@@ -94,7 +94,8 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active" id="fill_blank"><div id="addfillblank">
+    <div role="tabpanel" class="tab-pane fade in active" id="fill_blank">
+    <div id="addfillblank">
       <?php
          $db = mysql_connect('localhost','root','password')
           or die('Error connecting to MySQL server.');
@@ -194,7 +195,107 @@ if ($difficulty == '困难') {
     }
     ?>
       </div></div>
-    <div role="tabpanel" class="tab-pane fade in" id="multichoice">...</div>
+    <div role="tabpanel" class="tab-pane fade in" id="multichoice">
+     <div id="addfillblank">
+      <?php
+         $db = mysql_connect('localhost','root','password')
+          or die('Error connecting to MySQL server.');
+          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
+
+         ?>
+      <form method="post">
+        <span name="inputs">
+        <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" >
+        <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" >
+      <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" >
+      <input id="reference" class="referenceInput" name="reference[]" type="text" placeholder="Reference" >
+      <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" >
+<input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" >
+<input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" >
+        <select id="difficulty" class="difficultyInput" name="difficulty[]" type="text" placeholder="difficulty">
+      <option class="lang" key="hard">Hard</option>
+      <option class="lang" key="medium">Medium</option>
+      <option class="lang" key="easy">Easy</option>
+      </select>
+      <input id="question" class="questionInput" name="question[]" type="text" placeholder="Question" >
+      <input id="answer" class="answerInput" name="answer[]" type="text" placeholder="Answer" >
+      <br>
+      </span>
+<input name="add" type="submit" id="add" value="Submit Question" >
+        <br>
+        </form>
+       <button type="button" name="addInput" onclick="addInputs()">Add Input</button>
+<?php if ( $_REQUEST['add'] ){
+    mysql_select_db("test", $db);
+    $years = $_POST['year'];
+    $grades = $_POST['grade'];
+    $testtypes = $_POST['testtype'];
+    $references = $_POST['reference'];
+    $textbooks = $_POST['textbook'];
+    $lessons = $_POST['lesson'];
+    $knowledges = $_POST['knowledge'];
+    $difficulties = $_POST['difficulty'];
+    $questions = $_POST['question'];
+    $answers = $_POST['answer'];
+    $dates = $_POST['date'];
+       $dom = new DOMDocument();
+
+       for ($i=0, $count = count($questions); $i <$count ; $i++) {
+         # code...
+         $year = $years[$i];
+         $grade = $grades[$i];
+         $testtype = $testtypes[$i];
+         $reference = $references[$i];
+         $textbook = $textbooks[$i];
+         $lesson = $lessons[$i];
+         $knowledge = $knowledges[$i];
+         $difficulty = $difficulties[$i];
+         $question = $questions[$i];
+         $answer =  $answers[$i];
+          //echo $question;
+        //     echo $answer;
+        //     echo  $book;
+        //     echo $diff;
+if ($difficulty == '困难') {
+  $difficulty = 'Hard';
+}else if($difficulty == '简单'){
+  $difficulty = 'Easy';
+}else if($difficulty == '适中'){
+  $difficulty = 'Medium';
+}
+
+    $yearString =  mysql_real_escape_string($year);
+    $gradeString = mysql_real_escape_string($grade);
+    $testtypeString = mysql_real_escape_string($testtype);
+    $referenceString = mysql_real_escape_string($reference);
+  $textbookString =  mysql_real_escape_string($textbook);
+  $lessonString =  mysql_real_escape_string($lesson);
+  $knowledgeString = mysql_real_escape_string($knowledge);
+    $diffcultyString = mysql_real_escape_string($difficulty);
+    $questionString = mysql_real_escape_string($question);
+    $answerString = mysql_real_escape_string($answer);
+
+
+
+         $sql = "INSERT INTO test.multi_choice
+                (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
+                VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', NOW())";
+                   $retval = mysql_query( $sql, $db);
+       }
+
+    if(! $retval)
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo '<script type="text/javascript">';
+    echo  'var update_text= "Data updated successfully!" ;   ';
+    echo 'alert(update_text)  ;' ;
+    echo ' </script> ';
+
+    mysql_close($db);
+    }
+    ?>
+      </div></div>
     <div role="tabpanel" class="tab-pane fade in" id="sentence">...</div>
     <div role="tabpanel" class="tab-pane fade in" id="interaction">...</div>
      <div role="tabpanel" class="tab-pane fade in active" id="readingmu">...</div>

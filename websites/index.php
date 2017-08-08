@@ -61,53 +61,99 @@
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
-  <body>
+  <body onload="loadLanguage()">
 
     <div class="container-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="index.php">Home</a></li>
-          <li><a href="manage.php">Manage</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li class="active"><a href="index.php" class="lang" key="home">Home</a></li>
+          <li><a href="manage.php" class="lang" key="manage">Manage</a></li>
+          <li><a href="contact.html" class="lang" key="contact">Contact</a></li>
         </ul>
         <h3 class="muted">QuesBank</h3>
       </div>
 
       <hr>
 
-      <!-- Standard button -->
-<button type="button" class="btn btn-default">Test Type 1</button>
-Pudding: 5 multiple-choice, 5 fill-blank/sentences, 2 translation, 1 reading
-<hr>
-<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-<button type="button" class="btn btn-primary">Test Type 2</button>
-Learning and Practicing: 10 multiple-choice, 5 fill-blank, 2 sentences, 2 translation
-<hr>
-<!-- Indicates a successful or positive action -->
-<button type="button" class="btn btn-success">Test Type 3</button>
-Focus on Grammar: 25 multiple-choice, 25 fill-blank, 5 translation, 5 sentences
-<hr>
-<!-- Contextual button for informational alert messages -->
-<button type="button" class="btn btn-info">Test Type 4</button>
-Test: 10 multiple-choice, 1 reading, 10 fill-blank, 2 translation, 5 sentences
-<hr>
-<!-- Indicates caution should be taken with this action -->
-<button type="button" class="btn btn-warning">Test Type 5</button>
-Homework: 10 multiple-choice, 2 reading, 2 translation, 5 sentences
-<hr>
-<!-- Indicates a dangerous or potentially negative action -->
-<button type="button" class="btn btn-danger">Test Type 6</button>
-Phase Quiz: 20 multiple-choice, 1 wanxing, 4 reading, 1 interaction, 1 mission reading
-<hr>
-<button type="button" class="btn btn-primary">Test Type 7</button>
-Tutorial Practicing: 25 multiple-choice, 30 fill-blank, 10 sentences trans, 5 translation
-<hr>
+      <div class="jumbotron">
+        <h1>Question Bank</h1>
+        <p class="lead lang"  key="productDescription">You can put new questions to the bank, or generate test paper through the website.</p>
+        <a class="btn btn-large btn-success lang" href="addques.php" key="addNewQuestion">Add New Questions</a>
+        <a class="btn btn-large btn-success lang" href="generate.html"  key="generateTestPaper">Generate Test Paper</a>
+      </div>
+
+      <hr>
+
+      <div class="row-fluid marketing">
+        <div class="span6">
+          <h4>Qestions Stat</h4>
+          <?php
+          $conn = mysql_connect('localhost','root','password');
+          mysql_select_db('test');
+          ?>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th> Questype</th>
+    <th> Total </th>
+    <th> Added Today </th>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Fill blank</td>
+    <td> <?php 
+    $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
+               $all = mysql_fetch_array( mysql_query($count) );
+               echo "$all[0]";
+               ?>
+               <td> </td>
+    </tr>
+    <tr>
+    <td>Multichoice</td>
+    <td> <?php 
+    $count2 = "SELECT COUNT(idmulti_choice) FROM test.multi_choice";
+               $all2 = mysql_fetch_array( mysql_query($count2) );
+               echo "$all2[0]"; ?>
+               <td> </td>
+    </tr>
+    <tr>
+    <td>Alltypes</td>
+    <td> <?php 
+    $alltype = $all[0] + $all2[0];
+               echo "$alltype"; ?>
+               <td> </td>
+    </tr>
+    
+    </tbody>
+</table>
+        </div>
+
+        <div class="span6">
+          <h4>Guide</h4>
+          <p>Please go to manage page to see all type questions.<br><br>Please contact us if you have any questions.Thanks</p>
+
+
+        </div>
+      </div>
 
       <hr>
 
       <div class="footer">
-        <p>&copy; Air English 2015</p>
+        <p>&copy;
+          <span class="lang" key="airEnglish">Air English 2015</span>
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+          &ensp;
+          <span class="lang" key="languageText"> Language:</span>
+          <select id="changeLang" onchange="languageChange();">
+             <option  class="lang" value="en" key="langEnglish" >English</option>
+             <option class="lang" value="zh" key="langChinese">中文</option>
+          </select>
+        </p>
       </div>
 
     </div> <!-- /container -->
@@ -128,6 +174,8 @@ Tutorial Practicing: 25 multiple-choice, 30 fill-blank, 10 sentences trans, 5 tr
     <script src="../assets/js/bootstrap-collapse.js"></script>
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="../assets/js/languageHandler.js"?v=1></script>
+    <script type="text/javascript" src="../assets/js/cookieHandler.js"></script>
 
   </body>
 </html>
