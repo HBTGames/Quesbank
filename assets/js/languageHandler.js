@@ -214,6 +214,16 @@ if(document.getElementsByName('add')[0]!=undefined){
   }
 
 }
+//multiple choice submit
+if(document.getElementsByName('submitMultiChoice')[0]!=undefined){
+  if(language == 'en'){
+    document.getElementsByName('submitMultiChoice')[0].value = "Submit Question"
+  }else{
+  document.getElementsByName('submitMultiChoice')[0].value = "提交问题"
+  }
+
+}
+
 //change demonstration in contact.html
 if(document.getElementsByName("demonstration")[0]!=undefined){
   if(language == 'en'){
