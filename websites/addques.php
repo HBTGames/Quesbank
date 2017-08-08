@@ -62,7 +62,7 @@
   </head>
 
   <body onload="loadLanguage() , setDefaultInputHtml()">
-  
+
     <div class="container-narrow">
 
       <div class="masthead">
@@ -310,7 +310,7 @@ if ($difficulty == '困难') {
 </div>
 
 
-      
+
       <hr>
 
 

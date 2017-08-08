@@ -63,7 +63,7 @@
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
    <body onload="loadLanguage()">
-      
+
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
@@ -74,7 +74,7 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
-         
+
          <div>
 
   <!-- Nav tabs -->
@@ -102,11 +102,11 @@
           @mysql_select_db("test", $db);
           $sql = "SELECT * FROM test.fill_blank";
           $result = mysql_query($sql);
-         
+
          ?>
             <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
             <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
-            <?php 
+            <?php
                $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
                $all = mysql_fetch_array( mysql_query($count) );
                echo "There are ",$all[0]," questions"; ?>
@@ -252,7 +252,7 @@
                </tbody>
             </table>
             <hr>
-            
+
             <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
             <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -278,16 +278,18 @@
                         		});
                         //});
                         //var var_id = 101;
-                        
-                        
+
+
                      </script>
                      <?php
-                        if (isset($_GET['idd'])){
-                        $idd = $_GET['idd'];
-                        $res = mysql_query("DELETE FROM test.fill_blank WHERE idfill_blank='$idd'");
-                        echo '<script> window.location.href="manage.php"; </script>';
-                        mysql_close("db");
-                        }
+                     if (isset($_GET['idd'])){
+                   $idd = $_GET['idd'];
+                   $res = mysql_query("DELETE FROM test.fill_blank WHERE idfill_blank='$idd'");
+                  mysql_query(" ALTER TABLE test.fill_blank DROP `idfill_blank`");
+                   mysql_query("ALTER TABLE test.fill_blank  AUTO_INCREMENT = 1");
+                   mysql_query("ALTER TABLE test.fill_blank  ADD `idfill_blank` int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST");
+                   echo '<script> window.location.href="manage.php"; </script>';
+                   }
                         ?>
                   </div>
                </div>
@@ -309,7 +311,7 @@
             $difficulty = $_POST['difficulty'];
               $question = $_POST['question'];
              $answer = $_POST['answer'];
-            
+
             $sqll = "UPDATE test.fill_blank ".
                   "SET
                   year = '$year',
@@ -324,7 +326,7 @@
                   answer = '$answer',
                   date = NOW()".
                   "WHERE idfill_blank='$id'";
-            
+
                   $retval = mysql_query( $sqll, $db);
                    if(! $retval){
              die('Could not update data: ' . mysql_error());
@@ -333,7 +335,7 @@
             echo '<script> window.location.href="manage.php"; </script>';
                 }
              ?>
-            
+
             </div>
             </div>
     <div role="tabpanel" class="tab-pane fade in" id="multichoice">
@@ -351,11 +353,11 @@
   </div>
 
 </div>
-         
-         
-         
-         
-         
+
+
+
+
+
          <div class="footer">
                <p>
                   &copy;
@@ -375,7 +377,7 @@
             </div>
          </div>
          <!-- /container -->
-         
+
       </div>
       <hr>
       <!-- <script language="javascript" type="text/javascript">
@@ -385,8 +387,8 @@
          var strLink = "manage.php?key=" + edit_id;
          document.getElementById("update").setAttribute("href",strLink);
          });
-         
-         
+
+
          </script> -->
       <!--
          <script>
@@ -413,12 +415,12 @@
          $('#insert').val("Update");
          $('#myModal').modal('show');
          }
-         
+
          });
-         
+
          });
-         
-         
+
+
          </script> -->
       <script>
          function searchfilter() {
@@ -428,7 +430,7 @@
          filter = input.value;
          table = document.getElementById("myTable");
          tr = table.getElementsByTagName("tr");
-         
+
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
          td = tr[i].getElementsByTagName("td")[1];
@@ -460,7 +462,7 @@
          }
          }
          }
-         
+
          function sortTable(k) {
            if (k == 0){
              var table, rows, switching, i, x, y, shouldSwitch;
@@ -516,7 +518,7 @@
          });
          });
          **/
-         
+
          /*$('.edit-b').on('click', function(){
          // Get all TD from the cliked Button
          var td = $(this).parents('tr').find('td:lt(12)');
@@ -531,7 +533,7 @@
          $('#question').val($(td[9]).text());
          $('#answer').val($(td[10]).text());
          });*/
-         
+
          function updatedata(str){
          var id = str;
          var year = $('#year-'+str).val();
@@ -544,7 +546,7 @@
          var difficulty = $('#difficulty-'+str).val();
          var question = $('#question-'+str).val();
          var answer = $('#answer-'+str).val();
-         
+
          $.ajax({
          type:"POST",
          url:"manage.php?p=edit",
@@ -552,14 +554,14 @@
          success:function(data){
          viewData();
          }
-         
+
          });
          }
-         
+
          /*$('.btn-danger').on('click', function(){
          $(this).parents('tr').remove();
          })*/
-         
+
       </script>
       <!-- Le javascript
          ================================================== -->
