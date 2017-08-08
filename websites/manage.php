@@ -153,7 +153,7 @@ echo "There are ",$all[0]," questions"; ?>
                   <td><?php echo "$textbook" ?></td>
                   <td><?php echo "$lesson" ?></td>
                   <td><?php echo "$knowledge" ?></td>
-                  <td><?php echo "$difficulty" ?></td>
+                  <td class="difficultyTd"><?php echo "$difficulty" ?></td>
                   <td><?php echo "$question" ?></td>
                   <td><?php echo "$answer" ?></td>
                   <td><?php echo "$date" ?></td>
@@ -172,25 +172,25 @@ echo "There are ",$all[0]," questions"; ?>
                               <form method="post">
                                  <div class="modal-body">
                                     <input type="hidden" name="idx" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
-                                    <span class="lang">Year</span>
+                                    <span class="lang" key="yearHeader">Year</span>
                                     <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>">
                                     <br>
-                                    <span class="lang">Grade</span>
+                                    <span class="lang" key="gradeHeader">Grade</span>
                                     <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
                                     <br>
-                                    <span class="lang">Testtype</span>
+                                    <span class="lang" key="testtypeHeader">Testtype</span>
                                     <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
                                     <br>
-                                    <span class="lang">Reference</span>
+                                    <span class="lang" key="referenceHeader">Reference</span>
                                     <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
                                     <br>
-                                    <span class="lang">Textbook</span>
+                                    <span class="lang" key="textbookHeader">Textbook</span>
                                     <input type="text" name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"?>" value="<?php echo "$textbook"?>">
                                     <br>
-                                    <span class="lang" >Lesson</span>
+                                    <span class="lang" key="lessonHeader" >Lesson</span>
                                     <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
                                     <br>
-                                    <span class="lang">Knowledge</span>
+                                    <span class="lang" key="knowledgeHeader">Knowledge</span>
                                     <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>">
                                     <br>
                                     <span class="lang" key="difficultyHeader">Difficulty</span>
@@ -268,7 +268,7 @@ echo "There are ",$all[0]," questions"; ?>
 
             </p>
          </div>
-         
+
       </div>
       <!-- /container -->
       <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">

@@ -47,7 +47,13 @@ var arrLang = {
     'email' : 'Email Us',
      'productDescription' : 'You can put new questions to the bank, or generate test paper through the website.',
      'addNewQuestion' :  'Add New Questions',
-    'generateTestPaper' : 'Generate Test Paper'
+    'generateTestPaper' : 'Generate Test Paper',
+    'yearHeader' : 'Year',
+    'gradeHeader' : 'Grade',
+    'testtypeHeader' : 'Testtype',
+    'referenceHeader' : 'Reference',
+    'lessonHeader' : 'Lesson',
+    'knowledgeHeader' : 'Knowledge'
   },
   'zh' : {
     'home' : '主页',
@@ -76,7 +82,13 @@ var arrLang = {
       'email' : '通过电子邮箱联系我们',
        'productDescription' : '您可以添加新题进入题库或者生成一套试题。',
        'addNewQuestion' :  '添加新问题',
-      'generateTestPaper' : '生成试题'
+      'generateTestPaper' : '生成试题',
+      'yearHeader' : '年份',
+      'gradeHeader' : '年级',
+      'testtypeHeader' : '考试类型',
+      'referenceHeader' : '出处',
+      'lessonHeader' : '课数',
+      'knowledgeHeader' : '知识点'
   }
 };
 
@@ -101,21 +113,80 @@ if(document.getElementsByName('searchByQuestion')[0] != undefined &&   document.
   }
 }
 //change question answer and textbook placeholder in manage.php and addques.php
-if( document.getElementsByName('questions')[0]!=undefined && document.getElementsByName('answers')[0]!=undefined &&   document.getElementsByName('book')[0]!=undefined ){
+if( document.getElementsByName('year')[0]!=undefined ){
   if(language == 'en'){
-    document.getElementsByName('questions')[0].placeholder = 'Question';
-    document.getElementsByName('answers')[0].placeholder = 'Answer';
-      document.getElementsByName('book')[0].placeholder = 'Textbook';
+    document.getElementsByName('year')[0].placeholder = 'Year';
+    document.getElementsByName('question')[0].placeholder = 'Question';
+    document.getElementsByName('answer')[0].placeholder = 'Answer';
+      document.getElementsByName('textbook')[0].placeholder = 'Textbook';
   }else{
-    document.getElementsByName('questions')[0].placeholder = '问题';
-   document.getElementsByName('answers')[0].placeholder = '答案';
-      document.getElementsByName('book')[0].placeholder = '教材';
+    document.getElementsByName('year')[0].placeholder = '年份';
+    document.getElementsByName('question')[0].placeholder = '问题';
+   document.getElementsByName('answer')[0].placeholder = '答案';
+      document.getElementsByName('textbook')[0].placeholder = '教材';
   }
 }
 //change placeholders in addques.php
 
 
-if( document.getElementsByName('questions[]')[0]!=undefined && document.getElementsByName('answers[]')[0]!=undefined &&   document.getElementsByName('book[]')[0]!=undefined ){
+if( document.getElementsByName('question[]')[0]!=undefined  ){
+  $('.yearInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Year');
+    }else{
+        $(this).attr('placeholder', '年份');
+    }
+  });
+  $('.gradeInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Grade');
+    }else{
+        $(this).attr('placeholder', '年级');
+    }
+  });
+  $('.testtypeInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Test Type');
+    }else{
+        $(this).attr('placeholder', '考试类型');
+    }
+  });
+  $('.referenceInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Reference');
+    }else{
+        $(this).attr('placeholder', '出处');
+    }
+  });
+
+    $('.textbookInput').each(function ( ) {
+      if(language == 'en'){
+      $(this).attr('placeholder', 'Textbook');
+      }else{
+          $(this).attr('placeholder', '教材');
+      }
+    });
+
+  $('.lessonInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Lesson');
+    }else{
+        $(this).attr('placeholder', '课数');
+    }
+  });
+
+  $('.knowledgeInput').each(function ( ) {
+    if(language == 'en'){
+    $(this).attr('placeholder', 'Knowledge');
+    }else{
+        $(this).attr('placeholder', '知识点');
+    }
+  });
+
+
+
+
+
   $('.questionInput').each(function ( ) {
     if(language == 'en'){
     $(this).attr('placeholder', 'Question');
@@ -132,13 +203,6 @@ if( document.getElementsByName('questions[]')[0]!=undefined && document.getEleme
     }
   });
 
-  $('.bookInput').each(function ( ) {
-    if(language == 'en'){
-    $(this).attr('placeholder', 'Textbook');
-    }else{
-        $(this).attr('placeholder', '教材');
-    }
-  });
 
 }
 //add question button in addques.php
