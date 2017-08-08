@@ -148,7 +148,7 @@
          $textbook = $textbooks[$i];
          $lesson = $lessons[$i];
          $knowledge = $knowledges[$i];
-         $difficulty = $difficulties[$i];
+          'M' $difficulties[$i];
          $question = $questions[$i];
          $answer =  $answers[$i];
           //echo $question;
@@ -162,7 +162,7 @@ if ($difficulty == '困难') {
 }else if($difficulty == '适中'){
   $difficulty = 'Medium';
 }
-    $date = date('Y-m-d');
+$date = date('Y-m-d');
     $yearString =  mysql_real_escape_string($year);
     $gradeString = mysql_real_escape_string($grade);
     $testtypeString = mysql_real_escape_string($testtype);
@@ -178,7 +178,7 @@ if ($difficulty == '困难') {
 
          $sql = "INSERT INTO test.fill_blank
                 (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
-                VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString',  '$date')";
+                VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                    $retval = mysql_query( $sql, $db);
        }
 
@@ -263,7 +263,7 @@ if ($difficulty == '困难') {
 }else if($difficulty == '适中'){
   $difficulty = 'Medium';
 }
-    $date = date('Y-m-d');
+  $date = date('Y-m-d');
     $yearString =  mysql_real_escape_string($year);
     $gradeString = mysql_real_escape_string($grade);
     $testtypeString = mysql_real_escape_string($testtype);
@@ -279,7 +279,7 @@ if ($difficulty == '困难') {
 
          $sql = "INSERT INTO test.multi_choice
                 (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
-                VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString','$date')";
+                VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                    $retval = mysql_query( $sql, $db);
        }
 

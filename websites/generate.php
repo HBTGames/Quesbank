@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../assets/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="../assets/js/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript" src="../assets/js/jspdf.debug.js"></script>
-    <script type="text/javascript" src="../assets/js/basic.js"></script>
+    <script type="text/javascript" src="../assets/js/test-generation-helper.js"></script>
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -145,7 +145,7 @@
 
 <hr>
       <!-- Standard button -->
-<button type="button" class="btn btn-default">Test Type 1</button>
+<button type="button" class="btn btn-default" onclick="demoTwoPageDocument()">Test Type 1</button>
 Pudding: 5 multiple-choice, 5 fill-blank/sentences, 2 translation, 1 reading
 <hr>
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->

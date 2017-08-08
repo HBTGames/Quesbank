@@ -80,7 +80,7 @@
         <h1>Question Bank</h1>
         <p class="lead lang"  key="productDescription">You can put new questions to the bank, or generate test paper through the website.</p>
         <a class="btn btn-large btn-success lang" href="addques.php" key="addNewQuestion">Add New Questions</a>
-        <a class="btn btn-large btn-success lang" href="generate.html"  key="generateTestPaper">Generate Test Paper</a>
+        <a class="btn btn-large btn-success lang" href="generate.php"  key="generateTestPaper">Generate Test Paper</a>
       </div>
 
       <hr>
@@ -106,54 +106,23 @@
     $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
                $all = mysql_fetch_array( mysql_query($count) );
                echo "$all[0]";
-               ?>  </td>
-      <td >  <?php
-  $result = mysql_query("SELECT * FROM test.fill_blank");
-  $todayAddedCountFillBlank = 0;
-       $todayDate = date('Y-m-d');
-   while( $row = mysql_fetch_array($result))
-   {
-   $date = $row['date'];
-   if($todayDate == $date){
-    $todayAddedCountFillBlank += 1;
-   }
-  }
-  echo $todayAddedCountFillBlank;
-       ?> </td>
+               ?>
+               <td> </td>
     </tr>
     <tr>
     <td>Multichoice</td>
     <td> <?php
     $count2 = "SELECT COUNT(idmulti_choice) FROM test.multi_choice";
                $all2 = mysql_fetch_array( mysql_query($count2) );
-               echo "$all2[0]"; ?></td>
-               <td>
-                 <?php
-                 $result = mysql_query("SELECT * FROM test.multi_choice");
-                 $todayAddedCountMultiChoice = 0;
-                  $todayDate = date('Y-m-d');
-                 while( $row = mysql_fetch_array($result))
-                 {
-                 $date = $row['date'];
-                 if($todayDate == $date){
-                 $todayAddedCountMultiChoice += 1;
-                 }
-                 }
-                 echo $todayAddedCountMultiChoice;
-                  ?>
-               </td>
+               echo "$all2[0]"; ?>
+               <td> </td>
     </tr>
     <tr>
     <td>Alltypes</td>
     <td> <?php
     $alltype = $all[0] + $all2[0];
-               echo "$alltype"; ?> </td>
-               <td>
-   <?php
-  $todayAddedCountAll = $todayAddedCountMultiChoice +  $todayAddedCountFillBlank;
- echo $todayAddedCountAll;
-    ?>
-               </td>
+               echo "$alltype"; ?>
+               <td> </td>
     </tr>
 
     </tbody>
