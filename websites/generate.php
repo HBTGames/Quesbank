@@ -68,6 +68,7 @@
 
     <div class="container-narrow">
 
+
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="index.php">Home</a></li>
@@ -144,8 +145,58 @@
 
 
 <hr>
+<?php
+$db = mysql_connect('localhost','root','password')
+ or die('Error connecting to MySQL server.');
+ @mysql_select_db("test", $db);
+ $fill_blank_sql = "SELECT * FROM test.fill_blank";
+ $fill_blank_result = mysql_query($fill_blank_sql);
+
+ $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
+ $all = mysql_fetch_array(mysql_query($count) );
+ $total_num = $all[0];
+
+ $question_1_index = rand(1, $total_num);
+ echo "$question_1_index";
+ $questions_for_samples_query = mysql_fetch_row(mysql_query("SELECT question FROM test.fill_blank WHERE idfill_blank = $question_1_index"));
+ $questions_for_samples_1 = $questions_for_samples_query[0];
+ $answers_for_samples_query = mysql_fetch_row(mysql_query("SELECT answer FROM test.fill_blank WHERE idfill_blank = $question_1_index"));
+ $answers_for_samples_1 = $answers_for_samples_query[0];
+
+ $question_2_index = rand(1, $total_num);
+ while ($question_1_index == $question_2_index){
+   $question_2_index = rand(1, $total_num);
+ }
+ echo "$question_2_index";
+ $questions_for_samples_query = mysql_fetch_row(mysql_query("SELECT question FROM test.fill_blank WHERE idfill_blank = $question_2_index"));
+ $questions_for_samples_2 = $questions_for_samples_query[0];
+ $answers_for_samples_query = mysql_fetch_row(mysql_query("SELECT answer FROM test.fill_blank WHERE idfill_blank = $question_2_index"));
+ $answers_for_samples_2 = $answers_for_samples_query[0];
+
+ $question_3_index = rand(1, $total_num);
+ while ($question_1_index == $question_3_index || $question_2_index == $question_3_index){
+   $question_3_index = rand(1, $total_num);
+ }
+ echo "$question_3_index";
+ $questions_for_samples_query = mysql_fetch_row(mysql_query("SELECT question FROM test.fill_blank WHERE idfill_blank = $question_3_index"));
+ $questions_for_samples_3 = $questions_for_samples_query[0];
+ $answers_for_samples_query = mysql_fetch_row(mysql_query("SELECT answer FROM test.fill_blank WHERE idfill_blank = $question_3_index"));
+ $answers_for_samples_3 = $answers_for_samples_query[0];
+
+
+$questions_for_samples = array ($questions_for_samples_1, $questions_for_samples_2, $questions_for_samples_3);
+$answers_for_samples = array ($answers_for_samples_1, $answers_for_samples_2, $answers_for_samples_3);
+ echo "$questions_for_samples[0]";
+  echo "$questions_for_samples[1]";
+   echo "$questions_for_samples[2]";
+   echo "$answers_for_samples[0]";
+    echo "$answers_for_samples[1]";
+     echo "$answers_for_samples[2]";
+?>
+
+<hr>
       <!-- Standard button -->
-<button type="button" class="btn btn-default" onclick="demoTwoPageDocument()">Test Type 1</button>
+<button type="button" class="btn btn-default" onclick="question_sample()">Test Type 1</button>
 Pudding: 5 multiple-choice, 5 fill-blank/sentences, 2 translation, 1 reading
 <hr>
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
@@ -183,6 +234,33 @@ Tutorial Practicing: 25 multiple-choice, 30 fill-blank, 10 sentences trans, 5 tr
       </div>
 
     </div> <!-- /container -->
+
+<script>
+function question_sample(){
+  var doc_1 = new jsPDF();
+  var doc_2 = new jsPDF();
+  var question_sample_val_0 = "<?php echo $questions_for_samples[0] ?>";
+  var question_sample_val_1 = "<?php echo $questions_for_samples[1] ?>";
+  var question_sample_val_2 = "<?php echo $questions_for_samples[2] ?>";
+  var answer_sample_val_0 = "<?php echo $answers_for_samples[0] ?>";
+  var answer_sample_val_1 = "<?php echo $answers_for_samples[1] ?>";
+  var answer_sample_val_2 = "<?php echo $answers_for_samples[2] ?>";
+  doc_1.text(20, 20, '1. ' + question_sample_val_0);
+  doc_1.text(20, 30, '2. ' + question_sample_val_1);
+  doc_1.text(20, 40, '3. ' + question_sample_val_2);
+
+
+  doc_2.text(20, 20, '1. ' + answer_sample_val_0);
+  doc_2.text(20, 30, '2. ' + answer_sample_val_1);
+  doc_2.text(20, 40, '3. ' + answer_sample_val_2);
+
+  // Save the PDF
+  doc_1.save('Sample Questions.pdf');
+  doc_2.save('Sample Answers.pdf');
+}
+</script>
+
+
 
     <!-- Le javascript
     ================================================== -->
