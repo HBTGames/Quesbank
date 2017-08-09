@@ -193,11 +193,12 @@
                                        <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>">
                                        <br>
                                        <span class="lang" key="difficultyHeader">Difficulty</span>
-                                       <select id="difficulty-<?php echo "$difficulty"?>" name="diff" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
-                                          <option class="lang" key="hard" value="Hard">Hard</option>
-                                          <option class="lang" key="medium" value="Medium">Medium</option>
-                                          <option class="lang" key="easy" value="Easy">Easy</option>
-                                       </select>
+                                        <select id="difficulty-<?php echo "$difficulty"?>" name="difficulty" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
+                                          <option class="lang" key="hard" >Hard</option>
+                                          <option class="lang" key="medium" >Medium</option>
+                                          <option class="lang" key="easy">Easy</option>
+                                       </select> 
+                                   <!--  <input type="text" name="difficulty" placeholder="Difficulty" id="difficulty-<?php echo "$difficulty"?>" value="<?php echo "$difficulty"?>"> -->
                                        <br>
                                        <span class="lang" key = "questionHeader">Question</span>
                                        <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>">
@@ -318,7 +319,7 @@ $date = date('Y-m-d');
   $textbookString =  mysql_real_escape_string($textbook);
   $lessonString =  mysql_real_escape_string($lesson);
   $knowledgeString = mysql_real_escape_string($knowledge);
-    $diffcultyString = mysql_real_escape_string($difficulty);
+    $difficultyString = mysql_real_escape_string($difficulty);
     $questionString = mysql_real_escape_string($question);
     $answerString = mysql_real_escape_string($answer);
     
@@ -596,6 +597,5 @@ $date = date('Y-m-d');
       <script type="text/javascript" src="../assets/js/jquery-1.7.1.min.js"></script>
       <script type="text/javascript" src="../assets/js/jquery-ui-1.8.17.custom.min.js"></script>
       <script type="text/javascript" src="../assets/js/jspdf.debug.js"></script>
-      <script type="text/javascript" src="../assets/js/basic.js"></script>
    </body>
 </html>
