@@ -69,6 +69,7 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
+         <h1>Manage All Question Types</h1>
          <div id="manageall">
        <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
        <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
@@ -82,6 +83,8 @@
        <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
        <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
        </div>
+       <hr>
+       <h1>Manage Tags</h1>
          <div class="footer">
             <p>
                &copy;
