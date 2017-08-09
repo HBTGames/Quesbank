@@ -101,8 +101,8 @@
           $result = mysql_query($sql);
 
          ?>
-            <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter(9)" name="searchByQuestion">
-            <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo(5)" name="searchByTextbook">
+            <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
+            <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
             <?php
                $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
                $all = mysql_fetch_array( mysql_query($count) );
@@ -420,7 +420,7 @@
 
          </script> -->
       <script>
-         function searchfilter(s) {
+         function searchfilter() {
          // Declare variables
          var input, filter, table, tr, td, i;
          input = document.getElementById("myInput");
@@ -430,7 +430,28 @@
 
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
-         td = tr[i].getElementsByTagName("td")[s];
+         td = tr[i].getElementsByTagName("td")[9];
+         if (td) {
+         if (td.innerHTML.indexOf(filter) > -1) {
+         tr[i].style.display = "";
+         } else {
+         tr[i].style.display = "none";
+         }
+         }
+         }
+         }
+         
+         function searchfiltertwo() {
+         // Declare variables
+         var input, filter, table, tr, td, i;
+         input = document.getElementById("myInputtwo");
+         filter = input.value;
+         table = document.getElementById("myTable");
+         tr = table.getElementsByTagName("tr");
+
+         // Loop through all table rows, and hide those who don't match the search query
+         for (i = 0; i < tr.length; i++) {
+         td = tr[i].getElementsByTagName("td")[5];
          if (td) {
          if (td.innerHTML.indexOf(filter) > -1) {
          tr[i].style.display = "";
