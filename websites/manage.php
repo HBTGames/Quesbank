@@ -308,20 +308,31 @@
             $difficulty = $_POST['difficulty'];
               $question = $_POST['question'];
              $answer = $_POST['answer'];
-
+$date = date('Y-m-d');
+    $yearString =  mysql_real_escape_string($year);
+    $gradeString = mysql_real_escape_string($grade);
+    $testtypeString = mysql_real_escape_string($testtype);
+    $referenceString = mysql_real_escape_string($reference);
+  $textbookString =  mysql_real_escape_string($textbook);
+  $lessonString =  mysql_real_escape_string($lesson);
+  $knowledgeString = mysql_real_escape_string($knowledge);
+    $diffcultyString = mysql_real_escape_string($difficulty);
+    $questionString = mysql_real_escape_string($question);
+    $answerString = mysql_real_escape_string($answer);
+    
             $sqll = "UPDATE test.fill_blank ".
                   "SET
-                  year = '$year',
-                  grade = '$grade',
-                  testtype = '$testtype',
-                  reference = '$reference',
-                  textbook = '$textbook',
-                  lesson = '$lesson',
-                  knowledge = '$knowledge',
-                  difficulty = '$difficulty',
-                  question = '$question',
-                  answer = '$answer',
-                  date = NOW()".
+                  year = '$yearString',
+                  grade = '$gradeString',
+                  testtype = '$testtypeString',
+                  reference = '$referenceString',
+                  textbook = '$textbookString',
+                  lesson = '$lessonString',
+                  knowledge = '$knowledgeString',
+                  difficulty = '$difficultyString',
+                  question = '$questionString',
+                  answer = '$answerString',
+                  date = '$date'".
                   "WHERE idfill_blank='$id'";
 
                   $retval = mysql_query( $sqll, $db);
