@@ -69,21 +69,34 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
-       <h1>Manage Fill Blank</h1><br>
+          <div id="manageall">
+       <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
+       <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
+       <a class="btn btn-default" style="margin:10px;" href="manageinteraction.php" role="button">Manage Interaction</a>
+       <a class="btn btn-default" style="margin:10px;" href="managesentence.php" role="button">Manage Sentence</a>
+       <a class="btn btn-default" style="margin:10px;" href="managereadingmu.php" role="button">Manage Reading Multi (wanxing)</a>
+       <a class="btn btn-default" style="margin:10px;" href="managereading.php" role="button">Manage Reading</a>
+       <a class="btn btn-default" style="margin:10px;" href="managereadingmi.php" role="button">Manage Reading Mission</a>
+       <a class="btn btn-default" style="margin:10px;" href="managetranslation.php" role="button">Manage Translation</a>
+       <a class="btn btn-default" style="margin:10px;" href="managelistening.php" role="button">Manage Listening</a>
+       <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
+       <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
+       </div>
+       <h1>Manage Writing</h1><br>
             
-                  <div id="fill_blanktable">
+                  <div id="writingtable">
                      <?php
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          @mysql_select_db("test", $db);
-                         $sql = "SELECT * FROM test.fill_blank";
+                         $sql = "SELECT * FROM test.writing";
                          $result = mysql_query($sql);
                         
                         ?>
                      <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
                      <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
                      <?php
-                        $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
+                        $count = "SELECT COUNT(idwriting) FROM test.writing";
                         $all = mysql_fetch_array( mysql_query($count) );
                         echo "There are ",$all[0]," questions"; ?>
                      <hr>
@@ -109,7 +122,7 @@
                            <?php
                               while( $row = mysql_fetch_array($result))
                               {
-                              $id = $row['idfill_blank'];
+                              $id = $row['idwriting'];
                               $year = $row['year'];
                               $grade = $row['grade'];
                               $testtype = $row['testtype'];
@@ -242,7 +255,7 @@
                                  <!-- <?php
                                     if (isset($_GET['idd'])){
                                     $idd = $_GET['idd'];
-                                    $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
+                                    $res = mysql_query("DELETE FROM test.writing WHERE idnew_table='$idd'");
                                     echo '<script> window.location.href="manage.php"; </script>';
                                     }
                                     ?> -->
@@ -264,15 +277,15 @@
                      <?php
                         if (isset($_POST['delete'])){
                         $iddd = $_POST['idd'];
-                        $res = mysql_query("DELETE FROM test.fill_blank WHERE idfill_blank='$iddd'");
-                        mysql_query(" ALTER TABLE test.fill_blank DROP `idfill_blank`");
-                        mysql_query("ALTER TABLE test.fill_blank  AUTO_INCREMENT = 1");
-                        mysql_query("ALTER TABLE test.fill_blank  ADD `idfill_blank` int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST");
+                        $res = mysql_query("DELETE FROM test.writing WHERE idwriting='$iddd'");
+                        mysql_query(" ALTER TABLE test.writing DROP `idwriting`");
+                        mysql_query("ALTER TABLE test.writing  AUTO_INCREMENT = 1");
+                        mysql_query("ALTER TABLE test.writing  ADD `idwriting` int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST");
                         if(! $res){
                         die('Could not update data: ' . mysql_error());
                         }
                         echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managefillblank.php"; </script>';
+                        echo '<script> window.location.href="managewriting.php"; </script>';
                         }
                            ?>
                      <?php
@@ -303,7 +316,7 @@
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
                         
-                        $sqll = "UPDATE test.fill_blank ".
+                        $sqll = "UPDATE test.writing ".
                               "SET
                               year = '$yearString',
                               grade = '$gradeString',
@@ -316,14 +329,14 @@
                               question = '$questionString',
                               answer = '$answerString',
                               date = '$date'".
-                              "WHERE idfill_blank='$id'";
+                              "WHERE idwriting='$id'";
                         
                               $retval = mysql_query( $sqll, $db);
                                if(! $retval){
                          die('Could not update data: ' . mysql_error());
                         }
                         echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managefillblank.php"; </script>';
+                        echo '<script> window.location.href="managewriting.php"; </script>';
                             }
                             mysql_close('db');
                          ?>
@@ -362,11 +375,11 @@
       <!--
          <script>
          $(document).on('click', '.edit-b',function(){
-         var idfill_blank = $(this).attr("id");
+         var idwriting = $(this).attr("id");
          $.ajax({
          url:"fetch.php",
          method: "POST",
-         data:{idfill_blank:idfill_blank},
+         data:{idwriting:idwriting},
          dataType:"json",
          success:function(data){
          $('#year').val(data.year);
@@ -380,7 +393,7 @@
          $('#question').val(data.question);
          $('#answer').val(data.answer);
          $('#date').val(data.date);
-         $('#idfill_blank').val(data.idfill_blank);
+         $('#idwriting').val(data.idwriting);
          $('#insert').val("Update");
          $('#myModal').modal('show');
          }
