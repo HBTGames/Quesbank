@@ -158,7 +158,7 @@
                      <td><?php echo "$date" ?></td>
                      <td>
                         <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" >Edit </button>
-                        <button type="button"  data-toggle="modal" data-target=".bs-example-modal-sm"
+                        <button type="button"  data-toggle="modal" data-target="#delete-<?php echo "$id"?>"
                            class="btn btn-danger delete-b lang" key="deleteButton"  id="<?php echo "$id" ?>">Delete</button>
                         <!-- Modal -->
                         <div class="modal fade" id="myModal-<?php echo "$id"?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo "$id"?>">
@@ -194,9 +194,9 @@
                                        <br>
                                        <span class="lang" key="difficultyHeader">Difficulty</span>
                                        <select id="difficulty-<?php echo "$difficulty"?>" name="diff" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
-                                          <option class="lang" key="hard">Hard</option>
-                                          <option class="lang" key="medium">Medium</option>
-                                          <option class="lang" key="easy">Easy</option>
+                                          <option class="lang" key="hard" value="Hard">Hard</option>
+                                          <option class="lang" key="medium" value="Medium">Medium</option>
+                                          <option class="lang" key="easy" value="Easy">Easy</option>
                                        </select>
                                        <br>
                                        <span class="lang" key = "questionHeader">Question</span>
@@ -214,6 +214,25 @@
                               </div>
                            </div>
                         </div>
+                         <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="delete-<?php echo "$id"?>">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title lang" id="myModalLabel" key="deleteQuestion">Delete Question</h4>
+                  </div>
+                  <div class="modal-body lang" key="deleteRemindMessage">
+                     Are you sure to delete?
+                  </div>
+                  <div class="modal-footer">
+                     <form>
+                        <button type="button" class="btn btn-default lang" data-dismiss="modal" key="closeButton">Close</button>
+                        <a type="submit"  id="delete-btn" name="delete" class="btn btn-danger delete-btn lang" key="deleteButton" >Delete</a>
+                     </form>
+                     </div>
+               </div>
+            </div>
+         </div>
                         <!--
                            echo "<tr>";
                            echo "<td>$id</td>";
@@ -250,21 +269,7 @@
             </table>
             <hr>
 
-            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <h4 class="modal-title lang" id="myModalLabel" key="deleteQuestion">Delete Question</h4>
-                  </div>
-                  <div class="modal-body lang" key="deleteRemindMessage">
-                     Are you sure to delete?
-                  </div>
-                  <div class="modal-footer">
-                     <form>
-                        <button type="button" class="btn btn-default lang" data-dismiss="modal" key="closeButton">Close</button>
-                        <a type="submit"  id="delete-btn" name="delete" class="btn btn-danger delete-btn lang" key="deleteButton" >Delete</a>
-                     </form>
+           
                      <script language="javascript" type="text/javascript">
                         //$(document).ready(function(){
                         		$('.delete-b').click(function(){
@@ -288,10 +293,7 @@
                    echo '<script> window.location.href="manage.php"; </script>';
                    }
                         ?>
-                  </div>
-               </div>
-            </div>
-         </div>
+                  
          <?php
             if (isset($_POST['update'])){
              $db = mysql_connect('localhost','root','password');
@@ -552,7 +554,7 @@ $date = date('Y-m-d');
          var reference = $('#reference-'+str).val();
          var textbook = $('#textbook-'+str).val();
          var lesson = $('#lesson-'+str).val();
-         var knowledge = $('#knoledge-'+str).val();
+         var knowledge = $('#knowledge-'+str).val();
          var difficulty = $('#difficulty-'+str).val();
          var question = $('#question-'+str).val();
          var answer = $('#answer-'+str).val();
