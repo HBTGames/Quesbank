@@ -71,7 +71,7 @@
          </div>
          <hr>
          <div id="manageall">
-       <a class="btn btn-default" style="margin:10px;" href="managereading_mission.php" role="button">Manage Fill Blank</a>
+       <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
        <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
        <a class="btn btn-default" style="margin:10px;" href="manageinteraction.php" role="button">Manage Interaction</a>
        <a class="btn btn-default" style="margin:10px;" href="managesentence.php" role="button">Manage Sentence</a>
@@ -286,7 +286,7 @@
                         die('Could not update data: ' . mysql_error());
                         }
                         echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managereading_mission.php"; </script>';
+                        echo '<script> window.location.href="managereadingmi.php"; </script>';
                         }
                            ?>
                      <?php
@@ -337,7 +337,7 @@
                          die('Could not update data: ' . mysql_error());
                         }
                         echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managereading_mission.php"; </script>';
+                        echo '<script> window.location.href="managereadingmi.php"; </script>';
                             }
                             mysql_close('db');
                          ?>

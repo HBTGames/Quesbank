@@ -285,7 +285,7 @@
                         die('Could not update data: ' . mysql_error());
                         }
                         echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managesentence_trans.php"; </script>';
+                        echo '<script> window.location.href="managesentence.php"; </script>';
                         }
                            ?>
                      <?php
@@ -336,7 +336,7 @@
                          die('Could not update data: ' . mysql_error());
                         }
                         echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managesentence_trans.php"; </script>';
+                        echo '<script> window.location.href="managesentence.php"; </script>';
                             }
                             mysql_close('db');
                          ?>
