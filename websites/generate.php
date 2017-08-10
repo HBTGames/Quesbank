@@ -10,6 +10,11 @@
     <script type="text/javascript" src="../assets/js/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript" src="../assets/js/jspdf.debug.js"></script>
     <script type="text/javascript" src="../assets/js/test-generation-helper.js"></script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -77,10 +82,15 @@
         </ul>
         <h3 class="muted">QuesBank</h3>
       </div>
-
+<?php
+                        $db = mysql_connect('localhost','root','password')
+                         or die('Error connecting to MySQL server.');
+                         
+                        ?>
       <hr>
 
 <div id="distill">
+<div id="tag-wrapper">
 <div id="year-filter">
   <a>Year</a>
     <input type="checkbox" id="inlineCheckbox1" value="option1"> 2000-2005
@@ -95,13 +105,26 @@
     <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
     <input type="checkbox" id="inlineCheckbox3" value="option3"> 4
     <input type="checkbox" id="inlineCheckbox3" value="option3"> 5
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 6
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 7
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 8
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 9
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 10
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 11
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 12
 </div>
 <div id="testtype-filter">
   <a>Testtype</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> Midterm
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> Final
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> Monthly
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> Zhongkao
+  <?php
+                           @mysql_select_db("tags", $db);
+                         $sql = "SELECT * FROM tags.testtypetags";
+                         $result = mysql_query($sql);
+                              while( $row = mysql_fetch_array($result))
+                              {
+                              $testtype = $row['testtype'];
+                              ?>
+    <input type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo "$testtype" ?>
+    <?php } ?>
 </div>
 <div id="reference-filter">
   <a>Reference</a>
@@ -110,12 +133,18 @@
     <input type="checkbox" id="inlineCheckbox3" value="option3"> School3
     <input type="checkbox" id="inlineCheckbox3" value="option3"> School4
 </div>
-<div id="textbook-filter">
+<div id="testtype-filter">
   <a>Textbook</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> N1
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> N2
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> N3
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> N4
+  <?php
+                           @mysql_select_db("tags", $db);
+                         $sql = "SELECT * FROM tags.textbooktags";
+                         $result = mysql_query($sql);
+                              while( $row = mysql_fetch_array($result))
+                              {
+                              $textbook = $row['textbook'];
+                              ?>
+    <input type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo "$textbook" ?>
+    <?php } ?>
 </div>
 <div id="lesson-filter">
   <a>Lesson</a>
@@ -124,12 +153,18 @@
     <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
     <input type="checkbox" id="inlineCheckbox3" value="option3"> 4
 </div>
-<div id="knowledge-filter">
+<div id="testtype-filter">
   <a>Knowledge</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> key1
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> key2
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> key3
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> key3
+  <?php
+                           @mysql_select_db("tags", $db);
+                         $sql = "SELECT * FROM tags.knowledgetags";
+                         $result = mysql_query($sql);
+                              while( $row = mysql_fetch_array($result))
+                              {
+                              $knowledge = $row['knowledge'];
+                              ?>
+    <input type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo "$knowledge" ?>
+    <?php } ?>
 </div>
 <div id="difficulty-filter">
   <a>Difficulty</a>
@@ -139,7 +174,7 @@
 </div>
 
 
-
+</div>
 
 </div>
 
