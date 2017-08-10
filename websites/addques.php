@@ -97,9 +97,43 @@
                               <h3>References</h3>
                               <hr>
                               <span>Year</span>
-                              <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" >
+                           <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
+                              <select id="year" class="yearInput" name="year[]" type="text" placeholder="Year">
+                            <option>2000</option>
+                             <option>2001</option>
+                              <option>2002</option>
+                               <option>2003</option>
+ <option>2004</option>
+ <option>2005</option>
+  <option>2006</option>
+   <option>2007</option>
+    <option>2008</option>
+ <option>2009</option>
+ <option>2010</option>
+ <option>2011</option>
+ <option>2012</option>
+ <option>2013</option>
+  <option>2014</option>
+   <option>2015</option> <option>2016</option> <option>2017</option>
+                              
+                              </select>
                               <span>Grade</span>
-                              <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" >
+                             <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
+                             <select id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade">
+                            <option>1</option>
+                             <option>2</option>
+                              <option>3</option>
+                               <option>4</option>
+ <option>5</option>
+ <option>6</option>
+  <option>7</option>
+   <option>8</option>
+    <option>9</option>
+ <option>10</option>
+ <option>11</option>
+ <option>12</option>
+                              
+                              </select>
                               <span>Testtype</span>
                               <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                               <select id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype">
@@ -139,7 +173,26 @@
                                      ?>
                               </select>
                               <span>Lesson</span>
-                              <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" >
+                              <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
+                              <select id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson">
+                            <option>1</option>
+                             <option>2</option>
+                              <option>3</option>
+                               <option>4</option>
+ <option>5</option>
+ <option>6</option>
+  <option>7</option>
+   <option>8</option>
+    <option>9</option>
+ <option>10</option>
+ <option>11</option>
+ <option>12</option>
+  <option>13</option>
+   <option>14</option>
+    <option>15</option>
+     <option>16</option>
+                              
+                              </select>
                               <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
                               <span>Knowledge</span>
                               <select id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" >

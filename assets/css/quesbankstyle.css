@@ -19,9 +19,9 @@ overflow:hidden;
 span#inputs span{
 margin-right:10px;
 }
-span#inputs input{
+span#inputs input, span#inputs select{
 margin-right:10px;
-width:13%;
+width:15%;
 }
 span#inputs textarea{
 width:45%;
