@@ -8,6 +8,7 @@
       <meta name="author" content="">
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
+       <link href="../assets/css/quesbankstyle.css" rel="stylesheet">
       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
       <style type="text/css">
          body {
@@ -91,56 +92,57 @@
        <?php
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
+                        
+                        ?>
+                        
+                        <label>Testtype</label>
+                        <?php
                          @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.tagstable";
                          $result = mysql_query($sql);
-                        ?>
-                        
-                        <table class="table table-striped" id="myTable">
-                        <thead>
-                           <tr>
-                              <th class="lang" key="yearHeader">Year</th>
-                              <th class="lang" key="gradeHeader">Grade</th>
-                              <th class="lang" key="testtypeHeader">Testtype</th>
-                              <th class="lang" key="textbookHeader">Textbook</th>
-                              <th class="lang" key="lessonHeader">Lesson</th>
-                              <th  class="lang" key="knowledgeHeader">Knowledge</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <?php
                               while( $row = mysql_fetch_array($result))
                               {
-                              $id = $row['idtagstable'];
-                              $year = $row['year'];
-                              $grade = $row['grade'];
                               $testtype = $row['testtype'];
-                              $textbook = $row['textbook'];
-                              $lesson = $row['lesson'];
-                              $knowledge = $row['knowledge'];
                               ?>
-                           <tr>
-                              <td><?php echo "$year" ?></td>
-                              <td><?php echo "$grade" ?></td>
-                              <td><?php echo "$testtype" ?></td>
-                              <td><?php echo "$textbook" ?></td>
-                              <td><?php echo "$lesson" ?></td>
-                              <td><?php echo "$knowledge" ?></td>
-                              </tr>
-                                 <?php
+                              <a class="tags"><?php echo "$testtype" ?></a>
+                        <?php
+                                    }
+                                    
+                                    ?>
+                                    <button>+ add new tag</button>
+                                    <br>
+                                    <label>Textbook</label>
+                        <?php
+                         @mysql_select_db("tags", $db);
+                         $sql = "SELECT * FROM tags.tagstable";
+                         $result = mysql_query($sql);
+                              while( $row = mysql_fetch_array($result))
+                              {
+                              $textbook = $row['textbook'];
+                              ?>
+                              <a class="tags"><?php echo "$textbook" ?></a>
+                        <?php
                                     }
                                     ?>
-                                    <tr>
-                              <td><button>+ add new tag</button></td>
-                              <td><button>+ add new tag</button></td>
-                              <td><button>+ add new tag</button></td>
-                              <td><button>+ add new tag</button></td>
-                              <td><button>+ add new tag</button></td>
-                              <td><button>+ add new tag</button></td>
-                              </tr>
-                                
-                        </tbody>
-                     </table>
+                                    <button>+ add new tag</button>
+                        <br>
+                        <label>Knowledge</label>
+                        <?php
+                         @mysql_select_db("tags", $db);
+                         $sql = "SELECT * FROM tags.tagstable";
+                         $result = mysql_query($sql);
+                              while( $row = mysql_fetch_array($result))
+                              {
+                              $knowledge = $row['knowledge'];
+                              ?>
+                              <a class="tags"><?php echo "$knowledge" ?></a>
+                        <?php
+                                    }
+                                    ?>
+                                    <button>+ add new tag</button>
+                       
+                        
+                
        
        </div>
        
