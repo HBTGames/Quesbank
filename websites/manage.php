@@ -92,9 +92,7 @@
        <?php
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
-                         @mysql_select_db("tags", $db);
-                         $sql = "SELECT * FROM tags.tagstable";
-                         $result = mysql_query($sql);
+                         
                         ?>
                         
                         <table class="table table-bordered tagstable"  id="myTabletesttype">
@@ -105,7 +103,9 @@
                         </thead>
                         <tbody>
                            <?php
-                           
+                           @mysql_select_db("tags", $db);
+                         $sql = "SELECT * FROM tags.testtypetags";
+                         $result = mysql_query($sql);
                               while( $row = mysql_fetch_array($result))
                               {
                               $testtype = $row['testtype'];
@@ -116,23 +116,46 @@
                                  <?php
                                     }
                                     ?>
+                                    <form method="post">
+                                   <td> <input id="newtesttype" name="newtesttype" type="text" placeholder="NewTesttype">
+                                   
+                                   </td>
                                     <tr>
-                              <td><button>+ add new tag</button></td>
-                             
+                              <td><input value="Save" id="addtesttype" name="addtesttype" type="submit"></td></form>
+                             <?php if ( $_REQUEST['addtesttype'] ){
+                                   mysql_select_db("tags", $db);
+   									 $newtesttype = $_POST['newtesttype'];
+   									 $newtesttypeString =  mysql_real_escape_string($newtesttype);
+                                   $sql = "INSERT INTO tags.testtypetags (testtype) VALUES ('$newtesttypeString')";
+                   $retval = mysql_query( $sql, $db);
+    if(! $retval)
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo '<script type="text/javascript">';
+    echo  'var update_text= "Data updated successfully!" ;   ';
+    echo ' </script> ';
+    echo '<script> window.location.href="manage.php"; </script>';
+                                   }
+                                   
+                                   ?>
                               </tr>
                                 
                         </tbody>
                         </table>
-                         <table class="table table-bordered tagstable" id="myTabletextbook">
+                        
+                        
+                        
+                        <table class="table table-bordered tagstable"  id="myTabletesttype">
                         <thead>
                         <tr>
-                              <th class="lang" key="textbookHeader">Textbook</th>
+                              <th class="lang danger" key="textbookHeader">Textbook</th>
                         </tr>
                         </thead>
                         <tbody>
                            <?php
                            @mysql_select_db("tags", $db);
-                         $sql = "SELECT * FROM tags.tagstable";
+                         $sql = "SELECT * FROM tags.textbooktags";
                          $result = mysql_query($sql);
                               while( $row = mysql_fetch_array($result))
                               {
@@ -144,23 +167,48 @@
                                  <?php
                                     }
                                     ?>
+                                    <form method="post">
+                                   <td> <input id="newtextbook" name="newtextbook" type="text" placeholder="NewTextbook">
+                                   
+                                   </td>
                                     <tr>
-                              <td><button>+ add new tag</button></td>
-                             
+                              <td><input value="Save" id="addtextbook" name="addtextbook" type="submit"></td></form>
+                             <?php if ( $_REQUEST['addtextbook'] ){
+                                   mysql_select_db("tags", $db);
+   									 $newtextbook = $_POST['newtextbook'];
+   									 $newtextbookString =  mysql_real_escape_string($newtextbook);
+                                   $sql = "INSERT INTO tags.textbooktags (textbook) VALUES ('$newtextbookString')";
+                   $retval = mysql_query( $sql, $db);
+    if(! $retval)
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo '<script type="text/javascript">';
+    echo  'var update_text= "Data updated successfully!" ;   ';
+    echo ' </script> ';
+    echo '<script> window.location.href="manage.php"; </script>';
+                                   }
+                                   
+                                   ?>
                               </tr>
                                 
                         </tbody>
                         </table>
-                         <table class="table table-bordered tagstable" id="myTableknowledge">
+                        
+                        
+                        
+                        
+                        
+                        <table class="table table-bordered tagstable"  id="myTableknowledge">
                         <thead>
                         <tr>
-                              <th class="lang" key="knowledgeHeader">Knowledge</th>
+                              <th class="lang danger" key="knowledgeHeader">Knowledge</th>
                         </tr>
                         </thead>
                         <tbody>
                            <?php
                            @mysql_select_db("tags", $db);
-                         $sql = "SELECT * FROM tags.tagstable";
+                         $sql = "SELECT * FROM tags.knowledgetags";
                          $result = mysql_query($sql);
                               while( $row = mysql_fetch_array($result))
                               {
@@ -172,9 +220,29 @@
                                  <?php
                                     }
                                     ?>
+                                    <form method="post">
+                                   <td> <input id="newknowledge" name="newknowledge" type="text" placeholder="NewKnowledge">
+                                   
+                                   </td>
                                     <tr>
-                              <td><button>+ add new tag</button></td>
-                             
+                              <td><input value="Save" id="addknowledge" name="addknowledge" type="submit"></td></form>
+                             <?php if ( $_REQUEST['addknowledge'] ){
+                                   mysql_select_db("tags", $db);
+   									 $newknowledge = $_POST['newknowledge'];
+   									 $newknowledgeString =  mysql_real_escape_string($newknowledge);
+                                   $sql = "INSERT INTO tags.knowledgetags (knowledge) VALUES ('$newknowledgeString')";
+                   $retval = mysql_query( $sql, $db);
+    if(! $retval)
+    {
+      die('Could not update data: ' . mysql_error());
+    }
+    echo '<script type="text/javascript">';
+    echo  'var update_text= "Data updated successfully!" ;   ';
+    echo ' </script> ';
+    echo '<script> window.location.href="manage.php"; </script>';
+                                   }
+                                   
+                                   ?>
                               </tr>
                                 
                         </tbody>

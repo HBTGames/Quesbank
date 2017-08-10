@@ -1,5 +1,9 @@
 table.tagstable{
 width:30%;
 float:left;
-margin-left:25px;
+margin-right:28px;
+}
+
+#managetags{
+overflow:hidden;
 }
