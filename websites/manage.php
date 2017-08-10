@@ -69,6 +69,7 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
+         <div id="managequestypes">
          <h1>Manage All Question Types</h1>
          <div id="manageall">
        <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
@@ -83,8 +84,70 @@
        <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
        <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
        </div>
+       </div>
        <hr>
+       <div id="managetags">
        <h1>Manage Tags</h1>
+       <?php
+                        $db = mysql_connect('localhost','root','password')
+                         or die('Error connecting to MySQL server.');
+                         @mysql_select_db("tags", $db);
+                         $sql = "SELECT * FROM tags.tagstable";
+                         $result = mysql_query($sql);
+                        ?>
+                        
+                        <table class="table table-hover" id="myTable">
+                        <thead>
+                           <tr>
+                              <th  >#</th>
+                              <th class="lang" key="yearHeader">Year</th>
+                              <th class="lang" key="gradeHeader">Grade</th>
+                              <th class="lang" key="testtypeHeader">Testtype</th>
+                              <th class="lang" key="textbookHeader">Textbook</th>
+                              <th class="lang" key="lessonHeader">Lesson</th>
+                              <th  class="lang" key="knowledgeHeader">Knowledge</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <?php
+                              while( $row = mysql_fetch_array($result))
+                              {
+                              $id = $row['idtagstable'];
+                              $year = $row['year'];
+                              $grade = $row['grade'];
+                              $testtype = $row['testtype'];
+                              $textbook = $row['textbook'];
+                              $lesson = $row['lesson'];
+                              $knowledge = $row['knowledge'];
+                              ?>
+                           <tr>
+                              <td><?php echo "$id" ?></td>
+                              <td><?php echo "$year" ?></td>
+                              <td><?php echo "$grade" ?></td>
+                              <td><?php echo "$testtype" ?></td>
+                              <td><?php echo "$textbook" ?></td>
+                              <td><?php echo "$lesson" ?></td>
+                              <td><?php echo "$knowledge" ?></td>
+                              </tr>
+                                 <?php
+                                    }
+                                    ?>
+                                    <tr>
+                              <td>Add New tag</td>
+                              <td><button>+ add new tag</button></td>
+                              <td><button>+ add new tag</button></td>
+                              <td><button>+ add new tag</button></td>
+                              <td><button>+ add new tag</button></td>
+                              <td><button>+ add new tag</button></td>
+                              <td><button>+ add new tag</button></td>
+                              </tr>
+                                
+                        </tbody>
+                     </table>
+       
+       </div>
+       
+       
          <div class="footer">
             <p>
                &copy;
