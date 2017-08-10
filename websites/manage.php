@@ -99,7 +99,6 @@
                         <table class="table table-hover" id="myTable">
                         <thead>
                            <tr>
-                              <th  >#</th>
                               <th class="lang" key="yearHeader">Year</th>
                               <th class="lang" key="gradeHeader">Grade</th>
                               <th class="lang" key="testtypeHeader">Testtype</th>
@@ -121,7 +120,6 @@
                               $knowledge = $row['knowledge'];
                               ?>
                            <tr>
-                              <td><?php echo "$id" ?></td>
                               <td><?php echo "$year" ?></td>
                               <td><?php echo "$grade" ?></td>
                               <td><?php echo "$testtype" ?></td>
@@ -133,7 +131,6 @@
                                     }
                                     ?>
                                     <tr>
-                              <td>Add New tag</td>
                               <td><button>+ add new tag</button></td>
                               <td><button>+ add new tag</button></td>
                               <td><button>+ add new tag</button></td>
