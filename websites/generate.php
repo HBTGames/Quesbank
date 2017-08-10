@@ -17,6 +17,7 @@
   <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'>
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/quesbankstyle.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -26,7 +27,7 @@
       /* Custom container */
       .container-narrow {
         margin: 0 auto;
-        max-width: 700px;
+        max-width: 70%;
       }
       .container-narrow > hr {
         margin: 30px 0;
@@ -53,6 +54,67 @@
       .marketing p + h4 {
         margin-top: 28px;
       }
+ @timing:         0.08s;
+      
+.tag{
+  display: inline-block;
+  position: relative;
+  margin: 5px 10px 5px 0px;
+}
+
+.tag input[type=checkbox]{
+  opacity: 0;
+  position: absolute;
+  z-index: 300;
+  cursor: pointer;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  &:hover + label{
+    background: lighten(#ccc, 7%);
+  }
+}
+
+.tag label{
+  padding: 7px 34px 6px 18px;
+  position: relative;
+  z-index: 200;
+  color: white;
+  display: block;
+  border-radius: 16px;
+  background: #ccc;
+  transition: all @timing ease-in;
+}
+
+.tag .fa{
+  position: absolute;
+  z-index: 250;
+  right: 11px;
+  top: 9px;
+  color: white;
+  line-height: 0.95;
+}
+
+.tag .fa-check{
+  display: none;
+  top: 8px;
+  right: 10px;
+  transition: all @timing ease-in;
+}
+
+
+.tag input[type=checkbox]:checked + label{
+  background: black;
+  animation: flick @timing;
+}
+.tag input[type=checkbox]:checked ~ .fa-plus{
+  display: none;
+}
+.tag input[type=checkbox]:checked ~ .fa-check{
+  animation: flick @timing;
+  display: block;
+}
     </style>
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -90,31 +152,110 @@
       <hr>
 
 <div id="distill">
-<div id="tag-wrapper">
 <div id="year-filter">
-  <a>Year</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2000-2005
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2006-2010
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 2010-2015
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 2016-2017
+  <label>Year</label>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">2000-2005</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">2006-2010</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">2011-2015</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">2016-2017</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
 </div>
 <div id="grade-filter">
-  <a>Grade</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 4
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 5
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 6
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 7
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 8
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 9
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 10
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 11
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 12
+  <label>Grade</label>
+    <div class="tag">
+    <input type="checkbox" />
+    <label for="">1</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">2</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">3</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">4</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">5</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">6</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">7</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">8</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">9</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">10</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">11</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">12</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
 </div>
 <div id="testtype-filter">
-  <a>Testtype</a>
+  <label>Testtype</label>
   <?php
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.testtypetags";
@@ -123,18 +264,16 @@
                               {
                               $testtype = $row['testtype'];
                               ?>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo "$testtype" ?>
+   <div class="tag">
+    <input type="checkbox" />
+    <label for=""><?php echo "$testtype" ?></label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
     <?php } ?>
 </div>
-<div id="reference-filter">
-  <a>Reference</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> School1
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> School2
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> School3
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> School4
-</div>
 <div id="testtype-filter">
-  <a>Textbook</a>
+  <label>Textbook</label>
   <?php
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.textbooktags";
@@ -143,18 +282,43 @@
                               {
                               $textbook = $row['textbook'];
                               ?>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo "$textbook" ?>
+    <div class="tag">
+    <input type="checkbox" />
+    <label for=""><?php echo "$textbook" ?></label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
     <?php } ?>
 </div>
 <div id="lesson-filter">
-  <a>Lesson</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 4
+  <label>Lesson</label>
+    <div class="tag">
+    <input type="checkbox" />
+    <label for="">1</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">2</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">3</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">4</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
 </div>
 <div id="testtype-filter">
-  <a>Knowledge</a>
+  <label>Knowledge</label>
   <?php
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.knowledgetags";
@@ -163,18 +327,38 @@
                               {
                               $knowledge = $row['knowledge'];
                               ?>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo "$knowledge" ?>
+   <div class="tag">
+    <input type="checkbox" />
+    <label for=""><?php echo "knowledge" ?></label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
     <?php } ?>
 </div>
 <div id="difficulty-filter">
-  <a>Difficulty</a>
-    <input type="checkbox" id="inlineCheckbox1" value="option1"> Easy
-    <input type="checkbox" id="inlineCheckbox2" value="option2"> Medium
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> Hard
+  <label>Difficulty</label>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">Easy</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">Medium</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
+  <div class="tag">
+    <input type="checkbox" />
+    <label for="">Hard</label>
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-check"></i> 
+  </div>
 </div>
 
 
-</div>
+
 
 </div>
 
