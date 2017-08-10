@@ -96,7 +96,7 @@
                          $result = mysql_query($sql);
                         ?>
                         
-                        <table class="table table-hover" id="myTable">
+                        <table class="table table-striped" id="myTable">
                         <thead>
                            <tr>
                               <th class="lang" key="yearHeader">Year</th>
