@@ -7,3 +7,24 @@ margin-right:28px;
 #managetags{
 overflow:hidden;
 }
+
+
+.addAquestion{
+border:1px solid #ccc;
+padding:30px;
+margin:10px;
+overflow:hidden;
+}
+
+span#inputs span{
+margin-right:10px;
+}
+span#inputs input{
+margin-right:10px;
+width:13%;
+}
+span#inputs textarea{
+width:45%;
+margin-right:30px;
+ resize: vertical;
+}
