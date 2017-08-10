@@ -329,7 +329,7 @@
                               ?>
    <div class="tag">
     <input type="checkbox" />
-    <label for=""><?php echo "knowledge" ?></label>
+    <label for=""><?php echo "$knowledge" ?></label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i> 
   </div>
