@@ -8,6 +8,7 @@
       <meta name="author" content="">
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
+      <link href="../assets/css/quesbankstyle.css" rel="stylesheet">
       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
       <style type="text/css">
          body {
@@ -66,282 +67,375 @@
                <li class="active" ><a href="manage.php" class="lang" key="manage" >Manage</a></li>
                <li ><a href="contact.html?language=42"  class="lang" key="contact">Contact</a></li>
             </ul>
-            
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
          <div id="manageall">
-       <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
-       <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
-       <a class="btn btn-default" style="margin:10px;" href="manageinteraction.php" role="button">Manage Interaction</a>
-       <a class="btn btn-default" style="margin:10px;" href="managesentence.php" role="button">Manage Sentence</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereadingmu.php" role="button">Manage Reading Multi (wanxing)</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereading.php" role="button">Manage Reading</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereadingmi.php" role="button">Manage Reading Mission</a>
-       <a class="btn btn-default" style="margin:10px;" href="managetranslation.php" role="button">Manage Translation</a>
-       <a class="btn btn-default" style="margin:10px;" href="managelistening.php" role="button">Manage Listening</a>
-       <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
-       <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
-       </div>
-       <h1>Manage Fill Blank</h1><br>
-            
-                  <div id="fill_blanktable">
-                     <?php
-                        $db = mysql_connect('localhost','root','password')
-                         or die('Error connecting to MySQL server.');
-                         @mysql_select_db("test", $db);
-                         $sql = "SELECT * FROM test.fill_blank";
-                         $result = mysql_query($sql);
-                        
-                        ?>
-                     <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
-                     <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
-                     <?php
-                        $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
-                        $all = mysql_fetch_array( mysql_query($count) );
-                        echo "There are ",$all[0]," questions"; ?>
-                     <hr>
-                     <table class="table table-hover" id="myTable">
-                        <thead>
-                           <tr>
-                              <th style="cursor:pointer;" onclick="sortTable(0)">#</th>
-                              <th style="cursor:pointer;" onclick="sortTable(1)" class="lang" key="yearHeader">Year</th>
-                              <th style="cursor:pointer;" onclick="sortTable(2)" class="lang" key="gradeHeader">Grade</th>
-                              <th style="cursor:pointer;" onclick="sortTable(3)" class="lang" key="testtypeHeader">Testtype</th>
-                              <th style="cursor:pointer;" onclick="sortTable(4)" class="lang" key="referenceHeader">Reference</th>
-                              <th style="cursor:pointer;" onclick="sortTable(5)" class="lang" key="textbookHeader">Textbook</th>
-                              <th style="cursor:pointer;" onclick="sortTable(6)" class="lang" key="lessonHeader">Lesson</th>
-                              <th style="cursor:pointer;" onclick="sortTable(7)" class="lang" key="knowledgeHeader">Knowledge</th>
-                              <th style="cursor:pointer;" onclick="sortTable(8)" class="lang" key="difficultyHeader">Difficulty</th>
-                              <th style="cursor:pointer;" onclick="sortTable(9)" class="lang" key="questionHeader">Question</th>
-                              <th style="cursor:pointer;" onclick="sortTable(10)" class="lang" key="answerHeader">Answer</th>
-                              <th style="cursor:pointer;" onclick="sortTable(11)" class="lang" key="dateHeader">Date</th>
-                              <th class="lang" key="manipulationHeader">Manipulation</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <?php
-                              while( $row = mysql_fetch_array($result))
-                              {
-                              $id = $row['idfill_blank'];
-                              $year = $row['year'];
-                              $grade = $row['grade'];
-                              $testtype = $row['testtype'];
-                              $reference = $row['reference'];
-                              $textbook = $row['textbook'];
-                              $lesson = $row['lesson'];
-                              $knowledge = $row['knowledge'];
-                              $difficulty = $row['difficulty'];
-                              $question = $row['question'];
-                              $answer = $row['answer'];
-                              $date = $row['date'];
-                              ?>
-                           <tr>
-                              <td><?php echo "$id" ?></td>
-                              <td><?php echo "$year" ?></td>
-                              <td><?php echo "$grade" ?></td>
-                              <td><?php echo "$testtype" ?></td>
-                              <td><?php echo "$reference" ?></td>
-                              <td><?php echo "$textbook" ?></td>
-                              <td><?php echo "$lesson" ?></td>
-                              <td><?php echo "$knowledge" ?></td>
-                              <td class="difficultyTd"><?php echo "$difficulty" ?></td>
-                              <td><?php echo "$question" ?></td>
-                              <td><?php echo "$answer" ?></td>
-                              <td><?php echo "$date" ?></td>
-                              <td>
-                                 <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" >Edit </button>
-                                 <button type="button"  data-toggle="modal" data-target="#delete-<?php echo "$id"?>"
-                                    class="btn btn-danger delete-b lang" key="deleteButton"  id="<?php echo "$id" ?>">Delete</button>
-                                 <!-- Modal -->
-                                 <div class="modal fade" id="myModal-<?php echo "$id"?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo "$id"?>">
-                                    <div class="modal-dialog" role="document">
-                                       <div class="modal-content">
-                                          <div class="modal-header">
-                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                             <h4 class="modal-title lang" id="myModalLabel-<?php echo "$id"?>" key="editQuestionLabel">Edit Question</h4>
-                                          </div>
-                                          <form method="post">
-                                             <div class="modal-body">
-                                                <input type="hidden" name="idx" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
-                                                <span class="lang" key="yearHeader">Year</span>
-                                                <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>">
-                                                <br>
-                                                <span class="lang" key="gradeHeader">Grade</span>
-                                                <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
-                                                <br>
-                                                <span class="lang" key="testtypeHeader">Testtype</span>
-                                                <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
-                                                <br>
-                                                <span class="lang" key="referenceHeader">Reference</span>
-                                                <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
-                                                <br>
-                                                <span class="lang" key="textbookHeader">Textbook</span>
-                                                <input type="text" name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"?>" value="<?php echo "$textbook"?>">
-                                                <br>
-                                                <span class="lang" key="lessonHeader" >Lesson</span>
-                                                <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
-                                                <br>
-                                                <span class="lang" key="knowledgeHeader">Knowledge</span>
-                                                <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>">
-                                                <br>
-                                                <span class="lang" key="difficultyHeader">Difficulty</span>
-                                                <select id="difficulty-<?php echo "$difficulty"?>" name="difficulty" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
-                                                   <option class="lang" key="hard" >Hard</option>
-                                                   <option class="lang" key="medium" >Medium</option>
-                                                   <option class="lang" key="easy">Easy</option>
-                                                </select>
-                                                <!--  <input type="text" name="difficulty" placeholder="Difficulty" id="difficulty-<?php echo "$difficulty"?>" value="<?php echo "$difficulty"?>"> -->
-                                                <br>
-                                                <span class="lang" key = "questionHeader">Question</span>
-                                                <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>">
-                                                <br>
-                                                <span class="lang" key = "answerHeader">Answer</span>
-                                                <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>">
-                                                <br>
-                                             </div>
-                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
-                                                <input type="submit" onclick="updatedata(<?php echo "$id"?>)" id="update" name="update" value="update" class="btn btn-primary lang"  key="saveButton">
-                                             </div>
-                                          </form>
-                                       </div>
-                                    </div>
+            <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
+            <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
+            <a class="btn btn-default" style="margin:10px;" href="manageinteraction.php" role="button">Manage Interaction</a>
+            <a class="btn btn-default" style="margin:10px;" href="managesentence.php" role="button">Manage Sentence</a>
+            <a class="btn btn-default" style="margin:10px;" href="managereadingmu.php" role="button">Manage Reading Multi (wanxing)</a>
+            <a class="btn btn-default" style="margin:10px;" href="managereading.php" role="button">Manage Reading</a>
+            <a class="btn btn-default" style="margin:10px;" href="managereadingmi.php" role="button">Manage Reading Mission</a>
+            <a class="btn btn-default" style="margin:10px;" href="managetranslation.php" role="button">Manage Translation</a>
+            <a class="btn btn-default" style="margin:10px;" href="managelistening.php" role="button">Manage Listening</a>
+            <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
+            <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
+         </div>
+         <h1>Manage Fill Blank</h1>
+         <br>
+         <div id="fill_blanktable">
+            <?php
+               $db = mysql_connect('localhost','root','password')
+                or die('Error connecting to MySQL server.');
+                @mysql_select_db("test", $db);
+                $sql = "SELECT * FROM test.fill_blank";
+                $result = mysql_query($sql);
+               
+               ?>
+            <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
+            <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
+            <?php
+               $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
+               $all = mysql_fetch_array( mysql_query($count) );
+               echo "There are ",$all[0]," questions"; ?>
+            <hr>
+            <table class="table table-hover" id="myTable">
+               <thead>
+                  <tr>
+                     <th style="cursor:pointer;" onclick="sortTable(0)">#</th>
+                     <th style="cursor:pointer;" onclick="sortTable(1)" class="lang" key="yearHeader">Year</th>
+                     <th style="cursor:pointer;" onclick="sortTable(2)" class="lang" key="gradeHeader">Grade</th>
+                     <th style="cursor:pointer;" onclick="sortTable(3)" class="lang" key="testtypeHeader">Testtype</th>
+                     <th style="cursor:pointer;" onclick="sortTable(4)" class="lang" key="referenceHeader">Reference</th>
+                     <th style="cursor:pointer;" onclick="sortTable(5)" class="lang" key="textbookHeader">Textbook</th>
+                     <th style="cursor:pointer;" onclick="sortTable(6)" class="lang" key="lessonHeader">Lesson</th>
+                     <th style="cursor:pointer;" onclick="sortTable(7)" class="lang" key="knowledgeHeader">Knowledge</th>
+                     <th style="cursor:pointer;" onclick="sortTable(8)" class="lang" key="difficultyHeader">Difficulty</th>
+                     <th style="cursor:pointer;" onclick="sortTable(9)" class="lang" key="questionHeader">Question</th>
+                     <th style="cursor:pointer;" onclick="sortTable(10)" class="lang" key="answerHeader">Answer</th>
+                     <th style="cursor:pointer;" onclick="sortTable(11)" class="lang" key="dateHeader">Date</th>
+                     <th class="lang" key="manipulationHeader">Manipulation</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <?php
+                     while( $row = mysql_fetch_array($result))
+                     {
+                     $id = $row['idfill_blank'];
+                     $year = $row['year'];
+                     $grade = $row['grade'];
+                     $testtype = $row['testtype'];
+                     $reference = $row['reference'];
+                     $textbook = $row['textbook'];
+                     $lesson = $row['lesson'];
+                     $knowledge = $row['knowledge'];
+                     $difficulty = $row['difficulty'];
+                     $question = $row['question'];
+                     $answer = $row['answer'];
+                     $date = $row['date'];
+                     ?>
+                  <tr>
+                     <td><?php echo "$id" ?></td>
+                     <td><?php echo "$year" ?></td>
+                     <td><?php echo "$grade" ?></td>
+                     <td><?php echo "$testtype" ?></td>
+                     <td><?php echo "$reference" ?></td>
+                     <td><?php echo "$textbook" ?></td>
+                     <td><?php echo "$lesson" ?></td>
+                     <td><?php echo "$knowledge" ?></td>
+                     <td class="difficultyTd"><?php echo "$difficulty" ?></td>
+                     <td><?php echo "$question" ?></td>
+                     <td><?php echo "$answer" ?></td>
+                     <td><?php echo "$date" ?></td>
+                     <td>
+                        <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" >Edit </button>
+                        <button type="button"  data-toggle="modal" data-target="#delete-<?php echo "$id"?>"
+                           class="btn btn-danger delete-b lang" key="deleteButton"  id="<?php echo "$id" ?>">Delete</button>
+                        <!-- Modal -->
+                        <div class="modal fade largeModal" id="myModal-<?php echo "$id"?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo "$id"?>">
+                           <div class="modal-dialog " role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title lang" id="myModalLabel-<?php echo "$id"?>" key="editQuestionLabel">Edit Question</h4>
                                  </div>
-                                 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="delete-<?php echo "$id"?>">
-                                    <div class="modal-dialog" role="document">
-                                       <div class="modal-content">
-                                          <div class="modal-header">
-                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                             <h4 class="modal-title lang" id="myModalLabel" key="deleteQuestion">Delete Question</h4>
-                                          </div>
-                                          <form method="post">
-                                             <input type="hidden" name="idd" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
-                                             <div class="modal-body lang" key="deleteRemindMessage">
-                                                Are you sure to delete?
-                                             </div>
-                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default lang" data-dismiss="modal" key="closeButton">Close</button>
-                                                <input type="submit"  id="delete-btn" name="delete" value="Delete" class="btn btn-danger delete-btn lang" key="deleteButton">
-                                          </form>
-                                          </div>
-                                       </div>
+                                 <form method="post">
+                                    <div class="modal-body">
+                                       <input type="hidden" name="idx" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
+                                       <span class="lang" key="yearHeader">Year</span>
+                                       <!-- <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>"> -->
+                                       <select type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>">
+                                          <option <?php if ($year == 2000) echo "selected"?> value="2000"> 2000</option>
+                                          <option <?php if ($year == 2001) echo "selected"?> value="2001">2001</option>
+                                          <option <?php if ($year == 2002) echo "selected"?> value="2002">2002</option>
+                                          <option <?php if ($year == 2003) echo "selected"?> value="2003">2003</option>
+                                          <option <?php if ($year == 2004) echo "selected"?> value="2004">2004</option>
+                                          <option <?php if ($year == 2005) echo "selected"?> value="2005">2005</option>
+                                          <option <?php if ($year == 2006) echo "selected"?> value="2006">2006</option>
+                                          <option <?php if ($year == 2007) echo "selected"?> value="2007">2007</option>
+                                          <option <?php if ($year == 2008) echo "selected"?> value="2008">2008</option>
+                                          <option <?php if ($year == 2009) echo "selected"?> value="2009">2009</option>
+                                          <option <?php if ($year == 2010) echo "selected"?> value="2010">2010</option>
+                                          <option <?php if ($year == 2011) echo "selected"?> value="2011">2011</option>
+                                          <option <?php if ($year == 2012) echo "selected"?> value="2012">2012</option>
+                                          <option <?php if ($year == 2013) echo "selected"?> value="2013">2013</option>
+                                          <option <?php if ($year == 2014) echo "selected"?> value="2014">2014</option>
+                                          <option <?php if ($year == 2015) echo "selected"?> value="2015">2015</option>
+                                          <option <?php if ($year == 2016) echo "selected"?> value="2016">2016</option>
+                                          <option <?php if ($year == 2017) echo "selected"?> value="2017">2017</option>
+                                       </select>
+                                       <br>
+                                       <span class="lang" key="gradeHeader">Grade</span>
+                                       <!--  <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>"> -->
+                                       <select name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
+                                          <option <?php if ($grade == 1) echo "selected"?> value="1">1</option>
+                                          <option <?php if ($grade == 2) echo "selected"?> value="2">2</option>
+                                          <option <?php if ($grade == 3) echo "selected"?> value="3">3</option>
+                                          <option <?php if ($grade == 4) echo "selected"?> value="4">4</option>
+                                          <option <?php if ($grade == 5) echo "selected"?> value="5">5</option>
+                                          <option <?php if ($grade == 6) echo "selected"?> value="6">6</option>
+                                          <option <?php if ($grade == 7) echo "selected"?> value="7">7</option>
+                                          <option <?php if ($grade == 8) echo "selected"?> value="8">8</option>
+                                          <option <?php if ($grade == 9) echo "selected"?> value="9">9</option>
+                                          <option <?php if ($grade == 10) echo "selected"?> value="10">10</option>
+                                          <option <?php if ($grade == 11) echo "selected"?> value="11">11</option>
+                                          <option <?php if ($grade == 12) echo "selected"?> value="12">12</option>
+                                       </select>
+                                       <br>
+                                       <span class="lang" key="testtypeHeader">Testtype</span>
+                                       <!--  <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>"> -->
+                                       <select name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
+                                          <?php
+                                             mysql_select_db("tags", $db);
+                                                   $sqltags = "SELECT * FROM tags.testtypetags";
+                                                   $resulttags = mysql_query($sqltags);
+                                                        while( $row = mysql_fetch_array($resulttags))
+                                                        {
+                                                        $testtypetags = $row['testtype'];
+                                                        ?>
+                                          <option class="lang" key="<?php echo "$testtype" ?>" <?php if ($testtype == $testtypetags) echo "selected"?> value="<?php echo "$testtype" ?>"><?php echo "$testtypetags" ?></option>
+                                          <?php
+                                             }
+                                              ?>
+                                       </select>
+                                       <br>
+                                       <span class="lang" key="referenceHeader">Reference</span>
+                                       <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
+                                       <br>
+                                       <span class="lang" key="textbookHeader">Textbook</span>
+                                       <!-- <input type="text" name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"?>" value="<?php echo "$textbook"?>"> -->
+                                       <select  name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"; ?>" value="<?php echo "$textbook"?>">
+                                          <?php               mysql_select_db("tags", $db);
+                                             $sqltags = "SELECT * FROM tags.textbooktags";
+                                             $resulttags = mysql_query($sqltags);
+                                                  while( $row = mysql_fetch_array($resulttags))
+                                                  {
+                                                  $textbooktags = $row['textbook'];
+                                                  ?>
+                                          <option class="lang" key="<?php echo "$textbook" ?>" <?php if ($textbook == $textbooktags) echo "selected"?> value="<?php echo "$testtypetags" ?>"><?php echo "$textbook" ?></option>
+                                          <?php
+                                             }
+                                              ?>
+                                       </select>
+                                       <br>
+                                       <span class="lang" key="lessonHeader" >Lesson</span>
+                                       <!-- <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>"> -->
+                                       <select  name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
+                                          <option <?php if ($lesson == 1) echo "selected"?> value="1">1</option>
+                                          <option <?php if ($lesson == 2) echo "selected"?> value="2">2</option>
+                                          <option <?php if ($lesson == 3) echo "selected"?> value="3">3</option>
+                                          <option <?php if ($lesson == 4) echo "selected"?> value="4">4</option>
+                                          <option <?php if ($lesson == 5) echo "selected"?> value="5">5</option>
+                                          <option <?php if ($lesson == 6) echo "selected"?> value="6">6</option>
+                                          <option <?php if ($lesson == 7) echo "selected"?> value="7">7</option>
+                                          <option <?php if ($lesson == 8) echo "selected"?> value="8">8</option>
+                                          <option <?php if ($lesson == 9) echo "selected"?> value="9">9</option>
+                                          <option <?php if ($lesson == 10) echo "selected"?> value="10">10</option>
+                                          <option <?php if ($lesson == 11) echo "selected"?> value="11">11</option>
+                                          <option <?php if ($lesson == 12) echo "selected"?> value="12">12</option>
+                                          <option <?php if ($lesson == 13) echo "selected"?> value="13">13</option>
+                                          <option <?php if ($lesson == 14) echo "selected"?> value="14">14</option>
+                                          <option <?php if ($lesson == 15) echo "selected"?> value="15">15</option>
+                                          <option <?php if ($lesson == 16) echo "selected"?> value="16">16</option>
+                                       </select>
+                                       <br>
+                                       <span class="lang" key="knowledgeHeader">Knowledge</span>
+                                       <!-- <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>"> -->
+                                       <select name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>" >
+                                          <?php             mysql_select_db("tags", $db);
+                                             $sqltags = "SELECT * FROM tags.knowledgetags";
+                                             $resulttags = mysql_query($sqltags);
+                                                  while( $row = mysql_fetch_array($resulttags))
+                                                  {
+                                                  $knowledgetags = $row['knowledge'];
+                                                  ?>
+                                          <option class="lang" key="<?php echo "$knowledge" ?>" <?php if ($knowledge == $knowledgetags) echo "selected"?> value="<?php echo "$knowledgetags" ?>"><?php echo "$knowledge" ?></option>
+                                          <?php
+                                             }
+                                              ?>
+                                       </select>
+                                       <br>
+                                       <span class="lang" key="difficultyHeader">Difficulty</span>
+                                       <select id="difficulty-<?php echo "$difficulty"?>" name="difficulty" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
+                                          <option class="lang" key="hard" <?php if ($difficulty == Hard) echo "selected"?> value="Hard">Hard</option>
+                                          <option class="lang" key="medium" <?php if ($difficulty == Medium) echo "selected"?> value="Medium">Medium</option>
+                                          <option class="lang" key="easy" <?php if ($difficulty == Easy) echo "selected"?> value="Easy">Easy</option>
+                                       </select>
+                                       <!--  <input type="text" name="difficulty" placeholder="Difficulty" id="difficulty-<?php echo "$difficulty"?>" value="<?php echo "$difficulty"?>"> -->
+                                       <hr>
+                                       <span class="lang" key = "questionHeader">Question</span>
+                                       <!-- <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>"> -->
+                                       <textarea rows="4" type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>"></textarea>
+                                       <br>
+                                       <span class="lang" key = "answerHeader">Answer</span>
+                                       <!-- <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>"> -->
+                                       <textarea rows="4" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>"></textarea>
+                                       <br>
                                     </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
+                                       <input type="submit" onclick="updatedata(<?php echo "$id"?>)" id="update" name="update" value="update" class="btn btn-primary lang"  key="saveButton">
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="delete-<?php echo "$id"?>">
+                           <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title lang" id="myModalLabel" key="deleteQuestion">Delete Question</h4>
                                  </div>
-                                 <!--
-                                    echo "<tr>";
-                                    echo "<td>$id</td>";
-                                    echo "<td>$year</td>";
-                                    echo "<td>$grade</td>";
-                                    echo "<td>$testtype</td>";
-                                    echo "<td>$reference</td>";
-                                    echo "<td>$textbook</td>";
-                                    echo "<td>$lesson</td>";
-                                    echo "<td>$knowledge</td>";
-                                    echo "<td>$difficulty</td>";
-                                    echo "<td>$question</td>";
-                                    echo "<td>$answer</td>";
-                                    echo "<td>$date</td>";
-                                    echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal" key="editButton" ';
-                                    echo 'id="';
-                                    echo "$id";
-                                    echo '">Edit</button>';
-                                    echo '<button type="button"  data-toggle="modal" data-target=".bs-example-modal-sm"
-                                    class="btn btn-danger delete-b lang" key="deleteButton"  id="';
-                                    echo "$id";
-                                    echo '">Delete</button></td></tr>';-->
-                                 <?php
-                                    }
-                                    ?>
-                                 <!-- <?php
-                                    if (isset($_GET['idd'])){
-                                    $idd = $_GET['idd'];
-                                    $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
-                                    echo '<script> window.location.href="manage.php"; </script>';
-                                    }
-                                    ?> -->
-                        </tbody>
-                     </table>
-                     <hr>
-                     <!--       <script language="javascript" type="text/javascript">
-                        //$(document).ready(function(){
-                        		$('.delete-b').click(function(){
-                        		var var_id =$(this).attr('id');
-                        		// alert(a);
-                        var strLink = "manage.php?idd=" + var_id;
-                        document.getElementById("delete-btn").setAttribute("href",strLink);
-                        		});
-                        //});
-                        
-                        
-                        </script>-->
-                     <?php
-                        if (isset($_POST['delete'])){
-                        $iddd = $_POST['idd'];
-                        $res = mysql_query("DELETE FROM test.fill_blank WHERE idfill_blank='$iddd'");
-                        mysql_query(" ALTER TABLE test.fill_blank DROP `idfill_blank`");
-                        mysql_query("ALTER TABLE test.fill_blank  AUTO_INCREMENT = 1");
-                        mysql_query("ALTER TABLE test.fill_blank  ADD `idfill_blank` int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST");
-                        if(! $res){
-                        die('Could not update data: ' . mysql_error());
-                        }
-                        echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managefillblank.php"; </script>';
-                        }
+                                 <form method="post">
+                                    <input type="hidden" name="idd" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
+                                    <div class="modal-body lang" key="deleteRemindMessage">
+                                       Are you sure to delete?
+                                    </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-default lang" data-dismiss="modal" key="closeButton">Close</button>
+                                       <input type="submit"  id="delete-btn" name="delete" value="Delete" class="btn btn-danger delete-btn lang" key="deleteButton">
+                                 </form>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!--
+                           echo "<tr>";
+                           echo "<td>$id</td>";
+                           echo "<td>$year</td>";
+                           echo "<td>$grade</td>";
+                           echo "<td>$testtype</td>";
+                           echo "<td>$reference</td>";
+                           echo "<td>$textbook</td>";
+                           echo "<td>$lesson</td>";
+                           echo "<td>$knowledge</td>";
+                           echo "<td>$difficulty</td>";
+                           echo "<td>$question</td>";
+                           echo "<td>$answer</td>";
+                           echo "<td>$date</td>";
+                           echo ' <td><button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal" key="editButton" ';
+                           echo 'id="';
+                           echo "$id";
+                           echo '">Edit</button>';
+                           echo '<button type="button"  data-toggle="modal" data-target=".bs-example-modal-sm"
+                           class="btn btn-danger delete-b lang" key="deleteButton"  id="';
+                           echo "$id";
+                           echo '">Delete</button></td></tr>';-->
+                        <?php
+                           }
                            ?>
-                     <?php
-                        if (isset($_POST['update'])){
-                         $db = mysql_connect('localhost','root','password');
-                        //    $key = $_GET['key'];
-                         mysql_select_db('test');
-                         $id = $_POST['idx'];
-                         $year = $_POST['year'];
-                         $grade = $_POST['grade'];
-                         $testtype = $_POST['testtype'];
-                        $reference = $_POST['reference'];
-                        $textbook = $_POST['textbook'];
-                         $lesson = $_POST['lesson'];
-                         $knowledge = $_POST['knowledge'];
-                        $difficulty = $_POST['difficulty'];
-                          $question = $_POST['question'];
-                         $answer = $_POST['answer'];
-                        $date = date('Y-m-d');
-                        $yearString =  mysql_real_escape_string($year);
-                        $gradeString = mysql_real_escape_string($grade);
-                        $testtypeString = mysql_real_escape_string($testtype);
-                        $referenceString = mysql_real_escape_string($reference);
-                        $textbookString =  mysql_real_escape_string($textbook);
-                        $lessonString =  mysql_real_escape_string($lesson);
-                        $knowledgeString = mysql_real_escape_string($knowledge);
-                        $difficultyString = mysql_real_escape_string($difficulty);
-                        $questionString = mysql_real_escape_string($question);
-                        $answerString = mysql_real_escape_string($answer);
-                        
-                        $sqll = "UPDATE test.fill_blank ".
-                              "SET
-                              year = '$yearString',
-                              grade = '$gradeString',
-                              testtype = '$testtypeString',
-                              reference = '$referenceString',
-                              textbook = '$textbookString',
-                              lesson = '$lessonString',
-                              knowledge = '$knowledgeString',
-                              difficulty = '$difficultyString',
-                              question = '$questionString',
-                              answer = '$answerString',
-                              date = '$date'".
-                              "WHERE idfill_blank='$id'";
-                        
-                              $retval = mysql_query( $sqll, $db);
-                               if(! $retval){
-                         die('Could not update data: ' . mysql_error());
-                        }
-                        echo "Updated data successfully\n";
-                        echo '<script> window.location.href="managefillblank.php"; </script>';
-                            }
-                            mysql_close('db');
-                         ?>
-                         </div>
+                        <!-- <?php
+                           if (isset($_GET['idd'])){
+                           $idd = $_GET['idd'];
+                           $res = mysql_query("DELETE FROM test.fill_blank WHERE idnew_table='$idd'");
+                           echo '<script> window.location.href="manage.php"; </script>';
+                           }
+                           ?> -->
+               </tbody>
+            </table>
+            <hr>
+            <!--       <script language="javascript" type="text/javascript">
+               //$(document).ready(function(){
+               		$('.delete-b').click(function(){
+               		var var_id =$(this).attr('id');
+               		// alert(a);
+               var strLink = "manage.php?idd=" + var_id;
+               document.getElementById("delete-btn").setAttribute("href",strLink);
+               		});
+               //});
+               
+               
+               </script>-->
+            <?php
+               if (isset($_POST['delete'])){
+               $iddd = $_POST['idd'];
+               $res = mysql_query("DELETE FROM test.fill_blank WHERE idfill_blank='$iddd'");
+               mysql_query(" ALTER TABLE test.fill_blank DROP `idfill_blank`");
+               mysql_query("ALTER TABLE test.fill_blank  AUTO_INCREMENT = 1");
+               mysql_query("ALTER TABLE test.fill_blank  ADD `idfill_blank` int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST");
+               if(! $res){
+               die('Could not update data: ' . mysql_error());
+               }
+               echo "Updated data successfully\n";
+               echo '<script> window.location.href="managefillblank.php"; </script>';
+               }
+                  ?>
+            <?php
+               if (isset($_POST['update'])){
+                $db = mysql_connect('localhost','root','password');
+               //    $key = $_GET['key'];
+                mysql_select_db('test');
+                $id = $_POST['idx'];
+                $year = $_POST['year'];
+                $grade = $_POST['grade'];
+                $testtype = $_POST['testtype'];
+               $reference = $_POST['reference'];
+               $textbook = $_POST['textbook'];
+                $lesson = $_POST['lesson'];
+                $knowledge = $_POST['knowledge'];
+               $difficulty = $_POST['difficulty'];
+                 $question = $_POST['question'];
+                $answer = $_POST['answer'];
+               $date = date('Y-m-d');
+               $yearString =  mysql_real_escape_string($year);
+               $gradeString = mysql_real_escape_string($grade);
+               $testtypeString = mysql_real_escape_string($testtype);
+               $referenceString = mysql_real_escape_string($reference);
+               $textbookString =  mysql_real_escape_string($textbook);
+               $lessonString =  mysql_real_escape_string($lesson);
+               $knowledgeString = mysql_real_escape_string($knowledge);
+               $difficultyString = mysql_real_escape_string($difficulty);
+               $questionString = mysql_real_escape_string($question);
+               $answerString = mysql_real_escape_string($answer);
+               
+               $sqll = "UPDATE test.fill_blank ".
+                     "SET
+                     year = '$yearString',
+                     grade = '$gradeString',
+                     testtype = '$testtypeString',
+                     reference = '$referenceString',
+                     textbook = '$textbookString',
+                     lesson = '$lessonString',
+                     knowledge = '$knowledgeString',
+                     difficulty = '$difficultyString',
+                     question = '$questionString',
+                     answer = '$answerString',
+                     date = '$date'".
+                     "WHERE idfill_blank='$id'";
+               
+                     $retval = mysql_query( $sqll, $db);
+                      if(! $retval){
+                die('Could not update data: ' . mysql_error());
+               }
+               echo "Updated data successfully\n";
+               echo '<script> window.location.href="managefillblank.php"; </script>';
+                   }
+                   mysql_close('db');
+                ?>
+         </div>
          <div class="footer">
             <p>
                &copy;
@@ -361,7 +455,6 @@
          </div>
       </div>
       <!-- /container -->
-  
       <hr>
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
