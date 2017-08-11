@@ -287,11 +287,11 @@
                                        <hr>
                                        <span class="lang" key = "questionHeader">Question</span>
                                        <!-- <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>"> -->
-                                       <textarea rows="4" type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>"></textarea>
+                                       <textarea rows="4" type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value=""><?php echo "$question"?></textarea>
                                        <br>
                                        <span class="lang" key = "answerHeader">Answer</span>
                                        <!-- <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>"> -->
-                                       <textarea rows="4" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>"></textarea>
+                                       <textarea rows="4" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value=""><?php echo "$answer"?></textarea>
                                        <br>
                                     </div>
                                     <div class="modal-footer">
