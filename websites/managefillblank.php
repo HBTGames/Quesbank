@@ -46,6 +46,12 @@
          .modal.fade {
          top: -100%;
          }
+         
+         .modal.largeModal{
+         width:70% !important;
+         margin-left:-500px;
+         
+         }
       </style>
       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -163,6 +169,9 @@
                                  </div>
                                  <form method="post">
                                     <div class="modal-body">
+                                    <span name="inputs" id="inputs">
+                                    <h3>References</h3>
+                              <hr>
                                        <input type="hidden" name="idx" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
                                        <span class="lang" key="yearHeader">Year</span>
                                        <!-- <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>"> -->
@@ -186,7 +195,7 @@
                                           <option <?php if ($year == 2016) echo "selected"?> value="2016">2016</option>
                                           <option <?php if ($year == 2017) echo "selected"?> value="2017">2017</option>
                                        </select>
-                                       <br>
+                                    
                                        <span class="lang" key="gradeHeader">Grade</span>
                                        <!--  <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>"> -->
                                        <select name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
@@ -203,7 +212,7 @@
                                           <option <?php if ($grade == 11) echo "selected"?> value="11">11</option>
                                           <option <?php if ($grade == 12) echo "selected"?> value="12">12</option>
                                        </select>
-                                       <br>
+            
                                        <span class="lang" key="testtypeHeader">Testtype</span>
                                        <!--  <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>"> -->
                                        <select name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
@@ -220,7 +229,7 @@
                                              }
                                               ?>
                                        </select>
-                                       <br>
+                                       
                                        <span class="lang" key="referenceHeader">Reference</span>
                                        <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
                                        <br>
@@ -239,7 +248,7 @@
                                              }
                                               ?>
                                        </select>
-                                       <br>
+                                    
                                        <span class="lang" key="lessonHeader" >Lesson</span>
                                        <!-- <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>"> -->
                                        <select  name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
@@ -260,7 +269,7 @@
                                           <option <?php if ($lesson == 15) echo "selected"?> value="15">15</option>
                                           <option <?php if ($lesson == 16) echo "selected"?> value="16">16</option>
                                        </select>
-                                       <br>
+                                    
                                        <span class="lang" key="knowledgeHeader">Knowledge</span>
                                        <!-- <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>"> -->
                                        <select name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>" >
@@ -276,7 +285,7 @@
                                              }
                                               ?>
                                        </select>
-                                       <br>
+                                
                                        <span class="lang" key="difficultyHeader">Difficulty</span>
                                        <select id="difficulty-<?php echo "$difficulty"?>" name="difficulty" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
                                           <option class="lang" key="hard" <?php if ($difficulty == Hard) echo "selected"?> value="Hard">Hard</option>
@@ -284,15 +293,17 @@
                                           <option class="lang" key="easy" <?php if ($difficulty == Easy) echo "selected"?> value="Easy">Easy</option>
                                        </select>
                                        <!--  <input type="text" name="difficulty" placeholder="Difficulty" id="difficulty-<?php echo "$difficulty"?>" value="<?php echo "$difficulty"?>"> -->
-                                       <hr>
-                                       <span class="lang" key = "questionHeader">Question</span>
+                                       <h3>Q & A</h3>
+                              <hr>
+                                      <!-- <span class="lang" key = "questionHeader">Question</span> -->
                                        <!-- <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>"> -->
                                        <textarea rows="4" type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value=""><?php echo "$question"?></textarea>
-                                       <br>
-                                       <span class="lang" key = "answerHeader">Answer</span>
+                                       
+                                      <!-- <span class="lang" key = "answerHeader">Answer</span> -->
                                        <!-- <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>"> -->
                                        <textarea rows="4" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value=""><?php echo "$answer"?></textarea>
                                        <br>
+                                       </span>
                                     </div>
                                     <div class="modal-footer">
                                        <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
