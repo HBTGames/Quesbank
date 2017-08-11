@@ -85,20 +85,22 @@
             <div class="tab-content">
                <div role="tabpanel" class="tab-pane fade in active" id="fill_blank">
                   <div id="addfillblank">
-                     <div  class="addAquestion">
+
                         <?php
                            $db = mysql_connect('localhost','root','password')
                             or die('Error connecting to MySQL server.');
                             //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                           
+
                            ?>
                         <form method="post">
                            <span name="inputs" id="inputs">
+                             <span name="firstInput">
+                            <div  class="addAquestion">
                               <h3>References</h3>
                               <hr>
                               <span>Year</span>
                            <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
-                              <select id="year" class="yearInput" name="year[]" type="text" placeholder="Year">
+                              <select id="year" class="yearInputFillBlank" name="year[]" type="text" placeholder="Year">
                             <option>2000</option>
                              <option>2001</option>
                               <option>2002</option>
@@ -115,11 +117,11 @@
  <option>2013</option>
   <option>2014</option>
    <option>2015</option> <option>2016</option> <option>2017</option>
-                              
+
                               </select>
                               <span>Grade</span>
                              <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
-                             <select id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade">
+                             <select id="grade" class="gradeInputFillBlank" name="grade[]" type="text" placeholder="Grade">
                             <option>1</option>
                              <option>2</option>
                               <option>3</option>
@@ -132,11 +134,11 @@
  <option>10</option>
  <option>11</option>
  <option>12</option>
-                              
+
                               </select>
                               <span>Testtype</span>
                               <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
-                              <select id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype">
+                              <select id="testtype" class="testtypeInputFillBlank" name="testtype[]" type="text" placeholder="Testtype">
                                  <?php
                                     $db = mysql_connect('localhost','root','password')
                                                       or die('Error connecting to MySQL server.');
@@ -148,15 +150,15 @@
                                                            $testtype = $row['testtype'];
                                                            ?>
                                  <option class="lang" key="<?php echo "$testtype" ?>"><?php echo "$testtype" ?></option>
-                                 <?php 
+                                 <?php
                                     }
                                      ?>
                               </select>
                               <span>Reference</span>
-                              <input id="reference" class="referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
+                              <input id="reference" class="referenceInputFillBlank" name="reference[]" type="text" placeholder="Reference" ><br>
                               <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
                               <span>Textbook</span>
-                              <select id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook">
+                              <select id="textbook" class="textbookInputFillBlank" name="textbook[]" type="text" placeholder="Textbook">
                                  <?php
                                     $db = mysql_connect('localhost','root','password')
                                                       or die('Error connecting to MySQL server.');
@@ -168,13 +170,13 @@
                                                            $textbook = $row['textbook'];
                                                            ?>
                                  <option class="lang" key="<?php echo "$textbook" ?>"><?php echo "$textbook" ?></option>
-                                 <?php 
+                                 <?php
                                     }
                                      ?>
                               </select>
                               <span>Lesson</span>
                               <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
-                              <select id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson">
+                              <select id="lesson" class="lessonInputFillBlank" name="lesson[]" type="text" placeholder="Lesson">
                             <option>1</option>
                              <option>2</option>
                               <option>3</option>
@@ -191,11 +193,11 @@
    <option>14</option>
     <option>15</option>
      <option>16</option>
-                              
+
                               </select>
                               <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
                               <span>Knowledge</span>
-                              <select id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" >
+                              <select id="knowledge" class="knowledgeInputFillBlank" name="knowledge[]" type="text" placeholder="Knowledge" >
                                  <?php
                                     $db = mysql_connect('localhost','root','password')
                                                       or die('Error connecting to MySQL server.');
@@ -207,24 +209,30 @@
                                                            $knowledge = $row['knowledge'];
                                                            ?>
                                  <option class="lang" key="<?php echo "$knowledge" ?>"><?php echo "$knowledge" ?></option>
-                                 <?php 
+                                 <?php
                                     }
                                      ?>
                               </select>
                               <span>Difficulty</span>
-                              <select id="difficulty" class="difficultyInput" name="difficulty[]" type="text" placeholder="difficulty">
+                              <select id="difficulty" class="difficultyInputFillBlank" name="difficulty[]" type="text" placeholder="difficulty">
                                  <option class="lang" key="hard">Hard</option>
                                  <option class="lang" key="medium">Medium</option>
                                  <option class="lang" key="easy">Easy</option>
                               </select>
                               <h3>Q & A </h3>
                               <hr>
-                              <textarea rows="4" id="question" class="questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
-                              <textarea rows="4" id="answer" class="answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                              <textarea rows="4" id="question" class="questionInputFillBlank" name="question[]" type="text" placeholder="Question" ></textarea>
+                              <textarea rows="4" id="answer" class="answerInputFillBlank" name="answer[]" type="text" placeholder="Answer" ></textarea>
                               <br>
                               <hr>
+                              <span id="deleteInputButton">
+                               <button type="button" name="deleteInput"  value="0" onclick="deleteInputs(this.value)" >Delete Input</button>
+                              </span>
+
+                              </div>
+                              </span>
                            </span>
-                     </div>
+
                      <input name="add" type="submit" id="add" value="Submit Question" >
                      <br>
                      </form>
@@ -243,7 +251,7 @@
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -278,15 +286,15 @@
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.fill_blank
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -295,7 +303,7 @@
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -307,7 +315,7 @@
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs">
@@ -326,7 +334,7 @@
                                                         $testtype = $row['testtype'];
                                                         ?>
                               <option class="lang" key="<?php echo "$testtype" ?>"><?php echo "$testtype" ?></option>
-                              <?php 
+                              <?php
                                  }
                                   ?>
                            </select>
@@ -344,7 +352,7 @@
                                                         $textbook = $row['textbook'];
                                                         ?>
                               <option class="lang" key="<?php echo "$textbook" ?>"><?php echo "$textbook" ?></option>
-                              <?php 
+                              <?php
                                  }
                                   ?>
                            </select>
@@ -362,7 +370,7 @@
                                                         $textbook = $row['knowledge'];
                                                         ?>
                               <option class="lang" key="<?php echo "$knowledge" ?>"><?php echo "$knowledge" ?></option>
-                              <?php 
+                              <?php
                                  }
                                   ?>
                            </select>
@@ -393,7 +401,7 @@
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -428,15 +436,15 @@
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.multi_choice
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -445,7 +453,7 @@
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -502,82 +510,162 @@
       <script src="../assets/js/bootstrap-typeahead.js"></script>
       <script type="text/javascript">
          //script for adding inputs
-         var defaultInputNumber = 1;
+         var TotalInput = 0;
          var defaultInputHtml;
          var tagSelect;
-         
+
+
          function setDefaultInputHtml(){
-             defaultInputHtml   =  document.getElementsByName("inputs")[0].innerHTML;
+           document.getElementsByName("deleteInput")[0].value = TotalInput + 1;
+             defaultInputHtml   =  document.getElementsByName("firstInput")[0].innerHTML;
+          document.getElementsByName("deleteInput")[0].value = TotalInput;
          }
-         
+
+//structure to memorize
+var currentYearInputsFillBlank = [];
+var currentGradeInputsFillBlank  = [];
+var currentTestTypeInputsFillBlank = [];
+var currentReferenceInputsFillBlank = [];
+var currentTextBookInputsFillBlank = [];
+var currentLessonInputsFillBlank =[];
+var currentKnowledgeInputsFillBlank = [];
+var currentDiffInputsFillBlank = [];
+var currentQuestionInputsFillBlank = [];
+var currentAnswerInputsFillBlank = [];
+
+function storeCurrentInput (){
+//store fillblank
+ currentYearInputsFillBlank = [];
+ currentGradeInputsFillBlank  = [];
+ currentTestTypeInputsFillBlank = [];
+ currentReferenceInputsFillBlank = [];
+currentTextBookInputsFillBlank = [];
+ currentLessonInputsFillBlank =[];
+ currentKnowledgeInputsFillBlank = [];
+  currentDiffInputsFillBlank = [];
+ currentQuestionInputsFillBlank = [];
+ currentAnswerInputsFillBlank = [];
+ $('.yearInputFillBlank').each(function ( ) {
+currentYearInputsFillBlank.push($(this).val());
+ });
+
+ $('.gradeInputFillBlank').each(function ( ) {
+currentGradeInputsFillBlank.push($(this).val());
+ });
+
+ $('.testtypeInputFillBlank').each(function ( ) {
+currentTestTypeInputsFillBlank.push($(this).val());
+ });
+ $('.referenceInputFillBlank').each(function ( ) {
+currentReferenceInputsFillBlank.push($(this).val());
+ });
+ $('.textbookInputFillBlank').each(function ( ) {
+currentTextBookInputsFillBlank.push($(this).val());
+ });
+ $('.lessonInputFillBlank').each(function ( ) {
+currentLessonInputsFillBlank.push($(this).val());
+ });
+ $('.knowledgeInputFillBlank').each(function ( ) {
+currentKnowledgeInputsFillBlank.push($(this).val());
+ });
+ $('.difficultyInputFillBlank').each(function ( ) {
+currentDiffInputsFillBlank.push($(this).val());
+ });
+
+ $('.questionInputFillBlank').each(function ( ) {
+currentQuestionInputsFillBlank.push($(this).val());
+ });
+ $('.answerInputFillBlank').each(function ( ) {
+currentAnswerInputsFillBlank.push($(this).val());
+ });
+}
+
+//add input for different tags
          function addInputs(tagSelect){
-           var currentYearInputs = [];
-           var currentGradeInputs  = [];
-           var currentTestTypeInputs = [];
-           var currentReferenceInputs = [];
-           var currentTextBookInputs = [];
-           var currentLessonInputs =[];
-           var currentKnowledgeInputs = [];
-           var currentDiffInputs = [];
-           var currentQuestionInputs = [];
-           var currentAnswerInputs = [];
-         
+           setDefaultInputHtml();
+           TotalInput += 1;
+
              var currentFormContent =  document.getElementsByName("inputs")[tagSelect].innerHTML;
-         
-             $('.yearInput').each(function ( ) {
-           currentYearInputs.push($(this).val());
-             });
-         
-             $('.gradeInput').each(function ( ) {
-         currentGradeInputs.push($(this).val());
-             });
-         
-             $('.testtypeInput').each(function ( ) {
-         currentTestTypeInputs.push($(this).val());
-             });
-             $('.referenceInput').each(function ( ) {
-         currentReferenceInputs.push($(this).val());
-             });
-             $('.textbookInput').each(function ( ) {
-         currentTextBookInputs.push($(this).val());
-             });
-             $('.lessonInput').each(function ( ) {
-         currentLessonInputs.push($(this).val());
-             });
-             $('.knowledgeInput').each(function ( ) {
-         currentKnowledgeInputs.push($(this).val());
-             });
-             $('.difficultyInput').each(function ( ) {
-         currentDiffInputs.push($(this).val());
-             });
-         
-             $('.questionInput').each(function ( ) {
-         currentQuestionInputs.push($(this).val());
-             });
-             $('.answerInput').each(function ( ) {
-         currentAnswerInputs.push($(this).val());
-             });
-         
+             //fillblank
+         storeCurrentInput();
+
          document.getElementsByName("inputs")[tagSelect].innerHTML = currentFormContent + defaultInputHtml;
-         for (var i = 0; i < currentQuestionInputs.length; i++) {
-           document.getElementsByClassName("yearInput")[i].value = currentYearInputs[i];
-           document.getElementsByClassName("gradeInput")[i].value = currentGradeInputs[i];
-           document.getElementsByClassName("testtypeInput")[i].value = currentTestTypeInputs[i];
-           document.getElementsByClassName("referenceInput")[i].value = currentReferenceInputs[i];
-           document.getElementsByClassName("textbookInput")[i].value = currentTextBookInputs[i];
-           document.getElementsByClassName("lessonInput")[i].value = currentLessonInputs[i];
-             document.getElementsByClassName("knowledgeInput")[i].value = currentKnowledgeInputs[i];
-             document.getElementsByClassName("difficultyInput")[i].value = currentDiffInputs[i];
-           document.getElementsByClassName("questionInput")[i].value = currentQuestionInputs[i];
-           document.getElementsByClassName("answerInput")[i].value = currentAnswerInputs[i];
-         
+
+
+
+         //restore fillblank
+
+
+
+         for (var i = 0; i < currentYearInputsFillBlank.length; i++) {
+           document.getElementsByClassName("yearInputFillBlank")[i].value = currentYearInputsFillBlank[i];
+           document.getElementsByClassName("gradeInputFillBlank")[i].value = currentGradeInputsFillBlank[i];
+           document.getElementsByClassName("testtypeInputFillBlank")[i].value = currentTestTypeInputsFillBlank[i];
+           document.getElementsByClassName("referenceInputFillBlank")[i].value = currentReferenceInputsFillBlank[i];
+           document.getElementsByClassName("textbookInputFillBlank")[i].value = currentTextBookInputsFillBlank[i];
+           document.getElementsByClassName("lessonInputFillBlank")[i].value = currentLessonInputsFillBlank[i];
+             document.getElementsByClassName("knowledgeInputFillBlank")[i].value = currentKnowledgeInputsFillBlank[i];
+             document.getElementsByClassName("difficultyInputFillBlank")[i].value = currentDiffInputsFillBlank[i];
+           document.getElementsByClassName("questionInputFillBlank")[i].value = currentQuestionInputsFillBlank[i];
+           document.getElementsByClassName("answerInputFillBlank")[i].value = currentAnswerInputsFillBlank[i];
+
          }
-         
+
            //currentFormContent  = currentFormContent -  document.getElementsByName("add").innerHTML;
-         
-         defaultInputNumber += 1;
+
          }
-         
+
+//implement only in fillblank
+          function deleteInputs(deleteIndex){
+            storeCurrentInput();
+          if (TotalInput > 0) {
+            TotalInput -= 1;
+          }
+          finalInputNumber = TotalInput;
+          console.log("finalInputNumber");
+          console.log(finalInputNumber);
+          //reset total input;
+          TotalInput = 0;
+           document.getElementsByName("inputs")[0].innerHTML = "<span name='firstInput'>" + document.getElementsByName("firstInput")[0].innerHTML + "<\span>";
+           document.getElementsByName("deleteInput")[0].value = 0;
+  for (var i = 0; i < finalInputNumber; i++) {
+   var tempHTML = document.getElementsByName("inputs")[0].innerHTML;
+   setDefaultInputHtml();
+   TotalInput += 1;
+   document.getElementsByName("inputs")[0].innerHTML =  tempHTML + defaultInputHtml;
+}
+//for fillblank
+for (var i = 0; i <= finalInputNumber; i++) {
+  if(i < deleteIndex){
+    document.getElementsByClassName("yearInputFillBlank")[i].value = currentYearInputsFillBlank[i];
+    document.getElementsByClassName("gradeInputFillBlank")[i].value = currentGradeInputsFillBlank[i];
+    document.getElementsByClassName("testtypeInputFillBlank")[i].value = currentTestTypeInputsFillBlank[i];
+    document.getElementsByClassName("referenceInputFillBlank")[i].value = currentReferenceInputsFillBlank[i];
+    document.getElementsByClassName("textbookInputFillBlank")[i].value = currentTextBookInputsFillBlank[i];
+    document.getElementsByClassName("lessonInputFillBlank")[i].value = currentLessonInputsFillBlank[i];
+      document.getElementsByClassName("knowledgeInputFillBlank")[i].value = currentKnowledgeInputsFillBlank[i];
+      document.getElementsByClassName("difficultyInputFillBlank")[i].value = currentDiffInputsFillBlank[i];
+    document.getElementsByClassName("questionInputFillBlank")[i].value = currentQuestionInputsFillBlank[i];
+    document.getElementsByClassName("answerInputFillBlank")[i].value = currentAnswerInputsFillBlank[i];
+  }else if(i >= deleteIndex){
+    document.getElementsByClassName("yearInputFillBlank")[i].value = currentYearInputsFillBlank[i+1];
+    document.getElementsByClassName("gradeInputFillBlank")[i].value = currentGradeInputsFillBlank[i+1];
+    document.getElementsByClassName("testtypeInputFillBlank")[i].value = currentTestTypeInputsFillBlank[i+1];
+    document.getElementsByClassName("referenceInputFillBlank")[i].value = currentReferenceInputsFillBlank[i+1];
+    document.getElementsByClassName("textbookInputFillBlank")[i].value = currentTextBookInputsFillBlank[i+1];
+    document.getElementsByClassName("lessonInputFillBlank")[i].value = currentLessonInputsFillBlank[i+1];
+      document.getElementsByClassName("knowledgeInputFillBlank")[i].value = currentKnowledgeInputsFillBlank[i+1];
+      document.getElementsByClassName("difficultyInputFillBlank")[i].value = currentDiffInputsFillBlank[i+1];
+    document.getElementsByClassName("questionInputFillBlank")[i].value = currentQuestionInputsFillBlank[i+1];
+    document.getElementsByClassName("answerInputFillBlank")[i].value = currentAnswerInputsFillBlank[i+1];
+  }
+}
+
+
+          }
+
+
+
       </script>
    </body>
 </html>

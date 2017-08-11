@@ -92,9 +92,9 @@
        <?php
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
-                         
+
                         ?>
-                        
+
                         <table class="table table-bordered tagstable"  id="myTabletesttype">
                         <thead>
                         <tr>
@@ -118,7 +118,7 @@
                                     ?>
                                     <form method="post">
                                    <td> <input id="newtesttype" name="newtesttype" type="text" placeholder="NewTesttype">
-                                   
+
                                    </td>
                                     <tr>
                               <td><input value="Save" id="addtesttype" name="addtesttype" type="submit"></td></form>
@@ -137,15 +137,15 @@
     echo ' </script> ';
     echo '<script> window.location.href="manage.php"; </script>';
                                    }
-                                   
+
                                    ?>
                               </tr>
-                                
+
                         </tbody>
                         </table>
-                        
-                        
-                        
+
+
+
                         <table class="table table-bordered tagstable"  id="myTabletesttype">
                         <thead>
                         <tr>
@@ -169,7 +169,7 @@
                                     ?>
                                     <form method="post">
                                    <td> <input id="newtextbook" name="newtextbook" type="text" placeholder="NewTextbook">
-                                   
+
                                    </td>
                                     <tr>
                               <td><input value="Save" id="addtextbook" name="addtextbook" type="submit"></td></form>
@@ -188,17 +188,17 @@
     echo ' </script> ';
     echo '<script> window.location.href="manage.php"; </script>';
                                    }
-                                   
+
                                    ?>
                               </tr>
-                                
+
                         </tbody>
                         </table>
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
                         <table class="table table-bordered tagstable"  id="myTableknowledge">
                         <thead>
                         <tr>
@@ -222,7 +222,7 @@
                                     ?>
                                     <form method="post">
                                    <td> <input id="newknowledge" name="newknowledge" type="text" placeholder="NewKnowledge">
-                                   
+
                                    </td>
                                     <tr>
                               <td><input value="Save" id="addknowledge" name="addknowledge" type="submit"></td></form>
@@ -241,18 +241,18 @@
     echo ' </script> ';
     echo '<script> window.location.href="manage.php"; </script>';
                                    }
-                                   
+
                                    ?>
                               </tr>
-                                
+
                         </tbody>
                         </table>
-                        
-                
-       
+
+
+
        </div>
-       
-       
+
+
          <div class="footer">
             <p>
                &copy;
@@ -272,7 +272,7 @@
          </div>
       </div>
       <!-- /container -->
-  
+
       <hr>
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
@@ -281,8 +281,8 @@
          var strLink = "manage.php?key=" + edit_id;
          document.getElementById("update").setAttribute("href",strLink);
          });
-         
-         
+
+
          </script> -->
       <!--
          <script>
@@ -309,12 +309,12 @@
          $('#insert').val("Update");
          $('#myModal').modal('show');
          }
-         
+
          });
-         
+
          });
-         
-         
+
+
          </script> -->
       <script>
          function searchfilter() {
@@ -324,7 +324,7 @@
          filter = input.value;
          table = document.getElementById("myTable");
          tr = table.getElementsByTagName("tr");
-         
+
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
          td = tr[i].getElementsByTagName("td")[9];
@@ -337,7 +337,7 @@
          }
          }
          }
-         
+
          function searchfiltertwo() {
          // Declare variables
          var input, filter, table, tr, td, i;
@@ -345,7 +345,7 @@
          filter = input.value;
          table = document.getElementById("myTable");
          tr = table.getElementsByTagName("tr");
-         
+
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
          td = tr[i].getElementsByTagName("td")[5];
@@ -358,7 +358,7 @@
          }
          }
          }
-         
+
          function sortTable(k) {
            if (k == 0){
              var table, rows, switching, i, x, y, shouldSwitch;
@@ -414,7 +414,7 @@
          });
          });
          **/
-         
+
          /*$('.edit-b').on('click', function(){
          // Get all TD from the cliked Button
          var td = $(this).parents('tr').find('td:lt(12)');
@@ -429,7 +429,7 @@
          $('#question').val($(td[9]).text());
          $('#answer').val($(td[10]).text());
          });*/
-         
+
          function updatedata(str){
          var id = str;
          var year = $('#year-'+str).val();
@@ -442,7 +442,7 @@
          var difficulty = $('#difficulty-'+str).val();
          var question = $('#question-'+str).val();
          var answer = $('#answer-'+str).val();
-         
+
          $.ajax({
          type:"POST",
          url:"manage.php?p=edit",
@@ -450,14 +450,14 @@
          success:function(data){
          viewData();
          }
-         
+
          });
          }
-         
+
          /*$('.btn-danger').on('click', function(){
          $(this).parents('tr').remove();
          })*/
-         
+
       </script>
       <!-- Le javascript
          ================================================== -->
