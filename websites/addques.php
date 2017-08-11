@@ -55,7 +55,7 @@
       <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
-   <body onload="loadLanguage() , setDefaultInputHtml()">
+   <body onload="loadLanguage()">
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
@@ -226,7 +226,7 @@
                               <br>
                               <hr>
                               <span id="deleteInputButton">
-                               <button type="button" name="deleteInput"  value="0" onclick="deleteInputs(this.value)" >Delete Input</button>
+                               <button type="button" name="deleteInputFillBlank"  value="0" onclick="deleteInputs(this.value, 0)" >Delete Input</button>
                               </span>
 
                               </div>
@@ -310,7 +310,8 @@
                   </div>
                </div>
                <div role="tabpanel" class="tab-pane fade in" id="multichoice">
-                  <div id="addfillblank">
+                 <br>
+                  <div id="addmultichoice">
                      <?php
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
@@ -318,71 +319,150 @@
 
                         ?>
                      <form method="post">
-                        <span name="inputs">
-                           <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" >
-                           <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" >
-                           <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
-                           <select id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype">
-                              <?php
-                                 $db = mysql_connect('localhost','root','password')
-                                                   or die('Error connecting to MySQL server.');
-                                                     @mysql_select_db("tags", $db);
-                                                   $sql = "SELECT * FROM tags.testtypetags";
-                                                   $result = mysql_query($sql);
-                                                        while( $row = mysql_fetch_array($result))
-                                                        {
-                                                        $testtype = $row['testtype'];
-                                                        ?>
-                              <option class="lang" key="<?php echo "$testtype" ?>"><?php echo "$testtype" ?></option>
-                              <?php
-                                 }
-                                  ?>
-                           </select>
-                           <input id="reference" class="referenceInput" name="reference[]" type="text" placeholder="Reference" >
-                           <!-- <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                           <select id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook">
-                              <?php
-                                 $db = mysql_connect('localhost','root','password')
-                                                   or die('Error connecting to MySQL server.');
-                                                     @mysql_select_db("tags", $db);
-                                                   $sql = "SELECT * FROM tags.textbooktags";
-                                                   $result = mysql_query($sql);
-                                                        while( $row = mysql_fetch_array($result))
-                                                        {
-                                                        $textbook = $row['textbook'];
-                                                        ?>
-                              <option class="lang" key="<?php echo "$textbook" ?>"><?php echo "$textbook" ?></option>
-                              <?php
-                                 }
-                                  ?>
-                           </select>
-                           <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" >
-                           <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                           <select id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" >
-                              <?php
-                                 $db = mysql_connect('localhost','root','password')
-                                                   or die('Error connecting to MySQL server.');
-                                                     @mysql_select_db("tags", $db);
-                                                   $sql = "SELECT * FROM tags.knowledgetags";
-                                                   $result = mysql_query($sql);
-                                                        while( $row = mysql_fetch_array($result))
-                                                        {
-                                                        $textbook = $row['knowledge'];
-                                                        ?>
-                              <option class="lang" key="<?php echo "$knowledge" ?>"><?php echo "$knowledge" ?></option>
-                              <?php
-                                 }
-                                  ?>
-                           </select>
-                           <select id="difficulty" class="difficultyInput" name="difficulty[]" type="text" placeholder="difficulty">
-                              <option class="lang" key="hard">Hard</option>
-                              <option class="lang" key="medium">Medium</option>
-                              <option class="lang" key="easy">Easy</option>
-                           </select>
-                           <input id="question" class="questionInput" name="question[]" type="text" placeholder="Question" >
-                           <input id="answer" class="answerInput" name="answer[]" type="text" placeholder="Answer" >
-                           <br>
-                        </span>
+                       <span name="inputs" id="inputs">
+                         <span name="firstInput">
+                        <div  class="addAquestion">
+                          <h3>References</h3>
+                          <hr>
+                          <span>Year</span>
+                       <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
+                          <select id="year" class="yearInputMultiChoice" name="year[]" type="text" placeholder="Year">
+                        <option>2000</option>
+                         <option>2001</option>
+                          <option>2002</option>
+                           <option>2003</option>
+<option>2004</option>
+<option>2005</option>
+<option>2006</option>
+<option>2007</option>
+<option>2008</option>
+<option>2009</option>
+<option>2010</option>
+<option>2011</option>
+<option>2012</option>
+<option>2013</option>
+<option>2014</option>
+<option>2015</option> <option>2016</option> <option>2017</option>
+
+                          </select>
+                          <span>Grade</span>
+                         <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
+                         <select id="grade" class="gradeInputMultiChoice" name="grade[]" type="text" placeholder="Grade">
+                        <option>1</option>
+                         <option>2</option>
+                          <option>3</option>
+                           <option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+
+                          </select>
+                          <span>Testtype</span>
+                          <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
+                          <select id="testtype" class="testtypeInputMultiChoice" name="testtype[]" type="text" placeholder="Testtype">
+                             <?php
+                                $db = mysql_connect('localhost','root','password')
+                                                  or die('Error connecting to MySQL server.');
+                                                    @mysql_select_db("tags", $db);
+                                                  $sql = "SELECT * FROM tags.testtypetags";
+                                                  $result = mysql_query($sql);
+                                                       while( $row = mysql_fetch_array($result))
+                                                       {
+                                                       $testtype = $row['testtype'];
+                                                       ?>
+                             <option class="lang" key="<?php echo "$testtype" ?>"><?php echo "$testtype" ?></option>
+                             <?php
+                                }
+                                 ?>
+                          </select>
+                          <span>Reference</span>
+                          <input id="reference" class="referenceInputMultiChoice" name="reference[]" type="text" placeholder="Reference" ><br>
+                          <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
+                          <span>Textbook</span>
+                          <select id="textbook" class="textbookInputMultiChoice" name="textbook[]" type="text" placeholder="Textbook">
+                             <?php
+                                $db = mysql_connect('localhost','root','password')
+                                                  or die('Error connecting to MySQL server.');
+                                                    @mysql_select_db("tags", $db);
+                                                  $sql = "SELECT * FROM tags.textbooktags";
+                                                  $result = mysql_query($sql);
+                                                       while( $row = mysql_fetch_array($result))
+                                                       {
+                                                       $textbook = $row['textbook'];
+                                                       ?>
+                             <option class="lang" key="<?php echo "$textbook" ?>"><?php echo "$textbook" ?></option>
+                             <?php
+                                }
+                                 ?>
+                          </select>
+                          <span>Lesson</span>
+                          <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
+                          <select id="lesson" class="lessonInputMultiChoice" name="lesson[]" type="text" placeholder="Lesson">
+                        <option>1</option>
+                         <option>2</option>
+                          <option>3</option>
+                           <option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+ <option>16</option>
+
+                          </select>
+                          <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
+                          <span>Knowledge</span>
+                          <select id="knowledge" class="knowledgeInputMultiChoice" name="knowledge[]" type="text" placeholder="Knowledge" >
+                             <?php
+                                $db = mysql_connect('localhost','root','password')
+                                                  or die('Error connecting to MySQL server.');
+                                                    @mysql_select_db("tags", $db);
+                                                  $sql = "SELECT * FROM tags.knowledgetags";
+                                                  $result = mysql_query($sql);
+                                                       while( $row = mysql_fetch_array($result))
+                                                       {
+                                                       $knowledge = $row['knowledge'];
+                                                       ?>
+                             <option class="lang" key="<?php echo "$knowledge" ?>"><?php echo "$knowledge" ?></option>
+                             <?php
+                                }
+                                 ?>
+                          </select>
+                          <span>Difficulty</span>
+                          <select id="difficulty" class="difficultyInputMultiChoice" name="difficulty[]" type="text" placeholder="difficulty">
+                             <option class="lang" key="hard">Hard</option>
+                             <option class="lang" key="medium">Medium</option>
+                             <option class="lang" key="easy">Easy</option>
+                          </select>
+                          <h3>Q & A </h3>
+                          <hr>
+                          <textarea rows="4" id="question" class="questionInputMultiChoice" name="question[]" type="text" placeholder="Question" ></textarea>
+                          <textarea rows="4" id="answer" class="answerInputMultiChoice" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                          <br>
+                          <hr>
+                          <span id="deleteInputButton">
+                           <button type="button" name="deleteInputMultiChoice"  value="0" onclick="deleteInputs(this.value, 1)" >Delete Input</button>
+                          </span>
+
+                          </div>
+                          </span>
+                       </span>
+
+
+
+
+
                         <input name="submitMultiChoice" type="submit" id="submitMultiChoice" value="Submit Question" >
                         <br>
                      </form>
@@ -495,6 +575,7 @@
       <!-- Placed at the end of the document so the pages load faster -->
       <script type="text/javascript" src="../assets/js/languageHandler.js">  </script>
       <script type="text/javascript" src="../assets/js/cookieHandler.js"></script>
+      <script type="text/javascript" src="../assets/js/addQueInputHandler.js">  </script>
       <script src="../assets/js/jquery.js"></script>
       <script src="../assets/js/bootstrap-transition.js"></script>
       <script src="../assets/js/bootstrap-alert.js"></script>
@@ -508,164 +589,6 @@
       <script src="../assets/js/bootstrap-collapse.js"></script>
       <script src="../assets/js/bootstrap-carousel.js"></script>
       <script src="../assets/js/bootstrap-typeahead.js"></script>
-      <script type="text/javascript">
-         //script for adding inputs
-         var TotalInput = 0;
-         var defaultInputHtml;
-         var tagSelect;
 
-
-         function setDefaultInputHtml(){
-           document.getElementsByName("deleteInput")[0].value = TotalInput + 1;
-             defaultInputHtml   =  document.getElementsByName("firstInput")[0].innerHTML;
-          document.getElementsByName("deleteInput")[0].value = TotalInput;
-         }
-
-//structure to memorize
-var currentYearInputsFillBlank = [];
-var currentGradeInputsFillBlank  = [];
-var currentTestTypeInputsFillBlank = [];
-var currentReferenceInputsFillBlank = [];
-var currentTextBookInputsFillBlank = [];
-var currentLessonInputsFillBlank =[];
-var currentKnowledgeInputsFillBlank = [];
-var currentDiffInputsFillBlank = [];
-var currentQuestionInputsFillBlank = [];
-var currentAnswerInputsFillBlank = [];
-
-function storeCurrentInput (){
-//store fillblank
- currentYearInputsFillBlank = [];
- currentGradeInputsFillBlank  = [];
- currentTestTypeInputsFillBlank = [];
- currentReferenceInputsFillBlank = [];
-currentTextBookInputsFillBlank = [];
- currentLessonInputsFillBlank =[];
- currentKnowledgeInputsFillBlank = [];
-  currentDiffInputsFillBlank = [];
- currentQuestionInputsFillBlank = [];
- currentAnswerInputsFillBlank = [];
- $('.yearInputFillBlank').each(function ( ) {
-currentYearInputsFillBlank.push($(this).val());
- });
-
- $('.gradeInputFillBlank').each(function ( ) {
-currentGradeInputsFillBlank.push($(this).val());
- });
-
- $('.testtypeInputFillBlank').each(function ( ) {
-currentTestTypeInputsFillBlank.push($(this).val());
- });
- $('.referenceInputFillBlank').each(function ( ) {
-currentReferenceInputsFillBlank.push($(this).val());
- });
- $('.textbookInputFillBlank').each(function ( ) {
-currentTextBookInputsFillBlank.push($(this).val());
- });
- $('.lessonInputFillBlank').each(function ( ) {
-currentLessonInputsFillBlank.push($(this).val());
- });
- $('.knowledgeInputFillBlank').each(function ( ) {
-currentKnowledgeInputsFillBlank.push($(this).val());
- });
- $('.difficultyInputFillBlank').each(function ( ) {
-currentDiffInputsFillBlank.push($(this).val());
- });
-
- $('.questionInputFillBlank').each(function ( ) {
-currentQuestionInputsFillBlank.push($(this).val());
- });
- $('.answerInputFillBlank').each(function ( ) {
-currentAnswerInputsFillBlank.push($(this).val());
- });
-}
-
-//add input for different tags
-         function addInputs(tagSelect){
-           setDefaultInputHtml();
-           TotalInput += 1;
-
-             var currentFormContent =  document.getElementsByName("inputs")[tagSelect].innerHTML;
-             //fillblank
-         storeCurrentInput();
-
-         document.getElementsByName("inputs")[tagSelect].innerHTML = currentFormContent + defaultInputHtml;
-
-
-
-         //restore fillblank
-
-
-
-         for (var i = 0; i < currentYearInputsFillBlank.length; i++) {
-           document.getElementsByClassName("yearInputFillBlank")[i].value = currentYearInputsFillBlank[i];
-           document.getElementsByClassName("gradeInputFillBlank")[i].value = currentGradeInputsFillBlank[i];
-           document.getElementsByClassName("testtypeInputFillBlank")[i].value = currentTestTypeInputsFillBlank[i];
-           document.getElementsByClassName("referenceInputFillBlank")[i].value = currentReferenceInputsFillBlank[i];
-           document.getElementsByClassName("textbookInputFillBlank")[i].value = currentTextBookInputsFillBlank[i];
-           document.getElementsByClassName("lessonInputFillBlank")[i].value = currentLessonInputsFillBlank[i];
-             document.getElementsByClassName("knowledgeInputFillBlank")[i].value = currentKnowledgeInputsFillBlank[i];
-             document.getElementsByClassName("difficultyInputFillBlank")[i].value = currentDiffInputsFillBlank[i];
-           document.getElementsByClassName("questionInputFillBlank")[i].value = currentQuestionInputsFillBlank[i];
-           document.getElementsByClassName("answerInputFillBlank")[i].value = currentAnswerInputsFillBlank[i];
-
-         }
-
-           //currentFormContent  = currentFormContent -  document.getElementsByName("add").innerHTML;
-
-         }
-
-//implement only in fillblank
-          function deleteInputs(deleteIndex){
-            storeCurrentInput();
-          if (TotalInput > 0) {
-            TotalInput -= 1;
-          }
-          finalInputNumber = TotalInput;
-          console.log("finalInputNumber");
-          console.log(finalInputNumber);
-          //reset total input;
-          TotalInput = 0;
-           document.getElementsByName("inputs")[0].innerHTML = "<span name='firstInput'>" + document.getElementsByName("firstInput")[0].innerHTML + "<\span>";
-           document.getElementsByName("deleteInput")[0].value = 0;
-  for (var i = 0; i < finalInputNumber; i++) {
-   var tempHTML = document.getElementsByName("inputs")[0].innerHTML;
-   setDefaultInputHtml();
-   TotalInput += 1;
-   document.getElementsByName("inputs")[0].innerHTML =  tempHTML + defaultInputHtml;
-}
-//for fillblank
-for (var i = 0; i <= finalInputNumber; i++) {
-  if(i < deleteIndex){
-    document.getElementsByClassName("yearInputFillBlank")[i].value = currentYearInputsFillBlank[i];
-    document.getElementsByClassName("gradeInputFillBlank")[i].value = currentGradeInputsFillBlank[i];
-    document.getElementsByClassName("testtypeInputFillBlank")[i].value = currentTestTypeInputsFillBlank[i];
-    document.getElementsByClassName("referenceInputFillBlank")[i].value = currentReferenceInputsFillBlank[i];
-    document.getElementsByClassName("textbookInputFillBlank")[i].value = currentTextBookInputsFillBlank[i];
-    document.getElementsByClassName("lessonInputFillBlank")[i].value = currentLessonInputsFillBlank[i];
-      document.getElementsByClassName("knowledgeInputFillBlank")[i].value = currentKnowledgeInputsFillBlank[i];
-      document.getElementsByClassName("difficultyInputFillBlank")[i].value = currentDiffInputsFillBlank[i];
-    document.getElementsByClassName("questionInputFillBlank")[i].value = currentQuestionInputsFillBlank[i];
-    document.getElementsByClassName("answerInputFillBlank")[i].value = currentAnswerInputsFillBlank[i];
-  }else if(i >= deleteIndex){
-    document.getElementsByClassName("yearInputFillBlank")[i].value = currentYearInputsFillBlank[i+1];
-    document.getElementsByClassName("gradeInputFillBlank")[i].value = currentGradeInputsFillBlank[i+1];
-    document.getElementsByClassName("testtypeInputFillBlank")[i].value = currentTestTypeInputsFillBlank[i+1];
-    document.getElementsByClassName("referenceInputFillBlank")[i].value = currentReferenceInputsFillBlank[i+1];
-    document.getElementsByClassName("textbookInputFillBlank")[i].value = currentTextBookInputsFillBlank[i+1];
-    document.getElementsByClassName("lessonInputFillBlank")[i].value = currentLessonInputsFillBlank[i+1];
-      document.getElementsByClassName("knowledgeInputFillBlank")[i].value = currentKnowledgeInputsFillBlank[i+1];
-      document.getElementsByClassName("difficultyInputFillBlank")[i].value = currentDiffInputsFillBlank[i+1];
-    document.getElementsByClassName("questionInputFillBlank")[i].value = currentQuestionInputsFillBlank[i+1];
-    document.getElementsByClassName("answerInputFillBlank")[i].value = currentAnswerInputsFillBlank[i+1];
-  }
-}
-
-
-          }
-
-
-
-      </script>
    </body>
 </html>
