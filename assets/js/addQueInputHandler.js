@@ -30,7 +30,6 @@ function setDefaultInputHtml(tagSelect){
  document.getElementsByName("deleteInputReadingMulti")[0].value = TotalInput[tagSelect];
   }
 
-    console.log(defaultInputHtml);
 }
 
 //structure to memorize
@@ -336,7 +335,7 @@ currentAnswerInputsReadingMulti.push($(this).val());
 function addInputs(tagSelect){
   setDefaultInputHtml(tagSelect);
   TotalInput[tagSelect] += 1;
-console.log("totalinput tagselect is");
+console.log("totalinput [tagselect] is");
 console.log(TotalInput[tagSelect]);
     var currentFormContent =  document.getElementsByName("inputs")[tagSelect].innerHTML;
     //fillblank
@@ -428,8 +427,6 @@ for (var i = 0; i < currentYearInputsReadingMulti.length; i++) {
 
 
  finalInputNumber = TotalInput[tagSelect];
- console.log("finalInputNumber");
- console.log(finalInputNumber);
  //reset total input;
  TotalInput[tagSelect] = 0;
  console.log("tagSelect");
@@ -444,7 +441,7 @@ for (var i = 0; i < currentYearInputsReadingMulti.length; i++) {
 for (var i = 0; i < finalInputNumber; i++) {
 var tempHTML = document.getElementsByName("inputs")[tagSelect].innerHTML;
 setDefaultInputHtml(tagSelect);
-TotalInput[TotalInput] += 1;
+TotalInput[tagSelect] += 1;
 document.getElementsByName("inputs")[tagSelect].innerHTML =  tempHTML + defaultInputHtml;
 }
 //for fillblank
@@ -585,6 +582,9 @@ if(tagSelect == 0){
 
 
 }
+
+console.log("tagselected input number is");
+console.log(TotalInput[tagSelect]);
 
 
  }

@@ -309,6 +309,8 @@
                         ?>
                   </div>
                </div>
+
+
                <div role="tabpanel" class="tab-pane fade in" id="multichoice">
                  <br>
                   <div id="addmultichoice">
@@ -1003,15 +1005,6 @@
                   </div>
                </div>
 
-
-
-
-
-
-
-
-
-
                <div role="tabpanel" class="tab-pane fade in active" id="readingmu">
                  <br>
                   <div id="addireadingmulti">
@@ -1241,9 +1234,8 @@
                         }
                         ?>
                   </div>
-
-
                </div>
+
                <div role="tabpanel" class="tab-pane fade in" id="reading">...</div>
                <div role="tabpanel" class="tab-pane fade in" id="readingmi">...</div>
                <div role="tabpanel" class="tab-pane fade in" id="translation">...</div>
