@@ -84,6 +84,7 @@
             <!-- Tab panes -->
             <div class="tab-content">
                <div role="tabpanel" class="tab-pane fade in active" id="fill_blank">
+                 <br>
                   <div id="addfillblank">
 
                         <?php
@@ -1005,7 +1006,7 @@
                   </div>
                </div>
 
-               <div role="tabpanel" class="tab-pane fade in active" id="readingmu">
+               <div role="tabpanel" class="tab-pane fade in" id="readingmu">
                  <br>
                   <div id="addireadingmulti">
                      <?php
@@ -1239,7 +1240,7 @@
                <div role="tabpanel" class="tab-pane fade in" id="reading">...</div>
                <div role="tabpanel" class="tab-pane fade in" id="readingmi">...</div>
                <div role="tabpanel" class="tab-pane fade in" id="translation">...</div>
-               <div role="tabpanel" class="tab-pane fade in active" id="listening">...</div>
+               <div role="tabpanel" class="tab-pane fade in" id="listening">...</div>
                <div role="tabpanel" class="tab-pane fade in" id="writing">...</div>
                <div role="tabpanel" class="tab-pane fade in" id="others">...</div>
             </div>
