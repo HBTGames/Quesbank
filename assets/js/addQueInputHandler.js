@@ -1,5 +1,5 @@
 //script for adding inputs
-var TotalInput = [0,0,0,0,0,0];
+var TotalInput = [0,0,0,0,0,0,0];
 var defaultInputHtml;
 var tagSelect;
 
@@ -32,6 +32,10 @@ function setDefaultInputHtml(tagSelect){
     document.getElementsByName("deleteInputReading")[0].value = TotalInput[tagSelect] + 1;
     defaultInputHtml   =  document.getElementsByName("firstInput")[tagSelect].innerHTML;
  document.getElementsByName("deleteInputReading")[0].value = TotalInput[tagSelect];
+  }else if (tagSelect == 6) {
+    document.getElementsByName("deleteInputReadingMission")[0].value = TotalInput[tagSelect] + 1;
+    defaultInputHtml   =  document.getElementsByName("firstInput")[tagSelect].innerHTML;
+ document.getElementsByName("deleteInputReadingMission")[0].value = TotalInput[tagSelect];
   }
 
 }
@@ -103,6 +107,17 @@ var currentKnowledgeInputsReading = [];
 var currentDiffInputsReading = [];
 var currentQuestionInputsReading  = [];
 var currentAnswerInputsReading = [];
+//reading mission
+var currentYearInputsReadingMission = [];
+var currentGradeInputsReadingMission = [];
+var currentTestTypeInputsReadingMission = [];
+var currentReferenceInputsReadingMission = [];
+var currentTextBookInputsReadingMission= [];
+var currentLessonInputsReadingMission =[];
+var currentKnowledgeInputsReadingMission= [];
+var currentDiffInputsReadingMission = [];
+var currentQuestionInputsReadingMission  = [];
+var currentAnswerInputsReadingMission = [];
 
 function storeCurrentInput (){
 //store fillblank
@@ -378,6 +393,50 @@ $('.answerInputReading').each(function ( ) {
 currentAnswerInputsReading.push($(this).val());
 });
 
+//store reading mission
+currentYearInputsReadingMission= [];
+currentGradeInputsReadingMission  = [];
+currentTestTypeInputsReadingMission= [];
+currentReferenceInputsReadingMission = [];
+currentTextBookInputsReadingMission = [];
+currentLessonInputsReadingMission =[];
+currentKnowledgeInputsReadingMission = [];
+currentDiffInputsReadingMission = [];
+currentQuestionInputsReadingMission = [];
+currentAnswerInputsReadingMission = [];
+$('.yearInputReadingMission').each(function ( ) {
+currentYearInputsReadingMission.push($(this).val());
+});
+
+$('.gradeInputReadingMission').each(function ( ) {
+currentGradeInputsReadingMission.push($(this).val());
+});
+
+$('.testtypeInputReadingMission').each(function ( ) {
+currentTestTypeInputsReadingMission.push($(this).val());
+});
+$('.referenceInputReadingMission').each(function ( ) {
+currentReferenceInputsReadingMission.push($(this).val());
+});
+$('.textbookInputReadingMission').each(function ( ) {
+currentTextBookInputsReadingMission.push($(this).val());
+});
+$('.lessonInputReadingMission').each(function ( ) {
+currentLessonInputsReadingMission.push($(this).val());
+});
+$('.knowledgeInputReadingMission').each(function ( ) {
+currentKnowledgeInputsReadingMission.push($(this).val());
+});
+$('.difficultyInputReadingMission').each(function ( ) {
+currentDiffInputsReadingMission.push($(this).val());
+});
+
+$('.questionInputReadingMission').each(function ( ) {
+currentQuestionInputsReadingMission.push($(this).val());
+});
+$('.answerInputReadingMission').each(function ( ) {
+currentAnswerInputsReadingMission.push($(this).val());
+});
 
 }
 
@@ -482,6 +541,19 @@ for (var i = 0; i < currentYearInputsReading.length; i++) {
   document.getElementsByClassName("answerInputReading")[i].value = currentAnswerInputsReading[i];
 }
 
+//restore reading mission
+for (var i = 0; i < currentYearInputsReadingMission.length; i++) {
+  document.getElementsByClassName("yearInputReadingMission")[i].value = currentYearInputsReadingMission[i];
+  document.getElementsByClassName("gradeInputReadingMission")[i].value = currentGradeInputsReadingMission[i];
+  document.getElementsByClassName("testtypeInputReadingMission")[i].value = currentTestTypeInputsReadingMission[i];
+  document.getElementsByClassName("referenceInputReadingMission")[i].value = currentReferenceInputsReadingMission[i];
+  document.getElementsByClassName("textbookInputReadingMission")[i].value = currentTextBookInputsReadingMission[i];
+  document.getElementsByClassName("lessonInputReadingMission")[i].value = currentLessonInputsReadingMission[i];
+    document.getElementsByClassName("knowledgeInputReadingMission")[i].value = currentKnowledgeInputsReadingMission[i];
+    document.getElementsByClassName("difficultyInputReadingMission")[i].value = currentDiffInputsReadingMission[i];
+  document.getElementsByClassName("questionInputReadingMission")[i].value = currentQuestionInputsReadingMission[i];
+  document.getElementsByClassName("answerInputReadingMission")[i].value = currentAnswerInputsReadingMission[i];
+}
 
 }
 
@@ -679,10 +751,32 @@ if(tagSelect == 0){
     document.getElementsByClassName("answerInputReading")[i].value = currentAnswerInputsReading[i+1];
   }
   }
-
-
-
-
+}else if (tagSelect == 6) {
+  for (var i = 0; i <= finalInputNumber; i++) {
+  if(i < deleteIndex){
+      document.getElementsByClassName("yearInputReadingMission")[i].value = currentYearInputsReadingMission[i];
+      document.getElementsByClassName("gradeInputReadingMission")[i].value = currentGradeInputsReadingMission[i];
+      document.getElementsByClassName("testtypeInputReadingMission")[i].value = currentTestTypeInputsReadingMission[i];
+      document.getElementsByClassName("referenceInputReadingMission")[i].value = currentReferenceInputsReadingMission[i];
+      document.getElementsByClassName("textbookInputReadingMission")[i].value = currentTextBookInputsReadingMission[i];
+      document.getElementsByClassName("lessonInputReadingMission")[i].value = currentLessonInputsReadingMission[i];
+        document.getElementsByClassName("knowledgeInputReadingMission")[i].value = currentKnowledgeInputsReadingMission[i];
+        document.getElementsByClassName("difficultyInputReadingMission")[i].value = currentDiffInputsReadingMission[i];
+      document.getElementsByClassName("questionInputReadingMission")[i].value = currentQuestionInputsReadingMission[i];
+      document.getElementsByClassName("answerInputReadingMission")[i].value = currentAnswerInputsReadingMission[i];
+  }else if(i >= deleteIndex){
+    document.getElementsByClassName("yearInputReadingMission")[i].value = currentYearInputsReadingMission[i+1];
+    document.getElementsByClassName("gradeInputReadingMission")[i].value = currentGradeInputsReadingMission[i+1];
+    document.getElementsByClassName("testtypeInputReadingMission")[i].value = currentTestTypeInputsReadingMission[i+1];
+    document.getElementsByClassName("referenceInputReadingMission")[i].value = currentReferenceInputsReadingMission[i+1];
+    document.getElementsByClassName("textbookInputReadingMission")[i].value = currentTextBookInputsReadingMission[i+1];
+    document.getElementsByClassName("lessonInputReadingMission")[i].value = currentLessonInputsReadingMission[i+1];
+      document.getElementsByClassName("knowledgeInputReadingMission")[i].value = currentKnowledgeInputsReadingMission[i+1];
+      document.getElementsByClassName("difficultyInputReadingMission")[i].value = currentDiffInputsReadingMission[i+1];
+    document.getElementsByClassName("questionInputReadingMission")[i].value = currentQuestionInputsReadingMission[i+1];
+    document.getElementsByClassName("answerInputReadingMission")[i].value = currentAnswerInputsReadingMission[i+1];
+  }
+  }
 
 }
 
