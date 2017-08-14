@@ -18,7 +18,7 @@
       /* Custom container */
       .container-narrow {
         margin: 0 auto;
-        max-width: 700px;
+        max-width: 100%;
       }
       .container-narrow > hr {
         margin: 30px 0;
@@ -45,6 +45,45 @@
       .marketing p + h4 {
         margin-top: 28px;
       }
+      .masthead {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee ;
+    display:block;
+    position:fixed;
+    background:#fff;
+    width:100%;
+    top:0;
+}
+
+.muted{
+    color: #999999;
+    margin-left: 10%;
+    margin-top: 23px;
+}
+
+ul.nav.nav-pills.pull-right {
+    margin-right: 10%;
+    margin-top: 29px;
+    margin-bottom: 0;
+}
+
+.footer {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+span.langsetting {
+    float: right;
+}
+.contact-main {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+div.contact-main blockquote {
+    font-size: 20px;
+    line-height: 2;
+}
     </style>
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -73,15 +112,14 @@
         </ul>
         <h3 class="muted">QuesBank</h3>
       </div>
-
-      <hr>
+<div class="contact-main">
       <blockquote class="pull-right lang" name="demonstration">
         Constantly strive for perfection.<br>
       --Producer: HBT TEAM
       </blockquote>
 
 <button class="btn btn-large btn-block btn-primary lang" type="button" href="mailto:haileyli1002@gmail.com" key="email">email us</button>
-
+</div>
 
       <hr>
 
@@ -89,18 +127,13 @@
         <p>
           &copy;
           <span class="lang" key="airEnglish"> Air English 2015</span>
-          &ensp;
-          &ensp;
-          &ensp;
-          &ensp;
-          &ensp;
-          &ensp;
-
+          <span class="langsetting">
           <span class="lang" key="languageText"> Language:</span>
          <select id="changeLang" onchange="languageChange();">
           <option  class="lang" value="en" key="langEnglish" >English</option>
           <option class="lang" value="zh" key="langChinese">中文</option>
           </select>
+          </span>
 
         </p>
       </div>
