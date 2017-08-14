@@ -73,6 +73,9 @@ width:100%;
 text-align:center;
 margin-top:80px;
 }
+div.arrowlink.uparrow{
+margin-top:0;
+}
 .marketing {
     margin: 60px 0;
     width: 80%;
@@ -102,7 +105,7 @@ span.langsetting {
       <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
-   <body onload="loadLanguage()">
+   <body onload="loadLanguage()" id="top">
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
@@ -405,7 +408,11 @@ span.langsetting {
                <h4>Guide</h4>
                <p>Please go to manage page to see all type questions.<br><br>Please contact us if you have any questions.Thanks</p>
             </div>
+            
          </div>
+         <div class="arrowlink uparrow">
+            <a href="#top" class="arrowlink"><img class="arrow"  src="../assets/pics/upArrow.png" alt="arrow" /></a>
+            </div>
          <hr>
          <div class="footer">
             <p>
