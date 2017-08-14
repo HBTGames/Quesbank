@@ -226,7 +226,7 @@
                                                         {
                                                         $testtypetags = $row['testtype'];
                                                         ?>
-                                          <option class="lang" key="<?php echo "$testtype" ?>" <?php if ($testtype == $testtypetags) echo "selected"?> value="<?php echo "$testtype" ?>"><?php echo "$testtypetags" ?></option>
+                                          <option class="lang" key="<?php echo "$testtype" ?>" <?php if ($testtype == $testtypetags) echo "selected"?> value="<?php echo "$testtypetags" ?>"><?php echo "$testtypetags" ?></option>
                                           <?php
                                              }
                                               ?>
@@ -245,7 +245,7 @@
                                                   {
                                                   $textbooktags = $row['textbook'];
                                                   ?>
-                                          <option class="lang" key="<?php echo "$textbook" ?>" <?php if ($textbook == $textbooktags) echo "selected"?> value="<?php echo "$testtypetags" ?>"><?php echo "$textbooktags" ?></option>
+                                          <option class="lang" key="<?php echo "$textbook" ?>" <?php if ($textbook == $textbooktags) echo "selected"?> value="<?php echo "$textbooktags" ?>"><?php echo "$textbooktags" ?></option>
                                           <?php
                                              }
                                               ?>

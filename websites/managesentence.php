@@ -8,6 +8,7 @@
       <meta name="author" content="">
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
+       <link href="../assets/css/quesbankstyle.css" rel="stylesheet">
       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
       <style type="text/css">
          body {
@@ -44,6 +45,14 @@
          }
          .modal.fade {
          top: -100%;
+         }
+          .modal.largeModal{
+         width:70% !important;
+         margin-left:-500px;
+         
+         }
+         form{
+         margin: 0 !important;
          }
       </style>
       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -153,7 +162,7 @@
                                  <button type="button"  data-toggle="modal" data-target="#delete-<?php echo "$id"?>"
                                     class="btn btn-danger delete-b lang" key="deleteButton"  id="<?php echo "$id" ?>">Delete</button>
                                  <!-- Modal -->
-                                 <div class="modal fade" id="myModal-<?php echo "$id"?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo "$id"?>">
+                                 <div class="modal fade largeModal" id="myModal-<?php echo "$id"?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo "$id"?>">
                                     <div class="modal-dialog" role="document">
                                        <div class="modal-content">
                                           <div class="modal-header">
@@ -162,42 +171,141 @@
                                           </div>
                                           <form method="post">
                                              <div class="modal-body">
-                                                <input type="hidden" name="idx" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
-                                                <span class="lang" key="yearHeader">Year</span>
-                                                <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>">
-                                                <br>
-                                                <span class="lang" key="gradeHeader">Grade</span>
-                                                <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
-                                                <br>
-                                                <span class="lang" key="testtypeHeader">Testtype</span>
-                                                <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
-                                                <br>
-                                                <span class="lang" key="referenceHeader">Reference</span>
-                                                <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
-                                                <br>
-                                                <span class="lang" key="textbookHeader">Textbook</span>
-                                                <input type="text" name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"?>" value="<?php echo "$textbook"?>">
-                                                <br>
-                                                <span class="lang" key="lessonHeader" >Lesson</span>
-                                                <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
-                                                <br>
-                                                <span class="lang" key="knowledgeHeader">Knowledge</span>
-                                                <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>">
-                                                <br>
-                                                <span class="lang" key="difficultyHeader">Difficulty</span>
-                                                <select id="difficulty-<?php echo "$difficulty"?>" name="difficulty" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
-                                                   <option class="lang" key="hard" >Hard</option>
-                                                   <option class="lang" key="medium" >Medium</option>
-                                                   <option class="lang" key="easy">Easy</option>
-                                                </select>
-                                                <!--  <input type="text" name="difficulty" placeholder="Difficulty" id="difficulty-<?php echo "$difficulty"?>" value="<?php echo "$difficulty"?>"> -->
-                                                <br>
-                                                <span class="lang" key = "questionHeader">Question</span>
-                                                <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>">
-                                                <br>
-                                                <span class="lang" key = "answerHeader">Answer</span>
-                                                <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>">
-                                                <br>
+                                                <span name="inputs" id="inputs">
+                                    <h3>References</h3>
+                              <hr>
+                                       <input type="hidden" name="idx" id="<?php echo "$id"?>" value="<?php echo "$id"?>">
+                                       <span class="lang" key="yearHeader">Year</span>
+                                       <!-- <input type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>"> -->
+                                       <select type="text" name="year" placeholder="Year" id="year-<?php echo "$year"?>" value="<?php echo "$year"?>">
+                                          <option <?php if ($year == 2000) echo "selected"?> value="2000"> 2000</option>
+                                          <option <?php if ($year == 2001) echo "selected"?> value="2001">2001</option>
+                                          <option <?php if ($year == 2002) echo "selected"?> value="2002">2002</option>
+                                          <option <?php if ($year == 2003) echo "selected"?> value="2003">2003</option>
+                                          <option <?php if ($year == 2004) echo "selected"?> value="2004">2004</option>
+                                          <option <?php if ($year == 2005) echo "selected"?> value="2005">2005</option>
+                                          <option <?php if ($year == 2006) echo "selected"?> value="2006">2006</option>
+                                          <option <?php if ($year == 2007) echo "selected"?> value="2007">2007</option>
+                                          <option <?php if ($year == 2008) echo "selected"?> value="2008">2008</option>
+                                          <option <?php if ($year == 2009) echo "selected"?> value="2009">2009</option>
+                                          <option <?php if ($year == 2010) echo "selected"?> value="2010">2010</option>
+                                          <option <?php if ($year == 2011) echo "selected"?> value="2011">2011</option>
+                                          <option <?php if ($year == 2012) echo "selected"?> value="2012">2012</option>
+                                          <option <?php if ($year == 2013) echo "selected"?> value="2013">2013</option>
+                                          <option <?php if ($year == 2014) echo "selected"?> value="2014">2014</option>
+                                          <option <?php if ($year == 2015) echo "selected"?> value="2015">2015</option>
+                                          <option <?php if ($year == 2016) echo "selected"?> value="2016">2016</option>
+                                          <option <?php if ($year == 2017) echo "selected"?> value="2017">2017</option>
+                                       </select>
+                                    
+                                       <span class="lang" key="gradeHeader">Grade</span>
+                                       <!--  <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>"> -->
+                                       <select name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
+                                          <option <?php if ($grade == 1) echo "selected"?> value="1">1</option>
+                                          <option <?php if ($grade == 2) echo "selected"?> value="2">2</option>
+                                          <option <?php if ($grade == 3) echo "selected"?> value="3">3</option>
+                                          <option <?php if ($grade == 4) echo "selected"?> value="4">4</option>
+                                          <option <?php if ($grade == 5) echo "selected"?> value="5">5</option>
+                                          <option <?php if ($grade == 6) echo "selected"?> value="6">6</option>
+                                          <option <?php if ($grade == 7) echo "selected"?> value="7">7</option>
+                                          <option <?php if ($grade == 8) echo "selected"?> value="8">8</option>
+                                          <option <?php if ($grade == 9) echo "selected"?> value="9">9</option>
+                                          <option <?php if ($grade == 10) echo "selected"?> value="10">10</option>
+                                          <option <?php if ($grade == 11) echo "selected"?> value="11">11</option>
+                                          <option <?php if ($grade == 12) echo "selected"?> value="12">12</option>
+                                       </select>
+            
+                                       <span class="lang" key="testtypeHeader">Testtype</span>
+                                       <!--  <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>"> -->
+                                       <select name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
+                                          <?php
+                                             mysql_select_db("tags", $db);
+                                                   $sqltags = "SELECT * FROM tags.testtypetags";
+                                                   $resulttags = mysql_query($sqltags);
+                                                        while( $row = mysql_fetch_array($resulttags))
+                                                        {
+                                                        $testtypetags = $row['testtype'];
+                                                        ?>
+                                          <option class="lang" key="<?php echo "$testtype" ?>" <?php if ($testtype == $testtypetags) echo "selected"?> value="<?php echo "$testtypetags" ?>"><?php echo "$testtypetags" ?></option>
+                                          <?php
+                                             }
+                                              ?>
+                                       </select>
+                                       
+                                       <span class="lang" key="referenceHeader">Reference</span>
+                                       <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
+                                       <br>
+                                       <span class="lang" key="textbookHeader">Textbook</span>
+                                       <!-- <input type="text" name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"?>" value="<?php echo "$textbook"?>"> -->
+                                       <select  name="textbook" placeholder="Textbook" id="textbook-<?php echo "$textbook"; ?>" value="<?php echo "$textbook"?>">
+                                          <?php               mysql_select_db("tags", $db);
+                                             $sqltags = "SELECT * FROM tags.textbooktags";
+                                             $resulttags = mysql_query($sqltags);
+                                                  while( $row = mysql_fetch_array($resulttags))
+                                                  {
+                                                  $textbooktags = $row['textbook'];
+                                                  ?>
+                                          <option class="lang" key="<?php echo "$textbook" ?>" <?php if ($textbook == $textbooktags) echo "selected"?> value="<?php echo "$textbooktags" ?>"><?php echo "$textbooktags" ?></option>
+                                          <?php
+                                             }
+                                              ?>
+                                       </select>
+                                    
+                                       <span class="lang" key="lessonHeader" >Lesson</span>
+                                       <!-- <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>"> -->
+                                       <select  name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
+                                          <option <?php if ($lesson == 1) echo "selected"?> value="1">1</option>
+                                          <option <?php if ($lesson == 2) echo "selected"?> value="2">2</option>
+                                          <option <?php if ($lesson == 3) echo "selected"?> value="3">3</option>
+                                          <option <?php if ($lesson == 4) echo "selected"?> value="4">4</option>
+                                          <option <?php if ($lesson == 5) echo "selected"?> value="5">5</option>
+                                          <option <?php if ($lesson == 6) echo "selected"?> value="6">6</option>
+                                          <option <?php if ($lesson == 7) echo "selected"?> value="7">7</option>
+                                          <option <?php if ($lesson == 8) echo "selected"?> value="8">8</option>
+                                          <option <?php if ($lesson == 9) echo "selected"?> value="9">9</option>
+                                          <option <?php if ($lesson == 10) echo "selected"?> value="10">10</option>
+                                          <option <?php if ($lesson == 11) echo "selected"?> value="11">11</option>
+                                          <option <?php if ($lesson == 12) echo "selected"?> value="12">12</option>
+                                          <option <?php if ($lesson == 13) echo "selected"?> value="13">13</option>
+                                          <option <?php if ($lesson == 14) echo "selected"?> value="14">14</option>
+                                          <option <?php if ($lesson == 15) echo "selected"?> value="15">15</option>
+                                          <option <?php if ($lesson == 16) echo "selected"?> value="16">16</option>
+                                       </select>
+                                    
+                                       <span class="lang" key="knowledgeHeader">Knowledge</span>
+                                       <!-- <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>"> -->
+                                       <select name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>" >
+                                          <?php             mysql_select_db("tags", $db);
+                                             $sqltags = "SELECT * FROM tags.knowledgetags";
+                                             $resulttags = mysql_query($sqltags);
+                                                  while( $row = mysql_fetch_array($resulttags))
+                                                  {
+                                                  $knowledgetags = $row['knowledge'];
+                                                  ?>
+                                          <option class="lang" key="<?php echo "$knowledge" ?>" <?php if ($knowledge == $knowledgetags) echo "selected"?> value="<?php echo "$knowledgetags" ?>"><?php echo "$knowledgetags" ?></option>
+                                          <?php
+                                             }
+                                              ?>
+                                       </select>
+                                
+                                       <span class="lang" key="difficultyHeader">Difficulty</span>
+                                       <select id="difficulty-<?php echo "$difficulty"?>" name="difficulty" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
+                                          <option class="lang" key="hard" <?php if ($difficulty == Hard) echo "selected"?> value="Hard">Hard</option>
+                                          <option class="lang" key="medium" <?php if ($difficulty == Medium) echo "selected"?> value="Medium">Medium</option>
+                                          <option class="lang" key="easy" <?php if ($difficulty == Easy) echo "selected"?> value="Easy">Easy</option>
+                                       </select>
+                                       <!--  <input type="text" name="difficulty" placeholder="Difficulty" id="difficulty-<?php echo "$difficulty"?>" value="<?php echo "$difficulty"?>"> -->
+                                       <h3>Q & A</h3>
+                              <hr>
+                                      <!-- <span class="lang" key = "questionHeader">Question</span> -->
+                                       <!-- <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>"> -->
+                                       <textarea rows="4" type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value=""><?php echo "$question"?></textarea>
+                                       
+                                      <!-- <span class="lang" key = "answerHeader">Answer</span> -->
+                                       <!-- <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>"> -->
+                                       <textarea rows="4" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value=""><?php echo "$answer"?></textarea>
+                                       <br>
+                                       </span>
                                              </div>
                                              <div class="modal-footer">
                                                 <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>

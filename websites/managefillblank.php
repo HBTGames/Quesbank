@@ -217,21 +217,21 @@
                                        </select>
             
                                        <span class="lang" key="testtypeHeader">Testtype</span>
-                                       <!--  <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>"> -->
-                                       <select name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
+                                       <!--   <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>"> -->
+                                      <select name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
                                           <?php
                                              mysql_select_db("tags", $db);
                                                    $sqltags = "SELECT * FROM tags.testtypetags";
                                                    $resulttags = mysql_query($sqltags);
-                                                        while( $row = mysql_fetch_array($resulttags))
+                                                        while( $rowtags = mysql_fetch_array($resulttags))
                                                         {
-                                                        $testtypetags = $row['testtype'];
+                                                        $testtypetags = $rowtags['testtype'];
                                                         ?>
-                                          <option class="lang" key="<?php echo "$testtype" ?>" <?php if ($testtype == $testtypetags) echo "selected"?> value="<?php echo "$testtype" ?>"><?php echo "$testtypetags" ?></option>
+                                          <option class="lang"  <?php if ($testtype == $testtypetags) echo "selected"?> value="<?php echo "$testtypetags" ?>"><?php echo "$testtypetags" ?></option>
                                           <?php
                                              }
                                               ?>
-                                       </select>
+                                       </select> 
                                        
                                        <span class="lang" key="referenceHeader">Reference</span>
                                        <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
@@ -242,11 +242,11 @@
                                           <?php               mysql_select_db("tags", $db);
                                              $sqltags = "SELECT * FROM tags.textbooktags";
                                              $resulttags = mysql_query($sqltags);
-                                                  while( $row = mysql_fetch_array($resulttags))
+                                                  while( $rowtags = mysql_fetch_array($resulttags))
                                                   {
-                                                  $textbooktags = $row['textbook'];
+                                                  $textbooktags = $rowtags['textbook'];
                                                   ?>
-                                          <option class="lang" key="<?php echo "$textbook" ?>" <?php if ($textbook == $textbooktags) echo "selected"?> value="<?php echo "$testtypetags" ?>"><?php echo "$textbooktags" ?></option>
+                                          <option class="lang" <?php if ($textbook == $textbooktags) echo "selected"?> value="<?php echo "$textbooktags" ?>"><?php echo "$textbooktags" ?></option>
                                           <?php
                                              }
                                               ?>
@@ -276,17 +276,17 @@
                                        <span class="lang" key="knowledgeHeader">Knowledge</span>
                                        <!-- <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>"> -->
                                        <select name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>" >
-                                          <?php             mysql_select_db("tags", $db);
+                                         <?php             mysql_select_db("tags", $db);
                                              $sqltags = "SELECT * FROM tags.knowledgetags";
                                              $resulttags = mysql_query($sqltags);
-                                                  while( $row = mysql_fetch_array($resulttags))
+                                                  while( $rowtags = mysql_fetch_array($resulttags))
                                                   {
-                                                  $knowledgetags = $row['knowledge'];
+                                                  $knowledgetags = $rowtags['knowledge'];
                                                   ?>
-                                          <option class="lang" key="<?php echo "$knowledge" ?>" <?php if ($knowledge == $knowledgetags) echo "selected"?> value="<?php echo "$knowledgetags" ?>"><?php echo "$knowledgetags" ?></option>
+                                          <option class="lang"  <?php if ($knowledge == $knowledgetags) echo "selected"?> value="<?php echo "$knowledgetags" ?>"><?php echo "$knowledgetags" ?></option>
                                           <?php
                                              }
-                                              ?>
+                                              ?> 
                                        </select>
                                 
                                        <span class="lang" key="difficultyHeader">Difficulty</span>
