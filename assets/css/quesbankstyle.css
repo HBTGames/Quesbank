@@ -29,3 +29,19 @@ margin-right:30px;
  resize: vertical;
 }
 
+
+  .masthead {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee ;
+    display:block;
+    position:fixed;
+    background:#fff;
+    width:100%;
+    top:0;
+}
+
+.muted{
+    color: #999999;
+    margin-left: 10%;
+    margin-top: 23px;
+}

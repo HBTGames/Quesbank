@@ -8,6 +8,8 @@
       <meta name="author" content="">
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
+       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="../assets/css/quesbankstyle.css" rel="stylesheet">
       <style type="text/css">
          body {
          padding-top: 20px;
@@ -16,7 +18,7 @@
          /* Custom container */
          .container-narrow {
          margin: 0 auto;
-         max-width: 700px;
+         max-width: 100%;
          }
          .container-narrow > hr {
          margin: 30px 0;
@@ -41,8 +43,54 @@
          .marketing p + h4 {
          margin-top: 28px;
          }
+         .masthead {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee ;
+    display:block;
+    position:fixed;
+    background:#fff;
+    width:100%;
+    top:0;
+}
+
+.muted{
+    color: #999999;
+    margin-left: 10%;
+    margin-top: 23px;
+}
+ul.nav.nav-pills.pull-right {
+    margin-right: 10%;
+    margin-top: 29px;
+    margin-bottom: 0;
+}
+.jumbotron img.hat {
+    margin-top: 80px;
+    margin-bottom: 30px;
+    width: 20%;
+}
+div.arrowlink{
+width:100%;
+text-align:center;
+margin-top:80px;
+}
+.marketing {
+    margin: 60px 0;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+.lead {
+    margin-bottom: 30px;
+}
+.footer {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+span.langsetting {
+    float: right;
+}
       </style>
-      <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+     
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
       <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -64,13 +112,21 @@
             </ul>
             <h3 class="muted">QuesBank</h3>
          </div>
-         <hr>
          <div class="jumbotron">
+         <img class="hat" src="../assets/pics/drhat.png" alt="drhat" />
             <h1>Question Bank</h1>
             <p class="lead lang"  key="productDescription">You can put new questions to the bank, or generate test paper through the website.</p>
             <a class="btn btn-large btn-success lang" href="addques.php" key="addNewQuestion">Add New Questions</a>
             <a class="btn btn-large btn-success lang" href="generate.php"  key="generateTestPaper">Generate Test Paper</a>
-         </div>
+            <div class="arrowlink">
+            <a href="#intro" class="arrowlink"><img class="arrow"  src="../assets/pics/downArrow.png" alt="arrow" /></a>
+            </div>
+            </div>
+          
+          <br>
+          <br>
+        <br>
+        <br id="intro">
          <hr>
          <div class="row-fluid marketing">
             <div class="span6">
@@ -355,17 +411,13 @@
             <p>
                &copy;
                <span class="lang" key="airEnglish">Air English 2015</span>
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
+               <span class="langsetting">
                <span class="lang" key="languageText"> Language:</span>
                <select id="changeLang" onchange="languageChange();">
                   <option  class="lang" value="en" key="langEnglish" >English</option>
                   <option class="lang" value="zh" key="langChinese">中文</option>
                </select>
+               </div>
             </p>
          </div>
       </div>
@@ -373,6 +425,15 @@
       <!-- Le javascript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/JavaScript"></script>
+<script type="text/javascript">
+$(".arrowlink").click(function(){
+var href = $(this).attr("href");
+var pos = $(href).offset().top;
+$("html,body").animate({scrollTop: pos}, 1000);
+return false;
+});
+</script>
       <script src="../assets/js/jquery.js"></script>
       <script src="../assets/js/bootstrap-transition.js"></script>
       <script src="../assets/js/bootstrap-alert.js"></script>
