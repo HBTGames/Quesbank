@@ -8,6 +8,7 @@
       <meta name="author" content="">
       <!-- Le styles -->
       <link href="../assets/css/bootstrap.css" rel="stylesheet">
+       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
             <link href="../assets/css/quesbankstyle.css" rel="stylesheet">
       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
       <style type="text/css">
@@ -18,7 +19,7 @@
          /* Custom container */
          .container-narrow {
          margin: 0 auto;
-         max-width: 60%;
+         max-width: 100%;
          }
          .container-narrow > hr {
          margin: 30px 0;
@@ -46,8 +47,62 @@
          .modal.fade {
          top: -100%;
          }
+          .masthead {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee ;
+    display:block;
+    position:fixed;
+    background:#fff;
+    width:100%;
+    top:0;
+}
+
+.muted{
+    color: #999999;
+    margin-left: 10%;
+    margin-top: 23px;
+}
+ul.nav.nav-pills.pull-right {
+    margin-right: 10%;
+    margin-top: 29px;
+    margin-bottom: 0;
+}
+
+.footer {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+span.langsetting {
+    float: right;
+}
+div.main-content{
+width:80%;
+margin:0 auto;
+margin-top:7%;
+}
+div#managequestypes h1, div#managetags h1 {
+    margin-bottom: 40px;
+    text-align:center;
+}
+div#managetags input.newinput {
+    margin-top: 10px;
+    width:70%;
+}
+table.tagstable td, table.tagstable th {
+    text-align: center;
+}
+input.addnewinput {
+width:100%;
+}
+input.addnewinput {
+    width: 100%;
+    padding: 10px;
+    background: #337ab7;
+    border: 1px solid #2e6da4;
+    color: white;
+}
       </style>
-      <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+     
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
       <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -70,6 +125,7 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
+         <div class="main-content">
          <div id="managequestypes">
          <h1>Manage All Question Types</h1>
          <div id="manageall">
@@ -117,11 +173,11 @@
                                     }
                                     ?>
                                     <form method="post">
-                                   <td> <input id="newtesttype" name="newtesttype" type="text" placeholder="NewTesttype">
+                                   <td> <input class="newinput" id="newtesttype" name="newtesttype" type="text" placeholder="NewTesttype">
 
                                    </td>
                                     <tr>
-                              <td><input value="Save" id="addtesttype" name="addtesttype" type="submit"></td></form>
+                              <td><input value="Save" class="addnewinput" id="addtesttype" name="addtesttype" type="submit"></td></form>
                              <?php if ( $_REQUEST['addtesttype'] ){
                                    mysql_select_db("tags", $db);
    									 $newtesttype = $_POST['newtesttype'];
@@ -168,11 +224,11 @@
                                     }
                                     ?>
                                     <form method="post">
-                                   <td> <input id="newtextbook" name="newtextbook" type="text" placeholder="NewTextbook">
+                                   <td> <input class="newinput" id="newtextbook" name="newtextbook" type="text" placeholder="NewTextbook">
 
                                    </td>
                                     <tr>
-                              <td><input value="Save" id="addtextbook" name="addtextbook" type="submit"></td></form>
+                              <td><input value="Save" class="addnewinput" id="addtextbook" name="addtextbook" type="submit"></td></form>
                              <?php if ( $_REQUEST['addtextbook'] ){
                                    mysql_select_db("tags", $db);
    									 $newtextbook = $_POST['newtextbook'];
@@ -221,11 +277,11 @@
                                     }
                                     ?>
                                     <form method="post">
-                                   <td> <input id="newknowledge" name="newknowledge" type="text" placeholder="NewKnowledge">
+                                   <td> <input class="newinput" id="newknowledge" name="newknowledge" type="text" placeholder="NewKnowledge">
 
                                    </td>
                                     <tr>
-                              <td><input value="Save" id="addknowledge" name="addknowledge" type="submit"></td></form>
+                              <td><input value="Save" class="addnewinput" id="addknowledge" name="addknowledge" type="submit"></td></form>
                              <?php if ( $_REQUEST['addknowledge'] ){
                                    mysql_select_db("tags", $db);
    									 $newknowledge = $_POST['newknowledge'];
@@ -249,31 +305,27 @@
                         </table>
 
 
-
+</div>
        </div>
 
-
+<hr>
          <div class="footer">
             <p>
                &copy;
                <span class="lang" key="airEnglish">Air English 2015</span>
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
+               <span class="langsetting">
                <span class="lang" key="languageText"> Language:</span>
                <select id="changeLang" onchange="languageChange();">
                   <option  class="lang" value="en" key="langEnglish" >English</option>
                   <option class="lang" value="zh" key="langChinese">中文</option>
                </select>
+               </div>
             </p>
          </div>
       </div>
       <!-- /container -->
 
-      <hr>
+    
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
          var edit_id =$(this).attr('id');
