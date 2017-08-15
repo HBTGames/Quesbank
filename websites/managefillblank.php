@@ -110,6 +110,7 @@ content:"▾";
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
    <body onload="loadLanguage()">
+ 
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
@@ -191,17 +192,19 @@ content:"▾";
                      $date = $row['date'];
                      ?>
                   <tr>
+                  
                      <td><?php echo "$id" ?></td>
                      <td><?php echo "$year" ?></td>
                      <td><?php echo "$grade" ?></td>
                      <td><?php echo "$testtype" ?></td>
-                     <td><?php echo "$reference" ?></td>
+                     <td class="abbre"><?php echo "$reference" ?></td>
                      <td><?php echo "$textbook" ?></td>
                      <td><?php echo "$lesson" ?></td>
                      <td><?php echo "$knowledge" ?></td>
-                     <td class="difficultyTd"><?php echo "$difficulty" ?></td>
-                     <td><?php echo "$question" ?></td>
-                     <td><?php echo "$answer" ?></td>
+                     <td class="difficultyTd" ><?php echo "$difficulty" ?></td>
+                     
+                     <td class="abbre" title="<?php echo "$question" ?>"><?php echo "$question" ?></td>
+                     <td class="abbre" title="<?php echo "$answer" ?>"><?php echo "$answer" ?></td>
                      <td><?php echo "$date" ?></td>
                      <td>
                         <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" >Edit </button>
@@ -554,6 +557,19 @@ content:"▾";
          
          
          </script> -->
+ 
+      <script>
+      $(document).ready(function(){
+$(".abbre").each(function(){
+var maxwidth=30;
+if($(this).text().length>maxwidth){
+$(this).text($(this).text().substring(0,maxwidth));
+$(this).html($(this).html()+'...');
+}
+});
+});
+
+      </script>
       <script>
          function searchfilter() {
          // Declare variables
@@ -710,6 +726,9 @@ $(window).bind("scroll", function() {
         $fixedHeader.hide();
     }
 });
+
+
+
       </script>
       <!-- Le javascript
          ================================================== -->
