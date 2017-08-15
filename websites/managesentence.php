@@ -120,7 +120,7 @@
          <hr>
          <div id="sepmanagepage">
             <div id="manageall">
-               <a class="btn btn-default" style="margin:10px;" href="managesentence_trans.php" role="button">Manage Fill Blank</a>
+               <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
                <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
                <a class="btn btn-default" style="margin:10px;" href="manageinteraction.php" role="button">Manage Interaction</a>
                <a class="btn btn-default" style="margin:10px;" href="managesentence.php" role="button">Manage Sentence</a>
