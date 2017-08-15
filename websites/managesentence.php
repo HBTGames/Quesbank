@@ -152,7 +152,7 @@
                   echo '<span class="stat">There are';
                   echo " $all[0] ";
                   echo ' questions </span>'; ?>
-               <hr>
+       
                <table class="table table-hover" id="myTable">
                   <thead>
                      <tr>
