@@ -18,7 +18,7 @@
          /* Custom container */
          .container-narrow {
          margin: 0 auto;
-         max-width: 90%;
+         max-width: 100%;
          }
          .container-narrow > hr {
          margin: 30px 0;
@@ -54,6 +54,47 @@
          form{
          margin: 0 !important;
          }
+          ul.nav.nav-pills.pull-right {
+    margin-right: 10%;
+    margin-top: 29px;
+    margin-bottom: 0;
+}
+.footer {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+span.langsetting {
+    float: right;
+}
+div#sepmanagepage{
+width:80%;
+margin:0 auto;
+}
+div#manageall {
+    margin-top: 6%;
+}
+h1.managepagetitle {
+    text-align: center;
+        margin-bottom: 35px;
+}
+span.stat {
+    float: right;
+}
+table#myTable tr th:hover{
+background:#eeeeee;
+}
+table#myTable{
+margin-top:25px;
+}
+table#myTable tr th:after{
+content:"▾";
+}
+#header-fixed { 
+    position: fixed; 
+    top: 140px; 
+    display:none;
+    background-color:white;
+}
       </style>
       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -78,6 +119,7 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
+         <div id="sepmanagepage">
          <div id="manageall">
        <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
        <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
@@ -91,7 +133,8 @@
        <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
        <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
        </div>
-       <h1>Manage Multi Chioce</h1><br>
+       <hr>
+       <h1 class="managepagetitle">Manage Multi Chioce</h1><br>
             
                   <div id="multi_choicetable">
                      <?php
@@ -107,7 +150,9 @@
                      <?php
                         $count = "SELECT COUNT(idmulti_choice) FROM test.multi_choice";
                         $all = mysql_fetch_array( mysql_query($count) );
-                        echo "There are ",$all[0]," questions"; ?>
+                        echo '<span class="stat">There are';
+               echo " $all[0] ";
+               echo ' questions </span>'; ?>
                      <hr>
                      <table class="table table-hover" id="myTable">
                         <thead>
@@ -149,13 +194,13 @@
                               <td><?php echo "$year" ?></td>
                               <td><?php echo "$grade" ?></td>
                               <td><?php echo "$testtype" ?></td>
-                              <td><?php echo "$reference" ?></td>
+                              <td class="abbre" title="<?php echo "$reference" ?>"><?php echo "$reference" ?></td>
                               <td><?php echo "$textbook" ?></td>
                               <td><?php echo "$lesson" ?></td>
                               <td><?php echo "$knowledge" ?></td>
                               <td class="difficultyTd"><?php echo "$difficulty" ?></td>
-                              <td><?php echo "$question" ?></td>
-                              <td><?php echo "$answer" ?></td>
+                              <td class="abbre" title="<?php echo "$question" ?>"><?php echo "$question" ?></td>
+                              <td class="abbre" title="<?php echo "$answer" ?>"><?php echo "$answer" ?></td>
                               <td><?php echo "$date" ?></td>
                               <td>
                                  <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" >Edit </button>
@@ -369,7 +414,6 @@
                                     ?> -->
                         </tbody>
                      </table>
-                     <hr>
                      <!--       <script language="javascript" type="text/javascript">
                         //$(document).ready(function(){
                         		$('.delete-b').click(function(){
@@ -449,27 +493,24 @@
                             mysql_close('db');
                          ?>
                          </div>
+                         </div>
+                         <hr>
          <div class="footer">
             <p>
                &copy;
                <span class="lang" key="airEnglish">Air English 2015</span>
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
+              <span class="langsetting">
                <span class="lang" key="languageText"> Language:</span>
                <select id="changeLang" onchange="languageChange();">
                   <option  class="lang" value="en" key="langEnglish" >English</option>
                   <option class="lang" value="zh" key="langChinese">中文</option>
                </select>
+               </span>
             </p>
          </div>
       </div>
       <!-- /container -->
   
-      <hr>
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
          var edit_id =$(this).attr('id');
@@ -512,6 +553,18 @@
          
          
          </script> -->
+          <script>
+      $(document).ready(function(){
+$(".abbre").each(function(){
+var maxwidth=30;
+if($(this).text().length>maxwidth){
+$(this).text($(this).text().substring(0,maxwidth));
+$(this).html($(this).html()+'...');
+}
+});
+});
+
+      </script>
       <script>
          function searchfilter() {
          // Declare variables

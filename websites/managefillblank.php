@@ -197,7 +197,7 @@ content:"▾";
                      <td><?php echo "$year" ?></td>
                      <td><?php echo "$grade" ?></td>
                      <td><?php echo "$testtype" ?></td>
-                     <td class="abbre"><?php echo "$reference" ?></td>
+                     <td class="abbre" title="<?php echo "$reference" ?>"><?php echo "$reference" ?></td>
                      <td><?php echo "$textbook" ?></td>
                      <td><?php echo "$lesson" ?></td>
                      <td><?php echo "$knowledge" ?></td>
