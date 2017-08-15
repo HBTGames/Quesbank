@@ -872,7 +872,25 @@ console.log(deleteIndex);
    document.getElementsByName("deleteInputFillBlank")[0].value = 0;
  }else if (tagSelect == 1) {
    document.getElementsByName("deleteInputMultiChoice")[0].value = 0;
- }
+ }else if (tagSelect == 2) {
+  document.getElementsByName("deleteInputSentenceTrans")[0].value = 0;
+}else if (tagSelect == 3) {
+    document.getElementsByName("deleteInputInteraction")[0].value = 0;
+}else if (tagSelect == 4) {
+    document.getElementsByName("deleteInputReadingMulti")[0].value = 0;
+}else if (tagSelect == 5) {
+    document.getElementsByName("deleteInputReading")[0].value = 0;
+}else if (tagSelect == 6) {
+    document.getElementsByName("deleteInputReadingMission")[0].value = 0;
+}else if (tagSelect == 7) {
+    document.getElementsByName("deleteInputTranslation")[0].value = 0;
+}else if (tagSelect == 8) {
+    document.getElementsByName("deleteInputListening")[0].value = 0;
+}else if (tagSelect == 9) {
+    document.getElementsByName("deleteInputWriting")[0].value = 0;
+}else if (tagSelect == 10) {
+    document.getElementsByName("deleteInputOthers")[0].value = 0;
+}
 
 for (var i = 0; i < finalInputNumber; i++) {
 var tempHTML = document.getElementsByName("inputs")[tagSelect].innerHTML;
