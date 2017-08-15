@@ -45,3 +45,38 @@ margin-right:30px;
     margin-left: 10%;
     margin-top: 23px;
 }
+ul.nav.nav-pills.pull-right {
+    margin-right: 10%;
+    margin-top: 29px;
+    margin-bottom: 0;
+}
+.footer {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+span.langsetting {
+    float: right;
+}
+div#sepmanagepage{
+width:80%;
+margin:0 auto;
+}
+div#manageall {
+    margin-top: 6%;
+}
+h1.managepagetitle {
+    text-align: center;
+        margin-bottom: 35px;
+}
+span.stat {
+    float: right;
+}
+table#myTable tr th:after{
+content:"▾";
+}
+table#myTable tr th:hover{
+background:#eeeeee;
+}
+table#myTable{
+margin-top:25px;
+}

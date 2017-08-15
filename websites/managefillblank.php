@@ -18,7 +18,7 @@
          /* Custom container */
          .container-narrow {
          margin: 0 auto;
-         max-width: 90%;
+         max-width: 100%;
          }
          .container-narrow > hr {
          margin: 30px 0;
@@ -55,6 +55,47 @@
          form{
          margin: 0 !important;
          }
+         ul.nav.nav-pills.pull-right {
+    margin-right: 10%;
+    margin-top: 29px;
+    margin-bottom: 0;
+}
+.footer {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+span.langsetting {
+    float: right;
+}
+div#sepmanagepage{
+width:80%;
+margin:0 auto;
+}
+div#manageall {
+    margin-top: 6%;
+}
+h1.managepagetitle {
+    text-align: center;
+        margin-bottom: 35px;
+}
+span.stat {
+    float: right;
+}
+table#myTable tr th:hover{
+background:#eeeeee;
+}
+table#myTable{
+margin-top:25px;
+}
+table#myTable tr th:after{
+content:"▾";
+}
+#header-fixed { 
+    position: fixed; 
+    top: 140px; 
+    display:none;
+    background-color:white;
+}
       </style>
       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -79,6 +120,7 @@
             <h3 class="muted">QuesBank</h3>
          </div>
          <hr>
+         <div id="sepmanagepage">
          <div id="manageall">
             <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
             <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
@@ -92,8 +134,9 @@
             <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
             <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
          </div>
-         <h1>Manage Fill Blank</h1>
-         <br>
+         <hr>
+         <h1 class="managepagetitle">Manage Fill Blank</h1>
+         
          <div id="fill_blanktable">
             <?php
                $db = mysql_connect('localhost','root','password')
@@ -108,8 +151,10 @@
             <?php
                $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
                $all = mysql_fetch_array( mysql_query($count) );
-               echo "There are ",$all[0]," questions"; ?>
-            <hr>
+               echo '<span class="stat">There are';
+               echo " $all[0] ";
+               echo ' questions </span>'; ?>
+        
             <table class="table table-hover" id="myTable">
                <thead>
                   <tr>
@@ -370,7 +415,7 @@
                            ?> -->
                </tbody>
             </table>
-            <hr>
+            
             <!--       <script language="javascript" type="text/javascript">
                //$(document).ready(function(){
                		$('.delete-b').click(function(){
@@ -449,27 +494,24 @@
                    }
                    mysql_close('db');
                 ?>
+                </div>
          </div>
+         <hr>
          <div class="footer">
             <p>
                &copy;
                <span class="lang" key="airEnglish">Air English 2015</span>
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
-               &ensp;
+               <span class="langsetting">
                <span class="lang" key="languageText"> Language:</span>
                <select id="changeLang" onchange="languageChange();">
                   <option  class="lang" value="en" key="langEnglish" >English</option>
                   <option class="lang" value="zh" key="langChinese">中文</option>
                </select>
+               </span>
             </p>
          </div>
       </div>
       <!-- /container -->
-      <hr>
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
          var edit_id =$(this).attr('id');
@@ -654,6 +696,20 @@
          $(this).parents('tr').remove();
          })*/
          
+         var tableOffset = $("#myTable").offset().top;
+var $header = $("#myTable > thead").clone();
+var $fixedHeader = $("#header-fixed").append($header);
+
+$(window).bind("scroll", function() {
+    var offset = $(this).scrollTop();
+    
+    if (offset >= tableOffset && $fixedHeader.is(":hidden")) {
+        $fixedHeader.show();
+    }
+    else if (offset < tableOffset) {
+        $fixedHeader.hide();
+    }
+});
       </script>
       <!-- Le javascript
          ================================================== -->
