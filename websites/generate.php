@@ -10,7 +10,7 @@
     <script type="text/javascript" src="../assets/js/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript" src="../assets/js/jspdf.debug.js"></script>
     <script type="text/javascript" src="../assets/js/test-generation-helper.js"></script>
-    
+
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -55,7 +55,7 @@
         margin-top: 28px;
       }
  @timing:         0.08s;
-      
+
 .tag{
   display: inline-block;
   position: relative;
@@ -70,7 +70,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  
+
   &:hover + label{
     background: lighten(#ccc, 7%);
   }
@@ -147,7 +147,7 @@
 <?php
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
-                         
+
                         ?>
       <hr>
 
@@ -155,28 +155,28 @@
 <div id="year-filter">
   <label>Year</label>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" id = "year_box_1" onclick="year_box_func"/>
     <label for="">2000-2005</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" class = "year_box"/>
     <label for="">2006-2010</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" class = "year_box"/>
     <label for="">2011-2015</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" class = "year_box"/>
     <label for="">2016-2017</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
 </div>
 <div id="grade-filter">
@@ -185,73 +185,73 @@
     <input type="checkbox" />
     <label for="">1</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">2</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">3</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">4</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">5</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">6</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">7</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">8</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">9</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">10</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">11</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">12</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
 </div>
 <div id="testtype-filter">
@@ -268,7 +268,7 @@
     <input type="checkbox" />
     <label for=""><?php echo "$testtype" ?></label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
     <?php } ?>
 </div>
@@ -286,7 +286,7 @@
     <input type="checkbox" />
     <label for=""><?php echo "$textbook" ?></label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
     <?php } ?>
 </div>
@@ -296,25 +296,25 @@
     <input type="checkbox" />
     <label for="">1</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">2</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">3</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">4</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
 </div>
 <div id="testtype-filter">
@@ -331,7 +331,7 @@
     <input type="checkbox" />
     <label for=""><?php echo "$knowledge" ?></label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
     <?php } ?>
 </div>
@@ -341,19 +341,19 @@
     <input type="checkbox" />
     <label for="">Easy</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">Medium</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
   <div class="tag">
     <input type="checkbox" />
     <label for="">Hard</label>
     <i class="fa fa-plus"></i>
-    <i class="fa fa-check"></i> 
+    <i class="fa fa-check"></i>
   </div>
 </div>
 
@@ -369,7 +369,15 @@ $db = mysql_connect('localhost','root','password')
  or die('Error connecting to MySQL server.');
  @mysql_select_db("test", $db);
  $fill_blank_sql = "SELECT * FROM test.fill_blank";
- $fill_blank_result = mysql_query($fill_blank_sql);
+
+
+
+
+
+
+
+ $fill_blank_result = mysql_query($aaabbb_sql);
+
 
  $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
  $all = mysql_fetch_array(mysql_query($count) );
@@ -415,7 +423,7 @@ $answers_for_samples = array ($answers_for_samples_1, $answers_for_samples_2, $a
 
 <hr>
       <!-- Standard button -->
-<button type="button" class="btn btn-default" onclick="question_sample()">Test Type 1</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#pudding" key="pudding">Test Type 1</button>
 Pudding: 5 multiple-choice, 5 fill-blank/sentences, 2 translation, 1 reading
 <hr>
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
@@ -454,7 +462,158 @@ Tutorial Practicing: 25 multiple-choice, 30 fill-blank, 10 sentences trans, 5 tr
 
     </div> <!-- /container -->
 
+
+
+    <!-- bootstrap -->
+    <div class="modal fade largeModal" id="pudding" tabindex="-1" role="dialog">
+
+      <?php
+      $chkArr = isset($_POST['chk']) ? $_POST['chk'] : array();
+      $chkArrCSV = implode(',',$chkArr);
+      ?>
+
+      <div class="modal-dialog " role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+                <h3>PREVIEW</h3>
+
+            </div>
+
+            <div class="modal-body">
+
+
+            <?php
+            $db = mysql_connect('localhost','root','password')
+             or die('Error connecting to MySQL server.');
+             @mysql_select_db("test", $db);
+
+             $fill_blank_sql = "SELECT * FROM test.fill_blank";
+
+
+
+             if ($year_box_1.checked){
+               $fill_blank_year_box_1 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2000 AND 2005";
+               $fill_blank_year_box_1_query = mysql_query($fill_blank_year_box_1);
+               echo "haha";
+             }
+             if ($year_box_2.checked){
+               $fill_blank_year_box_2 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2006 AND 2010";
+               $fill_blank_year_box_2_query = mysql_query($fill_blank_year_box_2);
+             }
+             if ($year_box_3.checked){
+               $fill_blank_year_box_3 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2011 AND 2015";
+               $fill_blank_year_box_3_query = mysql_query($fill_blank_year_box_3);
+             }
+             if ($year_box_4.checked){
+               $fill_blank_year_box_4 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2016 AND 2017";
+               $fill_blank_year_box_4_query = mysql_query($fill_blank_year_box_4);
+             }
+
+             /*while( $row = mysql_fetch_array($fill_blank_year_box_1_query))
+             {
+             echo $row['question'];
+           }
+           echo "\n";
+           while( $row = mysql_fetch_array($fill_blank_year_box_2_query))
+           {
+           echo $row['question'];
+         }
+         echo "\n";
+         while( $row = mysql_fetch_array($fill_blank_year_box_3_query))
+         {
+         echo $row['question'];
+       }
+       echo "\n";
+       while( $row = mysql_fetch_array($fill_blank_year_box_4_query))
+       {
+       echo $row['question'];
+     }
+     echo "\n";*/
+
+
+
+
+             $fill_blank_result = mysql_query($fill_blank_sql);
+
+             $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
+             $all = mysql_fetch_array(mysql_query($count) );
+             $total_num = $all[0];
+
+             $question_1_index = rand(1, $total_num);
+             //echo "$question_1_index";
+             $questions_for_samples_query = mysql_fetch_row(mysql_query("SELECT question FROM test.fill_blank WHERE idfill_blank = $question_1_index"));
+             $questions_for_samples_1 = $questions_for_samples_query[0];
+             $answers_for_samples_query = mysql_fetch_row(mysql_query("SELECT answer FROM test.fill_blank WHERE idfill_blank = $question_1_index"));
+             $answers_for_samples_1 = $answers_for_samples_query[0];
+
+             $question_2_index = rand(1, $total_num);
+             while ($question_1_index == $question_2_index){
+               $question_2_index = rand(1, $total_num);
+             }
+             //echo "$question_2_index";
+             $questions_for_samples_query = mysql_fetch_row(mysql_query("SELECT question FROM test.fill_blank WHERE idfill_blank = $question_2_index"));
+             $questions_for_samples_2 = $questions_for_samples_query[0];
+             $answers_for_samples_query = mysql_fetch_row(mysql_query("SELECT answer FROM test.fill_blank WHERE idfill_blank = $question_2_index"));
+             $answers_for_samples_2 = $answers_for_samples_query[0];
+
+             $question_3_index = rand(1, $total_num);
+             while ($question_1_index == $question_3_index || $question_2_index == $question_3_index){
+               $question_3_index = rand(1, $total_num);
+             }
+             //echo "$question_3_index";
+             $questions_for_samples_query = mysql_fetch_row(mysql_query("SELECT question FROM test.fill_blank WHERE idfill_blank = $question_3_index"));
+             $questions_for_samples_3 = $questions_for_samples_query[0];
+             $answers_for_samples_query = mysql_fetch_row(mysql_query("SELECT answer FROM test.fill_blank WHERE idfill_blank = $question_3_index"));
+             $answers_for_samples_3 = $answers_for_samples_query[0];
+
+
+            $questions_for_samples = array ($questions_for_samples_1, $questions_for_samples_2, $questions_for_samples_3);
+            $answers_for_samples = array ($answers_for_samples_1, $answers_for_samples_2, $answers_for_samples_3);
+             /*echo "$questions_for_samples[0]";
+              echo "$questions_for_samples[1]";
+               echo "$questions_for_samples[2]";
+               echo "$answers_for_samples[0]";
+                echo "$answers_for_samples[1]";
+                 echo "$answers_for_samples[2]";*/
+            ?>
+
+            </div>
+         </div>
+       </div>
+      <div class="modal-footer">
+
+         <button type="button" class="btn btn-danger" onclick="question_sample()">Generate Paper</button>
+         <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
 <script>
+func year_box_func(){
+
+  var year_box_1_in_js = document.getElementById('year_box_1')
+  if (year_box_1_in_js.checked == true){
+     document.getElementById('year_box_1_check') = true
+  }
+  else {
+    document.getElementById('year_box_1_check') = false
+  }
+}
+
+
+
+
+
+
+
 function question_sample(){
   var doc_1 = new jsPDF();
   var doc_2 = new jsPDF();
