@@ -262,20 +262,18 @@
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.testtypetags";
                          $result = mysql_query($sql);
-
+                         $x = 1;
                               while( $row = mysql_fetch_array($result))
                               {
                               $testtype = $row['testtype'];
                               ?>
    <div class="tag">
-    <input type="checkbox" name = "testtype_box_" value="yes"/>
+    <input type="checkbox" name = "testtype_box_<?php echo "$x";?>" value="yes"/>
     <label for=""><?php echo "$testtype" ?></label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
-
   </div>
-
-    <?php} ?>
+    <?php $x = $x + 1;} ?>
 </div>
 <div id="testtype-filter">
   <label>Textbook</label>
@@ -283,18 +281,18 @@
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.textbooktags";
                          $result = mysql_query($sql);
-
+                         $x = 1;
                               while( $row = mysql_fetch_array($result))
                               {
                               $textbook = $row['textbook'];
                               ?>
     <div class="tag">
-    <input type="checkbox" name = "textbook_box_" value="yes"/>
+    <input type="checkbox" name = "textbook_box_<?php echo "$x";?>" value="yes"/>
     <label for=""><?php echo "$textbook" ?></label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
-    <?php } ?>
+    <?php $x = $x + 1;} ?>
 </div>
 <div id="lesson-filter">
   <label>Lesson</label>
@@ -329,18 +327,18 @@
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.knowledgetags";
                          $result = mysql_query($sql);
-
+                         $x = 1;
                               while( $row = mysql_fetch_array($result))
                               {
                               $knowledge = $row['knowledge'];
                               ?>
    <div class="tag">
-    <input type="checkbox" name = "knowledge_box_" value="yes"/>
+    <input type="checkbox" name = "knowledge_box_<?php echo "$x";?>" value="yes"/>
     <label for=""><?php echo "$knowledge" ?></label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
-    <?php } ?>
+    <?php $x = $x + 1;} ?>
 </div>
 <div id="difficulty-filter">
   <label>Difficulty</label>
@@ -563,7 +561,7 @@ for ($x = 1; $x<=12; $x++){
 
 
 //testtype filter
-$count = "SELECT COUNT(idfill_blank) FROM tags.testtypetags";
+$count = "SELECT COUNT(idtesttypetags) FROM tags.testtypetags";
 $all = mysql_fetch_array(mysql_query($count));
 for ($x = 1; $x<=$all[0]; $x++){
   if (isset($_POST['testtype_box_'.$x])) {
@@ -581,7 +579,7 @@ for ($x = 1; $x<=$all[0]; $x++){
 
 
 //textbook filter
-$count = "SELECT COUNT(idfill_blank) FROM tags.textbooktags";
+$count = "SELECT COUNT(idtextbooktags) FROM tags.textbooktags";
 $all = mysql_fetch_array(mysql_query($count));
 for ($x = 1; $x<=$all[0]; $x++){
   if (isset($_POST['textbook_box_'.$x])) {
@@ -611,7 +609,7 @@ for ($x = 1; $x<=4; $x++){
 }
 }
 //knowledge filter
-$count = "SELECT COUNT(idfill_blank) FROM tags.knowledgetags";
+$count = "SELECT COUNT(idknowledgetags) FROM tags.knowledgetags";
 $all = mysql_fetch_array(mysql_query($count));
 for ($x = 1; $x<=$all[0]; $x++){
   if (isset($_POST['knowledge_box_'.$x])) {
@@ -631,7 +629,7 @@ for ($x = 1; $x<=3; $x++){
   if (isset($_POST['difficulty_box_'.$x])) {
     if ($_POST['difficulty_box_'.$x] == $value) {
         ${'difficulty_box_'.$x.'_check'} = true;
-        $type1_difficulty_filter_bool = true;
+        $type1_lesson_filter_bool = true;
     } else {
         ${'difficulty_box_'.$x.'_check'} = false;
         print 'Invalid checkbox value submitted.';
@@ -657,7 +655,10 @@ for ($x = 1; $x<=3; $x++){
 
 //start actual filter
 
-if (!$type1_year_filter_bool && !$type1_grade_filter_bool) {
+if (!$type1_year_filter_bool && !$type1_grade_filter_bool
+&&!$type1_testtype_filter_bool &&!$type1_textbook_filter_bool
+&&!$type1_lesson_filter_bool &&!$type1_knowledge_filter_bool
+&&!$type1_difficulty_filter_bool) {
   print "No year selected\n";
   $type_1_final_db_used = "SELECT * FROM test.fill_blank";
   $type_1_final_db_used_query = mysql_query($type_1_final_db_used);
@@ -670,8 +671,57 @@ if (!$type1_year_filter_bool && !$type1_grade_filter_bool) {
 
 else{
   $type_1_final_db_used = "SELECT * FROM test.fill_blank";
+  //year
+  /*if ($type1_year_filter_bool){
+  print "There is at least one year selected";
 
-//grade
+  for ($x = 1; $x<=4; $x++){
+    if (${'year_box_'.$x.'_check'}){
+    ${'fill_blank_year_box_'.$x} = "SELECT * FROM test.fill_blank WHERE year BETWEEN (1996+$x*5) AND (2000+$x*5)";
+    ${'fill_blank_year_box_'.$x.'_query'} = mysql_query('fill_blank_year_box_'.$x);
+
+    print "year box $x selected";
+  }
+
+}*/
+
+
+  /*if ($year_box_1_check) {
+    $fill_blank_year_box_1 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2000 AND 2005";
+    $fill_blank_year_box_1_query = mysql_query($fill_blank_year_box_1);
+
+    print "year box 1 selected";
+  }
+  if ($year_box_2_check) {
+    $fill_blank_year_box_2 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2006 AND 2010";
+    $fill_blank_year_box_2_query = mysql_query($fill_blank_year_box_2);
+
+    print "year box 2 selected";
+  }
+  if ($year_box_3_check) {
+    $fill_blank_year_box_3 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2011 AND 2015";
+    $fill_blank_year_box_3_query = mysql_query($fill_blank_year_box_3);
+    print "year box 3 selected";
+  }
+  if ($year_box_4_check) {
+    $fill_blank_year_box_4 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2016 AND 2017";
+    $fill_blank_year_box_4_query = mysql_query($fill_blank_year_box_4);
+    print "year box 4 selected";
+  }*/
+
+
+  /*$type_1_final_db_used = $fill_blank_year_box_1."
+    ".UNION." ".$fill_blank_year_box_2."
+    ".UNION." ".$fill_blank_year_box_3."
+    ".UNION." ".$fill_blank_year_box_4;
+    print "questions selected from box";
+    $type_1_final_db_used_query = mysql_query($type_1_final_db_used);
+    while( $row = mysql_fetch_array($type_1_final_db_used_query))
+    {
+    print $row['question'];
+    }
+  }*/
+//year
 if ($type1_year_filter_bool){
   print "There is at least one year selected";
 
@@ -688,7 +738,7 @@ if ($type1_year_filter_bool){
     $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_year_used;
 
 }
-
+//grade
   if ($type1_grade_filter_bool){
     print "There is at least one grade selected";
 
@@ -704,25 +754,99 @@ if ($type1_year_filter_bool){
 
 
   }
-  //$db_tagnames = mysql_fetch_array(mysql_query("SELECT testtype FROM tags.testtypetags"));
-  $count = "SELECT COUNT(idfill_blank) FROM tags.testtypetags";
+  //testtype
+  $db_tagname = mysql_fetch_array(mysql_query("SELECT testtype FROM tags.testtypetags"));
+  $count = "SELECT COUNT(idtesttypetags) FROM tags.testtypetags";
   $all = mysql_fetch_array(mysql_query($count));
   if ($type1_testtype_filter_bool){
     print "There is at least one testtype selected";
 
-    /*for ($x = 1; $x<=$all[0]; $x++){
+    for ($x = 1; $x<=all[0]; $x++){
       if (${'testtype_box_'.$x.'_check'}){
-      ${'fill_blank_testtype_box'} = "SELECT * FROM test.fill_blank WHERE testtype = $db_tagnames[$x-1]";
+      ${'fill_blank_testtype_box'} = "SELECT * FROM test.fill_blank WHERE testtype = db_tagname[$x-1]";
       $type1_final_testtype_used = $type1_final_testtype_used." ".UNION." ".$fill_blank_testtype_box;
       print "testtype box $x selected";
       }
 
     }
-    $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_testtype_used;*
+    $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_testtype_used;
 
 
   }
 
+//textbook
+$db_tagname = mysql_fetch_array(mysql_query("SELECT textbook FROM tags.textbooktags"));
+$count = "SELECT COUNT(idtextbooktags) FROM tags.textbooktags";
+$all = mysql_fetch_array(mysql_query($count));
+if ($type1_textbook_filter_bool){
+  print "There is at least one textbook selected";
+
+  for ($x = 1; $x<=all[0]; $x++){
+    if (${'textbook_box_'.$x.'_check'}){
+      print "lululalalalallalala";
+    ${'fill_blank_textbook_box'} = "SELECT * FROM test.fill_blank WHERE textbook = db_tagname[$x-1]";
+    $type1_final_textbook_used = $type1_final_textbook_used." ".UNION." ".$fill_blank_textbook_box;
+    print "textbook box $x selected";
+    }
+
+  }
+  $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_textbook_used;
+
+
+}
+//lesson
+if ($type1_lesson_filter_bool){
+  print "There is at least one lesson selected";
+
+  for ($x = 1; $x<=4; $x++){
+    if (${'lesson_box_'.$x.'_check'}){
+    ${'fill_blank_lesson_box'} = "SELECT * FROM test.fill_blank WHERE lesson = $x";
+    $type1_final_lesson_used = $type1_final_lesson_used." ".UNION." ".$fill_blank_lesson_box;
+    print "lesson box $x selected";
+    }
+
+  }
+  $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_lesson_used;
+
+
+}
+//knowledge
+$db_tagname = mysql_fetch_array(mysql_query("SELECT knowledge FROM tags.knowledgetags"));
+$count = "SELECT COUNT(idknowledgetags) FROM tags.knoeledgetags";
+$all = mysql_fetch_array(mysql_query($count));
+if ($type1_knowledge_filter_bool){
+  print "There is at least one knowledge selected";
+
+  for ($x = 1; $x<=all[0]; $x++){
+    if (${'knowledge_box_'.$x.'_check'}){
+    ${'fill_blank_knowledge_box'} = "SELECT * FROM test.fill_blank WHERE knowledge = db_tagname[$x-1]";
+    $type1_final_knowledge_used = $type1_final_knowledge_used." ".UNION." ".$fill_blank_knowledge_box;
+    print "textbook box $x selected";
+    }
+
+  }
+  $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_textbook_used;
+
+
+}
+//difficulty
+
+$difficulty_array = Array('Easy', 'Medium', 'Hard');
+if ($type1_difficulty_filter_bool){
+  print "There is at least one difficulty selected";
+
+  for ($x = 1; $x<=3; $x++){
+    if (${'difficulty_box_'.$x.'_check'}){
+    ${'fill_blank_difficulty_box'} = "SELECT * FROM test.fill_blank WHERE difficulty = difficulty_array[$x-1]";
+    $type1_final_difficulty_used = $type1_final_difficulty_used." ".UNION." ".$fill_blank_difficulty_box;
+    print "difficulty box $x selected";
+    }
+
+  }
+  $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_difficulty_used;
+
+
+}
 
 
 
@@ -730,7 +854,7 @@ if ($type1_year_filter_bool){
 //after all
 
 
-$type_1_final_db_used_query = mysql_query($fill_blank_year_box);
+$type_1_final_db_used_query = mysql_query($type_1_final_db_used);
 while( $row = mysql_fetch_array($type_1_final_db_used_query))
 {
 print $row['question'];
