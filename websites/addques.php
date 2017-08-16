@@ -90,7 +90,7 @@
     border:1px solid #d43f3a;
     color: white;
 }
-input#add {
+input.submitNewQues {
 width: 100%;
     padding: 10px;
        background: #337ab7;
@@ -295,7 +295,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="add" type="submit" id="add" value="Submit Question" >
+                        <input name="add" type="submit" id="add" value="Submit Question" class="submitNewQues" >
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(0)">Add Input</button>
@@ -518,7 +518,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitMultiChoice" type="submit" id="submitMultiChoice" value="Submit Question" >
+                        <input name="submitMultiChoice" type="submit" id="submitMultiChoice" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(1)">Add Input</button>
@@ -741,7 +741,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitSentenceTrans" type="submit" id="submitSentenceTrans" value="Submit Question" >
+                        <input name="submitSentenceTrans" type="submit" id="submitSentenceTrans" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(2)">Add Input</button>
@@ -964,7 +964,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitInteraction" type="submit" id="submitInteraction" value="Submit Question" >
+                        <input name="submitInteraction" class="submitNewQues" type="submit" id="submitInteraction" value="Submit Question" >
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(3)">Add Input</button>
@@ -1187,7 +1187,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submiReadingMulti" type="submit" id="submiReadingMulti" value="Submit Question" >
+                        <input name="submiReadingMulti" type="submit" id="submiReadingMulti" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(4)">Add Input</button>
@@ -1410,7 +1410,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitReading" type="submit" id="submitReading" value="Submit Question" >
+                        <input name="submitReading" type="submit" id="submitReading" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(5)">Add Input</button>
@@ -1633,7 +1633,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitReadingMission" type="submit" id="submitReadingMission" value="Submit Question" >
+                        <input name="submitReadingMission" type="submit" id="submitReadingMission" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(6)">Add Input</button>
@@ -1856,7 +1856,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitTranslation" type="submit" id="submitTranslation" value="Submit Question" >
+                        <input name="submitTranslation" type="submit" id="submitTranslation" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(7)">Add Input</button>
@@ -2079,7 +2079,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitListening" type="submit" id="submitListening" value="Submit Question" >
+                        <input name="submitListening" type="submit" id="submitListening" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(8)">Add Input</button>
@@ -2302,7 +2302,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitWriting" type="submit" id="submitWriting" value="Submit Question" >
+                        <input name="submitWriting" type="submit" id="submitWriting" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(9)">Add Input</button>
@@ -2525,7 +2525,7 @@ width: 100%;
                               </div>
                            </span>
                         </span>
-                        <input name="submitOthers" type="submit" id="submitOthers" value="Submit Question" >
+                        <input name="submitOthers" type="submit" id="submitOthers" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
                      <button type="button" name="addInput" class="addNewInput" onclick="addInputs(10)">Add Input</button>
