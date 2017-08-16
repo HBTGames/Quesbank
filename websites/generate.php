@@ -153,9 +153,10 @@
 
 <div id="distill">
 <div id="year-filter">
+  <form method = "post">
   <label>Year</label>
   <div class="tag">
-    <input type="checkbox" id = "year_box_1" onclick="year_box_func"/>
+    <input type="checkbox" name = "year_box_1"/>
     <label for="">2000-2005</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
@@ -178,6 +179,7 @@
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
+</form>
 </div>
 <div id="grade-filter">
   <label>Grade</label>
@@ -491,7 +493,7 @@ Tutorial Practicing: 25 multiple-choice, 30 fill-blank, 10 sentences trans, 5 tr
 
 
 
-             if ($year_box_1.checked){
+             if (isset($_POST['year_box_1'])){
                $fill_blank_year_box_1 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2000 AND 2005";
                $fill_blank_year_box_1_query = mysql_query($fill_blank_year_box_1);
                echo "haha";
