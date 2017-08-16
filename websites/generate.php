@@ -132,7 +132,7 @@
   </head>
 
   <body>
-
+<form method = "post">
     <div class="container-narrow">
 
 
@@ -153,104 +153,104 @@
 
 <div id="distill">
 <div id="year-filter">
-  <form method = "post">
+
   <label>Year</label>
   <div class="tag">
-    <input type="checkbox" name = "year_box_1"/>
+    <input type="checkbox" name = "year_box_1" value="yes"/>
     <label for="">2000-2005</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" class = "year_box"/>
+    <input type="checkbox" name = "year_box_2" value="yes"/>
     <label for="">2006-2010</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" class = "year_box"/>
+    <input type="checkbox" name = "year_box_3" value="yes"/>
     <label for="">2011-2015</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" class = "year_box"/>
+    <input type="checkbox" name = "year_box_4" value="yes"/>
     <label for="">2016-2017</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
-</form>
+
 </div>
 <div id="grade-filter">
   <label>Grade</label>
     <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_1" value="yes"/>
     <label for="">1</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_2" value="yes" />
     <label for="">2</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_3" value="yes" />
     <label for="">3</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_4" value="yes" />
     <label for="">4</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_5" value="yes" />
     <label for="">5</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_6" value="yes" />
     <label for="">6</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_7" value="yes" />
     <label for="">7</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_8" value="yes" />
     <label for="">8</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_9" value="yes" />
     <label for="">9</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_10" value="yes" />
     <label for="">10</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_11" value="yes" />
     <label for="">11</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "grade_box_12" value="yes" />
     <label for="">12</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
@@ -262,17 +262,20 @@
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.testtypetags";
                          $result = mysql_query($sql);
+
                               while( $row = mysql_fetch_array($result))
                               {
                               $testtype = $row['testtype'];
                               ?>
    <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "testtype_box_" value="yes"/>
     <label for=""><?php echo "$testtype" ?></label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
+
   </div>
-    <?php } ?>
+
+    <?php} ?>
 </div>
 <div id="testtype-filter">
   <label>Textbook</label>
@@ -280,12 +283,13 @@
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.textbooktags";
                          $result = mysql_query($sql);
+
                               while( $row = mysql_fetch_array($result))
                               {
                               $textbook = $row['textbook'];
                               ?>
     <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "textbook_box_" value="yes"/>
     <label for=""><?php echo "$textbook" ?></label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
@@ -295,25 +299,25 @@
 <div id="lesson-filter">
   <label>Lesson</label>
     <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "lesson_box_1" value="yes"/>
     <label for="">1</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "lesson_box_2" value="yes"/>
     <label for="">2</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "lesson_box_3" value="yes"/>
     <label for="">3</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "lesson_box_4" value="yes"/>
     <label for="">4</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
@@ -325,12 +329,13 @@
                            @mysql_select_db("tags", $db);
                          $sql = "SELECT * FROM tags.knowledgetags";
                          $result = mysql_query($sql);
+
                               while( $row = mysql_fetch_array($result))
                               {
                               $knowledge = $row['knowledge'];
                               ?>
    <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "knowledge_box_" value="yes"/>
     <label for=""><?php echo "$knowledge" ?></label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
@@ -340,19 +345,19 @@
 <div id="difficulty-filter">
   <label>Difficulty</label>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "difficulty_box_1" value="yes"/>
     <label for="">Easy</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "difficulty_box_2" value="yes"/>
     <label for="">Medium</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
   </div>
   <div class="tag">
-    <input type="checkbox" />
+    <input type="checkbox" name = "difficulty_box_3" value="yes"/>
     <label for="">Hard</label>
     <i class="fa fa-plus"></i>
     <i class="fa fa-check"></i>
@@ -424,9 +429,330 @@ $answers_for_samples = array ($answers_for_samples_1, $answers_for_samples_2, $a
 ?>
 
 <hr>
+
+
+
+
+
+
+
+
+
+
+
+
       <!-- Standard button -->
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#pudding" key="pudding">Test Type 1</button>
+<input type="submit" name="type1" class="btn btn-default" value="Test Type 1">
 Pudding: 5 multiple-choice, 5 fill-blank/sentences, 2 translation, 1 reading
+<br>
+
+<!--start filtering-->
+<?php if($_REQUEST['type1']){
+$value='yes';
+
+
+//init
+$fill_blank_year_box_1 = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_year_box_2 = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_year_box_3 = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_year_box_4 = "SELECT * FROM test.fill_blank WHERE year = 0";
+
+$fill_blank_grade_box = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_testtype_box = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_textbook_box = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_lesson_box = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_knowledge_box = "SELECT * FROM test.fill_blank WHERE year = 0";
+$fill_blank_difficulty_box = "SELECT * FROM test.fill_blank WHERE year = 0";
+
+
+
+$type1_year_filter_bool = false;
+$type1_grade_filter_bool = false;
+$type1_testtype_filter_bool = false;
+$type1_textbook_filter_bool = false;
+$type1_lesson_filter_bool = false;
+$type1_knowledge_filter_bool = false;
+$type1_difficulty_filter_bool = false;
+
+
+$type1_final_year_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+$type1_final_grade_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+$type1_final_testtype_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+$type1_final_textbook_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+$type1_final_lesson_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+$type1_final_knowledge_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+$type1_final_difficulty_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+
+
+$type_1_final_db_used = "SELECT * FROM test.fill_blank WHERE year = 0";
+
+
+
+
+
+
+//all boolean value first
+//year filter
+
+
+
+if (isset($_POST['year_box_1'])) {
+    if ($_POST['year_box_1'] == $value) {
+        $year_box_1_check = true;
+        $type1_year_filter_bool = true;
+    } else {
+        $year_box_1_check = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    $year_box_1_check = false;
+}
+
+if (isset($_POST['year_box_2'])) {
+    if ($_POST['year_box_2'] == $value) {
+        $year_box_2_check = true;
+        $type1_year_filter_bool = true;
+    } else {
+        $year_box_2_check = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    $year_box_2_check = false;
+}
+
+if (isset($_POST['year_box_3'])) {
+    if ($_POST['year_box_3'] == $value) {
+        $year_box_3_check = true;
+        $type1_year_filter_bool = true;
+    } else {
+        $year_box_3_check = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    $year_box_3_check = false;
+}
+
+if (isset($_POST['year_box_4'])) {
+    if ($_POST['year_box_4'] == $value) {
+        $year_box_4_check = true;
+        $type1_year_filter_bool = true;
+    } else {
+        $year_box_4_check = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    $year_box_4_check = false;
+}
+
+
+
+//grade filter
+for ($x = 1; $x<=12; $x++){
+  if (isset($_POST['grade_box_'.$x])) {
+    if ($_POST['grade_box_'.$x] == $value) {
+        ${'grade_box_'.$x.'_check'} = true;
+        $type1_grade_filter_bool = true;
+    } else {
+        ${'grade_box_'.$x.'_check'} = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    ${'grade_box_'.$x.'_check'} = false;
+}
+}
+
+
+//testtype filter
+$count = "SELECT COUNT(idfill_blank) FROM tags.testtypetags";
+$all = mysql_fetch_array(mysql_query($count));
+for ($x = 1; $x<=$all[0]; $x++){
+  if (isset($_POST['testtype_box_'.$x])) {
+    if ($_POST['testtype_box_'.$x] == $value) {
+        ${'testtype_box_'.$x.'_check'} = true;
+        $type1_testtype_filter_bool = true;
+    } else {
+        ${'testtype_box_'.$x.'_check'} = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    ${'testtype_box_'.$x.'_check'} = false;
+}
+}
+
+
+//textbook filter
+$count = "SELECT COUNT(idfill_blank) FROM tags.textbooktags";
+$all = mysql_fetch_array(mysql_query($count));
+for ($x = 1; $x<=$all[0]; $x++){
+  if (isset($_POST['textbook_box_'.$x])) {
+    if ($_POST['textbook_box_'.$x] == $value) {
+        ${'textbook_box_'.$x.'_check'} = true;
+        $type1_textbook_filter_bool = true;
+    } else {
+        ${'textbook_box_'.$x.'_check'} = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    ${'textbook_box_'.$x.'_check'} = false;
+}
+}
+//lesson filter
+for ($x = 1; $x<=4; $x++){
+  if (isset($_POST['lesson_box_'.$x])) {
+    if ($_POST['lesson_box_'.$x] == $value) {
+        ${'lesson_box_'.$x.'_check'} = true;
+        $type1_lesson_filter_bool = true;
+    } else {
+        ${'lesson_box_'.$x.'_check'} = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    ${'lesson_box_'.$x.'_check'} = false;
+}
+}
+//knowledge filter
+$count = "SELECT COUNT(idfill_blank) FROM tags.knowledgetags";
+$all = mysql_fetch_array(mysql_query($count));
+for ($x = 1; $x<=$all[0]; $x++){
+  if (isset($_POST['knowledge_box_'.$x])) {
+    if ($_POST['knowledge_box_'.$x] == $value) {
+        ${'knowledge_box_'.$x.'_check'} = true;
+        $type1_knowledge_filter_bool = true;
+    } else {
+        ${'knowledge_box_'.$x.'_check'} = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    ${'knowledge_box_'.$x.'_check'} = false;
+}
+}
+//difficulty filter
+for ($x = 1; $x<=3; $x++){
+  if (isset($_POST['difficulty_box_'.$x])) {
+    if ($_POST['difficulty_box_'.$x] == $value) {
+        ${'difficulty_box_'.$x.'_check'} = true;
+        $type1_difficulty_filter_bool = true;
+    } else {
+        ${'difficulty_box_'.$x.'_check'} = false;
+        print 'Invalid checkbox value submitted.';
+    }
+} else {
+    ${'difficulty_box_'.$x.'_check'} = false;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//start actual filter
+
+if (!$type1_year_filter_bool && !$type1_grade_filter_bool) {
+  print "No year selected\n";
+  $type_1_final_db_used = "SELECT * FROM test.fill_blank";
+  $type_1_final_db_used_query = mysql_query($type_1_final_db_used);
+  print "using original db";
+  while( $row = mysql_fetch_array($type_1_final_db_used_query))
+  {
+  print $row['question'];
+  }
+}
+
+else{
+  $type_1_final_db_used = "SELECT * FROM test.fill_blank";
+
+//grade
+if ($type1_year_filter_bool){
+  print "There is at least one year selected";
+
+  for ($x = 1; $x<=4; $x++){
+    if (${'year_box_'.$x.'_check'}){
+    ${'fill_blank_year_box'} = "SELECT * FROM test.fill_blank WHERE year BETWEEN (1996+$x*5) AND (2000+$x*5)";
+    $type1_final_year_used = $type1_final_year_used." ".UNION." ".$fill_blank_year_box;
+    print "year box $x selected";
+    }
+
+  }
+
+
+    $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_year_used;
+
+}
+
+  if ($type1_grade_filter_bool){
+    print "There is at least one grade selected";
+
+    for ($x = 1; $x<=12; $x++){
+      if (${'grade_box_'.$x.'_check'}){
+      ${'fill_blank_grade_box'} = "SELECT * FROM test.fill_blank WHERE grade = $x";
+      $type1_final_grade_used = $type1_final_grade_used." ".UNION." ".$fill_blank_grade_box;
+      print "grade box $x selected";
+      }
+
+    }
+    $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_grade_used;
+
+
+  }
+  //$db_tagnames = mysql_fetch_array(mysql_query("SELECT testtype FROM tags.testtypetags"));
+  $count = "SELECT COUNT(idfill_blank) FROM tags.testtypetags";
+  $all = mysql_fetch_array(mysql_query($count));
+  if ($type1_testtype_filter_bool){
+    print "There is at least one testtype selected";
+
+    /*for ($x = 1; $x<=$all[0]; $x++){
+      if (${'testtype_box_'.$x.'_check'}){
+      ${'fill_blank_testtype_box'} = "SELECT * FROM test.fill_blank WHERE testtype = $db_tagnames[$x-1]";
+      $type1_final_testtype_used = $type1_final_testtype_used." ".UNION." ".$fill_blank_testtype_box;
+      print "testtype box $x selected";
+      }
+
+    }
+    $type_1_final_db_used = $type_1_final_db_used." ".INTERSECT." ".$type1_final_testtype_used;*
+
+
+  }
+
+
+
+
+
+//after all
+
+
+$type_1_final_db_used_query = mysql_query($fill_blank_year_box);
+while( $row = mysql_fetch_array($type_1_final_db_used_query))
+{
+print $row['question'];
+}
+}
+
+
+
+
+
+
+}
+
+
+?>
+
+
+
+
+
+
+
 <hr>
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 <button type="button" class="btn btn-primary">Test Type 2</button>
@@ -463,7 +789,7 @@ Tutorial Practicing: 25 multiple-choice, 30 fill-blank, 10 sentences trans, 5 tr
       </div>
 
     </div> <!-- /container -->
-
+</form>
 
 
     <!-- bootstrap -->
@@ -493,7 +819,13 @@ Tutorial Practicing: 25 multiple-choice, 30 fill-blank, 10 sentences trans, 5 tr
 
 
 
-             if (isset($_POST['year_box_1'])){
+
+
+
+
+
+
+             if ($year_box_1_check){
                $fill_blank_year_box_1 = "SELECT * FROM test.fill_blank WHERE year BETWEEN 2000 AND 2005";
                $fill_blank_year_box_1_query = mysql_query($fill_blank_year_box_1);
                echo "haha";
