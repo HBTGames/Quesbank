@@ -72,9 +72,9 @@
          table#myTable tr th:after{
          content:"▾";
          }
-         #header-fixed { 
-         position: fixed; 
-         top: 140px; 
+         #header-fixed {
+         position: fixed;
+         top: 140px;
          display:none;
          background-color:white;
          }
@@ -83,7 +83,7 @@
          margin:0 auto;
          margin-top:5%;
          }
-         span#deleteInputButton button {    
+         span#deleteInputButton button {
          width: 100%;
     padding: 10px;
        background: #d9534f;
@@ -104,7 +104,7 @@ width: 100%;
        background: #5cb85c;
     border:1px solid #4cae4c;
     color: white;
-    
+
 }
       </style>
       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -155,7 +155,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -313,7 +313,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -348,15 +348,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.fill_blank
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -365,7 +365,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -378,7 +378,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -536,7 +536,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -571,15 +571,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.multi_choice
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -588,7 +588,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -601,7 +601,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -759,7 +759,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -794,15 +794,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.sentence_trans
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -811,7 +811,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -824,7 +824,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -982,7 +982,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -1017,15 +1017,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.interaction
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -1034,7 +1034,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -1047,7 +1047,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -1205,7 +1205,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -1240,15 +1240,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.read_multi
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -1257,7 +1257,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -1270,7 +1270,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -1428,7 +1428,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -1463,15 +1463,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.reading
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -1480,7 +1480,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -1493,7 +1493,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -1651,7 +1651,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -1686,15 +1686,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.reading_mission
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -1703,7 +1703,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -1716,7 +1716,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -1874,7 +1874,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -1909,15 +1909,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.translation
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -1926,7 +1926,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -1939,7 +1939,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -2097,7 +2097,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -2132,15 +2132,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.listening
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -2149,7 +2149,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -2162,7 +2162,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -2320,7 +2320,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -2355,15 +2355,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.writing
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -2372,7 +2372,7 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
@@ -2385,7 +2385,7 @@ width: 100%;
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
                          //$pStatement = $db->getConnection()->query("SET CHARACTER SET utf8");
-                        
+
                         ?>
                      <form method="post">
                         <span name="inputs" id="inputs">
@@ -2543,7 +2543,7 @@ width: 100%;
                         $answers = $_POST['answer'];
                         $dates = $_POST['date'];
                            $dom = new DOMDocument();
-                        
+
                            for ($i=0, $count = count($questions); $i <$count ; $i++) {
                              # code...
                              $year = $years[$i];
@@ -2578,15 +2578,15 @@ width: 100%;
                         $diffcultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
-                        
-                        
+
+
+
                              $sql = "INSERT INTO test.others
                                     (year, grade, testtype, reference, textbook, lesson, knowledge, difficulty, question, answer, date)
                                     VALUES('$yearString','$gradeString','$testtypeString','$referenceString','$textbookString','$lessonString','$knowledgeString','$diffcultyString','$questionString','$answerString', '$date')";
                                        $retval = mysql_query( $sql, $db);
                            }
-                        
+
                         if(! $retval)
                         {
                           die('Could not update data: ' . mysql_error());
@@ -2595,14 +2595,14 @@ width: 100%;
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
                         echo ' </script> ';
-                        
+
                         mysql_close($db);
                         }
                         ?>
                   </div>
                </div>
             </div>
-       
+
          </div>
          </div>
          <hr>

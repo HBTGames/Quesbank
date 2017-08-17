@@ -53,7 +53,24 @@ var arrLang = {
     'testtypeHeader' : 'Testtype',
     'referenceHeader' : 'Reference',
     'lessonHeader' : 'Lesson',
-    'knowledgeHeader' : 'Knowledge'
+    'knowledgeHeader' : 'Knowledge',
+    'questionStat' : 'Qestions Stat',
+    'quesTypeHeader' : 'Questype',
+    'totalHeader' : 'Total',
+    'addedTodayHeader' : 'Added Today',
+    'fillBlank' : 'Fill Blank',
+    'multiChoice' : 'Multichoice',
+    'sentenceTrans' : 'Sentence Trans',
+    'interaction' : 'Interaction',
+    'wanxing' : 'Wanxing',
+    'reading' : 'Reading',
+    'readingMission' : 'Reading Mission',
+    'translation' : 'Translation',
+    'listening' : 'Listening',
+    'writing' : 'Writing',
+    'others' : 'Others',
+    'allTypes' : 'Alltypes',
+    'guide' : 'Guide',
   },
   'zh' : {
     'home' : '主页',
@@ -88,7 +105,25 @@ var arrLang = {
       'testtypeHeader' : '考试类型',
       'referenceHeader' : '出处',
       'lessonHeader' : '课数',
-      'knowledgeHeader' : '知识点'
+      'knowledgeHeader' : '知识点',
+      'questionStat' : '问题统计',
+      'quesTypeHeader' : '问题类型',
+      'totalHeader' : '总计',
+      'addedTodayHeader' : '今日添加',
+      'fillBlank' : '填空',
+      'multiChoice' : '选择',
+      'sentenceTrans' : '句型转换',
+      'interaction' : '交际用语',
+      'wanxing' : '完形填空',
+      'reading' : '阅读',
+      'readingMission' : '任务型阅读',
+      'translation' : '翻译',
+      'listening' : '听力',
+      'writing' : '作文',
+      'others' : '其他',
+      'allTypes' : '所有类型',
+      'guide' : '指南'
+
   }
 };
 
@@ -232,6 +267,16 @@ if(document.getElementsByName("demonstration")[0]!=undefined){
       document.getElementsByName("demonstration")[0].innerHTML = "不断追求完美。 <br>  --制作团队: HBT TEAM";
   }
 }
+
+//change guideContent
+if (document.getElementsByName("guideContent")[0] != undefined) {
+  if(language == 'en'){
+    document.getElementsByName("guideContent")[0].innerHTML = "Please go to manage page to see all type questions.<br><br>Please contact us if you have any questions.Thanks";
+  }else{
+      document.getElementsByName("guideContent")[0].innerHTML = "请前往管理页面查看所有问题。<br><br> 如有疑问请联系我们。 谢谢。";
+  }
+}
+
 //difficulty td
 //var difficulty_array = document.getElementsByName('difficultyTd');
 $('.difficultyTd').each(function ( ) {

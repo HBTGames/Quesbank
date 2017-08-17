@@ -93,7 +93,7 @@ span.langsetting {
     float: right;
 }
       </style>
-     
+
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
       <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -125,7 +125,7 @@ span.langsetting {
             <a href="#intro" class="arrowlink"><img class="arrow"  src="../assets/pics/downArrow.png" alt="arrow" /></a>
             </div>
             </div>
-          
+
           <br>
           <br>
         <br>
@@ -133,7 +133,7 @@ span.langsetting {
          <hr>
          <div class="row-fluid marketing">
             <div class="span6">
-               <h4>Qestions Stat</h4>
+               <h4 class="lang" key="questionStat">Qestions Stat</h4>
                <?php
                   $conn = mysql_connect('localhost','root','password');
                   mysql_select_db('test');
@@ -141,13 +141,13 @@ span.langsetting {
                <table class="table table-striped">
                   <thead>
                      <tr>
-                        <th> Questype</th>
-                        <th> Total </th>
-                        <th> Added Today </th>
+                        <th class="lang" key="quesTypeHeader"> Questype</th>
+                        <th class="lang" key="totalHeader"> Total </th>
+                        <th class="lang" key="addedTodayHeader"> Added Today </th>
                   </thead>
                   <tbody>
                      <tr>
-                        <td>Fill blank</td>
+                        <td class="lang" key="fillBlank">Fill blank</td>
                         <td> <?php
                            $count = "SELECT COUNT(idfill_blank) FROM test.fill_blank";
                                       $all = mysql_fetch_array( mysql_query($count) );
@@ -169,7 +169,7 @@ span.langsetting {
                                 ?> </td>
                      </tr>
                      <tr>
-                        <td>Multichoice</td>
+                        <td class="lang" key="multiChoice">Multichoice</td>
                         <td> <?php
                            $count2 = "SELECT COUNT(idmulti_choice) FROM test.multi_choice";
                                       $all2 = mysql_fetch_array( mysql_query($count2) );
@@ -191,7 +191,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Sentence Trans</td>
+                        <td class="lang" key="sentenceTrans">Sentence Trans</td>
                         <td> <?php
                            $count3 = "SELECT COUNT(idsentence_trans) FROM test.sentence_trans";
                                       $all3 = mysql_fetch_array( mysql_query($count3) );
@@ -213,7 +213,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Interaction</td>
+                        <td class="lang" key="interaction">Interaction</td>
                         <td> <?php
                            $count4 = "SELECT COUNT(idinteraction) FROM test.interaction";
                                       $all4 = mysql_fetch_array( mysql_query($count4) );
@@ -235,7 +235,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Wanxing</td>
+                        <td class="lang" key="wanxing">Wanxing</td>
                         <td> <?php
                            $count5 = "SELECT COUNT(idread_multi) FROM test.read_multi";
                                       $all5 = mysql_fetch_array( mysql_query($count5) );
@@ -257,7 +257,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Reading</td>
+                        <td class="lang" key="reading">Reading</td>
                         <td> <?php
                            $count6 = "SELECT COUNT(idreading) FROM test.reading";
                                       $all6 = mysql_fetch_array( mysql_query($count6) );
@@ -279,7 +279,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Reading Mission</td>
+                        <td class="lang" key="readingMission">Reading Mission</td>
                         <td> <?php
                            $count7 = "SELECT COUNT(idreading_mission) FROM test.reading_mission";
                                       $all7 = mysql_fetch_array( mysql_query($count7) );
@@ -301,7 +301,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Translation</td>
+                        <td class="lang" key="translation">Translation</td>
                         <td> <?php
                            $count8 = "SELECT COUNT(idtranslation) FROM test.translation";
                                       $all8 = mysql_fetch_array( mysql_query($count8) );
@@ -323,7 +323,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Listening</td>
+                        <td class="lang" key="listening">Listening</td>
                         <td> <?php
                            $count9 = "SELECT COUNT(idlistening) FROM test.listening";
                                       $all9 = mysql_fetch_array( mysql_query($count9) );
@@ -345,7 +345,7 @@ span.langsetting {
                         </td>
                      </tr>
                       <tr>
-                        <td>Writing</td>
+                        <td class="lang" key="writing">Writing</td>
                         <td> <?php
                            $count10 = "SELECT COUNT(idwriting) FROM test.writing";
                                       $all10 = mysql_fetch_array( mysql_query($count10) );
@@ -367,7 +367,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Others</td>
+                        <td class="lang" key="others">Others</td>
                         <td> <?php
                            $count11 = "SELECT COUNT(idothers) FROM test.others";
                                       $all11 = mysql_fetch_array( mysql_query($count11) );
@@ -389,7 +389,7 @@ span.langsetting {
                         </td>
                      </tr>
                      <tr>
-                        <td>Alltypes</td>
+                        <td class="lang" key="allTypes">Alltypes</td>
                         <td> <?php
                            $alltype = $all[0] + $all2[0] + $all3[0] + $all4[0]+$all5[0]+$all6[0];
                                       echo "$alltype"; ?>
@@ -400,15 +400,15 @@ span.langsetting {
                                 ?>
                         </td>
                      </tr>
-                     
+
                   </tbody>
                </table>
             </div>
             <div class="span6">
-               <h4>Guide</h4>
-               <p>Please go to manage page to see all type questions.<br><br>Please contact us if you have any questions.Thanks</p>
+               <h4 class="lang" key="guide">Guide</h4>
+               <p name="guideContent">Please go to manage page to see all type questions.<br><br>Please contact us if you have any questions.Thanks</p>
             </div>
-            
+
          </div>
          <div class="arrowlink uparrow">
             <a href="#top" class="arrowlink"><img class="arrow"  src="../assets/pics/upArrow.png" alt="arrow" /></a>
