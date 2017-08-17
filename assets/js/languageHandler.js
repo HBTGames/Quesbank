@@ -10,6 +10,8 @@ function loadLanguage(){
 }
 
 
+
+
 function saveLanguage(language) {
 eraseCookie("language");
 createCookie("language",language,180);
@@ -71,6 +73,9 @@ var arrLang = {
     'others' : 'Others',
     'allTypes' : 'Alltypes',
     'guide' : 'Guide',
+    'referenceBigHeader' : 'Reference',
+      'deleteInput' : 'Delete Input',
+      'addInput' : 'Add Input'
   },
   'zh' : {
     'home' : '主页',
@@ -122,7 +127,10 @@ var arrLang = {
       'writing' : '作文',
       'others' : '其他',
       'allTypes' : '所有类型',
-      'guide' : '指南'
+      'guide' : '指南',
+      'referenceBigHeader' : '问题详情',
+      'deleteInput' : '删除此问题',
+      'addInput' : '增加一个问题详情'
 
   }
 };
@@ -241,14 +249,15 @@ if( document.getElementsByName('question[]')[0]!=undefined  ){
 
 }
 //add question button in addques.php
-if(document.getElementsByName('add')[0]!=undefined){
+$('.submitNewQues').each(function ( ) {
   if(language == 'en'){
-    document.getElementsByName('add')[0].value = "Submit Question"
+  $(this).attr('value', 'Submit Question');
   }else{
-  document.getElementsByName('add')[0].value = "提交问题"
+      $(this).attr('value', '提交问题');
   }
+});
 
-}
+
 //multiple choice submit
 if(document.getElementsByName('submitMultiChoice')[0]!=undefined){
   if(language == 'en'){

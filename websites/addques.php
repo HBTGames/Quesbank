@@ -134,17 +134,17 @@ width: 100%;
          <!-- Nav tabs -->
          <div class="addquespage">
             <ul class="nav nav-tabs" role="tablist">
-               <li role="presentation" class="active"><a href="#fill_blank" aria-controls="fillblank" role="tab" data-toggle="tab">Fillblank</a></li>
-               <li role="presentation"><a href="#multichoice" aria-controls="multichoice" role="tab" data-toggle="tab">Multichoice</a></li>
-               <li role="presentation"><a href="#sentence" aria-controls="sentence" role="tab" data-toggle="tab">Sentencetrans</a></li>
-               <li role="presentation"><a href="#interaction" aria-controls="interaction" role="tab" data-toggle="tab">Interaction</a></li>
-               <li role="presentation"><a href="#readingmu" aria-controls="readingmu" role="tab" data-toggle="tab">Readingmulti</a></li>
-               <li role="presentation"><a href="#reading" aria-controls="reading" role="tab" data-toggle="tab">Reading</a></li>
-               <li role="presentation"><a href="#readingmi" aria-controls="readingmi" role="tab" data-toggle="tab">Readingmission</a></li>
-               <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab">Translation</a></li>
-               <li role="presentation"><a href="#listening" aria-controls="listening" role="tab" data-toggle="tab">Listening</a></li>
-               <li role="presentation"><a href="#writing" aria-controls="writing" role="tab" data-toggle="tab">Writing</a></li>
-               <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab">Others</a></li>
+               <li role="presentation" class="active"><a href="#fill_blank" aria-controls="fillblank" role="tab" data-toggle="tab" class="lang" key="fillBlank">Fillblank</a></li>
+               <li role="presentation"><a href="#multichoice" aria-controls="multichoice" role="tab" data-toggle="tab" class="lang" key="multiChoice">Multichoice</a></li>
+               <li role="presentation"><a href="#sentence" aria-controls="sentence" role="tab" data-toggle="tab" class="lang" key="sentenceTrans">Sentencetrans</a></li>
+               <li role="presentation"><a href="#interaction" aria-controls="interaction" role="tab" data-toggle="tab" class="lang" key="interaction">Interaction</a></li>
+               <li role="presentation"><a href="#readingmu" aria-controls="readingmu" role="tab" data-toggle="tab" class="lang" key="wanxing">Readingmulti</a></li>
+               <li role="presentation"><a href="#reading" aria-controls="reading" role="tab" data-toggle="tab" class="lang" key="reading">Reading</a></li>
+               <li role="presentation"><a href="#readingmi" aria-controls="readingmi" role="tab" data-toggle="tab" class="lang" key="readingMission">Readingmission</a></li>
+               <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab" class="lang" key="translation">Translation</a></li>
+               <li role="presentation"><a href="#listening" aria-controls="listening" role="tab" data-toggle="tab" class="lang" key="listening">Listening</a></li>
+               <li role="presentation"><a href="#writing" aria-controls="writing" role="tab" data-toggle="tab" class="lang" key="writing">Writing</a></li>
+               <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab" class="lang" key="others">Others</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -161,11 +161,11 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3  class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
-                                 <select id="year" class="yearInputFillBlank" name="year[]" type="text" placeholder="Year">
+                                 <select id="year" class="yearInputFillBlank" name="year[]" type="text" placeholder="Year" >
                                     <option>2000</option>
                                     <option>2001</option>
                                     <option>2002</option>
@@ -185,7 +185,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang"  key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputFillBlank" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -201,7 +201,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputFillBlank" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -219,10 +219,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputFillBlank" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputFillBlank referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputFillBlank" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -239,7 +239,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputFillBlank" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -260,7 +260,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputFillBlank" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -277,7 +277,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputFillBlank" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -285,12 +285,12 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputFillBlank" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputFillBlank" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputFillBlank questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputFillBlank answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputFillBlank"  value="0" onclick="deleteInputs(this.value, 0)" >Delete Input</button>
+                                 <button type="button" name="deleteInputFillBlank"  class="lang" key="deleteInput"  value="0" onclick="deleteInputs(this.value, 0)" >Delete Input</button>
                                  </span>
                               </div>
                            </span>
@@ -298,7 +298,7 @@ width: 100%;
                         <input name="add" type="submit" id="add" value="Submit Question" class="submitNewQues" >
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(0)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(0)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['add'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -361,6 +361,7 @@ width: 100%;
                         {
                           die('Could not update data: ' . mysql_error());
                         }
+
                         echo '<script type="text/javascript">';
                         echo  'var update_text= "Data updated successfully!" ;   ';
                         echo 'alert(update_text)  ;' ;
@@ -384,9 +385,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputMultiChoice" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -408,7 +409,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputMultiChoice" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -424,7 +425,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputMultiChoice" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -442,10 +443,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputMultiChoice" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputMultiChoice referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputMultiChoice" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -462,7 +463,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputMultiChoice" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -483,7 +484,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputMultiChoice" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -500,7 +501,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputMultiChoice" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -508,20 +509,20 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputMultiChoice" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputMultiChoice" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputMultiChoice questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputMultiChoice answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputMultiChoice"  value="0" onclick="deleteInputs(this.value, 1)" >Delete Input</button>
+                                 <button type="button" name="deleteInputMultiChoice"  value="0" onclick="deleteInputs(this.value, 1) " class="lang" key="deleteInput" >Delete Input</button>
                                  </span>
                               </div>
                            </span>
                         </span>
-                        <input name="submitMultiChoice" type="submit" id="submitMultiChoice" value="Submit Question" class="submitNewQues">
+                        <input name="submitMultiChoice" type="submit" id="submitMultiChoice" value="Submit Question" class="submitNewQues submit">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(1)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(1)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitMultiChoice'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -607,9 +608,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputSentenceTrans" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -631,7 +632,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputSentenceTrans" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -647,7 +648,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputSentenceTrans" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -665,10 +666,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputSentenceTrans" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputSentenceTrans referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputSentenceTrans" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -685,7 +686,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputSentenceTrans" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -706,7 +707,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputSentenceTrans" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -723,7 +724,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputSentenceTrans" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -731,20 +732,20 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputSentenceTrans" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputSentenceTrans" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputSentenceTrans questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputSentenceTrans answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputSentenceTrans"  value="0" onclick="deleteInputs(this.value, 2)" >Delete Input</button>
+                                 <button type="button" name="deleteInputSentenceTrans"  value="0" onclick="deleteInputs(this.value, 2)"  class="lang" key="deleteInput">Delete Input</button>
                                  </span>
                               </div>
                            </span>
                         </span>
-                        <input name="submitSentenceTrans" type="submit" id="submitSentenceTrans" value="Submit Question" class="submitNewQues">
+                        <input name="submitSentenceTrans" type="submit" id="submitSentenceTrans" value="Submit Question" class="submitNewQues submit">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(2)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(2)"  key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitSentenceTrans'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -830,9 +831,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputInteraction" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -854,7 +855,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputInteraction" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -870,7 +871,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputInteraction" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -888,10 +889,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputInteraction" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputInteraction referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputInteraction" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -908,7 +909,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputInteraction" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -929,7 +930,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputInteraction" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -946,7 +947,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputInteraction" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -954,20 +955,20 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputInteraction" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputInteraction" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputInteraction questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputInteraction answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputInteraction"  value="0" onclick="deleteInputs(this.value, 3)" >Delete Input</button>
+                                 <button type="button" name="deleteInputInteraction"  value="0" onclick="deleteInputs(this.value, 3)"  class="lang" key="deleteInput">Delete Input</button>
                                  </span>
                               </div>
                            </span>
                         </span>
-                        <input name="submitInteraction" class="submitNewQues" type="submit" id="submitInteraction" value="Submit Question" >
+                        <input name="submitInteraction" class="submitNewQues submit" type="submit" id="submitInteraction" value="Submit Question" >
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(3)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(3)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitInteraction'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -1053,9 +1054,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputReadingMulti" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -1077,7 +1078,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputReadingMulti" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -1093,7 +1094,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputReadingMulti" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -1111,10 +1112,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputReadingMulti" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputReadingMulti referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputReadingMulti" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1131,7 +1132,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputReadingMulti" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -1152,7 +1153,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputReadingMulti" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1169,7 +1170,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputReadingMulti" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -1177,12 +1178,12 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputReadingMulti" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputReadingMulti" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputReadingMulti questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputReadingMulti answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputReadingMulti"  value="0" onclick="deleteInputs(this.value, 4)" >Delete Input</button>
+                                 <button type="button" name="deleteInputReadingMulti"  value="0" onclick="deleteInputs(this.value, 4)"  class="lang" key="deleteInput">Delete Input</button>
                                  </span>
                               </div>
                            </span>
@@ -1190,7 +1191,7 @@ width: 100%;
                         <input name="submiReadingMulti" type="submit" id="submiReadingMulti" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(4)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(4)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submiReadingMulti'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -1276,9 +1277,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputReading" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -1300,7 +1301,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputReading" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -1316,7 +1317,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputReading" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -1334,10 +1335,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputReading" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputReading referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputReading" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1354,7 +1355,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputReading" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -1375,7 +1376,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputReading" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1392,7 +1393,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputReading" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -1400,12 +1401,12 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputReading" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputReading" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputReading questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputReading answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputReading"  value="0" onclick="deleteInputs(this.value, 5)" >Delete Input</button>
+                                 <button type="button" name="deleteInputReading"  value="0" onclick="deleteInputs(this.value, 5)" class="lang" key="deleteInput" >Delete Input</button>
                                  </span>
                               </div>
                            </span>
@@ -1413,7 +1414,7 @@ width: 100%;
                         <input name="submitReading" type="submit" id="submitReading" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(5)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(5)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitReading'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -1499,9 +1500,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputReadingMission" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -1523,7 +1524,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputReadingMission" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -1539,7 +1540,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputReadingMission" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -1557,10 +1558,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputReadingMission" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputReadingMission referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputReadingMission" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1577,7 +1578,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputReadingMission" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -1598,7 +1599,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputReadingMission" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1615,7 +1616,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputReadingMission" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -1623,12 +1624,12 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputReadingMission" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputReadingMission" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputReadingMission questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputReadingMission answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputReadingMission"  value="0" onclick="deleteInputs(this.value, 6)" >Delete Input</button>
+                                 <button type="button" name="deleteInputReadingMission"  value="0" onclick="deleteInputs(this.value, 6)"  class="lang" key="deleteInput">Delete Input</button>
                                  </span>
                               </div>
                            </span>
@@ -1636,7 +1637,7 @@ width: 100%;
                         <input name="submitReadingMission" type="submit" id="submitReadingMission" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(6)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(6)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitReadingMission'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -1722,9 +1723,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputTranslation" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -1746,7 +1747,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputTranslation" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -1762,7 +1763,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputTranslation" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -1780,10 +1781,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputTranslation" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputTranslation referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputTranslation" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1800,7 +1801,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputTranslation" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -1821,7 +1822,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputTranslation" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -1838,7 +1839,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputTranslation" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -1846,12 +1847,12 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputTranslation" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputTranslation" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputTranslation questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputTranslation answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputTranslation"  value="0" onclick="deleteInputs(this.value, 7)" >Delete Input</button>
+                                 <button type="button" name="deleteInputTranslation"  value="0" onclick="deleteInputs(this.value, 7)" class="lang" key="deleteInput">Delete Input</button>
                                  </span>
                               </div>
                            </span>
@@ -1859,7 +1860,7 @@ width: 100%;
                         <input name="submitTranslation" type="submit" id="submitTranslation" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(7)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(7)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitTranslation'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -2168,9 +2169,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputWriting" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -2192,7 +2193,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputWriting" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -2208,7 +2209,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputWriting" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -2226,10 +2227,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputWriting" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputWriting referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputWriting" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -2246,7 +2247,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputWriting" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -2267,7 +2268,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputWriting" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -2284,7 +2285,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputWriting" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -2292,12 +2293,12 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputWriting" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputWriting" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputWriting questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputWriting answerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputWriting"  value="0" onclick="deleteInputs(this.value, 9)" >Delete Input</button>
+                                 <button type="button" name="deleteInputWriting"  value="0" onclick="deleteInputs(this.value, 9)" class="lang" key="deleteInput">Delete Input</button>
                                  </span>
                               </div>
                            </span>
@@ -2305,7 +2306,7 @@ width: 100%;
                         <input name="submitWriting" type="submit" id="submitWriting" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(9)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(9)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitWriting'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
@@ -2391,9 +2392,9 @@ width: 100%;
                         <span name="inputs" id="inputs">
                            <span name="firstInput">
                               <div  class="addAquestion">
-                                 <h3>References</h3>
+                                 <h3 class="lang" key="referenceBigHeader">References</h3>
                                  <hr>
-                                 <span>Year</span>
+                                 <span class="lang" key="yearHeader">Year</span>
                                  <!--   <input id="year" class="yearInput" name="year[]" type="text" placeholder="Year" > -->
                                  <select id="year" class="yearInputOthers" name="year[]" type="text" placeholder="Year">
                                     <option>2000</option>
@@ -2415,7 +2416,7 @@ width: 100%;
                                     <option>2016</option>
                                     <option>2017</option>
                                  </select>
-                                 <span>Grade</span>
+                                 <span class="lang" key="gradeHeader">Grade</span>
                                  <!-- <input id="grade" class="gradeInput" name="grade[]" type="text" placeholder="Grade" > -->
                                  <select id="grade" class="gradeInputOthers" name="grade[]" type="text" placeholder="Grade">
                                     <option>1</option>
@@ -2431,7 +2432,7 @@ width: 100%;
                                     <option>11</option>
                                     <option>12</option>
                                  </select>
-                                 <span>Testtype</span>
+                                 <span class="lang" key="testtypeHeader">Testtype</span>
                                  <!-- <input id="testtype" class="testtypeInput" name="testtype[]" type="text" placeholder="Testtype" > -->
                                  <select id="testtype" class="testtypeInputOthers" name="testtype[]" type="text" placeholder="Testtype">
                                     <?php
@@ -2449,10 +2450,10 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Reference</span>
-                                 <input id="reference" class="referenceInputOthers" name="reference[]" type="text" placeholder="Reference" ><br>
+                                 <span class="lang" key="referenceHeader">Reference</span>
+                                 <input id="reference" class="referenceInputOthers referenceInput" name="reference[]" type="text" placeholder="Reference" ><br>
                                  <!--  <input id="textbook" class="textbookInput" name="textbook[]" type="text" placeholder="Textbook" > -->
-                                 <span>Textbook</span>
+                                 <span class="lang" key="textbookHeader">Textbook</span>
                                  <select id="textbook" class="textbookInputOthers" name="textbook[]" type="text" placeholder="Textbook">
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -2469,7 +2470,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Lesson</span>
+                                 <span class="lang" key="lessonHeader">Lesson</span>
                                  <!-- <input id="lesson" class="lessonInput" name="lesson[]" type="text" placeholder="Lesson" > -->
                                  <select id="lesson" class="lessonInputOthers" name="lesson[]" type="text" placeholder="Lesson">
                                     <option>1</option>
@@ -2490,7 +2491,7 @@ width: 100%;
                                     <option>16</option>
                                  </select>
                                  <!-- <input id="knowledge" class="knowledgeInput" name="knowledge[]" type="text" placeholder="Knowledge" > -->
-                                 <span>Knowledge</span>
+                                 <span class="lang" key="knowledgeHeader">Knowledge</span>
                                  <select id="knowledge" class="knowledgeInputOthers" name="knowledge[]" type="text" placeholder="Knowledge" >
                                     <?php
                                        $db = mysql_connect('localhost','root','password')
@@ -2507,7 +2508,7 @@ width: 100%;
                                        }
                                         ?>
                                  </select>
-                                 <span>Difficulty</span>
+                                 <span class="lang" key="difficultyHeader">Difficulty</span>
                                  <select id="difficulty" class="difficultyInputOthers" name="difficulty[]" type="text" placeholder="difficulty">
                                     <option class="lang" key="hard">Hard</option>
                                     <option class="lang" key="medium">Medium</option>
@@ -2515,12 +2516,12 @@ width: 100%;
                                  </select>
                                  <h3>Q & A </h3>
                                  <hr>
-                                 <textarea rows="4" id="question" class="questionInputOthers" name="question[]" type="text" placeholder="Question" ></textarea>
-                                 <textarea rows="4" id="answer" class="answerInputOthers" name="answer[]" type="text" placeholder="Answer" ></textarea>
+                                 <textarea rows="4" id="question" class="questionInputOthers questionInput" name="question[]" type="text" placeholder="Question" ></textarea>
+                                 <textarea rows="4" id="answer" class="answerInputOthers anwerInput" name="answer[]" type="text" placeholder="Answer" ></textarea>
                                  <br>
                                  <hr>
                                  <span id="deleteInputButton">
-                                 <button type="button" name="deleteInputOthers"  value="0" onclick="deleteInputs(this.value, 10)" >Delete Input</button>
+                                 <button type="button" name="deleteInputOthers"  value="0" onclick="deleteInputs(this.value, 10)" class="lang" key="deleteInput" >Delete Input</button>
                                  </span>
                               </div>
                            </span>
@@ -2528,7 +2529,7 @@ width: 100%;
                         <input name="submitOthers" type="submit" id="submitOthers" value="Submit Question" class="submitNewQues">
                         <br>
                      </form>
-                     <button type="button" name="addInput" class="addNewInput" onclick="addInputs(10)">Add Input</button>
+                     <button type="button" name="addInput" class="addNewInput lang" onclick="addInputs(10)" key="addInput">Add Input</button>
                      <?php if ( $_REQUEST['submitOthers'] ){
                         mysql_select_db("test", $db);
                         $years = $_POST['year'];
