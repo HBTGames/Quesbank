@@ -94,6 +94,29 @@
          display:none;
          background-color:white;
          }
+         div.paging-nav{
+         text-align:center;
+         }
+         .paging-nav a.pagenav {
+    padding: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-decoration:none;
+}
+.paging-nav a.pagenav:hover {
+        color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.paging-nav a.pagenav.page-active {
+        color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
       </style>
       <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -139,7 +162,15 @@
                   $db = mysql_connect('localhost','root','password')
                    or die('Error connecting to MySQL server.');
                    @mysql_select_db("test", $db);
-                   $sql = "SELECT * FROM test.fill_blank";
+                   $page=$_GET['page'];
+         if($page=="" || $page=="1"){
+         $page1 = 0;
+         } else{
+         $page1 = ($page - 1) * 10;
+         }
+                   $sql = "SELECT * FROM test.fill_blank limit $page1,10";
+                    $sql_all = mysql_query("SELECT * FROM test.fill_blank");
+                   
                    $result = mysql_query($sql);
                   
                   ?>
@@ -171,6 +202,7 @@
                   </thead>
                   <tbody>
                      <?php
+                     
                         while( $row = mysql_fetch_array($result))
                         {
                         $id = $row['idfill_blank'];
@@ -365,8 +397,9 @@
                                        <div class="modal-footer">
                                           <button type="button" class="btn btn-default lang" data-dismiss="modal" key="closeButton">Close</button>
                                           <input type="submit"  id="delete-btn" name="delete" value="Delete" class="btn btn-danger delete-btn lang" key="deleteButton">
-                                    </form>
+                                    
                                     </div>
+                                    </form>
                                  </div>
                               </div>
                            </div>
@@ -482,9 +515,35 @@
                       }
                       mysql_close('db');
                    ?>
-            </div>
+                   
+                   <div class="paging-nav">
+                   <?php
+        
+         $count_rows = mysql_num_rows($sql_all);
+         $page_amount=ceil($count_rows / 10);
+       for($page_num = 1; $page_num <= $page_amount; $page_num ++){
+       ?> <a href="managefillblank.php?page=<?php echo $page_num; ?>" class="pagenav <?php if($page == $page_num) echo "page-active";?>"><?php echo $page_num; ?></a> <?php
+       }
+         
+         
+         
+         ?>
          </div>
+         </div>
+            </div>
+            
+            
          <hr>
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
          <div class="footer">
             <p>
                &copy;
