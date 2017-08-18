@@ -355,7 +355,7 @@
                                              </div>
                                              <div class="modal-footer">
                                                 <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
-                                                <input type="submit" onclick="updatedata(<?php echo "$id"?>)" id="update" name="update" value="update" class="btn btn-primary lang"  key="saveButton">
+                                                <input type="submit" onclick="updatedata(<?php echo "$id"?>)" id="update" name="update" value="update" class="btn btn-primary updateButton"  key="saveButton">
                                              </div>
                                           </form>
                                        </div>

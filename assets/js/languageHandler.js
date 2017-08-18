@@ -227,6 +227,14 @@ document.getElementsByName('newknowledge')[0].placeholder = '输入新的知识�
 }
 }
 
+$('.updateButton').each(function ( ) {
+  if(language == 'en'){
+  $(this).attr('value', 'Update');
+  }else{
+      $(this).attr('value', '更新');
+  }
+});
+
 if( document.getElementsByName('question[]')[0]!=undefined  ){
   $('.yearInput').each(function ( ) {
     if(language == 'en'){
