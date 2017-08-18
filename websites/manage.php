@@ -182,16 +182,27 @@ input.addnewinput {
                                    mysql_select_db("tags", $db);
    									 $newtesttype = $_POST['newtesttype'];
    									 $newtesttypeString =  mysql_real_escape_string($newtesttype);
-                                   $sql = "INSERT INTO tags.testtypetags (testtype) VALUES ('$newtesttypeString')";
-                   $retval = mysql_query( $sql, $db);
-    if(! $retval)
-    {
-      die('Could not update data: ' . mysql_error());
-    }
-    echo '<script type="text/javascript">';
-    echo  'var update_text= "Data updated successfully!" ;   ';
-    echo ' </script> ';
-    echo '<script> window.location.href="manage.php"; </script>';
+                     if($newtesttypeString != ''){
+                       $sql = "INSERT INTO tags.testtypetags (testtype) VALUES ('$newtesttypeString')";
+                      $retval = mysql_query( $sql, $db);
+       if(! $retval)
+       {
+         die('Could not update data: ' . mysql_error());
+       }
+
+       echo '<script type="text/javascript">';
+       echo  'var update_text= "Data updated successfully!" ;   ';
+       echo 'alert(update_text)';
+       echo ' </script> ';
+       echo '<script> window.location.href="manage.php"; </script>';
+     }else{
+       echo '<script type="text/javascript">';
+       echo  'var update_text= "Empty tag is not permitted." ;   ';
+       echo 'alert(update_text)';
+       echo ' </script> ';
+     }
+
+
                                    }
 
                                    ?>
@@ -234,15 +245,24 @@ input.addnewinput {
    									 $newtextbook = $_POST['newtextbook'];
    									 $newtextbookString =  mysql_real_escape_string($newtextbook);
                                    $sql = "INSERT INTO tags.textbooktags (textbook) VALUES ('$newtextbookString')";
-                   $retval = mysql_query( $sql, $db);
-    if(! $retval)
-    {
-      die('Could not update data: ' . mysql_error());
-    }
-    echo '<script type="text/javascript">';
-    echo  'var update_text= "Data updated successfully!" ;   ';
-    echo ' </script> ';
-    echo '<script> window.location.href="manage.php"; </script>';
+                    if($newtextbookString != ''){
+                      $retval = mysql_query( $sql, $db);
+       if(! $retval)
+       {
+         die('Could not update data: ' . mysql_error());
+       }
+       echo '<script type="text/javascript">';
+       echo  'var update_text= "Data updated successfully!" ;   ';
+       echo 'alert(update_text)';
+       echo ' </script> ';
+       echo '<script> window.location.href="manage.php"; </script>';
+     }else{
+       echo '<script type="text/javascript">';
+       echo  'var update_text= "Empty tag is not permitted." ;   ';
+       echo 'alert(update_text)';
+       echo ' </script> ';
+     }
+
                                    }
 
                                    ?>
@@ -286,16 +306,25 @@ input.addnewinput {
                                    mysql_select_db("tags", $db);
    									 $newknowledge = $_POST['newknowledge'];
    									 $newknowledgeString =  mysql_real_escape_string($newknowledge);
-                                   $sql = "INSERT INTO tags.knowledgetags (knowledge) VALUES ('$newknowledgeString')";
-                   $retval = mysql_query( $sql, $db);
-    if(! $retval)
-    {
-      die('Could not update data: ' . mysql_error());
-    }
-    echo '<script type="text/javascript">';
-    echo  'var update_text= "Data updated successfully!" ;   ';
-    echo ' </script> ';
-    echo '<script> window.location.href="manage.php"; </script>';
+                     if($newknowledgeString != ''){
+                       $sql = "INSERT INTO tags.knowledgetags (knowledge) VALUES ('$newknowledgeString')";
+       $retval = mysql_query( $sql, $db);
+  if(! $retval)
+  {
+  die('Could not update data: ' . mysql_error());
+  }
+  echo '<script type="text/javascript">';
+  echo  'var update_text= "Data updated successfully!" ;   ';
+  echo 'alert(update_text)';
+  echo ' </script> ';
+  echo '<script> window.location.href="manage.php"; </script>';
+}else{
+  echo '<script type="text/javascript">';
+  echo  'var update_text= "Empty tag is not permitted." ;   ';
+  echo 'alert(update_text)';
+  echo ' </script> ';
+}
+
                                    }
 
                                    ?>
