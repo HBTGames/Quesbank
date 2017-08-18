@@ -102,7 +102,7 @@ input.addnewinput {
     color: white;
 }
       </style>
-     
+
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
       <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -127,24 +127,24 @@ input.addnewinput {
          <hr>
          <div class="main-content">
          <div id="managequestypes">
-         <h1>Manage All Question Types</h1>
+         <h1 class="lang" key="manageAllQuesTag">Manage All Question Types</h1>
          <div id="manageall">
-       <a class="btn btn-default" style="margin:10px;" href="managefillblank.php" role="button">Manage Fill Blank</a>
-       <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
-       <a class="btn btn-default" style="margin:10px;" href="manageinteraction.php" role="button">Manage Interaction</a>
-       <a class="btn btn-default" style="margin:10px;" href="managesentence.php" role="button">Manage Sentence</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereadingmu.php" role="button">Manage Reading Multi (wanxing)</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereading.php" role="button">Manage Reading</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereadingmi.php" role="button">Manage Reading Mission</a>
-       <a class="btn btn-default" style="margin:10px;" href="managetranslation.php" role="button">Manage Translation</a>
-       <a class="btn btn-default" style="margin:10px;" href="managelistening.php" role="button">Manage Listening</a>
-       <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
-       <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managefillblank.php" role="button" key="fillBlankTag">Manage Fill Blank</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managemultichoice.php" role="button" key="multiChoiceTag">Manage Multi Choice</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="manageinteraction.php" role="button" key="interactionTag">Manage Interaction</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managesentence.php" role="button" key="sentenceTransTag">Manage Sentence</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managereadingmu.php" role="button" key="wanxingTag">Manage Reading Multi (wanxing)</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managereading.php" role="button" key="readingTag">Manage Reading</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managereadingmi.php" role="button" key="readingMissionTag">Manage Reading Mission</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managetranslation.php" role="button" key="translationTag">Manage Translation</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="managelistening.php" role="button" key="listeningTag">Manage Listening</a>
+       <a class="btn btn-default lang"  style="margin:10px;" href="managewriting.php" role="button" key="writingTag">Manage Writing</a>
+       <a class="btn btn-default lang" style="margin:10px;" href="manageothers.php" role="button" key="othersTag">Manage Others</a>
        </div>
        </div>
        <hr>
        <div id="managetags">
-       <h1>Manage Tags</h1>
+       <h1 class="lang" key="manageTags">Manage Tags</h1>
        <?php
                         $db = mysql_connect('localhost','root','password')
                          or die('Error connecting to MySQL server.');
@@ -177,7 +177,7 @@ input.addnewinput {
 
                                    </td>
                                     <tr>
-                              <td><input value="Save" class="addnewinput" id="addtesttype" name="addtesttype" type="submit"></td></form>
+                              <td><input value="Save" class="addnewinput saveButton" id="addtesttype" name="addtesttype" type="submit"></td></form>
                              <?php if ( $_REQUEST['addtesttype'] ){
                                    mysql_select_db("tags", $db);
    									 $newtesttype = $_POST['newtesttype'];
@@ -228,7 +228,7 @@ input.addnewinput {
 
                                    </td>
                                     <tr>
-                              <td><input value="Save" class="addnewinput" id="addtextbook" name="addtextbook" type="submit"></td></form>
+                              <td><input value="Save" class="addnewinput saveButton" id="addtextbook" name="addtextbook" type="submit"></td></form>
                              <?php if ( $_REQUEST['addtextbook'] ){
                                    mysql_select_db("tags", $db);
    									 $newtextbook = $_POST['newtextbook'];
@@ -281,7 +281,7 @@ input.addnewinput {
 
                                    </td>
                                     <tr>
-                              <td><input value="Save" class="addnewinput" id="addknowledge" name="addknowledge" type="submit"></td></form>
+                              <td><input value="Save" class="addnewinput saveButton" id="addknowledge" name="addknowledge" type="submit"></td></form>
                              <?php if ( $_REQUEST['addknowledge'] ){
                                    mysql_select_db("tags", $db);
    									 $newknowledge = $_POST['newknowledge'];
@@ -325,7 +325,7 @@ input.addnewinput {
       </div>
       <!-- /container -->
 
-    
+
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
          var edit_id =$(this).attr('id');

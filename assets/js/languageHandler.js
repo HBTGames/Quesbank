@@ -75,7 +75,20 @@ var arrLang = {
     'guide' : 'Guide',
     'referenceBigHeader' : 'Reference',
       'deleteInput' : 'Delete Input',
-      'addInput' : 'Add Input'
+      'addInput' : 'Add Input',
+      'fillBlankTag' : 'Manage Fill Blank',
+      'multiChoiceTag' : 'Manage Multi Choice',
+      'interactionTag' : 'Manage Interaction',
+      'sentenceTransTag' : 'Manage Sentence',
+      'wanxingTag' : 'Manage Reading Multi (wanxing)',
+      'readingTag' : 'Manage Reading',
+      'readingMissionTag' :   'Manage Reading Mission',
+      'translationTag' : 'Manage Translation',
+      'listeningTag' : 'Manage Listening',
+      'writingTag' : 'Manage Writing',
+      'othersTag' : 'Manage Others',
+      'manageAllQuesTag' : 'Manage All Question Types',
+      'manageTags' : 'Manage Tags'
   },
   'zh' : {
     'home' : '主页',
@@ -130,7 +143,20 @@ var arrLang = {
       'guide' : '指南',
       'referenceBigHeader' : '问题详情',
       'deleteInput' : '删除此问题',
-      'addInput' : '增加一个问题详情'
+      'addInput' : '增加一个问题详情',
+      'fillBlankTag' : '管理填空题',
+      'multiChoiceTag' : '管理选择题',
+      'interactionTag' : '管理交际用语题',
+      'sentenceTransTag' : '管理句型转换题',
+      'wanxingTag' : '管理完形填空题',
+      'readingTag' : '管理阅读题',
+      'readingMissionTag' :   '管理任务型阅读题',
+      'translationTag' : '管理翻译题',
+      'listeningTag' : '管理听力题',
+      'writingTag' : '管理写作题',
+      'othersTag' : '管理其他题型',
+      'manageAllQuesTag' : '所有可管理题型',
+      'manageTags' : '管理标签'
 
   }
 };
@@ -169,8 +195,33 @@ if( document.getElementsByName('year')[0]!=undefined ){
       document.getElementsByName('textbook')[0].placeholder = '教材';
   }
 }
-//change placeholders in addques.php
+//change place holder in manage.php
 
+
+//change placeholders in addques.php
+if( document.getElementsByName('newtesttype')[0]!=undefined  ){
+if (language == 'en') {
+document.getElementsByName('newtesttype')[0].placeholder = 'NewTesttype';
+}else{
+document.getElementsByName('newtesttype')[0].placeholder = '输入新的考试类型';
+}
+}
+
+if( document.getElementsByName('newtextbook')[0]!=undefined  ){
+if (language == 'en') {
+document.getElementsByName('newtextbook')[0].placeholder = 'NewTextbook';
+}else{
+document.getElementsByName('newtextbook')[0].placeholder = '输入新的教材名称';
+}
+}
+
+if( document.getElementsByName('newknowledge')[0]!=undefined  ){
+if (language == 'en') {
+document.getElementsByName('newknowledge')[0].placeholder = 'NewKnowledge';
+}else{
+document.getElementsByName('newknowledge')[0].placeholder = '输入新的知识点';
+}
+}
 
 if( document.getElementsByName('question[]')[0]!=undefined  ){
   $('.yearInput').each(function ( ) {
@@ -254,6 +305,15 @@ $('.submitNewQues').each(function ( ) {
   $(this).attr('value', 'Submit Question');
   }else{
       $(this).attr('value', '提交问题');
+  }
+});
+
+//save button
+$('.saveButton').each(function ( ) {
+  if(language == 'en'){
+  $(this).attr('value', 'Save');
+  }else{
+      $(this).attr('value', '保存');
   }
 });
 
