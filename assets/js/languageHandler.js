@@ -88,7 +88,9 @@ var arrLang = {
       'writingTag' : 'Manage Writing',
       'othersTag' : 'Manage Others',
       'manageAllQuesTag' : 'Manage All Question Types',
-      'manageTags' : 'Manage Tags'
+      'manageTags' : 'Manage Tags',
+      'thereAre' : 'There are',
+      'questionsInThereAre' : 'questions'
   },
   'zh' : {
     'home' : '主页',
@@ -156,7 +158,9 @@ var arrLang = {
       'writingTag' : '管理写作题',
       'othersTag' : '管理其他题型',
       'manageAllQuesTag' : '所有可管理题型',
-      'manageTags' : '管理标签'
+      'manageTags' : '管理标签',
+      'thereAre' : '此题型含有',
+      'questionsInThereAre' : '个问题'
 
   }
 };

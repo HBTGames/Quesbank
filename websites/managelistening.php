@@ -49,7 +49,7 @@
           .modal.largeModal{
          width:70% !important;
          margin-left:-500px;
-         
+
          }
          form{
          margin: 0 !important;
@@ -89,9 +89,9 @@
          table#myTable tr th:after{
          content:"▾";
          }
-         #header-fixed { 
-         position: fixed; 
-         top: 140px; 
+         #header-fixed {
+         position: fixed;
+         top: 140px;
          display:none;
          background-color:white;
          }
@@ -121,21 +121,21 @@
          <hr>
          <div id="sepmanagepage">
            <div id="manageall">
-       <a class="btn btn-default" style="margin:10px;" href="managelistening.php" role="button">Manage Fill Blank</a>
-       <a class="btn btn-default" style="margin:10px;" href="managemultichoice.php" role="button">Manage Multi Choice</a>
-       <a class="btn btn-default" style="margin:10px;" href="manageinteraction.php" role="button">Manage Interaction</a>
-       <a class="btn btn-default" style="margin:10px;" href="managesentence.php" role="button">Manage Sentence</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereadingmu.php" role="button">Manage Reading Multi (wanxing)</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereading.php" role="button">Manage Reading</a>
-       <a class="btn btn-default" style="margin:10px;" href="managereadingmi.php" role="button">Manage Reading Mission</a>
-       <a class="btn btn-default" style="margin:10px;" href="managetranslation.php" role="button">Manage Translation</a>
-       <a class="btn btn-default" style="margin:10px;" href="managelistening.php" role="button">Manage Listening</a>
-       <a class="btn btn-default" style="margin:10px;" href="managewriting.php" role="button">Manage Writing</a>
-       <a class="btn btn-default" style="margin:10px;" href="manageothers.php" role="button">Manage Others</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managefillblank.php" role="button" key="fillBlankTag">Manage Fill Blank</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managemultichoice.php" role="button" key="multiChoiceTag">Manage Multi Choice</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="manageinteraction.php" role="button" key="interactionTag">Manage Interaction</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managesentence.php" role="button" key="sentenceTransTag">Manage Sentence</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managereadingmu.php" role="button" key="wanxingTag">Manage Reading Multi (wanxing)</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managereading.php" role="button" key="readingTag">Manage Reading</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managereadingmi.php" role="button" key="readingMissionTag">Manage Reading Mission</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managetranslation.php" role="button" key="translationTag">Manage Translation</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="managelistening.php" role="button" key="listeningTag">Manage Listening</a>
+             <a class="btn btn-default lang"  style="margin:10px;" href="managewriting.php" role="button" key="writingTag">Manage Writing</a>
+             <a class="btn btn-default lang" style="margin:10px;" href="manageothers.php" role="button" key="othersTag">Manage Others</a>
        </div>
        <hr>
-       <h1 class="managepagetitle">Manage Listening</h1><br>
-            
+       <h1 class="managepagetitle lang" key="listeningTag">Manage Listening</h1><br>
+
                   <div id="listeningtable">
                      <?php
                         $db = mysql_connect('localhost','root','password')
@@ -143,16 +143,16 @@
                          @mysql_select_db("test", $db);
                          $sql = "SELECT * FROM test.listening";
                          $result = mysql_query($sql);
-                        
+
                         ?>
                      <input class="form-control" type="text" placeholder="Search by Question" id="myInput" onkeyup="searchfilter()" name="searchByQuestion">
                      <input class="form-control" type="text" placeholder="Search by Textbook" id="myInputtwo" onkeyup="searchfiltertwo()" name="searchByTextbook">
                      <?php
                         $count = "SELECT COUNT(idlistening) FROM test.listening";
                         $all = mysql_fetch_array( mysql_query($count) );
-                        echo '<span class="stat">There are';
-                  echo " $all[0] ";
-                  echo ' questions </span>'; ?>
+                        echo '<span class="stat"> <span class="lang" key="thereAre">There are </span>';
+                        echo " $all[0] ";
+                        echo ' <span class="lang" key="questionsInThereAre">questions</span> </span>'; ?>
                      <table class="table table-hover" id="myTable">
                         <thead>
                            <tr>
@@ -241,7 +241,7 @@
                                           <option <?php if ($year == 2016) echo "selected"?> value="2016">2016</option>
                                           <option <?php if ($year == 2017) echo "selected"?> value="2017">2017</option>
                                        </select>
-                                    
+
                                        <span class="lang" key="gradeHeader">Grade</span>
                                        <!--  <input type="text" name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>"> -->
                                        <select name="grade" placeholder="Grade" id="grade-<?php echo "$grade"?>" value="<?php echo "$grade"?>">
@@ -258,7 +258,7 @@
                                           <option <?php if ($grade == 11) echo "selected"?> value="11">11</option>
                                           <option <?php if ($grade == 12) echo "selected"?> value="12">12</option>
                                        </select>
-            
+
                                        <span class="lang" key="testtypeHeader">Testtype</span>
                                        <!--  <input type="text" name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>"> -->
                                        <select name="testtype" placeholder="Testtype" id="testtype-<?php echo "$testtype"?>" value="<?php echo "$testtype"?>">
@@ -275,7 +275,7 @@
                                              }
                                               ?>
                                        </select>
-                                       
+
                                        <span class="lang" key="referenceHeader">Reference</span>
                                        <input type="text" name="reference" placeholder="Reference" id="reference-<?php echo "$reference"?>" value="<?php echo "$reference"?>">
                                        <br>
@@ -294,7 +294,7 @@
                                              }
                                               ?>
                                        </select>
-                                    
+
                                        <span class="lang" key="lessonHeader" >Lesson</span>
                                        <!-- <input type="text" name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>"> -->
                                        <select  name="lesson" placeholder="Lesson" id="lesson-<?php echo "$lesson"?>" value="<?php echo "$lesson"?>">
@@ -315,7 +315,7 @@
                                           <option <?php if ($lesson == 15) echo "selected"?> value="15">15</option>
                                           <option <?php if ($lesson == 16) echo "selected"?> value="16">16</option>
                                        </select>
-                                    
+
                                        <span class="lang" key="knowledgeHeader">Knowledge</span>
                                        <!-- <input type="text" name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>"> -->
                                        <select name="knowledge" placeholder="Knowledge" id="knowledge-<?php echo "$knowledge"?>" value="<?php echo "$knowledge"?>" >
@@ -331,7 +331,7 @@
                                              }
                                               ?>
                                        </select>
-                                
+
                                        <span class="lang" key="difficultyHeader">Difficulty</span>
                                        <select id="difficulty-<?php echo "$difficulty"?>" name="difficulty" type="text" placeholder="difficulty" value="<?php echo "$difficulty"?>">
                                           <option class="lang" key="hard" <?php if ($difficulty == Hard) echo "selected"?> value="Hard">Hard</option>
@@ -344,7 +344,7 @@
                                       <!-- <span class="lang" key = "questionHeader">Question</span> -->
                                        <!-- <input type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value="<?php echo "$question"?>"> -->
                                        <textarea rows="4" type="text" name="question" placeholder="Question" id="question-<?php echo "$question"?>" value=""><?php echo "$question"?></textarea>
-                                       
+
                                       <!-- <span class="lang" key = "answerHeader">Answer</span> -->
                                        <!-- <input type="text" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value="<?php echo "$answer"?>"> -->
                                        <textarea rows="4" name="answer" placeholder="Answer" id="answer-<?php echo "$answer"?>" value=""><?php echo "$answer"?></textarea>
@@ -413,7 +413,7 @@
                                     ?> -->
                         </tbody>
                      </table>
-                
+
                      <!--       <script language="javascript" type="text/javascript">
                         //$(document).ready(function(){
                         		$('.delete-b').click(function(){
@@ -423,8 +423,8 @@
                         document.getElementById("delete-btn").setAttribute("href",strLink);
                         		});
                         //});
-                        
-                        
+
+
                         </script>-->
                      <?php
                         if (isset($_POST['delete'])){
@@ -467,7 +467,7 @@
                         $difficultyString = mysql_real_escape_string($difficulty);
                         $questionString = mysql_real_escape_string($question);
                         $answerString = mysql_real_escape_string($answer);
-                        
+
                         $sqll = "UPDATE test.listening ".
                               "SET
                               year = '$yearString',
@@ -482,7 +482,7 @@
                               answer = '$answerString',
                               date = '$date'".
                               "WHERE idlistening='$id'";
-                        
+
                               $retval = mysql_query( $sqll, $db);
                                if(! $retval){
                          die('Could not update data: ' . mysql_error());
@@ -510,8 +510,8 @@
          </div>
       </div>
       <!-- /container -->
-  
-     
+
+
       <!-- <script language="javascript" type="text/javascript">
          $('.edit-b').click(function(){
          var edit_id =$(this).attr('id');
@@ -519,8 +519,8 @@
          var strLink = "manage.php?key=" + edit_id;
          document.getElementById("update").setAttribute("href",strLink);
          });
-         
-         
+
+
          </script> -->
       <!--
          <script>
@@ -547,12 +547,12 @@
          $('#insert').val("Update");
          $('#myModal').modal('show');
          }
-         
+
          });
-         
+
          });
-         
-         
+
+
          </script> -->
          <script>
          $(document).ready(function(){
@@ -564,7 +564,7 @@
          }
          });
          });
-         
+
       </script>
       <script>
          function searchfilter() {
@@ -574,7 +574,7 @@
          filter = input.value;
          table = document.getElementById("myTable");
          tr = table.getElementsByTagName("tr");
-         
+
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
          td = tr[i].getElementsByTagName("td")[9];
@@ -587,7 +587,7 @@
          }
          }
          }
-         
+
          function searchfiltertwo() {
          // Declare variables
          var input, filter, table, tr, td, i;
@@ -595,7 +595,7 @@
          filter = input.value;
          table = document.getElementById("myTable");
          tr = table.getElementsByTagName("tr");
-         
+
          // Loop through all table rows, and hide those who don't match the search query
          for (i = 0; i < tr.length; i++) {
          td = tr[i].getElementsByTagName("td")[5];
@@ -608,7 +608,7 @@
          }
          }
          }
-         
+
          function sortTable(k) {
            if (k == 0){
              var table, rows, switching, i, x, y, shouldSwitch;
@@ -664,7 +664,7 @@
          });
          });
          **/
-         
+
          /*$('.edit-b').on('click', function(){
          // Get all TD from the cliked Button
          var td = $(this).parents('tr').find('td:lt(12)');
@@ -679,7 +679,7 @@
          $('#question').val($(td[9]).text());
          $('#answer').val($(td[10]).text());
          });*/
-         
+
          function updatedata(str){
          var id = str;
          var year = $('#year-'+str).val();
@@ -692,7 +692,7 @@
          var difficulty = $('#difficulty-'+str).val();
          var question = $('#question-'+str).val();
          var answer = $('#answer-'+str).val();
-         
+
          $.ajax({
          type:"POST",
          url:"manage.php?p=edit",
@@ -700,14 +700,14 @@
          success:function(data){
          viewData();
          }
-         
+
          });
          }
-         
+
          /*$('.btn-danger').on('click', function(){
          $(this).parents('tr').remove();
          })*/
-         
+
       </script>
       <!-- Le javascript
          ================================================== -->
