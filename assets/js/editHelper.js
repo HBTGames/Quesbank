@@ -20,9 +20,9 @@ if(lastID != null){
   var tempString;
   var language = getLanguage();
   if (language == 'en') {
-  tempString = "Question #" + lastID + " has been modified";
+  tempString = '<span class="lang" key="questionNumb">Question #</span>' + lastID + '<span class="lang" key="hasBeenModified"> has been modified</span>';
 }else {
-  tempString =  "第" + lastID + "号问题最近被编辑过";
+  tempString =  '<span class="lang" key="questionNumb">第</span>' + lastID + '<span class="lang" key="hasBeenModified">号问题最近被编辑过</span>';
 }
 
   if(document.getElementsByName("recentUpdateText")[0] != undefined){

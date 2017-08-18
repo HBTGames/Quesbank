@@ -90,7 +90,9 @@ var arrLang = {
       'manageAllQuesTag' : 'Manage All Question Types',
       'manageTags' : 'Manage Tags',
       'thereAre' : 'There are',
-      'questionsInThereAre' : 'questions'
+      'questionsInThereAre' : 'questions',
+      'questionNumb' : 'Question #',
+      'hasBeenModified' : ' has been modified'
   },
   'zh' : {
     'home' : '主页',
@@ -160,7 +162,9 @@ var arrLang = {
       'manageAllQuesTag' : '所有可管理题型',
       'manageTags' : '管理标签',
       'thereAre' : '此题型含有',
-      'questionsInThereAre' : '个问题'
+      'questionsInThereAre' : '个问题',
+      'questionNumb' : '第',
+      'hasBeenModified' : '号问题最近被编辑过'
 
   }
 };
