@@ -5,29 +5,38 @@ var id;
 //fillblank: 0  interaction:1 listening:2 multichoice:3  others:4 reading:5 readingmi:6 readingmu:7 sentence:8 translation:9 writing:10
 var previousTagID = -1;
 var currentTagID;
+var editedSinceTagChange = false;
 
 function memorizeID (id){
   previousTagID = currentTagID;
-  console.log("id memorized is ");
 lastID = id;
-console.log(lastID);
 }
 
 function setRecentUpdateText(){
+  editedSinceTagChange = true;
+  eraseCookie("editedSinceTagChange");
+  createCookie("editedSinceTagChange",editedSinceTagChange,180);
   eraseCookie("recentUpdateID");
   createCookie("recentUpdateID",lastID,180);
-  console.log("update text!");
 }
 
 function loadRecentUpdateText(currentTagID){
+  editedSinceTagChange = readCookie("editedSinceTagChange");
+  editedSinceTagChange = parseBool(editedSinceTagChange);
+  if(editedSinceTagChange == null){
+    editedSinceTagChange = false;
+  }
   previousTagID =   readCookie("previousTagID");
-  console.log("currentTagID is");
-  console.log(currentTagID);
-  console.log("previousTagID is");
-  console.log(previousTagID);
+  previousTagID = parseInt(previousTagID);
 lastID = readCookie("recentUpdateID");
 console.log(lastID);
-if(lastID != null && currentTagID == previousTagID){
+if(currentTagID != previousTagID){
+  editedSinceTagChange = false;
+  eraseCookie("editedSinceTagChange");
+  createCookie("editedSinceTagChange",editedSinceTagChange,180);
+}
+
+if(lastID !== null && currentTagID == previousTagID && editedSinceTagChange == true ){
   var tempString;
   var language = getLanguage();
   if (language == 'en') {
@@ -47,3 +56,9 @@ if(lastID != null && currentTagID == previousTagID){
 
 
 }
+
+function parseBool(val) {
+if(val != null){
+ return val === true || val === "true"
+}
+   }
