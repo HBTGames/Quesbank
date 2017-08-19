@@ -107,7 +107,7 @@
       <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
-   <body onload="loadLanguage()">
+   <body onload="loadLanguage(); loadRecentUpdateText(7);">
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
@@ -152,6 +152,7 @@
                   echo '<span class="stat"> <span class="lang" key="thereAre">There are </span>';
                   echo " $all[0] ";
                   echo ' <span class="lang" key="questionsInThereAre">questions</span> </span>';?>
+                  <span name="recentUpdateText"></span>
                <table class="table table-hover" id="myTable">
                   <thead>
                      <tr>
@@ -201,7 +202,7 @@
                         <td class="abbre" title="<?php echo "$answer" ?>"><?php echo "$answer" ?></td>
                         <td><?php echo "$date" ?></td>
                         <td>
-                           <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" >Edit </button>
+                           <button type="button" class="btn btn-primary btn-lg edit-b lang" data-toggle="modal" data-target="#myModal-<?php echo "$id"?>" key="editButton" id="<?php echo "$id"?>" onclick="memorizeID(<?php echo "$id"?>)" >Edit </button>
                            <button type="button"  data-toggle="modal" data-target="#delete-<?php echo "$id"?>"
                               class="btn btn-danger delete-b lang" key="deleteButton"  id="<?php echo "$id" ?>">Delete</button>
                            <!-- Modal -->
@@ -345,7 +346,7 @@
                                        </div>
                                        <div class="modal-footer">
                                           <button type="button" class="btn btn-default lang" data-dismiss="modal" key='closeButton'>Close</button>
-                                          <input type="submit" onclick="updatedata(<?php echo "$id"?>)" id="update" name="update" value="update" class="btn btn-primary updateButton"  key="saveButton">
+                                          <input type="submit" onclick="updatedata(<?php echo "$id"?>); setRecentUpdateText();" id="update" name="update" value="update" class="btn btn-primary updateButton"  key="saveButton">
                                        </div>
                                     </form>
                                  </div>
@@ -719,5 +720,6 @@
       <script type="text/javascript" src="../assets/js/jquery-1.7.1.min.js"></script>
       <script type="text/javascript" src="../assets/js/jquery-ui-1.8.17.custom.min.js"></script>
       <script type="text/javascript" src="../assets/js/jspdf.debug.js"></script>
+      <script type="text/javascript" src="../assets/js/editHelper.js"></script>
    </body>
 </html>

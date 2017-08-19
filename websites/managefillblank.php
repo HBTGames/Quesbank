@@ -130,7 +130,7 @@
       <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
       <link rel="shortcut icon" href="../assets/ico/favicon.png">
    </head>
-   <body onload="loadLanguage(); loadRecentUpdateText();">
+   <body onload="loadLanguage(); loadRecentUpdateText(0);">
       <div class="container-narrow">
          <div class="masthead">
             <ul class="nav nav-pills pull-right">
